@@ -1,3 +1,25 @@
+/* header */
+
+
+#navbar_menu {
+  display: flex;
+}
+/* .menu_main {
+  display: flex;
+} */
+.menu_list {
+  display: flex;
+}
+
+.search {
+  display:flex;
+}
+#search_btn {
+  /* position: absolute; */
+  
+}
+
+/* main */
 .div-container {
   display: flex;
   align-items: center;
@@ -16,4 +38,43 @@
   border: 1px solid blue;
   padding: 10px;
   margin-left: 3rem;
+}
+
+#custom_center_wrap {
+  text-align: center;
+}
+.center_h2 {
+  font-size: 20pt;
+}
+
+#call_wrap {
+  display: flex;
+}
+
+#right_call_wrap {
+
+}
+
+#introduce_wrap {
+  /* display: flex; */
+}
+
+.introduce_list {
+  display: flex;
+}
+.footer {
+  display: flex;
+}
+
+/* 고객 행복센터 및 멤버소개 */
+.footer_left,
+.footer_right {
+  flex-grow: 1;
+}
+.footer_p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: #999999;
+  font-size: 12px;
+  padding-bottom: 6px;
 }
