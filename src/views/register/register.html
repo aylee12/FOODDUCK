@@ -127,6 +127,44 @@
           </div>
         </div>
 
+        <div class="field mb-5">
+          <label class="label" for="addressInput">주소</label>
+          <div class="control">
+            <input
+              class="input"
+            />
+          </div>
+        </div>
+
+        <div class="field mb-5">
+          <label class="label" for="addressInput">성별</label>
+          <div class="control">
+            <div class="radio-items">
+              <input type="radio" name="sex"/>
+              <span>남자</span>
+            </div>
+            <div class="radio-items">
+              <input type="radio" name="sex"/>
+              <span>여자</span>
+            </div>
+            <div class="radio-items">
+              <input type="radio" name="sex" checked/>
+              <span>선택안함</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field mb-5">
+          <label class="label" for="birthInput">생년월일</label>
+          <div class="control">
+            <input class="input" placeholder="YYYY"/>
+            <input class="input" placeholder="MM"/>
+            <input class="input" placeholder="DD"/>
+          </div>
+        </div>
+
+
+
         <button class="button is-primary is-fullwidth" id="submitButton">
           회원가입하기
         </button>
