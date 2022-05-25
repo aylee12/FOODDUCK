@@ -1,6 +1,14 @@
 window.onload = function() {
-  // const { Product } = require('../../db/models/!채워야함');
   // 제품 정보 가져오기
+  fetch('api 주소')
+    .then(res => res.json())
+    .then(res => {
+      // data를 응답 받은 후의 로직
+
+      document.getElementById("").innerText = res;
+
+    });
+
   const org_elem = document.getElementById("product_price");
   let org = parseInt(org_elem.innerText);
   document.getElementById("sum").innerText = org;
