@@ -16,3 +16,27 @@
 .login-form-box .button {
   font-weight: bold;
 }
+.btn-register{
+  margin-top: 13px;
+}
+
+/* login */
+.id-pw-find-wrap{
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #333;
+}
+.id-find{
+  margin-right: 8px;
+}
+.bar{
+  position: absolute;
+  top: 5px;
+  right: 74px;
+  width: 1px;
+  height: 10px;
+  background-color: #333;
+}

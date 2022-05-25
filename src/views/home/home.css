@@ -142,6 +142,7 @@ ul, li {
   border: 1px solid blue;
   padding: 10px;
   margin-left: 3rem;
+<<<<<<< HEAD
 }
 
 .footer {
@@ -229,4 +230,6 @@ ul, li {
   font-size: 12px;
   padding-bottom: 6px;
   white-space: nowrap;
+=======
+>>>>>>> 082381923814d6494a6b00bfe2c3674ec1a50a92
 }
