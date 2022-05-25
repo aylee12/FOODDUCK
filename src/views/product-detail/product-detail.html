@@ -9,7 +9,7 @@
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="/elice-rabbit-favicon.png"
+      href="../elice-rabbit-favicon.png"
     />
     <!-- bulma css -->
     <link
@@ -32,7 +32,7 @@
         <div class="container mt-3">
           <div class="navbar-brand">
             <a class="navbar-item" href="/">
-              <img src="/elice-rabbit.png" width="30" height="30" />
+              <img src="../elice-rabbit.png" width="30" height="30" />
               <span class="has-text-link">쇼핑-9팀</span>
             </a>
             <a
@@ -166,7 +166,7 @@
                   <button id="btn_cnt_down" class="button is-small is-rounded" onclick="count('minus')">
                     <i class="fas fa-thin fa-minus" aria-hidden="true"></i>
                   </button>
-                  <input type="number" id="n" min="1" max="99" value="1" readonly>
+                  <input type="number" id="quantity" min="1" max="99" value="1" readonly>
                   <button id="btn_cnt_up" class="button is-small is-rounded" onclick="count('plus')">
                     <i class="fas fa-thin fa-plus" aria-hidden="true"></i>
                   </button>
@@ -177,14 +177,14 @@
             <!-- 총 상품 금액 -->
             <div id="product_total">
               <div class="item" id="total">총 상품 금액: </div>
-              <div class="item" id="sum" value="">nnnnn</div>
+              <div class="item" id="sum">nnnnn</div>
               <div class="item" id="won">원</div>
             </div>
 
             <!-- 바로구매, 장바구니 버튼 -->
             <div id="btn_zone">
-              <button id="btn_buy_now" class="button is-medium" onclick="location.href='.html'">바로 구매</button> 
-              <button id="btn_add_to_cart" class="button is-medium" onclick="location.href='.html'">장바구니 담기</button>
+              <button id="btn_buy_now" class="button is-medium" onclick="buyNow">바로 구매</button> 
+              <button id="btn_add_to_cart" class="button is-medium" onclick="addToCart()">장바구니 담기</button>
             </div>
           </div>
       </div>

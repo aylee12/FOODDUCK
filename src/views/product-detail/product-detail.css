@@ -261,6 +261,7 @@ div.product_card_right {
 #product_name {
   font-weight: 600;
   font-size: 40px;
+  margin-bottom: 20px;
 }
 
 div.product_price_zone {
