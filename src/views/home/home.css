@@ -142,7 +142,6 @@ ul, li {
   border: 1px solid blue;
   padding: 10px;
   margin-left: 3rem;
-<<<<<<< HEAD
 }
 
 .footer {
@@ -219,7 +218,11 @@ ul, li {
   align-items: flex-start;
   font-weight: 500;
   font-size: 14px;
-
+  padding: 50px;
+  
+  
+  /* margin: 100px; */
+  
 }
 
 /* 고객 행복센터 및 멤버소개 */
@@ -230,6 +233,4 @@ ul, li {
   font-size: 12px;
   padding-bottom: 6px;
   white-space: nowrap;
-=======
->>>>>>> 082381923814d6494a6b00bfe2c3674ec1a50a92
 }
