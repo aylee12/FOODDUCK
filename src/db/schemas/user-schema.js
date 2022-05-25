@@ -1,10 +1,11 @@
-import { Schema } from 'mongoose';
+import { Schema } from "mongoose";
 
 const UserSchema = new Schema(
   {
     email: {
       type: String,
       required: true,
+      unique: true,
     },
     fullName: {
       type: String,
@@ -34,11 +35,11 @@ const UserSchema = new Schema(
     role: {
       type: String,
       required: false,
-      default: 'basic-user',
+      default: "basic-user",
     },
   },
   {
-    collection: 'users',
+    collection: "users",
     timestamps: true,
   }
 );
