@@ -106,6 +106,13 @@
  
     </div>
 
+
+
+
+
+
+
+
     <section class="container">
 
       <!-- 상단 제품 정보 틀 -->
@@ -127,26 +134,12 @@
               <span id="product_price"> 1 </span>
               <span class="won">원</span>
             </div>
-
-            <!-- 판매단위, 중량/용량 -->
-            <dl class="list">
-              <dt>판매단위</dt>
-              <dd>
-                <p id="product_sales_unit"> 판매단위 </p>
-              </dd>
-            </dl>
-            <dl class="list" id="second">
-              <dt>중량/용량</dt>
-              <dd>
-                <p id="product_volume"> 중량/용량 </p>
-              </dd>
-            </dl>
             
-            <!-- 원산지 -->
+            <!-- 제조사 -->
             <dl class="list">
-              <dt>원산지</dt>
+              <dt>제조사</dt>
               <dd>
-                <p id="product_origin"> 원산지 </p>
+                <p id="product_company"> 제조사 </p>
               </dd>
             </dl>
             
@@ -183,31 +176,32 @@
 
             <!-- 바로구매, 장바구니 버튼 -->
             <div id="btn_zone">
-              <button id="btn_buy_now" class="button is-medium" onclick="buyNow">바로 구매</button> 
-              <button id="btn_add_to_cart" class="button is-medium" onclick="addToCart()">장바구니 담기</button>
+              <div class="btn_item">
+                <button id="btn_buy_now" class="button is-medium is-rounded" onclick="buyNow">바로 구매</button>
+              </div>
+              <div class="btn_item">
+                <button id="btn_add_to_cart" class="button is-medium is-rounded" onclick="addToCart()">장바구니 담기</button>
+              </div>
             </div>
           </div>
       </div>
 
-      <nav>
-        <div id="move_to">
-            <div class="item"><a class="button is-rounded" href="#product_detail">제품 상세</a></div>
-            <div class="item"><a class="button is-rounded" href="#product_review">제품 리뷰</a></div>
-        </div>
-    </nav>
-      <!-- 제품 상세 -->
-      <div class="inner_container" id="product_detail">
-        <p class="title">제품 상세</p>
-        <p id="product_detail_information">제품 상세</p>
-      </div>
-
-      <!-- 제품 리뷰 -->
-      <div class="inner_container" id="product_review">
-        <p class="title">제품 리뷰</p>
-        <p id="product_review">제품 리뷰</p>
-      </div>
     </section>
     <script src="product-detail.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- footer -->
     <footer class="footer">

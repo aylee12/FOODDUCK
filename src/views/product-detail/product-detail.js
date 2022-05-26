@@ -1,3 +1,12 @@
+const btn_buy_now = document.getElementById('btn_buy_now');
+const btn_cart = document.getElementById('btn_cart');
+
+const id = ;
+const img = document.getElementById("product_img");
+const name = document.getElementById("product_name");
+const company = document.getElementById("product_company");
+const price = document.getElementById("product_price");
+const description = document.getElem
 window.onload = function() {
   // 제품 데이터 가져오기
   // fetch('api 주소')
@@ -7,30 +16,13 @@ window.onload = function() {
   //     document.getElementById("product_img").innerText = res;
   //     document.getElementById("product_name").innerText = res;
   //     document.getElementById("product_price").innerText = res;
-  //     document.getElementById("product_sales_unit").innerText = res;
-  //     document.getElementById("product_volume").innerText = res;
   //     document.getElementById("prodcut_origin").innerText = res;
   //     document.getElementById("product_description").innerText = res;
-  //     document.getElementById("product_detail_information").innerText = res;
-  //     document.getElementById("product_review").innerText = res;
   //   });
 
   const org_elem = document.getElementById("product_price");
   let org = parseInt(org_elem.innerText);
   document.getElementById("sum").innerText = org;
-}
-
-var aTags = document.querySelectorAll('div a');
-for(var i = 0; i < aTags.length; i ++) {
-    aTags[i].onclick = function(e) {
-        e.preventDefault();
-        var target = document.querySelector(this.getAttribute("href"));
-
-        window.scrollTo({
-            'behavior': 'smooth',
-            'top': target.offsetTop
-        })
-    }
 }
 
 function count(type) {
@@ -51,16 +43,20 @@ function count(type) {
   document.getElementById("sum").innerText = org * n;
 }
 
-function addToCart() {
-  // 사진, 이름, 가격, 수량, 총 가격
+function addToCartHandler() {
+  // 제품 아이디, 이미지, 이름, 가격, 제조사, 수량
+  const id = ;
   const img = document.getElementById("product_img").innerText;
   const name = document.getElementById("product_name").innerText;
+  const company = document.getElementById("").innerText;
   const price = document.getElementById("product_price").innerText;
   const quantity = document.getElementById("quantity").innerText;
-  const total_price = document.getElementById("sum").innerText;
 
-  const product = {img: img, name: name, price: price, quantity: quantity, total_price: total_price};
+  const product = {id: id, img: img, name: name, price: price, quantity: quantity, total_price: total_price};
 
   localStorage.setItem('cart', JSON.stringify(product));
   alert("장바구니에 추가되었습니다.");
 }
+
+btn_buy_now.addEventListener('click', buyHandler)
+btn_cart.addEventListener('click', addToCartHandler)
