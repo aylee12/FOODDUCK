@@ -47,7 +47,7 @@ function editBtnControl() {
 }
 
 function editHandler() {
-  location.href = "/* 상품수정 창 url */";
+  location.href = "/* 상품수정 창 url product-edit?*/";
 }
 
 // 수량 변경
