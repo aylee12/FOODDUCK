@@ -15,6 +15,7 @@ class UserService {
     const { email, fullName, password } = userInfo;
 
     // 이메일 중복 확인
+    // 0505_이메일 중복 확인 로직을 따로 빼줘야 할듯 하다.
     const user = await this.userModel.findByEmail(email);
     if (user) {
       throw new Error(
@@ -31,6 +32,8 @@ class UserService {
 
     // db에 저장
     const createdNewUser = await this.userModel.create(newUserInfo);
+
+    console.log(createdNewUser);
 
     return createdNewUser;
   }

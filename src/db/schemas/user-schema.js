@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Schema } from 'mongoose';
 
 const UserSchema = new Schema(
   {
@@ -25,6 +25,7 @@ const UserSchema = new Schema(
           postalCode: String,
           address1: String,
           address2: String,
+          address3: String,
         },
         {
           _id: false,
@@ -32,14 +33,22 @@ const UserSchema = new Schema(
       ),
       required: false,
     },
+    gender: {
+      type: String,
+      required: false,
+    },
+    birthday: {
+      type: String,
+      required: false,
+    },
     role: {
       type: String,
       required: false,
-      default: "basic-user",
+      default: 'basic-user',
     },
   },
   {
-    collection: "users",
+    collection: 'users',
     timestamps: true,
   }
 );
