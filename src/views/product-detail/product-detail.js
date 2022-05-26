@@ -79,7 +79,7 @@ function buyNowHandler() {
   };
   
   sessionlStorage.setItem("buy_now", JSON.stringify(product));
-  location.href = "/* 구매 창 url */";
+  location.href = "/order";
 }
 
 
@@ -97,7 +97,10 @@ function addToCartHandler() {
   cart.push(product);
 
   sessionStorage.setItem("cart", JSON.stringify(cart));
-  alert("장바구니에 추가되었습니다.");
+  var result = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+  if (result) {
+    location.href = "/cart";
+  }
 }
 
 btn_product_edit.addEventListener("click", editHandler);
