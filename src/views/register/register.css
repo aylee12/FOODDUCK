@@ -43,9 +43,10 @@
   display: flex;
 }
 
-.input-id-wrap:nth-child(1){
+/* 변경해도 바뀌지가 않음 */
+.input-email-ex1{
   flex-grow: 3;
 }
-.input-id-wrap:nth-child(2){
+.input-email-ex2{
   flex-grow: 1;
 }
