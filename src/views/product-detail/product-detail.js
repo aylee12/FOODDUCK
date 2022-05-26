@@ -11,6 +11,8 @@ const btn_product_edit = document.getElementById("btn_product_edit");
 const btn_buy_now = document.getElementById("btn_buy_now");
 const btn_add_to_cart = document.getElementById("btn_add_to_cart");
 
+let cart = [];
+
 window.onload = function() {
   // 제품 데이터 가져오기
   fetch("api 주소")
@@ -92,9 +94,9 @@ function addToCartHandler() {
     company: product_company.innerText, 
     quantity: product_quantity
   };
-  
-  sessionStorage.setItem("cart", JSON.stringify(product));
-  console.log(sessionStorage.getItem("cart"));
+  cart.push(product);
+
+  sessionStorage.setItem("cart", JSON.stringify(cart));
   alert("장바구니에 추가되었습니다.");
 }
 
