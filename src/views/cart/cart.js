@@ -46,12 +46,24 @@ allCheck.addEventListener("click" , () => {
 });
 
 selectCheck.addEventListener("click" , () => {
+  const tempCartArray = [];
+  // NodeList를 배열로 변경 
   const checkArray = Array.from(checkOne);
-  const checkFilter = checkArray.filter(check => check.checked);
-  const nonCheckFilter = checkArray.filter(check => !check.checked);
 
-  console.log(nonCheckFilter);
-  // filter된 곳에서 요소를 지우고 다시 합계를 바꿔줘야함
+  // checkArray가 check상태이면 그 index를 tempCartArray에 담고 checkFilter로 거른다.
+  const checkFilter = checkArray.filter(check => {
+    return check.checked && tempCartArray.push(checkArray.indexOf(check));
+  });
+  
+  // filter된 곳에서 요소를 지우고 다시 합계를 바꿔줘야함 그리고 localStorage에서 지워야함 
   checkFilter.forEach(items => items.parentElement.parentElement.remove());
-})
+  
+  const cartJSON = JSON.parse(localStorage.getItem("cartExample"));
+  // tempCartArray에 있는 index에 해당하는 것을 cartJSON에서 지운다. 
+  for(let i = 0 ; i < tempCartArray.length; i++){
+    cartJSON.splice(tempCartArray[i] - i ,1);
+  }
+  localStorage.setItem("cartExample" , JSON.stringify(cartJSON));
+
+});
 
