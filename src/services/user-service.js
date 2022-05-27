@@ -12,13 +12,23 @@ class UserService {
   // 회원가입
   async addUser(userInfo) {
     // 객체 destructuring
-    const { email, fullName, password } = userInfo;
+    // phoneNumber, address, gender, birthday (05_27 추가, 작업자 : 김용민)
+    const {
+      email,
+      fullName,
+      password,
+      phoneNumber,
+      address,
+      gender,
+      birthday,
+    } = userInfo;
 
     // 이메일 중복 확인
-    // 0505_이메일 중복 확인 로직을 따로 빼줘야 할듯 하다.
     const user = await this.userModel.findByEmail(email);
     if (user) {
-      throw new Error('이 이메일은 현재 사용중입니다. 다른 이메일을 입력해 주세요.');
+      throw new Error(
+        '이 이메일은 현재 사용중입니다. 다른 이메일을 입력해 주세요.'
+      );
     }
 
     // 이메일 중복은 이제 아니므로, 회원가입을 진행함
@@ -26,12 +36,19 @@ class UserService {
     // 우선 비밀번호 해쉬화(암호화)
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUserInfo = { fullName, email, password: hashedPassword };
+    // otherInfo => phoneNumber, address, gender, birthday (05_27 추가, 작업자 : 김용민)
+    const newUserInfo = {
+      fullName,
+      email,
+      password: hashedPassword,
+      phoneNumber,
+      address,
+      gender,
+      birthday,
+    };
 
     // db에 저장
     const createdNewUser = await this.userModel.create(newUserInfo);
-
-    console.log(createdNewUser);
 
     return createdNewUser;
   }
@@ -44,7 +61,9 @@ class UserService {
     // 우선 해당 이메일의 사용자 정보가  db에 존재하는지 확인
     const user = await this.userModel.findByEmail(email);
     if (!user) {
-      throw new Error('해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인해 주세요.');
+      throw new Error(
+        '해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인해 주세요.'
+      );
     }
 
     console.log(user);
@@ -55,10 +74,15 @@ class UserService {
     const correctPasswordHash = user.password; // db에 저장되어 있는 암호화된 비밀번호
 
     // 매개변수의 순서 중요 (1번째는 프론트가 보내온 비밀번호, 2번쨰는 db에 있떤 암호화된 비밀번호)
-    const isPasswordCorrect = await bcrypt.compare(password, correctPasswordHash);
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      correctPasswordHash
+    );
 
     if (!isPasswordCorrect) {
-      throw new Error('비밀번호가 일치하지 않습니다. 다시 한 번 확인해 주세요.');
+      throw new Error(
+        '비밀번호가 일치하지 않습니다. 다시 한 번 확인해 주세요.'
+      );
     }
 
     // 로그인 성공 -> JWT 웹 토큰 생성
@@ -67,7 +91,10 @@ class UserService {
     // 2개 프로퍼티를 jwt 토큰에 담음
     // 0526 role이 admin일때 admintoken으로 발행처리
     if (user.role == 'admin') {
-      const admintoken = jwt.sign({ userId: user._id, role: user.role }, secretKey);
+      const admintoken = jwt.sign(
+        { userId: user._id, role: user.role },
+        secretKey
+      );
       return { admintoken };
     } else {
       const token = jwt.sign({ userId: user._id, role: user.role }, secretKey);
@@ -102,10 +129,15 @@ class UserService {
 
     // 비밀번호 일치 여부 확인
     const correctPasswordHash = user.password;
-    const isPasswordCorrect = await bcrypt.compare(currentPassword, correctPasswordHash);
+    const isPasswordCorrect = await bcrypt.compare(
+      currentPassword,
+      correctPasswordHash
+    );
 
     if (!isPasswordCorrect) {
-      throw new Error('현재 비밀번호가 일치하지 않습니다. 다시 한 번 확인해 주세요.');
+      throw new Error(
+        '현재 비밀번호가 일치하지 않습니다. 다시 한 번 확인해 주세요.'
+      );
     }
 
     // 이제 드디어 업데이트 시작
