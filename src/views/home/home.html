@@ -50,6 +50,7 @@
           </div>
             <div class="navbar-end breadcrumb my-auto" aria-label="breadcrumbs">
               <ul id="navbar">
+                <!-- <li><a href="/product-meat">제품</a></li> -->
                 <li><a href="/login">로그인</a></li>
                 <li><a href="/register">회원가입</a></li>
                 <li>
@@ -65,7 +66,7 @@
           </div>
         </div>
       </nav>
-      <div id="navbar_menu">
+      <div id="navbar_menu" class="sticky">
         <div class="menu_main">
           <ul class="menu_list">
             <li class="menu menu1">
@@ -76,23 +77,20 @@
               </a>
             </li>
             <li class="menu menu2">
-              <a href="#">고기</a>
+              <a href="product/meat">고기</a>
             </li>
             <li class="menu menu3">
-              <a href="#">채소</a>
+              <a href="product/vegetable">채소</a>
             </li>
             <li class="menu menu4">
-              <a href="#">과일</a>
+              <a href="product/fruit">과일</a>
             </li>
             <li class="menu menu5">
-              <a href="#">생선</a>
+              <a href="product/fish">생선</a>
             </li>
           </ul>
         </div>
           
-        <!-- <div class="menu_toggle">
-          토글메뉴
-        </div> -->
 
         <div class="search">
           <input type="text" placeholder="검색어를 입력해주세요" class="search_box">
@@ -107,13 +105,12 @@
  
     </div>
 
-      
     <!-- main -->
     <div class="div-container">
       
-      <!-- <div id="slider_wrap">
+      <div id="slider_wrap">
         <div id="slider">
-          <div class="slide active"><img src="1.jpg" alt=""></div>
+          <div class="slide active"><img id="temp"  alt=""></div>
           <div class="slide"><img src="2.jpg" alt=""></div>
           <div class="slide"><img src="3.jpg" alt=""></div>
           <div class="slide"><img src="4.jpg" alt=""></div>
@@ -121,10 +118,10 @@
         <button class="left_arrow"></button>
         <button class="right_arrow"></button>
         <div id="slide_count"><span class="cnt">1</span>/4</div>
-      </div> -->
+      </div>
 
     </div>
-
+    
       <!-- <div class="landing" id="landingDiv">
         <h1>랜딩 페이지</h1>
       </div>
@@ -132,7 +129,270 @@
         <h1>안녕하세요!</h1>
       </div> -->
     <!-- </div> -->
-    
+    <section>
+      <div class="promotion">
+        <div id="section_title">
+          <h2>이 상품 어때요?</h2>
+        </div>
+        
+        <div class="gallery_wrap">
+          <div class="section_left_btn">
+            <img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_left_60_60.svg" alt="">
+          </div>
+          <div class="section_right_btn">
+            <img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_right_over_60_60.svg" alt="">
+          </div>
+          <div class="gallery">
+            <div class="gallery_item">
+              <div class="thumbnail" >
+                <a href="">
+                  <img src="https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg" alt="타코야키" >
+                </a>
+              </div>
+              <div class="shopping_cart">
+                <button class="shopping_cart_icon"><img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg" alt="카트담기 아이콘" ></button>
+              </div>
+              <div class="description">
+                <h3 class="description_text"><a href="">[오리온] 태양의 맛 썬칩</a></h3>
+                <div class="price">
+                  10,000
+                  <span>원</span>
+                </div>
+              </div>
+            </div>
+            <div class="gallery_item">
+              <div class="thumbnail" >
+                <a href="">
+                  <img src="https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg" alt="타코야키" >
+                </a>
+              </div>
+              <div class="shopping_cart">
+                <button class="shopping_cart_icon"><img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg" alt="카트담기 아이콘" ></button>
+              </div>
+              <div class="description">
+                <h3 class="description_text"><a href="">[오리온] 태양의 맛 썬칩</a></h3>
+                <div class="price">
+                  10,000
+                  <span>원</span>
+                </div>
+              </div>
+            </div>
+        
+            <div class="gallery_item">
+              <div class="thumbnail" >
+                <a href="">
+                  <img src="https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg" alt="타코야키" >
+                </a>
+              </div>
+              <div class="shopping_cart">
+                <button class="shopping_cart_icon"><img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg" alt="카트담기 아이콘" ></button>
+              </div>
+              <div class="description">
+                <h3 class="description_text"><a href="">[오리온] 태양의 맛 썬칩</a></h3>
+                <div class="price">
+                  10,000
+                  <span>원</span>
+                </div>
+              </div>
+            </div>
+            <div class="gallery_item">
+              <div class="thumbnail" >
+                <a href="">
+                  <img src="https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg" alt="타코야키" >
+                </a>
+              </div>
+              <div class="shopping_cart">
+                <button class="shopping_cart_icon"><img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg" alt="카트담기 아이콘" ></button>
+              </div>
+              <div class="description">
+                <h3 class="description_text"><a href="">[오리온] 태양의 맛 썬칩</a></h3>
+                <div class="price">
+                  10,000
+                  <span>원</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="promotion">
+        <div id="section_title">
+          <h2>이 상품 어때요?</h2>
+        </div>
+        
+        <div class="gallery_wrap">
+          <div class="section_left_btn">
+            <img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_left_60_60.svg" alt="">
+          </div>
+          <div class="section_right_btn">
+            <img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_right_over_60_60.svg" alt="">
+          </div>
+          <div class="gallery">
+            <div class="gallery_item">
+              <div class="thumbnail" >
+                <a href="">
+                  <img src="https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg" alt="타코야키" >
+                </a>
+              </div>
+              <div class="shopping_cart">
+                <button class="shopping_cart_icon"><img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg" alt="카트담기 아이콘" ></button>
+              </div>
+              <div class="description">
+                <h3 class="description_text"><a href="">[오리온] 태양의 맛 썬칩</a></h3>
+                <div class="price">
+                  10,000
+                  <span>원</span>
+                </div>
+              </div>
+            </div>
+            <div class="gallery_item">
+              <div class="thumbnail" >
+                <a href="">
+                  <img src="https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg" alt="타코야키" >
+                </a>
+              </div>
+              <div class="shopping_cart">
+                <button class="shopping_cart_icon"><img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg" alt="카트담기 아이콘" ></button>
+              </div>
+              <div class="description">
+                <h3 class="description_text"><a href="">[오리온] 태양의 맛 썬칩</a></h3>
+                <div class="price">
+                  10,000
+                  <span>원</span>
+                </div>
+              </div>
+            </div>
+        
+            <div class="gallery_item">
+              <div class="thumbnail" >
+                <a href="">
+                  <img src="https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg" alt="타코야키" >
+                </a>
+              </div>
+              <div class="shopping_cart">
+                <button class="shopping_cart_icon"><img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg" alt="카트담기 아이콘" ></button>
+              </div>
+              <div class="description">
+                <h3 class="description_text"><a href="">[오리온] 태양의 맛 썬칩</a></h3>
+                <div class="price">
+                  10,000
+                  <span>원</span>
+                </div>
+              </div>
+            </div>
+            <div class="gallery_item">
+              <div class="thumbnail" >
+                <a href="">
+                  <img src="https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg" alt="타코야키" >
+                </a>
+              </div>
+              <div class="shopping_cart">
+                <button class="shopping_cart_icon"><img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg" alt="카트담기 아이콘" ></button>
+              </div>
+              <div class="description">
+                <h3 class="description_text"><a href="">[오리온] 태양의 맛 썬칩</a></h3>
+                <div class="price">
+                  10,000
+                  <span>원</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="promotion">
+        <div id="section_title">
+          <h2>이 상품 어때요?</h2>
+        </div>
+        
+        <div class="gallery_wrap">
+          <div class="section_left_btn">
+            <img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_left_60_60.svg" alt="">
+          </div>
+          <div class="section_right_btn">
+            <img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_right_over_60_60.svg" alt="">
+          </div>
+          <div class="gallery">
+            <div class="gallery_item">
+              <div class="thumbnail" >
+                <a href="">
+                  <img src="https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg" alt="타코야키" >
+                </a>
+              </div>
+              <div class="shopping_cart">
+                <button class="shopping_cart_icon"><img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg" alt="카트담기 아이콘" ></button>
+              </div>
+              <div class="description">
+                <h3 class="description_text"><a href="">[오리온] 태양의 맛 썬칩</a></h3>
+                <div class="price">
+                  10,000
+                  <span>원</span>
+                </div>
+              </div>
+            </div>
+            <div class="gallery_item">
+              <div class="thumbnail" >
+                <a href="">
+                  <img src="https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg" alt="타코야키" >
+                </a>
+              </div>
+              <div class="shopping_cart">
+                <button class="shopping_cart_icon"><img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg" alt="카트담기 아이콘" ></button>
+              </div>
+              <div class="description">
+                <h3 class="description_text"><a href="">[오리온] 태양의 맛 썬칩</a></h3>
+                <div class="price">
+                  10,000
+                  <span>원</span>
+                </div>
+              </div>
+            </div>
+        
+            <div class="gallery_item">
+              <div class="thumbnail" >
+                <a href="">
+                  <img src="https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg" alt="타코야키" >
+                </a>
+              </div>
+              <div class="shopping_cart">
+                <button class="shopping_cart_icon"><img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg" alt="카트담기 아이콘" ></button>
+              </div>
+              <div class="description">
+                <h3 class="description_text"><a href="">[오리온] 태양의 맛 썬칩</a></h3>
+                <div class="price">
+                  10,000
+                  <span>원</span>
+                </div>
+              </div>
+            </div>
+            <div class="gallery_item">
+              <div class="thumbnail" >
+                <a href="">
+                  <img src="https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg" alt="타코야키" >
+                </a>
+              </div>
+              <div class="shopping_cart">
+                <button class="shopping_cart_icon"><img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg" alt="카트담기 아이콘" ></button>
+              </div>
+              <div class="description">
+                <h3 class="description_text"><a href="">[오리온] 태양의 맛 썬칩</a></h3>
+                <div class="price">
+                  10,000
+                  <span>원</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+    </section>
+
+
+
     <!-- footer -->
     <footer class="footer">
       <div id="customer_center_wrap">
@@ -155,7 +415,7 @@
             <h3 class="cc_qna">1:1 문의</h3>
           </div>
           <div id="right_question_wrap">
-            <p class="customer">365고객센터</p>
+            <p class="customer">24시간 접수 가능</p>
             <p class="detail">고객센터 운영시간에 순차적으로 답변해드리겠습니다.</p>
           </div>
         </div>
