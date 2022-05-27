@@ -1,0 +1,58 @@
+[
+    { 
+    "productId" : 1, 
+    "productName" : "립아이", 
+    "price" : 70000, 
+    "company" : "US choice", 
+    "category" : "meat", 
+    "img" : "someURL"
+},
+{ 
+    "productId" : 2, 
+    "productName" : "립아이2", 
+    "price" : 70000, 
+    "company" : "US choice", 
+    "category" : "meat", 
+    "img" : "someURL"
+},
+{ 
+    "productId" : 3, 
+    "productName" : "립아이3", 
+    "price" : 70000, 
+    "company" : "US choice", 
+    "category" : "meat", 
+    "img" : "someURL"
+},
+{ 
+    "productId" : 4, 
+    "productName" : "립아이4", 
+    "price" : 70000, 
+    "company" : "US choice", 
+    "category" : "meat", 
+    "img" : "someURL"
+},
+{ 
+    "productId" : 5, 
+    "productName" : "립아이5", 
+    "price" : 70000, 
+    "company" : "US choice", 
+    "category" : "meat", 
+    "img" : "someURL"
+},
+{ 
+    "productId" : 6, 
+    "productName" : "립아이6", 
+    "price" : 70000, 
+    "company" : "US choice", 
+    "category" : "meat", 
+    "img" : "someURL"
+},
+{ 
+    "productId" : 7, 
+    "productName" : "립아이7", 
+    "price" : 70000, 
+    "company" : "US choice", 
+    "category" : "meat", 
+    "img" : "someURL"
+}
+]
