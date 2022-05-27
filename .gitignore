@@ -3,5 +3,6 @@ node_modules
 yarn.lock
 
 # 환경변수
+# settings
 .env
 
