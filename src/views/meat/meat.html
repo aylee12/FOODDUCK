@@ -24,34 +24,10 @@
     ></script>
     <!-- 커스텀 css, js -->
     <link rel="stylesheet" href="../../product.css" />
-    <!-- <script src="home.js" type="module" defer></script> -->
+    <script src="../../product.js"></script>
   </head>
 
 <body>
-    <!-- <p id="demo"></p>
-    <script type="text/javascript">
-      let xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if(xhttp.readyState == 4 && xhttp.status == 200){
-		      jsonfunc(this.responseText); 
-        }
-      } 
-      xhttp.open('GET', 'product.json', true);
-      xhttp.send();
-      function jsonfunc(jsontext){
-        let json = JSON.parse(jsontext);
-        let txt = '';
-        for(i=0; i<json.length; i++){
-		      for(key in json[i]){ // key값 가져오기
-		      	txt += key + ":" + json[i][key]; 
-		      }
-	      	txt += "<br>";
-      	} 
-	      const x = document.getElementById('demo');
-        x.innerHTML = txt;
-        
-      }
-    </script> -->
     <div id="header">
         <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="container mt-3">
@@ -134,7 +110,7 @@
         <h1 class="title">고기</h1>
       </div>
       <div id="list_products">
-        <div class="inner_list_products">
+        <div id="inner_list_products">
               <div class="item">
                 <div class="thumbnail" >
                   <a href="">

@@ -85,7 +85,7 @@
   text-align: center;
   margin: 0 0 50px 0;
 }
-.inner_list_products {
+#inner_list_products {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

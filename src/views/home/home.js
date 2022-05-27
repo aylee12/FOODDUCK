@@ -24,23 +24,23 @@ function addAllEvents() {
   greetingDiv.addEventListener('click', alertGreetingText);
 }
 
-function insertTextToLanding() {
-  landingDiv.insertAdjacentHTML(
-    'beforeend',
-    `
-      <h2>n팀 쇼핑몰의 랜딩 페이지입니다. 자바스크립트 파일에서 삽입되었습니다.</h2>
-    `
-  );
-}
+// function insertTextToLanding() {
+//   landingDiv.insertAdjacentHTML(
+//     'beforeend',
+//     `
+//       <h2>n팀 쇼핑몰의 랜딩 페이지입니다. 자바스크립트 파일에서 삽입되었습니다.</h2>
+//     `
+//   );
+// }
 
-function insertTextToGreeting() {
-  greetingDiv.insertAdjacentHTML(
-    'beforeend',
-    `
-      <h1>반갑습니다! 자바스크립트 파일에서 삽입되었습니다.</h1>
-    `
-  );
-}
+// function insertTextToGreeting() {
+//   greetingDiv.insertAdjacentHTML(
+//     'beforeend',
+//     `
+//       <h1>반갑습니다! 자바스크립트 파일에서 삽입되었습니다.</h1>
+//     `
+//   );
+// }
 
 function alertLandingText() {
   alert('n팀 쇼핑몰입니다. 안녕하세요.');
