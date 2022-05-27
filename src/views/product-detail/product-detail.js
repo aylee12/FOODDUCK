@@ -17,12 +17,12 @@ window.onload = function() {
   fetch("api 주소")
       .then(res => res.json())
       .then(res => {
-          product_name.dataset.id = res.id;
-          product_img.src = res.img;
-          product_name.innerText = res.name;
-          product_company.innerText = res.company;
-          product_price.dataset.value = res.price;
-          product_description.innerText = res.description;
+        product_name.dataset.id = res.productId;
+        product_img.src = res.img;
+        product_name.innerText = res.productName;
+        product_company.innerText = res.company;
+        product_price.dataset.value = res.price;
+        product_description.innerText = res.description;
       });
 
   //유저 데이터 가져오기
