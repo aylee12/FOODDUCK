@@ -31,7 +31,7 @@ window.onload = function() {
     .then(res => res.json())
     .then(res => {
       // 유저가 회원인지 관리자인지 확인할 값을 수정 버튼의 권한 속성에 넣기
-      btn_product_edit.dataset.user_type = res.type;
+      btn_product_edit.dataset.role = res.role;
       
     });
     
@@ -41,7 +41,7 @@ window.onload = function() {
 
 // 제품수정 버튼: 관리자만 보이게
 function editBtnControl() {
-  if (btn_product_edit.dataset.user_type === "admin") {
+  if (btn_product_edit.dataset.role === "admin") {
     btn_product_edit.style.display = "block";
   }
 }
@@ -84,23 +84,39 @@ function buyNowHandler() {
 
 
 // 장바구니 이벤트핸들러
+// function addToCartHandler() {
+//   // 제품 아이디, 이미지, 이름, 가격, 제조사, 수량
+//   const product = {
+//     id: product_id.innerText, 
+//     img: product_img.innerText, 
+//     name: product_name.innerText, 
+//     price: product_price.innerText, 
+//     company: product_company.innerText, 
+//     quantity: product_quantity
+//   };
+//   cart.push(product);
+
+//   sessionStorage.setItem("cart", JSON.stringify(cart));
+//   var result = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+//   if (result) {
+//     location.href = "/cart";
+//   }
+// }
+
 function addToCartHandler() {
   // 제품 아이디, 이미지, 이름, 가격, 제조사, 수량
   const product = {
-    id: product_id.innerText, 
-    img: product_img.innerText, 
-    name: product_name.innerText, 
-    price: product_price.innerText, 
-    company: product_company.innerText, 
-    quantity: product_quantity
+    1: "1",
+    2: "2"
   };
   cart.push(product);
-
+  console.log(product.length);
   sessionStorage.setItem("cart", JSON.stringify(cart));
-  var result = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
-  if (result) {
-    location.href = "/cart";
-  }
+  // var result = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+  // if (result) {
+  //   location.href = "/cart";
+  // }
+  console.log(sessionStorage.getItem("cart"));
 }
 
 btn_product_edit.addEventListener("click", editHandler);
