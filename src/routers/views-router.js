@@ -11,6 +11,7 @@ viewsRouter.use('/register', serveStatic('register'));
 viewsRouter.use('/login', serveStatic('login'));
 // cart 주소 설정하기 
 viewsRouter.use('/cart', serveStatic('cart'));
+viewsRouter.use('/pay',  serveStatic('pay'));
 
 // views 폴더의 최상단 파일인 rabbit.png, api.js 등을 쓸 수 있게 함
 viewsRouter.use('/', serveStatic(''));

@@ -119,3 +119,33 @@
   background-position: center;
   cursor: pointer;
 }
+.price-sum-wrap{
+  text-align: right;
+}
+.cart-price-sum{
+  font-size: 25px;
+  font-weight: 700;
+}
+.checkbox-select-wrap{
+  display: flex;
+  cursor: pointer;
+}
+.checkbox-select{
+  position: relative;
+  margin-right: 20px;
+}
+.bar{
+  position: absolute;
+  top: 5px;
+  left: 65px;
+  width: 1px;
+  height: 15px;
+  background-color: #333;
+}
+.select-check{
+  cursor: pointer;
+}
+.check-one{
+  width: 18px;
+  height: 18px;
+}
