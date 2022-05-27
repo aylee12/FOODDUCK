@@ -7,6 +7,18 @@ const emailInput = document.querySelector('#emailInput');
 const passwordInput = document.querySelector('#passwordInput');
 const passwordConfirmInput = document.querySelector('#passwordConfirmInput');
 const submitButton = document.querySelector('#submitButton');
+const phoneNumberInput = document.querySelector('#phoneNumberInput');
+const radioInput = document.querySelector("input[type=radio]:checked");
+const yearInput = document.querySelector("#yearInput");
+const monthInput = document.querySelector("#monthInput");
+const dayInput = document.querySelector("#dayInput");
+
+// 주소 
+const postCodeInput = document.querySelector("#postcode");
+const addressInput = document.querySelector("#address");
+const detailAddressInput = document.querySelector("#detailAddress");
+const extraAddressInput = document.querySelector("#extraAddress");
+
 
 addAllElements();
 addAllEvents();
@@ -27,6 +39,19 @@ async function handleSubmit(e) {
   const email = emailInput.value;
   const password = passwordInput.value;
   const passwordConfirm = passwordConfirmInput.value;
+  const phoneNumber = phoneNumberInput.value;
+  const radio = radioInput.value;
+
+  // 주소 값 
+  const postCode = postCodeInput.value;
+  const address = addressInput.value;
+  const detailAddress = detailAddressInput.value;
+  const extraAddress = extraAddressInput.value;
+
+  // 생년월일 
+  const year = yearInput.value;
+  const month = monthInput.value;
+  const day = dayInput.value;
 
   // 잘 입력했는지 확인
   const isFullNameValid = fullName.length >= 2;
@@ -48,8 +73,21 @@ async function handleSubmit(e) {
 
   // 회원가입 api 요청
   try {
-    const data = { fullName, email, password };
-
+    const data = { 
+      fullName,
+      email,
+      password,
+      postCode,
+      address,
+      detailAddress,
+      extraAddress,
+      phoneNumber,
+      radio,
+      year,
+      month,
+      day
+    };
+    console.log(data);
     await Api.post('/api/register', data);
 
     alert(`정상적으로 회원가입되었습니다.`);

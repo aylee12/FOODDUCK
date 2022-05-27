@@ -1,0 +1,257 @@
+* {
+    margin:0;
+    padding:0;
+  }
+  ul, li {
+    list-style:none;
+  }
+  
+  /* header */
+  /* 
+  .navbar .container .navbar-brand .navbar-item .has-text-link {
+    color: black;
+  } */
+  #navbar_menu {
+    display: flex;
+    justify-content: center;
+    
+  }
+  .sticky {
+    position: sticky;
+    top: 0px;
+    background-color: white;
+    z-index: 2;
+  }
+  .menu_main a {
+    color: black;
+  }
+  
+  .menu_list {
+    display: flex;
+  }
+  .menu_list .menu {
+    margin: 30px 70px;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    /* padding: 16px 0 0 0; */
+  }
+  .menu_list .menu a:hover {
+    color: #68a790;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  .search {
+    display:flex;
+    position: relative;
+  }
+  .search_box {
+    width: 200px;
+    height: 36px;
+    border: 1px solid #f7f7f7;
+    border-radius: 18px;
+    background-color: #f7f7f7;
+    padding: 0 60px 0 14px;
+    font-size: 12px;
+    color: #555;
+    margin: auto;
+    
+  }
+  #search_btn {
+    width: 35px;
+    height: 35px;
+    margin: auto;
+    position: absolute;
+    right: 5px;
+    top: 25px;
+  } 
+  #search_btn img {
+    /* opacity: 0.5; */
+  }
+  .navbar-end a {
+    color: black;
+  }
+
+/* main */
+
+
+
+.list_products{
+  margin: 0;  
+}
+
+
+.title {
+  text-align: center;
+  margin: 0 0 50px 0;
+}
+.inner_list_products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 900px;
+  margin: 0 auto;
+  padding:0;
+
+}
+
+.item{
+  position: relative;
+  height: 450px;
+  padding: 0 15px;
+  margin: 0 0 70px 0;
+}
+
+.shopping_cart {
+  position: absolute;
+  right:20px;
+  bottom: 75px;
+}
+.shopping_cart_icon {
+ background-color: transparent;
+ opacity: 0.8;
+ border: none;
+}
+.shopping_cart_icon img {
+  height: 55px;
+  width: 55px;
+}
+.shopping_cart_icon img:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.thumbnail {
+  width: 250px;
+  height: 320px;
+  overflow: hidden;
+}
+
+.thumbnail a img {
+  height: 100%;
+  width: 100%;
+  transition: all .3s ease-in-out;
+  /* width: 500px; */
+}
+.thumbnail img:hover {
+  transform: scale(1.1);
+}
+
+.description {
+  /* margin: 0 0 8px 0;   */
+  padding: 14px 10px 0 0;
+}
+.description_text {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  margin: 0 0 8px 0;
+}
+.description_text a{
+  color: rgb(76, 76, 76);
+}
+.description_text a:hover{
+  color: #68a790;
+  text-decoration: underline;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 700;
+  display: block;
+  color: #4c4c4c
+}
+
+
+/* footer */
+  .footer {
+    margin: 0 15vw 0 15vw;
+    padding:0;
+    align-items: flex-start;
+  }
+  #custom_center_wrap {
+    text-align: center;
+  
+    margin: 0 0 10px 0;
+  }
+  .center_h2 {
+    font-size: 16pt;
+    font-weight:700;
+    padding-bottom: 29px;
+  }
+  
+  #call_wrap,
+  #question_wrap {
+    display: flex;
+    margin: 10px 16px 0 0;
+  }
+  
+  #call_wrap .call_title_wrap,
+  #question_wrap .question_title_wrap
+  {
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    width: 140px;
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+  
+  }
+  #call_wrap .call_title_wrap{
+    border: none;
+    
+  }
+  #call_wrap .call_title_wrap .call {
+    /* font-size:1.7rem; */
+    font-size: 27px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  #question_wrap .question_title_wrap .cc_qna{
+    font-size:14px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  
+  #right_call_wrap,
+  #right_question_wrap{
+    padding-left: 10px;
+    white-space: nowrap;
+  }
+  #right_call_wrap .detail,
+  #right_question_wrap .detail{
+    color: #999;
+  }
+  
+  #introduce_wrap {
+    /* display: flex; */
+  }
+  
+  .introduce_list {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 29px;
+  }
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 50px;
+    width: 100%;
+    margin: 0;
+    
+    /* margin: 100px; */
+    
+  }
+  
+  /* 고객 행복센터 및 멤버소개 */
+  .footer_p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #999999;
+    font-size: 12px;
+    padding-bottom: 6px;
+    white-space: nowrap;
+  }
