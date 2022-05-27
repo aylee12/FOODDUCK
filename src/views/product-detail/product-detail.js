@@ -51,10 +51,6 @@ function editBtnControl() {
   }
 }
 
-function editHandler() {
-  location.href = "/* 상품수정 창 url product-edit?*/";
-}
-
 // 수량 변경
 function count(type) {
   let n = parseInt(product_quantity.value);
@@ -71,6 +67,11 @@ function count(type) {
   product_total_price.innerText = numberWithCommas(product_total_price.dataset.value);
 }
 
+
+// 상품수정 이벤트핸들러
+function editHandler() {
+  location.href = "/product-edit";
+}
 
 // 구매 이벤트핸들러
 // sessionStorage에 배열로 제품 아이디, 이미지, 이름, 가격, 제조사, 수량 추가
