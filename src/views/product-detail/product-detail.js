@@ -13,31 +13,30 @@ const btn_add_to_cart = document.getElementById("btn_add_to_cart");
 let cart = [];
 
 window.onload = function() {
-  // 제품 데이터 가져오기
+  // 상품 데이터 가져오기
   fetch("api 주소")
-    .then(res => res.json())
-    .then(res => {
-      product_name.dataset.id = res.id;
-      product_img.innerText = res.img;
-      product_name.innerText = res.name;
-      product_company.innerText = res.company;
-      product_price.dataset.value = res.price;
-      product_description.innerText = res.description;
-    });
+      .then(res => res.json())
+      .then(res => {
+          product_name.dataset.id = res.id;
+          product_img.innerText = res.img;
+          product_name.innerText = res.name;
+          product_company.innerText = res.company;
+          product_price.dataset.value = res.price;
+          product_description.innerText = res.description;
+      });
 
-    //유저 데이터 가져오기
-    fetch("api 주소")
-    .then(res => res.json())
-    .then(res => {
-      // 유저가 회원인지 관리자인지 확인할 값을 수정 버튼의 권한 속성에 넣기
-      btn_product_edit.dataset.role = res.role;
-      
-    });
-    
-    product_price.innerText = numberWithCommas(product_price.dataset.value);
-    product_total_price.dataset.value = product_price.dataset.value;
-    product_total_price.innerText = product_price.innerText;
-    editBtnControl();
+  //유저 데이터 가져오기
+  fetch("api 주소")
+      .then(res => res.json())
+      .then(res => {
+          // 유저가 회원인지 관리자인지 확인할 값을 수정 버튼의 권한 속성에 넣기
+          btn_product_edit.dataset.role = res.role;
+      });
+
+  product_price.innerText = numberWithCommas(product_price.dataset.value);
+  product_total_price.dataset.value = product_price.dataset.value;
+  product_total_price.innerText = product_price.innerText;
+  editBtnControl();
 }
 
 // 가격 단위 표현
