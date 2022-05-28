@@ -62,7 +62,7 @@ register_product_form.onsubmit = function() {
         .then(response => response.json()) 
         .then(data => {
             alert("상품 정보가 수정되었습니다.");
-            // 메인페이지로 이동
+            // 상품 상세 페이지로 이동
             window.location.href = `../detail/:${productId}`;
         })
     }
