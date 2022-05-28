@@ -1,33 +1,54 @@
+import { connection } from 'mongoose';
 import { Schema } from 'mongoose';
+const autoIncrement = require('mongoose-auto-increment');
 
-const ProductSchema = new Schema({
-  productId: {
-    type: String,
-    required: true,
-    unique: true,
-    index: true,
+autoIncrement.initialize(connection);
+
+const ProductSchema = new Schema(
+  {
+    productId: {
+      type: Number,
+      required: true,
+      unique: true,
+      index: true,
+    },
+    productName: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    company: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+      required: true,
+    },
+    img: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
   },
-  productName: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-  company: {
-    type: String,
-    required: true,
-  },
-  category: {
-    type: String,
-    required: true,
-  },
-  img: {
-    type: String,
-    required: true,
-  },
+  {
+    collection: 'products',
+    timestamps: true,
+  }
+);
+
+ProductSchema.plugin(autoIncrement.plugin, {
+  model: 'Products2222',
+  field: 'productId',
+  startAt: 1,
+  increment: 1,
 });
 
 export { ProductSchema };

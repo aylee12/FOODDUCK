@@ -6,32 +6,36 @@ const Product = model('products', ProductSchema);
 export class ProductModel {
   //상품 전체 조회
   async findAll() {
-    const products = await Product.find({});
-    return products;
+    return await Product.find({});
   }
 
   //상품명 조회
   async findByProductName(productName) {
-    const product = await Product.findOne({ productName });
-    return product;
+    return await Product.findOne({ productName });
   }
 
   //상품 카테고리 별 조회
   async findByCategory(category) {
-    const products = await Product.find({ category });
-    return products;
+    return await Product.find({ category });
   }
 
   //상품 추가
   async createProduct(productInfo) {
-    const createProduct = await Product.create(productInfo);
-    return createProduct;
+    return await Product.create(productInfo);
   }
 
   //상품 수정
-  // async updateItem(itemInfo) {
-  //   const updateItem = await Product.findOneAndUpdate
-  // }
+  async updateProduct(productId, updatelist) {
+    const updateProduct = await Product.findOneAndUpdate(
+      { productId },
+      { updatelist },
+      { returnOriginal: false }
+    );
+
+    console.log('리턴', updateProduct);
+
+    return updateProduct;
+  }
 
   //상품 삭제
   async deleteProduct(itemInfo) {

@@ -3,10 +3,38 @@ import { productService } from '../services';
 
 const productRouter = Router();
 
-//전체 상품 조회
-productRouter.get('/list', async (req, res, next) => {
+//상품 추가
+productRouter.post('/', async (req, res, next) => {
   try {
-    //전체 상품 조회
+    const {
+      productId,
+      productName,
+      price,
+      company,
+      category,
+      img,
+      description,
+    } = req.body;
+
+    const newProduct = await productService.addProduct({
+      productId,
+      productName,
+      price,
+      company,
+      category,
+      img,
+      description,
+    });
+
+    res.status(201).json(newProduct);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//전체 상품 조회
+productRouter.get('/listAll', async (req, res, next) => {
+  try {
     const products = await productService.getProducts();
     res.status(200).json(products);
   } catch (error) {
@@ -15,10 +43,9 @@ productRouter.get('/list', async (req, res, next) => {
 });
 
 //카테고리별 상품 조회
-productRouter.get('/list/:id', async (req, res, next) => {
+productRouter.get('/list/:category', async (req, res, next) => {
   try {
-    //카테고리 데이터 받아오기
-    const category = req.params.id;
+    const category = req.params.category;
 
     const products = await productService.getCategoryProducts(category);
     res.status(200).json(products);
@@ -27,21 +54,20 @@ productRouter.get('/list/:id', async (req, res, next) => {
   }
 });
 
-//상품 추가
-productRouter.post('/add', async (req, res, next) => {
+//상품 수정
+productRouter.patch('/update/:productId', async (req, res, next) => {
   try {
-    const { productId, productName, price, company, category, img } = req.body;
+    const productId = req.params.productId;
+    const updatelist = req.body;
 
-    const newProduct = await productService.addproduct({
+    console.log('id:', productId);
+    console.log('업데이트리스트\n', updatelist);
+
+    const updateResult = await productService.updateProduct(
       productId,
-      productName,
-      price,
-      company,
-      category,
-      img,
-    });
-
-    res.status(201).json(newProduct);
+      updatelist
+    );
+    res.status(200).json(updateResult);
   } catch (error) {
     next(error);
   }
