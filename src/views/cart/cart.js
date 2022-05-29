@@ -4,6 +4,7 @@ const btnMinus = document.querySelectorAll(".cart-btn-minus");
 const btnPlus = document.querySelectorAll(".cart-btn-plus");
 const cartItemsPrice = document.querySelectorAll(".cart-items-price");
 const cartPriceSum = document.querySelector('.cart-price-sum');
+const cartItemsList = document.querySelectorAll(".cart-items-list");
 
 // checkbox 관련된 것들 
 const allCheck = document.querySelector('.all-check');
@@ -26,7 +27,7 @@ for(let i = 0 ;i<btnPlus.length;i++){
   })
 }
 
-for(let i = 0 ;i<btnPlus.length;i++){
+for(let i = 0 ; i<btnPlus.length; i++){
   btnMinus[i].addEventListener("click" , () =>{
     itemsQuantity[i].value -= 1;
     // 0보다 작을때는 항상 0으로 초기화한다.
@@ -56,6 +57,7 @@ selectCheck.addEventListener("click" , () => {
   });
   
   // filter된 곳에서 요소를 지우고 다시 합계를 바꿔줘야함 그리고 localStorage에서 지워야함 
+  // 현재는 check된것만 골라서 그에 해당하는 cart-items-list를 지웠다.
   checkFilter.forEach(items => items.parentElement.parentElement.remove());
   
   const cartJSON = JSON.parse(localStorage.getItem("cartExample"));
@@ -64,6 +66,8 @@ selectCheck.addEventListener("click" , () => {
     cartJSON.splice(tempCartArray[i] - i ,1);
   }
   localStorage.setItem("cartExample" , JSON.stringify(cartJSON));
+
+  // cart-items-list도 같이 지워줘야한다. ( 해결못하면 최후의 방법으로는 다시 뿌린다. )
 
 });
 
