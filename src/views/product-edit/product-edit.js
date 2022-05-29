@@ -20,50 +20,55 @@ fetch('url')
     })
 
 
-// productId로 상품 정보 받아오기, API 아직 없음
-fetch('url')
-    .then(res => res.json())
-    .then(data => {            
-        product_company.value = data.company;
-        product_img.value = data.img;
-        product_category.value = data.category;
-        product_name.value = data.productName;
-        product_price.value = data.price;
-        product_description.value = data.description;
-    })
+// productId로 상품 정보 받아오기 미완성
+try {
+    const res = await Api.get('/api/get', productId);
+    product_name.value = res.name;
+    product_company.value = res.company;
+    product_img.value = res.img;
+    product_price.dataset.value = res.price;
+    product_description.value = res.description;
+}
+catch(err) {
+    console.error(err.stack);
+    alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+}
 
 
 // '상품 수정하기' 버튼 누르면 동작
-register_product_form.onsubmit = function() {
+register_product_form.onsubmit = async function() {
     const agree = confirm("상품을 수정하시겠습니까?");
 
     if (agree) {
         const product_name = this.product_name.value;
-        const product_company = this.product_company.value;
-        const product_price = parseInt(this.product_price.value);
         const product_category = this.product_category.value;
+        const product_company = this.product_company.value;
+        const product_img = this.product_img.value;
+        const product_price = parseInt(this.product_price.value);
+        const product_description = this.product_description.value;
 
         const data = {
-            productName: product_name,
-            price: product_price,
+            name: product_name,
+            category: product_category,
             company: product_company,
-            // 카테고리 데이터 받아와야 함
-            category: product_category
+            img: product_img,
+            price: product_price,
+            // 카테고리 데이터 받아와야 함,
+            description: product_description
         }
         
-        // 상품 수정(put)
-        fetch(URL, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json()) 
-        .then(data => {
+        // 상품 수정 미완성
+        try {
+            endpoint, params = "", data
+            const res = await Api.get('/api/patch', productId, data);
+
             alert("상품 정보가 수정되었습니다.");
             // 상품 상세 페이지로 이동
-            window.location.href = `../detail/:${productId}`;
-        })
+            window.location.href = `../../detail/:${productId}`;
+        }
+        catch(err) {
+            console.error(err.stack);
+            alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+        }
     }
 }
