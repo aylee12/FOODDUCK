@@ -239,6 +239,8 @@
 /* 큰 틀 */
 section.container {
   width: 1050px;
+  min-height: 700px;
+  height: auto;
   margin: 0 auto;
   margin-top: 5rem;
   padding: 0px;
@@ -274,11 +276,8 @@ div.product_card_right {
 
 div.name_zone {
   width: 100%;
-  height: 100px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  min-height: 100px;
+  height: auto;
   margin-bottom: 20px;
 }
 
@@ -287,8 +286,11 @@ div.name_zone #product_name {
   font-size: 40px;
 }
 
-div.name_zone #btn_product_edit {
-  display: none;
+div.name_zone div.btn_admin_zone {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 div.product_price_zone {
