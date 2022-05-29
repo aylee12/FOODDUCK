@@ -12,7 +12,7 @@ const ProductSchema = new Schema(
       unique: true,
       index: true,
     },
-    productName: {
+    name: {
       type: String,
       required: true,
     },
@@ -45,7 +45,7 @@ const ProductSchema = new Schema(
 );
 
 ProductSchema.plugin(autoIncrement.plugin, {
-  model: 'Products2222',
+  model: 'products',
   field: 'productId',
   startAt: 1,
   increment: 1,

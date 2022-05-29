@@ -4,21 +4,12 @@ import { productService } from '../services';
 const productRouter = Router();
 
 //상품 추가
-productRouter.post('/', async (req, res, next) => {
+productRouter.post('/productAdd', async (req, res, next) => {
   try {
-    const {
-      productId,
-      productName,
-      price,
-      company,
-      category,
-      img,
-      description,
-    } = req.body;
+    const { name, price, company, category, img, description } = req.body;
 
-    const newProduct = await productService.addProduct({
-      productId,
-      productName,
+    const product = await productService.addProduct({
+      name,
       price,
       company,
       category,
@@ -26,16 +17,16 @@ productRouter.post('/', async (req, res, next) => {
       description,
     });
 
-    res.status(201).json(newProduct);
+    res.status(201).json(product);
   } catch (error) {
     next(error);
   }
 });
 
 //전체 상품 조회
-productRouter.get('/listAll', async (req, res, next) => {
+productRouter.get('/productListAll', async (req, res, next) => {
   try {
-    const products = await productService.getProducts();
+    const products = await productService.getAllProducts();
     res.status(200).json(products);
   } catch (error) {
     next(error);
@@ -43,11 +34,23 @@ productRouter.get('/listAll', async (req, res, next) => {
 });
 
 //카테고리별 상품 조회
-productRouter.get('/list/:category', async (req, res, next) => {
+productRouter.get('/productListCategory/:category', async (req, res, next) => {
   try {
     const category = req.params.category;
 
-    const products = await productService.getCategoryProducts(category);
+    const products = await productService.getProductsByCategory(category);
+    res.status(200).json(products);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//상품명으로 조회
+productRouter.get('/productListName/:name', async (req, res, next) => {
+  try {
+    const name = req.params.name;
+
+    const products = await productService.getProductByName(name);
     res.status(200).json(products);
   } catch (error) {
     next(error);
@@ -55,7 +58,7 @@ productRouter.get('/list/:category', async (req, res, next) => {
 });
 
 //상품 수정
-productRouter.patch('/update/:productId', async (req, res, next) => {
+productRouter.patch('/productUpdate/:productId', async (req, res, next) => {
   try {
     const productId = req.params.productId;
     const updatelist = req.body;
