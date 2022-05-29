@@ -17,6 +17,12 @@ viewsRouter.use('/product/add', serveStatic('product-add'));
 // product-edit 주소 설정
 viewsRouter.use('/product/edit', serveStatic('product-edit'));
 
+// my page 주소 설정
+viewsRouter.use('/mypage', serveStatic('mypage'));
+
+// admin-product-list 주소 설정
+viewsRouter.use('/product/ist', serveStatic('admin-product-list'));
+
 // cart 주소 설정하기 
 viewsRouter.use('/cart', serveStatic('cart'));
 viewsRouter.use('/pay',  serveStatic('pay'));

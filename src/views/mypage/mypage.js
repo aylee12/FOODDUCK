@@ -1,13 +1,12 @@
 window.onload = async function() {  
     // localStroage에 저장된 token으로 유저 타입 파악, 토큰 정보 알아야 함 미완성
     const role = localStorage.getItem("role");
-
-
+    
     const button_container = document.querySelector(".button_container");
     // 사용자가 admin이면 보여줄 버튼들, url 추가 안 된 버전
     if (role === "admin") {
         const contents = ["카테고리 관리", "상품 관리", "주문 관리"];
-        const urls = ["", "", ""];
+        const urls = ["", "../product/list", ""];
         for (let i = 0; i < contents.length; i++) {
             const button = document.createElement("button");
             const button_text = document.createTextNode(contents[i]);
