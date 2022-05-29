@@ -3,22 +3,17 @@ const product_company = document.getElementById("product_company");
 const product_img = document.getElementById("product_img");
 const product_price = document.getElementById("product_price");
 const product_description = document.getElementById("product_description");
+// product/detail/:id 로
 const productId = window.location.pathname.split('/').pop();
 
 // 전체 카테고리 받아오기, API 아직 없음
-fetch('url')
-    .then(res => res.json())
-    .then(data => {
-        const category_option = document.createElement("option");
-
-        for (let i = 0; i < data.length; i++) {
-            category_option.value = data[i];
-            const category_option_text = document.createTextNode(category_option_value);
-            category_option.appendChild(category_option_text);
-            product_category.appendChild(category_option);
-        }
-    })
-
+try {
+    const res = await Api.get('/api/get', productId);
+}
+catch(err) {
+    console.error(err.stack);
+    alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+}
 
 // productId로 상품 정보 받아오기 미완성
 try {
