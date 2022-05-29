@@ -31,9 +31,6 @@ categoryRouter.patch('/categoryUpdate/:name', async (req, res, next) => {
     const name = req.params.name;
     const updatelist = req.body;
 
-    console.log('id:', name);
-    console.log('업데이트리스트\n', updatelist);
-
     const updateResult = await categoryService.updateCategory(name, updatelist);
     res.status(200).json(updateResult);
   } catch (error) {

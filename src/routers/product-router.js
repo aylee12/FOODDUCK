@@ -63,14 +63,23 @@ productRouter.patch('/productUpdate/:productId', async (req, res, next) => {
     const productId = req.params.productId;
     const updatelist = req.body;
 
-    console.log('id:', productId);
-    console.log('업데이트리스트\n', updatelist);
-
     const updateResult = await productService.updateProduct(
       productId,
       updatelist
     );
     res.status(200).json(updateResult);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//상품 삭제
+productRouter.delete('/productDelete/:productId', async (req, res, next) => {
+  try {
+    const productId = req.params.productId;
+
+    const deleteResult = await productService.deleteProduct(productId);
+    res.status(200).json(deleteResult);
   } catch (error) {
     next(error);
   }

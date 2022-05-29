@@ -7,6 +7,7 @@ export class ProductModel {
   //상품 추가
   async createProduct(product) {
     return await Product.create(product);
+    //.populate('email');
   }
 
   //상품 전체 조회
@@ -28,7 +29,7 @@ export class ProductModel {
   async updateProduct(productId, updatelist) {
     const updatedProduct = await Product.findOneAndUpdate(
       { productId },
-      { updatelist },
+      updatelist,
       { returnOriginal: false }
     );
 
@@ -38,8 +39,8 @@ export class ProductModel {
   }
 
   //상품 삭제
-  async deleteProduct(itemInfo) {
-    const deleteProduct = await Product.findOneAndDelete({ itemInfo });
+  async deleteProduct(productId) {
+    const deleteProduct = await Product.findOneAndDelete({ productId });
     return deleteProduct;
   }
 }

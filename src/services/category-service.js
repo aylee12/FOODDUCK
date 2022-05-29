@@ -16,8 +16,8 @@ class CategoryService {
   }
 
   //카테고리 수정
-  async updateCategory(category, updatelist) {
-    return await this.categoryModel.updateCategory(category, updatelist);
+  async updateCategory(name, updatelist) {
+    return await this.categoryModel.updateCategory(name, updatelist);
   }
 }
 

@@ -16,15 +16,9 @@ export class OrderModel {
 
   //상품 수정
   async updateOrder(orderNo, updatelist) {
-    const updatedOrder = await Order.findOneAndUpdate(
-      { orderNo },
-      { updatelist },
-      { returnOriginal: false }
-    );
-
-    console.log('리턴', updatedOrder);
-
-    return updatedOrder;
+    return await Order.findOneAndUpdate({ orderNo }, updatelist, {
+      returnOriginal: false,
+    });
   }
 
   //상품 삭제

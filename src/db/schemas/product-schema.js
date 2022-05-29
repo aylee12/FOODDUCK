@@ -26,6 +26,8 @@ const ProductSchema = new Schema(
       required: true,
     },
     category: {
+      // type: Schema.Types.ObjectId,
+      // ref: 'categories',
       type: String,
       required: true,
     },

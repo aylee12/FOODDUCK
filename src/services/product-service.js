@@ -5,7 +5,7 @@ class ProductService {
     this.productModel = productModel;
   }
 
-  //상품추가
+  //상품 추가
   async addProduct(product) {
     return await this.productModel.createProduct(product);
   }
@@ -25,9 +25,14 @@ class ProductService {
     return await this.productModel.findByProductName(name);
   }
 
-  //상품수정
+  //상품 수정
   async updateProduct(productId, updatelist) {
     return await this.productModel.updateProduct(productId, updatelist);
+  }
+
+  //상품 삭제
+  async deleteProduct(productId) {
+    return await this.productModel.deleteProduct(productId);
   }
 }
 

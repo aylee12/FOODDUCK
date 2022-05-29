@@ -37,9 +37,6 @@ orderRouter.patch('/orderUpdate/:orderNo', async (req, res, next) => {
     const orderNo = req.params.orderNo;
     const updatelist = req.body;
 
-    console.log('id:', orderNo);
-    console.log('업데이트리스트\n', updatelist);
-
     const updateResult = await orderService.updateProduct(orderNo, updatelist);
     res.status(200).json(updateResult);
   } catch (error) {

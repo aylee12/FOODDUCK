@@ -13,7 +13,8 @@ const OrderSchema = new Schema(
       index: true,
     },
     email: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'User-info',
       required: true,
     },
     orderStatus: {

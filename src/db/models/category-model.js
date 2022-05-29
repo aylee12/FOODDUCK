@@ -15,16 +15,10 @@ export class CategoryModel {
   }
 
   //카테고리 수정
-  async updateCategory(category, updatelist) {
-    const updatedCategory = await Category.findOneAndUpdate(
-      { category },
-      { updatelist },
-      { returnOriginal: false }
-    );
-
-    console.log('리턴', updatedCategory);
-
-    return updatedCategory;
+  async updateCategory(name, updatelist) {
+    return await Category.findOneAndUpdate({ name }, updatelist, {
+      returnOriginal: false,
+    });
   }
 
   //카테고리 삭제
