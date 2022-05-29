@@ -19,9 +19,8 @@ productRouter.get('/list/:id', async (req, res, next) => {
   try {
     //카테고리 데이터 받아오기
     const category = req.params.id;
-
     const products = await productService.getCategoryProducts(category);
-    res.status(200).json(products);
+    res.status(200).json(products); 
   } catch (error) {
     next(error);
   }
