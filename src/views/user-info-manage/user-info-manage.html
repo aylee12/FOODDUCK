@@ -84,40 +84,36 @@
           <label class="label" for="fullNameInput">이름</label>
           <div class="control">
             <input
-              class="input"
+              class="input input_able"
               id="fullNameInput"
               type="text"
               placeholder="유재석"
               autocomplete="on"
+              disabled
             />
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
           </div>
           
-        </div>
-        <!-- 임시로 input-email 변경했음 -->
-        <div class="field">
-          <label class="label" for="idInput">아이디</label>
-          <div class="control input-id-wrap">
-            <input
-              class="input"
-              id="emailInput"
-              type="email"
-              placeholder="abc@example.com"
-              autocomplete="on"
-            />
-            <!-- <input class="input" type="button" value="중복확인"><br> -->
-          </div>
         </div>
 
         <div class="field">
           <label class="label" for="passwordInput">비밀번호</label>
           <div class="control">
             <input
-              class="input"
+              class="input input_able"
               id="passwordInput"
               type="password"
               placeholder="********"
               autocomplete="off"
+              disabled
             />
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
           </div>
         </div>
 
@@ -125,11 +121,12 @@
           <label class="label" for="passwordConfirmInput">비밀번호 확인</label>
           <div class="control">
             <input
-              class="input"
+              class="input check_pw_able"
               id="passwordConfirmInput"
               type="password"
               placeholder="********"
               autocomplete="off"
+              disabled
             />
           </div>
         </div>
@@ -138,12 +135,17 @@
           <label class="label" for="fullNameInput">전화번호</label>
           <div class="control">
             <input
-              class="input"
+              class="input input_able"
               id="phoneNumberInput"
               type="text"
               placeholder="전화번호"
               autocomplete="on"
+              disabled
             />
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
           </div>
         </div>
 
@@ -151,49 +153,38 @@
           <label class="label" for="addressInput">주소</label>
           <div class="address-control">
             <div class="address-btn-wrap">
-              <input class="input" type="text" id="postcode" placeholder="우편번호">
-              <input class="input" type="button" onclick="daumPostCode()" value="우편번호 찾기"><br>
+              <div class="address_btn_items1">
+                <input class="input input_able check_post_able" type="text" id="postcode" placeholder="우편번호" disabled>
+              </div>
+              <div class="address_btn_items2">
+                <input class="input check_post_able" type="button" onclick="daumPostCode()" value="우편번호 찾기" disabled>
+              </div>
+              <div class="address_btn_items3">
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider round"></span>
+                </label>
+              </div>
             </div>
-            <input class="input" type="text" id="address" placeholder="주소"><br>
+
+            <div class="address_btn_items4">
+              <input class="input check_post_able" type="text" id="address" placeholder="주소" disabled>
+            </div>
             <div class="address-detail-wrap">
-              <input class="input" type="text" id="detailAddress" placeholder="상세주소">
-              <input class="input" type="text" id="extraAddress" placeholder="참고항목">
+              <input class="input check_post_able address_btn_items5" type="text" id="detailAddress" placeholder="상세주소" disabled>
+              <input class="input check_post_able" type="text" id="extraAddress" placeholder="참고항목" disabled>
             </div>
           </div>
         </div>
-
-        <div class="field mb-5">
-          <label class="label" for="addressInput">성별</label>
-          <div class="control">
-            <div class="radio-items">
-              <input type="radio" name="sex" value="남자"/>
-              <span>남자</span>
-            </div>
-            <div class="radio-items">
-              <input type="radio" name="sex" value="여자"/>
-              <span>여자</span>
-            </div>
-            <div class="radio-items">
-              <input type="radio" name="sex" value="없음" checked/>
-              <span>선택안함</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="field mb-5">
-          <label class="label" for="birthInput">생년월일</label>
-          <div class="control">
-            <input class="input" placeholder="YYYY" id="yearInput"/>
-            <input class="input" placeholder="MM" id="monthInput"/>
-            <input class="input" placeholder="DD" id="dayInput"/>
-          </div>
-        </div>
-
-        <button class="button is-primary is-fullwidth" id="submitButton">
-          회원가입하기
+        <button class="button is-primary is-fullwidth">
+          수정하기
+        </button>
+        <button class="button is-primary is-fullwidth withdraw_btn">
+          탈퇴하기
         </button>
       </form>
     </div>
   </body>
   <script src="user-info-manage.js"></script>
+  <script src="daum-api.js"></script>
 </html>
