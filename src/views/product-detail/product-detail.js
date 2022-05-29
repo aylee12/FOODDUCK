@@ -1,3 +1,5 @@
+import * as Api from '/api.js';
+
 const product_img = document.getElementById("product_img");
 // product_name의 dataset에 role(사용자 권한) 들어감
 const product_name = document.getElementById("product_name");
