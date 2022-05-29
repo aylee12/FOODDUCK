@@ -2,10 +2,18 @@ import * as Api from '/api.js';
 
 const product_category = document.getElementById("product_category");
 
-// // 카테고리 데이터 가져오기 미완성 (어떤 형식으로 올지 모름)
+// 전체 카테고리 데이터 받아와서 select option에 추가. API 연결 안 돼 있음
 window.onload = async function() {
     try {
-        const res = await Api.get('/api/category/get', category);
+        const res = await Api.get('/api/get', productId);
+        
+        for (let i = 0; i < res.length; i++) {
+            const option = document.createElement("option");
+            option.value = res[i];
+            const option_text = document.createTextNode(option.value);
+            option.appendChild(option_text);
+            product_category.appendChild(option);
+        }
     }
     catch(err) {
         console.error(err.stack);
@@ -23,14 +31,14 @@ register_product_form.onsubmit = async function(e) {
         const product_name = this.product_name.value;
         const product_company = this.product_company.value;
         const product_price = parseInt(this.product_price.value);
-        //const product_category = this.product_category.value;
+        const product_category = this.product_category.value;
 
         const data = {
             name: product_name,
             price: product_price,
             company: product_company,
+            category: product_category,
             // 테스트용
-            // category: "ㅁㄹㄴㅇㄹㄴㅇㄴㄹㄴㄹㅇ",
             // img: "adfssaf",
             // description: "adsfafasfd"
         }
