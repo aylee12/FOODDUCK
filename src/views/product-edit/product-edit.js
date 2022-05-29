@@ -1,3 +1,5 @@
+import * as Api from '/api.js';
+
 const product_name = document.getElementById("product_name");
 const product_company = document.getElementById("product_company");
 const product_img = document.getElementById("product_img");
