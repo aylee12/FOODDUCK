@@ -82,7 +82,7 @@ productRouter.delete('/productDelete/:productId', async (req, res, next) => {
     res.status(200).json(deleteResult);
   } catch (error) {
     next(error);
-  }
+  }d
 });
 
 export { productRouter };

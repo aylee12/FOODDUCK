@@ -30,9 +30,9 @@ register_product_form.onsubmit = async function(e) {
             price: product_price,
             company: product_company,
             // 테스트용
-            // category: "ㅁㄹㄴㅇㄹㄴㅇㄴㄹㄴㄹㅇ",
-            // img: "adfssaf",
-            // description: "adsfafasfd"
+            category: "vegetable",
+            img: "https://img-cf.kurly.com/shop/data/goods/1640671745403l0.jpg",
+            description: "adsfafasfd"
         }
         try {
             // 상품 추가

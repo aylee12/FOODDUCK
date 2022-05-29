@@ -200,7 +200,7 @@ section {
   justify-content: center;
   /* background-color: yellow; */
 }
-.gallery_item{
+.item{
   position: relative;
   padding: 0;
   margin: 0 9px;
