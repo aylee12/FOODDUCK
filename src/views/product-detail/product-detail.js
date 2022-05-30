@@ -12,7 +12,7 @@ const product_total_price = document.getElementById("product_total_price");
 // const productId = window.location.pathname.split('/').pop();
 
 // 테스트용
-const productId = 18;
+const productId = 19;
 
 const btn_cnt_down = document.getElementById("btn_cnt_down");
 const btn_cnt_up = document.getElementById("btn_cnt_up");
@@ -42,7 +42,7 @@ window.onload = async function() {
 
   // 테스트용
   product_name.dataset.role = "admin";
-  
+
   product_price.innerText = numberWithCommas(product_price.dataset.value);
   product_total_price.dataset.value = product_price.dataset.value;
   product_total_price.innerText = product_price.innerText;
@@ -122,7 +122,6 @@ async function delHandler(e) {
 
   const confirm_result = confirm("상품을 삭제하시겠습니까?");
   
-  // 아직 api 없음
   if (confirm_result) {
     const data = {
       id: productId,
@@ -134,7 +133,7 @@ async function delHandler(e) {
     };
 
     try {
-      await Api.del('/api/productDelete', productId, data);
+      await Api.delete('/api/productDelete', productId, data);
       // 메인으로 이동
       window.location.href = "../../../";
     }

@@ -110,10 +110,18 @@
     <section class="container">
         <div class="inner_container">
           <div class="block account-header">
-            <h1 class="subtitle is-4">카테 목록</h1>
+            <h1 class="title is-4">카테고리 목록</h1>
           </div>
           <div class="category_list_container">
-              <p class="title is-5 has-text-primary">현재 카테고리 목록입니다.</p>
+              <p class="subtitle is-6">현재 카테고리 목록입니다.</p>
+
+              <!-- 카테고리 추가 구역-->
+              <div class="add_zone">
+                <form id="add">
+                  <input class="input" id="new_category_name" type="text" placeholder="추가할 카테고리 이름을 적어주세요." />
+                  <button class="button is-rounded" id="btn_submit">추가</button>
+                </form>
+              </div>
 
           </div>
         </div>

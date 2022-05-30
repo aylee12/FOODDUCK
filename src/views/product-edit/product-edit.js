@@ -44,11 +44,9 @@ window.onload = async function() {
     }
 }
 
-// '상품 수정하기' 버튼 누르면 동작. API 연결 안 돼 있음
+// '상품 수정하기' 버튼 누르면 동작
 register_product_form.onsubmit = async function() {
-    const agree = confirm("상품을 수정하시겠습니까?");
-
-    if (agree) {
+    if (confirm("상품을 수정하시겠습니까?")) {
         const product_name = this.product_name.value;
         const product_category = this.product_category.value;
         const product_company = this.product_company.value;
@@ -66,12 +64,10 @@ register_product_form.onsubmit = async function() {
         }
         
         try {
-            endpoint, params = "", data
-            const res = await Api.get('/api/patch', productId, data);
-
+            await Api.patch('/api/productUpdate', productId, data);
             alert("상품 정보가 수정되었습니다.");
             // 상품 상세 페이지로 이동
-            window.location.href = `../../detail/:${productId}`;
+            location.href = `../../detail/:${productId}`;
         }
         catch(err) {
             console.error(err.stack);

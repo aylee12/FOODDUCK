@@ -1,50 +1,63 @@
 import * as Api from '/api.js';
 
-
 window.onload = async function() {
     const category_list_container = document.querySelector(".category_list_container");
     try {
         const res = await Api.get('/api/categoryList');
         for (let i = 0; i < res.length; i++) {
+            // 개별 카테고리 div
             const category_container = document.createElement("div");
             category_container.setAttribute("class", "category_container");
 
-            const category_name = document.createTextNode(res[i].name);
+            // 개별 카테고리 div 속 간격 맞춰주는 div
+            const category_blank1 = document.createElement("div");
+            category_blank1.setAttribute("id", "category_blank1");
+            category_container.appendChild(category_blank1);
+
+            // 개별 카테고리 div 속 category_name
+            const category_name = document.createElement("input");
+            category_name.setAttribute("type", "text");
+            category_name.setAttribute("value", res[i].name);
+            category_name.setAttribute("id", res[i].name)
+            category_name.setAttribute("readonly", "true");
             category_container.appendChild(category_name);
 
+            // 개별 카테고리 div 속 간격 맞춰주는 div
+            const category_blank2 = document.createElement("div");
+            category_blank2.setAttribute("name", "category_blank2");
+            category_container.appendChild(category_blank2);
+
+            // 개별 카테고리 div 속 버튼 구역 div
             const btn_zone = document.createElement("div");
             btn_zone.setAttribute("class", "btn_zone");
             category_container.appendChild(btn_zone);
 
-            // 수정 버튼 생성
+            // 버튼 구역 div 속 수정 버튼 생성
             const btn_edit = document.createElement("button");
             const btn_edit_text = document.createTextNode("수정");
             btn_edit.setAttribute("class", "btn_edit");
+            btn_edit.dataset.id = res[i].name;
             btn_edit.appendChild(btn_edit_text);
             btn_zone.appendChild(btn_edit);
 
-            // 삭제 버튼 생성
+            // 버튼 구역 div 속 삭제 버튼 생성
             const btn_del = document.createElement("button");
             const btn_del_text = document.createTextNode("삭제");
             btn_del.setAttribute("class", "btn_del");
+            btn_del.dataset.id = res[i].name;
             btn_del.appendChild(btn_del_text);
             btn_zone.appendChild(btn_del);
 
+            // 버튼 구역 div를 개별 카테고리 div에 추가
             category_container.appendChild(btn_zone);
+
+            // 개별 카테고리 div를 카테고리 목록 div에 추가
             category_list_container.appendChild(category_container);
 
-
-            // 버튼 클릭 이벤트
-            btn_edit.addEventListener("click", editHandler);
+            // 수정, 삭제 버튼 클릭 이벤트
+            btn_edit.addEventListener("click", changeToEdit);
             btn_del.addEventListener("click", delHandler);
         }
-
-        // 추가 버튼 생성
-        const btn_add = document.createElement("button");
-        const btn_add_text = document.createTextNode("카테고리 추가");
-        btn_add.setAttribute("class", "btn_add");
-        btn_add.appendChild(btn_add_text);
-        category_list_container.appendChild(btn_add);
     } 
     catch(err) {
         console.error(err.stack);
@@ -52,36 +65,69 @@ window.onload = async function() {
     }
 }
 
-// 상품수정 이벤트핸들러 -> 상품수정 페이지로 이동
-function editHandler() {
-    const confirm_result = confirm("상품을 수정하시겠습니까?");
-  
-    if (confirm_result) {
-      location.href =  `/product/edit/:${productId}`;
-    }
-  }
-  
-  // 상품삭제 이벤트핸들러
-async function delHandler(e) {
-    e.preventDefault();
-
-    const confirm_result = confirm("상품을 삭제하시겠습니까?");
-
-    // 아직 api 없음
-    if (confirm_result) {
+// 카테고리 추가 이벤트핸들러
+document.getElementById("add").onsubmit = async function addHandler() {
+    if (confirm("카테고리를 추가하시겠습니까?")) {
         const data = {
-            id: productId,
-            img: product_img.innerText, 
-            name: product_name.innerText, 
-            price: product_price.dataset.value, 
-            company: product_company.innerText,
-            description: product_description.innerText
+            name: this.new_category_name.value,
+            description: "All " + this.new_category_name.value
         };
+        
+        try {
+            const res = await Api.post('/api/categoryAdd', data);
+            console.log(res);
+            alert("카테고리가 추가되었습니다.");
+        }
+        catch(err) {
+            console.error(err.stack);
+            alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+        }
+    }
+}
+
+// 카테고리 수정으로 상태 변경
+function changeToEdit() {
+    // input 수정 가능하게 변경
+    const category = document.getElementById(this.dataset.id);
+    category.removeAttribute("readonly");
+    category.style.cssText = "border: 2px solid rgb(19, 93, 197);";
+    // 수정 버튼 문자를 저장으로 변경
+    this.innerText = "저장";
+
+    this.addEventListener("click", editHandler);
+}
+
+// 카테고리 수정 이벤트 핸들러
+async function editHandler() {
+    if (confirm("카테고리를 수정하시겠습니까?")) {
+        const name = document.getElementById(this.dataset.id).value;
+        
+        const data = {
+            name: name,
+            description: "All " + name
+        };
+        
+        try {
+            await Api.patch('/api/categoryUpdate', name, data);
+            alert("카테고리가 수정되었습니다.");
+            location.reload();
+        }
+        catch(err) {
+            console.error(err.stack);
+            alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+        }
+    };
+}
+  
+// 카테고리 삭제 이벤트핸들러
+async function delHandler() {
+    if (confirm("카테고리를 삭제하시겠습니까?")) {
+        const name = document.getElementById(this.dataset.id).value;
 
         try {
-            await Api.del('/api/delete', productId, data);
-            // 메인으로 이동
-            window.location.href = "../../../";
+            await Api.del('/api/categoryUpdate', name);
+            alert("카테고리가 삭제되었습니다.");
+            location.reload();
         }
         catch(err) {
             console.error(err.stack);
