@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 85vh;
+  height: 95vh;
 }
 
 .register-user-form-box {
@@ -129,4 +129,3 @@ input:checked + .slider:before {
   margin-top: 10px;
 }
 
-/* 우편번호 */

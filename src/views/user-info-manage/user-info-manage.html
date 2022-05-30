@@ -75,7 +75,6 @@
     <!-- 회원가입 폼(Form) -->
     <div class="register-user-form-container">
       <form 
-        method="post"
         class="box register-user-form-box" 
         id="registerUserForm"
       >
@@ -176,15 +175,15 @@
             </div>
           </div>
         </div>
-        <button class="button is-primary is-fullwidth">
+        <button type="button" class="button is-primary is-fullwidth" id="submitUpdate">
           수정하기
         </button>
-        <button class="button is-primary is-fullwidth withdraw_btn">
+        <button type="button" class="button is-primary is-fullwidth withdraw_btn" id="submitDelete">
           탈퇴하기
         </button>
       </form>
     </div>
   </body>
-  <script src="user-info-manage.js"></script>
+  <script src="user-info-manage.js" type="module"></script>
   <script src="daum-api.js"></script>
 </html>
