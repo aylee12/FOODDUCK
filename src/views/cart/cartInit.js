@@ -21,7 +21,7 @@ const cartInit = () => {
           <div><span class="cart-items-price" data-value="${items.price}">${items.price}</span>원</div>
         </div>
         <div class="cart-items-btn">
-          <input type="text" value=${items.quantitiy} class="cart-items-quantity-input" readonly>
+          <input type="text" value=${items.quantity} class="cart-items-quantity-input" readonly>
           <div class="cart-plus-minus-wrap">
             <input type="button" class="cart-btn-minus">
             <input type="button" class="cart-btn-plus">
