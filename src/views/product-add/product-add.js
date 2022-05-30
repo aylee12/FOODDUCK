@@ -34,18 +34,38 @@ register_product_form.onsubmit = async function (e) {
       img: '삼겹살',
       description: '삼겹살',
     };
-    try {
-      // 상품 추가
-      const res = await Api.post('/api/productAdd', data);
-      console.log(res);
-      alert('상품 판매가 시작되었습니다.');
-      // 메인페이지로 이동
-      window.location.href = '../../';
-    } catch (err) {
-      console.error(err.stack);
-      alert(
-        `문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`
-      );
-    }
+    // try {
+    //   // 상품 추가
+    //   const res = await Api.post('/api/productAdd', data);
+    //   console.log(res);
+    //   alert('상품 판매가 시작되었습니다.');
+    //   // 메인페이지로 이동
+    //   window.location.href = '../../';
+    // } catch (err) {
+    //   console.error(err.stack);
+    //   alert(
+    //     `문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`
+    //   );
+    //     const data = {
+    //         name: product_name,
+    //         price: product_price,
+    //         company: product_company,
+    //         // 테스트용
+    //         category: "vegetable",
+    //         img: "https://img-cf.kurly.com/shop/data/goods/1640671745403l0.jpg",
+    //         description: "adsfafasfd"
+    //     }
+    //     try {
+    //         // 상품 추가
+    //         const res = await Api.post('/api/productAdd', data);
+    //         alert("상품 판매가 시작되었습니다.");
+    //         // 메인페이지로 이동
+    //         window.location.href = "../../";
+    //     }
+    //     catch(err) {
+    //         console.error(err.stack);
+    //         alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+    //     }
+    // }
   }
 };
