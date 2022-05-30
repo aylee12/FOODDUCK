@@ -25,6 +25,11 @@ class ProductService {
     return await this.productModel.findByProductName(name);
   }
 
+  //상품ID 조회
+  async getProductById(productId) {
+    return await this.productModel.findByProductID(productId);
+  }
+
   //상품 수정
   async updateProduct(productId, updatelist) {
     return await this.productModel.updateProduct(productId, updatelist);

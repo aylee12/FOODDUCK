@@ -1,16 +1,15 @@
-// import * as Api from '/api.js';
+import * as Api from '/api.js';
 
 
 window.onload = async function() {
     const category_list_container = document.querySelector(".category_list_container");
     try {
-        //const res = await Api.get('/api/categoryListAll');
-        const res = ['meat', 'vegetable'];
+        const res = await Api.get('/api/categoryList');
         for (let i = 0; i < res.length; i++) {
             const category_container = document.createElement("div");
             category_container.setAttribute("class", "category_container");
 
-            const category_name = document.createTextNode(res[i]);
+            const category_name = document.createTextNode(res[i].name);
             category_container.appendChild(category_name);
 
             const btn_zone = document.createElement("div");

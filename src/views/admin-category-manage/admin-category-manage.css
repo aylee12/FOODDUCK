@@ -274,16 +274,17 @@ div.category_list_container p.title {
 }
 
 div.category_container {
-    width: 100%;
+    width: 35%;
     min-height: 50px;
-    border: 1.5px solid rgb(95, 206, 179);
+    border: 1px solid rgba(194, 194, 194, 0.402);
     margin: 40px auto;
     height: auto;
+    vertical-align: middle;
     
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 
     border-top-left-radius: 30px; 
@@ -292,45 +293,43 @@ div.category_container {
     border-bottom-right-radius: 30px;
 }
 
-button.btn_edit {
-    background-color: white; 
+.btn_edit {
+    background-color: #f5bf4f;
     font-size: 15px; 
-    color: #434343; 
+    color: white;
     margin: 5px; 
     padding: 7px; 
-
+  
     border: 2px solid #f5bf4f; 
     border-top-left-radius: 30px; 
     border-top-right-radius: 30px; 
     border-bottom-left-radius: 30px; 
     border-bottom-right-radius: 30px;
-}
-
-button.btn_edit:hover {
-    background-color: #f5bf4f; 
-    color: white; 
-    cursor: grab;
-}
-
-button.btn_del {
-    background-color: white; 
+  }
+  
+  .btn_edit:hover {
+    background-color: #f5be4fa9;  
+    cursor: pointer;
+  }
+  
+  .btn_del {
+    background-color: #ed6a5e;
     font-size: 15px; 
-    color: #434343; 
+    color: white;
     margin: 5px; 
     padding: 7px; 
-
+  
     border: 2px solid #ed6a5e; 
     border-top-left-radius: 30px; 
     border-top-right-radius: 30px; 
     border-bottom-left-radius: 30px; 
     border-bottom-right-radius: 30px;
-}
-
-button.btn_del:hover {
-    background-color: #ed6a5e; 
-    color: white; 
-    cursor: grab;
-}
+  }
+  
+  .btn_del:hover {
+    background-color: #ed6a5eb9; 
+    cursor: pointer;
+  }
 
 button.btn_add {
     width: 100%;
@@ -338,7 +337,6 @@ button.btn_add {
     font-size: 15px; 
     color: white;
     min-height: 50px; 
-    margin: 5px; 
     padding: 7px; 
     font-weight: 600;
     font-size: 17px;

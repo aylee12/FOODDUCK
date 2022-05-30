@@ -242,7 +242,7 @@ section.container {
   min-height: 700px;
   height: auto;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 5rem;
   padding: 0px;
 }
 
@@ -293,6 +293,44 @@ div.name_zone div.btn_admin_zone {
   align-items: center;
 }
 
+#btn_edit {
+  background-color: #f5bf4f;
+  font-size: 15px; 
+  color: white;
+  margin: 5px; 
+  padding: 7px; 
+
+  border: 2px solid #f5bf4f; 
+  border-top-left-radius: 30px; 
+  border-top-right-radius: 30px; 
+  border-bottom-left-radius: 30px; 
+  border-bottom-right-radius: 30px;
+}
+
+#btn_edit:hover {
+  background-color: #f5be4fa9;  
+  cursor: pointer;
+}
+
+#btn_del {
+  background-color: #ed6a5e;
+  font-size: 15px; 
+  color: white;
+  margin: 5px; 
+  padding: 7px; 
+
+  border: 2px solid #ed6a5e; 
+  border-top-left-radius: 30px; 
+  border-top-right-radius: 30px; 
+  border-bottom-left-radius: 30px; 
+  border-bottom-right-radius: 30px;
+}
+
+#btn_del:hover {
+  background-color: #ed6a5eb9; 
+  cursor: pointer;
+}
+
 div.product_price_zone {
   margin: 10px 0 30px 0;
   font-weight: 500;
@@ -320,7 +358,7 @@ dd{
 }
 
 /* 구매 수량 */
-span.count {
+span.cnt {
   overflow: hidden;
   float: left;
   width: 88px;
@@ -330,11 +368,11 @@ span.count {
   padding: 0;
 }
 
-.count #btn_cnt_down, .count #btn_cnt_up{
+div.cnt .button {
   padding: 0 10px 0 10px;
 }
 
-.count #quantity {
+.cnt #quantity {
   height: 1.5rem;
   padding-left: 0;
   padding-right: 0;

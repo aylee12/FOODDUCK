@@ -25,13 +25,14 @@ export class ProductModel {
     return await Product.findOne({ name });
   }
 
+  //상품ID 조회
+  async findByProductID(productId) {
+    return await Product.findOne({ productId });
+  }
+
   //상품 수정
   async updateProduct(productId, updatelist) {
-    const updatedProduct = await Product.findOneAndUpdate(
-      { productId },
-      updatelist,
-      { returnOriginal: false }
-    );
+    const updatedProduct = await Product.findOneAndUpdate({ productId }, updatelist, { returnOriginal: false });
 
     console.log('리턴', updatedProduct);
 

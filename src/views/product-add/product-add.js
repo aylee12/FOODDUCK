@@ -1,15 +1,16 @@
 import * as Api from '/api.js';
 
+const productId = window.location.pathname.split('/').pop();
 const product_category = document.getElementById("product_category");
 
 // 전체 카테고리 데이터 받아와서 select option에 추가. API 연결 안 돼 있음
 window.onload = async function() {
     try {
-        const res = await Api.get('/api/get', productId);
-        
+        const res = await Api.get('/api/categoryList');
+        console.log(res);
         for (let i = 0; i < res.length; i++) {
             const option = document.createElement("option");
-            option.value = res[i];
+            option.value = res[i].name;
             const option_text = document.createTextNode(option.value);
             option.appendChild(option_text);
             product_category.appendChild(option);
@@ -38,7 +39,7 @@ register_product_form.onsubmit = async function(e) {
             price: product_price,
             company: product_company,
             category: product_category,
-            // 테스트용
+            // 테스트용 (지금은 img랑 description 비워서 보내면 안되는 상태)
             // img: "adfssaf",
             // description: "adsfafasfd"
         }

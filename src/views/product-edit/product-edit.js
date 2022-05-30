@@ -7,17 +7,19 @@ const product_img = document.getElementById("product_img");
 const product_price = document.getElementById("product_price");
 const product_description = document.getElementById("product_description");
 // product/detail/:id 로
-const productId = window.location.pathname.split('/').pop();
+//const productId = window.location.pathname.split('/').pop();
+
+//테스트코드
+const productId = 18;
 
 window.onload = async function() {
     // 전체 카테고리 데이터 받아와서 select option에 추가. API 연결 안 돼 있음
     try {
-        const res = await Api.get('/api/get', productId);
+        const res = await Api.get('/api/categoryList');
 
         for (let i = 0; i < res.length; i++) {
             const option = document.createElement("option");
-            option.value = res[i];
-            const option_text = document.createTextNode(option.value);
+            const option_text = document.createTextNode(res[i].name);
             option.appendChild(option_text);
             product_category.appendChild(option);
         }
@@ -27,13 +29,13 @@ window.onload = async function() {
         alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
     }
 
-    // productId로 상품 정보 받아오기. API 연결 안 돼 있음
     try {
-        const res = await Api.get('/api/get', productId);
+        const res = await Api.get('/api/productListId', productId);
         product_name.value = res.name;
         product_company.value = res.company;
+        product_category.value = res.category;
         product_img.value = res.img;
-        product_price.dataset.value = res.price;
+        product_price.value = res.price;
         product_description.value = res.description;
     }
     catch(err) {

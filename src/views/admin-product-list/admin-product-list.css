@@ -262,7 +262,7 @@ div.product_list_container p.title {
     margin-bottom: 80px;
 }
 
-div.product_container {
+div.product_container, #btn_add {
     width: 50%;
     min-height: 50px;
     border: 1.5px solid rgb(95, 206, 179);
@@ -297,4 +297,25 @@ div.name_container {
     color: rgb(75, 74, 74);
     font-size: 20px;
     font-weight: 600;
+}
+
+div.btn_add_container {
+    margin-bottom: 30px;
+    height: auto;
+}
+
+#btn_add {
+    width: 30%;
+    background-color: rgb(95, 206, 179);
+    font-size: 25px;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    margin: 80px auto;
+}
+
+#btn_add:hover {
+    background-color: #5fceb29b;
+    border: 1.5px solid #5fceb29b;
+    cursor: pointer;
 }

@@ -1,10 +1,11 @@
 import { Router } from 'express';
 import { productService } from '../services';
+import { adminRequired } from '../middlewares';
 
 const productRouter = Router();
 
 //상품 추가
-productRouter.post('/productAdd', async (req, res, next) => {
+productRouter.post('/productAdd', adminRequired, async (req, res, next) => {
   try {
     const { name, price, company, category, img, description } = req.body;
 
@@ -57,16 +58,25 @@ productRouter.get('/productListName/:name', async (req, res, next) => {
   }
 });
 
+//상품ID값으로 조회
+productRouter.get('/productListId/:productId', async (req, res, next) => {
+  try {
+    const productId = req.params.productId;
+
+    const product = await productService.getProductById(productId);
+    res.status(200).json(product);
+  } catch (error) {
+    next(error);
+  }
+});
+
 //상품 수정
-productRouter.patch('/productUpdate/:productId', async (req, res, next) => {
+productRouter.patch('/productUpdate/:productId', adminRequired, async (req, res, next) => {
   try {
     const productId = req.params.productId;
     const updatelist = req.body;
 
-    const updateResult = await productService.updateProduct(
-      productId,
-      updatelist
-    );
+    const updateResult = await productService.updateProduct(productId, updatelist);
     res.status(200).json(updateResult);
   } catch (error) {
     next(error);
@@ -74,7 +84,7 @@ productRouter.patch('/productUpdate/:productId', async (req, res, next) => {
 });
 
 //상품 삭제
-productRouter.delete('/productDelete/:productId', async (req, res, next) => {
+productRouter.delete('/productDelete/:productId', adminRequired, async (req, res, next) => {
   try {
     const productId = req.params.productId;
 
@@ -83,6 +93,7 @@ productRouter.delete('/productDelete/:productId', async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+  d;
 });
 
 export { productRouter };
