@@ -11,21 +11,20 @@ window.onload = async function() {
             // 경로 문제
             product_container.setAttribute("onclick", "location.href ='../detail/'" + res[i].name);
 
-            const img_container = document.createElement("div");
-            img_container.setAttribute("class", "category_container");
+            const category_container = document.createElement("div");
+            category_container.setAttribute("class", "category_container");
             const category = document.createTextNode(res[i].category);
-            img_container.appendChild(category);
+            category_container.appendChild(category);
 
             const name_container = document.createElement("div");
             name_container.setAttribute("class", "name_container");
             const name = document.createTextNode(res[i].name);
             name_container.appendChild(name);
             
-            product_container.appendChild(img_container);
+            product_container.appendChild(category_container);
             product_container.appendChild(name_container);
             product_list_container.appendChild(product_container);
         }
-        console.log(product_list_container);
     } 
     catch(err) {
         console.error(err.stack);
