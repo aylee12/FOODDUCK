@@ -93,6 +93,7 @@ productRouter.delete('/productDelete/:productId', adminRequired, async (req, res
   } catch (error) {
     next(error);
   }
+  d;
 });
 
 export { productRouter };
