@@ -21,3 +21,32 @@
   border-color: #00d1b2;
   box-shadow: 0 0 0 0.125em rgba(0, 209, 178, 0.25);
 }
+.control{
+  display: flex;
+}
+.radio-items{
+  flex-grow: 1;
+}
+
+.address-btn-wrap{
+  display: flex;
+}
+/* 왜 3:1의 비율이 안먹히는지 잘 모르겠음 */
+.address-btn-wrap:nth-child(1){
+  flex-grow: 3;
+}
+.address-btn-wrap:nth-child(2){
+  flex-grow: 1;
+}
+
+.address-detail-wrap{
+  display: flex;
+}
+
+/* 변경해도 바뀌지가 않음 */
+.input-email-ex1{
+  flex-grow: 3;
+}
+.input-email-ex2{
+  flex-grow: 1;
+}

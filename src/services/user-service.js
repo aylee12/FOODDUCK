@@ -12,7 +12,16 @@ class UserService {
   // 회원가입
   async addUser(userInfo) {
     // 객체 destructuring
-    const { email, fullName, password } = userInfo;
+    // phoneNumber, address, gender, birthday (05_27 추가, 작업자 : 김용민)
+    const {
+      email,
+      fullName,
+      password,
+      phoneNumber,
+      address,
+      gender,
+      birthday,
+    } = userInfo;
 
     // 이메일 중복 확인
     const user = await this.userModel.findByEmail(email);
@@ -27,7 +36,16 @@ class UserService {
     // 우선 비밀번호 해쉬화(암호화)
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUserInfo = { fullName, email, password: hashedPassword };
+    // otherInfo => phoneNumber, address, gender, birthday (05_27 추가, 작업자 : 김용민)
+    const newUserInfo = {
+      fullName,
+      email,
+      password: hashedPassword,
+      phoneNumber,
+      address,
+      gender,
+      birthday,
+    };
 
     // db에 저장
     const createdNewUser = await this.userModel.create(newUserInfo);
@@ -47,6 +65,8 @@ class UserService {
         '해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인해 주세요.'
       );
     }
+
+    console.log(user);
 
     // 이제 이메일은 문제 없는 경우이므로, 비밀번호를 확인함
 
@@ -69,9 +89,21 @@ class UserService {
     const secretKey = process.env.JWT_SECRET_KEY || 'secret-key';
 
     // 2개 프로퍼티를 jwt 토큰에 담음
-    const token = jwt.sign({ userId: user._id, role: user.role }, secretKey);
+    // 0526 role이 admin일때 admintoken으로 발행처리
+    if (user.role == 'admin') {
+      const admintoken = jwt.sign(
+        { userId: user._id, role: user.role },
+        secretKey
+      );
+      return { admintoken };
+    } else {
+      const token = jwt.sign({ userId: user._id, role: user.role }, secretKey);
+      return { token };
+    }
 
-    return { token };
+    // const token = jwt.sign({ userId: user._id, role: user.role }, secretKey);
+
+    // return { token };
   }
 
   // 사용자 목록을 받음.
