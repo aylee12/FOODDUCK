@@ -74,6 +74,12 @@ userRouter.get('/userlist', loginRequired, async function (req, res, next) {
   }
 });
 
+//특정 유저정보 불러오기 - 회원정보수정때문에 필요 (제작중)
+// userRouter.get('/getUserInfo', (req, res, next) => {
+//   // request 헤더로부터 authorization bearer 토큰을 받음.
+//   const userToken = req.headers['authorization']?.split(' ')[1];
+// });
+
 // 사용자 정보 수정
 // (예를 들어 /api/users/abc12345 로 요청하면 req.params.userId는 'abc12345' 문자열로 됨)
 userRouter.patch('/users/:userId', loginRequired, async function (req, res, next) {
