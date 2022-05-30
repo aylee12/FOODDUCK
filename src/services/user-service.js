@@ -36,7 +36,6 @@ class UserService {
     // 우선 비밀번호 해쉬화(암호화)
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // otherInfo => phoneNumber, address, gender, birthday (05_27 추가, 작업자 : 김용민)
     const newUserInfo = {
       fullName,
       email,
@@ -89,21 +88,9 @@ class UserService {
     const secretKey = process.env.JWT_SECRET_KEY || 'secret-key';
 
     // 2개 프로퍼티를 jwt 토큰에 담음
-    // 0526 role이 admin일때 admintoken으로 발행처리
-    if (user.role == 'admin') {
-      const admintoken = jwt.sign(
-        { userId: user._id, role: user.role },
-        secretKey
-      );
-      return { admintoken };
-    } else {
-      const token = jwt.sign({ userId: user._id, role: user.role }, secretKey);
-      return { token };
-    }
+    const token = jwt.sign({ userId: user._id, role: user.role }, secretKey);
 
-    // const token = jwt.sign({ userId: user._id, role: user.role }, secretKey);
-
-    // return { token };
+    return { token };
   }
 
   // 사용자 목록을 받음.
