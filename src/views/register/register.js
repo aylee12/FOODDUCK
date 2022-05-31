@@ -8,17 +8,16 @@ const passwordInput = document.querySelector('#passwordInput');
 const passwordConfirmInput = document.querySelector('#passwordConfirmInput');
 const submitButton = document.querySelector('#submitButton');
 const phoneNumberInput = document.querySelector('#phoneNumberInput');
-const radioInput = document.querySelector("input[type=radio]:checked");
-const yearInput = document.querySelector("#yearInput");
-const monthInput = document.querySelector("#monthInput");
-const dayInput = document.querySelector("#dayInput");
+const radioInput = document.querySelector('input[type=radio]:checked');
+const yearInput = document.querySelector('#yearInput');
+const monthInput = document.querySelector('#monthInput');
+const dayInput = document.querySelector('#dayInput');
 
-// 주소 
-const postCodeInput = document.querySelector("#postcode");
-const addressInput = document.querySelector("#address");
-const detailAddressInput = document.querySelector("#detailAddress");
-const extraAddressInput = document.querySelector("#extraAddress");
-
+// 주소
+const postCodeInput = document.querySelector('#postcode');
+const addressInput = document.querySelector('#address');
+const detailAddressInput = document.querySelector('#detailAddress');
+const extraAddressInput = document.querySelector('#extraAddress');
 
 addAllElements();
 addAllEvents();
@@ -40,15 +39,17 @@ async function handleSubmit(e) {
   const password = passwordInput.value;
   const passwordConfirm = passwordConfirmInput.value;
   const phoneNumber = phoneNumberInput.value;
-  const radio = radioInput.value;
+  const gender = radioInput.value;
 
-  // 주소 값 
-  const postCode = postCodeInput.value;
-  const address = addressInput.value;
-  const detailAddress = detailAddressInput.value;
-  const extraAddress = extraAddressInput.value;
+  // 주소 값
+  const postalCode = postCodeInput.value;
+  const address1 = addressInput.value;
+  const address2 = detailAddressInput.value;
+  const address3 = extraAddressInput.value;
+  //const address = { postalCode, address1, address2, address3 } 이렇게 보내주시면 감사하겠습니다!
 
-  // 생년월일 
+  //생일과 성별은 지워주시면 될 것 같습니다!
+  // 생년월일
   const year = yearInput.value;
   const month = monthInput.value;
   const day = dayInput.value;
@@ -73,21 +74,21 @@ async function handleSubmit(e) {
 
   // 회원가입 api 요청
   try {
-    const data = { 
+    const data = {
       fullName,
       email,
       password,
-      postCode,
-      address,
-      detailAddress,
-      extraAddress,
+      postalCode,
+      address1,
+      address2,
+      address3,
       phoneNumber,
-      radio,
+      gender,
       year,
       month,
-      day
+      day,
     };
-    console.log(data);
+    console.log('입력데이터', data);
     await Api.post('/api/register', data);
 
     alert(`정상적으로 회원가입되었습니다.`);

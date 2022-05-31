@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import is from '@sindresorhus/is';
 // 폴더에서 import하면, 자동으로 폴더의 index.js에서 가져옴
-import { loginRequired } from '../middlewares';
+import { adminRequired, loginRequired } from '../middlewares';
 import { userService } from '../services';
 
 const userRouter = Router();
@@ -16,15 +16,15 @@ userRouter.post('/register', async (req, res, next) => {
     }
 
     // req (request)의 body 에서 데이터 가져오기
-    const fullName = req.body.fullName;
-    const email = req.body.email;
-    const password = req.body.password;
+    const { fullName, email, password, phoneNumber, address } = req.body;
 
     // 위 데이터를 유저 db에 추가하기
     const newUser = await userService.addUser({
       fullName,
       email,
       password,
+      phoneNumber,
+      address,
     });
 
     // 추가된 유저의 db 데이터를 프론트에 다시 보내줌
@@ -44,8 +44,7 @@ userRouter.post('/login', async function (req, res, next) {
     }
 
     // req (request) 에서 데이터 가져오기
-    const email = req.body.email;
-    const password = req.body.password;
+    const { email, password } = req.body;
 
     // 로그인 진행 (로그인 성공 시 jwt 토큰을 프론트에 보내 줌)
     const userToken = await userService.getUserToken({ email, password });
@@ -87,9 +86,9 @@ userRouter.patch('/users/:userId', loginRequired, async function (req, res, next
     // body data 로부터 업데이트할 사용자 정보를 추출함.
     const fullName = req.body.fullName;
     const password = req.body.password;
-    const address = req.body.address;
     const phoneNumber = req.body.phoneNumber;
-    const role = req.body.role;
+    const address = req.body.address;
+    // const role = req.body.role;
 
     // body data로부터, 확인용으로 사용할 현재 비밀번호를 추출함.
     const currentPassword = req.body.currentPassword;
@@ -106,9 +105,9 @@ userRouter.patch('/users/:userId', loginRequired, async function (req, res, next
     const toUpdate = {
       ...(fullName && { fullName }),
       ...(password && { password }),
-      ...(address && { address }),
       ...(phoneNumber && { phoneNumber }),
-      ...(role && { role }),
+      ...(address && { address }),
+      // ...(role && { role }),
     };
 
     // 사용자 정보를 업데이트함.
@@ -119,6 +118,24 @@ userRouter.patch('/users/:userId', loginRequired, async function (req, res, next
   } catch (error) {
     next(error);
   }
+});
+
+//토큰을 이용하여 특정 유저정보 불러오기 - 회원정보수정때문에 필요
+userRouter.get('/getUserInfo', loginRequired, async (req, res, next) => {
+  try {
+    const userId = req.currentUserId;
+
+    const user = await userService.getUser(userId);
+    res.status(200).json(user);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// issue에 질문 (정적 페이지 라우팅은 어떤 방식을 사용하는가? 권한 인증이 필요한 페이지는 라우터에서 걸러줘야 하는 것 같은데 맞는가?)
+// 권한 체크 api (post? get? 둘중에 뭐로 해야할까??) - use를 사용해야할거같다.
+userRouter.get('/authorization', adminRequired, async function (req, res, next) {
+  // const path = req.
 });
 
 export { userRouter };
