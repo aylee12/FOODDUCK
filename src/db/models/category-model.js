@@ -27,8 +27,8 @@ export class CategoryModel {
   }
 
   //카테고리 삭제
-  async deleteCategory(category) {
-    return await Category.findOneAndDelete({ category });
+  async deleteCategory(name) {
+    return await Category.findOneAndDelete({ name });
   }
 }
 

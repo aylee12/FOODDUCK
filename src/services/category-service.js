@@ -24,6 +24,11 @@ class CategoryService {
   async updateCategory(name, updatelist) {
     return await this.categoryModel.updateCategory(name, updatelist);
   }
+
+  //카테고리 삭제
+  async deleteCategory(name) {
+    return await this.categoryModel.deleteCategory(name);
+  }
 }
 
 const categoryService = new CategoryService(categoryModel);
