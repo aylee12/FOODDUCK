@@ -31,6 +31,12 @@ viewsRouter.use('/admin/category/list', serveStatic('admin-category-manage'));
 viewsRouter.use('/cart', serveStatic('cart'));
 viewsRouter.use('/pay', serveStatic('pay'));
 // 제품 category별 조회 주소 설정
+// 카드 주소 설정
+viewsRouter.use('/cart', serveStatic('cart'));
+// 구매 주소 설정
+viewsRouter.use('/pay', serveStatic('pay'));
+// 유저 정보 변경
+viewsRouter.use('/user/info/manage', serveStatic('user-info-manage'));
 viewsRouter.use('/product/meat', serveStatic('meat'));
 viewsRouter.use('/product/fish', serveStatic('fish'));
 viewsRouter.use('/product/fruit', serveStatic('fruit'));

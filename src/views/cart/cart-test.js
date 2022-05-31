@@ -4,7 +4,7 @@ const obj1 = {
     price:1000,
     brand:"마켓컬리1",
     name:"커피1",
-    quantitiy:1
+    quantity:1
 };
 arr.push(obj1);
 
@@ -12,7 +12,7 @@ const obj2 = {
   price:2000,
   brand:"마켓컬리2",
   name:"커피2",
-  quantitiy:2
+  quantity:2
 };
 arr.push(obj2);
 
@@ -20,7 +20,7 @@ const obj3 = {
   price:3000,
   brand:"마켓컬리3",
   name:"커피3",
-  quantitiy:3
+  quantity:3
 };
 arr.push(obj3);
 
