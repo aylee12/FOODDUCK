@@ -1,10 +1,18 @@
+import * as Api from '/api.js';
+
 window.onload = async function() {  
-    // localStroage에 저장된 token으로 유저 타입 파악, 미완성
-    // const role = localStorage.getItem("role");
-    // 최초 로그인시 유저 정보에 role이 들어가면 됨
+    let role = "";
+
+    try {
+        role = await Api.get('/api/getuserInfo').role;
+    }
+    catch(err) {
+        console.error(err.stack);
+        alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+    }
     
     // 테스트 코드
-    const role = "admin";
+    role = "admin";
 
     const button_container = document.querySelector(".button_container");
     // 사용자가 admin이면 보여줄 버튼들, url 추가 안 된 버전

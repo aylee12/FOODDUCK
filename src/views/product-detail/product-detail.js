@@ -38,11 +38,19 @@ window.onload = async function() {
     console.error(err.stack);
     alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
   }
-  // 유저 데이터 가져오기 -> localStorage에 저장된 token으로 user role 사용 가능
-  // const role = localStorage.getItem("role");
+
+  // 유저 정보 - role(권한) 가져오기
+  try {
+    const role = await Api.get('/api/getuserInfo').role;
+    product_name.dataset.role = role;
+  }
+  catch(err) {
+    console.error(err.stack);
+    alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+  }
 
   // 테스트용
-  product_name.dataset.role = "admin";
+  // product_name.dataset.role = "admin";
 
   product_price.innerText = numberWithCommas(product_price.dataset.value);
   product_total_price.dataset.value = product_price.dataset.value;
