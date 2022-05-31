@@ -293,6 +293,46 @@ div.name_zone div.btn_admin_zone {
   align-items: center;
 }
 
+#btn_edit {
+  background-color: rgb(254, 176, 36);
+  font-size: 15px; 
+  color: white;
+  margin: 5px; 
+  padding: 7px; 
+
+  border: 2px solid rgb(254, 176, 36);
+  border-top-left-radius: 30px; 
+  border-top-right-radius: 30px; 
+  border-bottom-left-radius: 30px; 
+  border-bottom-right-radius: 30px;
+}
+
+#btn_edit:hover {
+  background-color: rgb(248, 191, 84); 
+  border: 2px solid rgb(249, 200, 110);
+  cursor: pointer;
+}
+
+#btn_del {
+  background-color: rgb(253, 70, 70);
+  font-size: 15px; 
+  color: white;
+  margin: 5px; 
+  padding: 7px; 
+
+  border: 2px solid rgb(253, 70, 70);
+  border-top-left-radius: 30px; 
+  border-top-right-radius: 30px; 
+  border-bottom-left-radius: 30px; 
+  border-bottom-right-radius: 30px;
+}
+
+#btn_del:hover {
+  background-color: rgb(253, 110, 110);
+  border: 2px solid rgb(249, 132, 132);
+  cursor: pointer;
+}
+
 div.product_price_zone {
   margin: 10px 0 30px 0;
   font-weight: 500;
@@ -320,7 +360,7 @@ dd{
 }
 
 /* 구매 수량 */
-span.count {
+span.cnt {
   overflow: hidden;
   float: left;
   width: 88px;
@@ -330,11 +370,11 @@ span.count {
   padding: 0;
 }
 
-.count #btn_cnt_down, .count #btn_cnt_up{
+div.cnt .button {
   padding: 0 10px 0 10px;
 }
 
-.count #quantity {
+.cnt #quantity {
   height: 1.5rem;
   padding-left: 0;
   padding-right: 0;
@@ -394,4 +434,13 @@ div.btn_zone div.btn_item {
   text-align: center;
 }
 
-/* 상단 제품 정보 끝 */
+div.btn_zone div.btn_item button {
+  background-color: rgb(96, 206, 179);
+  color: white;
+  border: 1px solid rgb(96, 206, 179);
+}
+
+div.btn_zone div.btn_item button:hover {
+  background-color: rgb(134, 227, 204);
+  border: 1px solid rgb(156, 237, 217);
+}

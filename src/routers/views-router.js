@@ -18,6 +18,16 @@ viewsRouter.use('/product/add', serveStatic('product-add'));
 // product-edit 주소 설정
 viewsRouter.use('/product/edit', serveStatic('product-edit'));
 
+// 유저 정보 변경
+viewsRouter.use('/user/info/manage' , serveStatic('user-info-manage'));
+// my page 주소 설정
+viewsRouter.use('/mypage', serveStatic('mypage'));
+
+// admin-product-list 주소 설정
+viewsRouter.use('/admin/product/list', serveStatic('admin-product-list'));
+// admin-category-list 주소 설정
+viewsRouter.use('/admin/category/list', serveStatic('admin-category-manage'));
+
 // cart 주소 설정하기
 viewsRouter.use('/cart', serveStatic('cart'));
 viewsRouter.use('/pay', serveStatic('pay'));
