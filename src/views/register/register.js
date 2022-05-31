@@ -39,7 +39,6 @@ async function handleSubmit(e) {
   const password = passwordInput.value;
   const passwordConfirm = passwordConfirmInput.value;
   const phoneNumber = phoneNumberInput.value;
-  const gender = radioInput.value;
 
   // 주소 값
   const postalCode = postCodeInput.value;
@@ -47,12 +46,6 @@ async function handleSubmit(e) {
   const address2 = detailAddressInput.value;
   const address3 = extraAddressInput.value;
   //const address = { postalCode, address1, address2, address3 } 이렇게 보내주시면 감사하겠습니다!
-
-  //생일과 성별은 지워주시면 될 것 같습니다!
-  // 생년월일
-  const year = yearInput.value;
-  const month = monthInput.value;
-  const day = dayInput.value;
 
   // 잘 입력했는지 확인
   const isFullNameValid = fullName.length >= 2;
@@ -83,10 +76,6 @@ async function handleSubmit(e) {
       address2,
       address3,
       phoneNumber,
-      gender,
-      year,
-      month,
-      day,
     };
     console.log('입력데이터', data);
     await Api.post('/api/register', data);

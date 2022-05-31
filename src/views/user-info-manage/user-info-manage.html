@@ -79,99 +79,96 @@
         id="registerUserForm"
       >
         <p class="title is-5 has-text-primary">회원 정보 수정</p>
-        <div class="field">
-          <label class="label" for="fullNameInput">이름</label>
-          <div class="control">
-            <input
-              class="input input_able"
-              id="fullNameInput"
-              type="text"
-              placeholder="유재석"
-              autocomplete="on"
-              disabled
-            />
-            <label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
-          </div>
+        <div id="user_info_manage">
+          <div class="field">
+            <label class="label" for="fullNameInput">이름</label>
+            <div class="control">
+              <input
+                class="input input_able"
+                id="fullNameInput"
+                type="text"
+                placeholder="유재석"
+                autocomplete="on"
+                disabled
+              />
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+            </div>
           
-        </div>
-
-        <div class="field">
-          <label class="label" for="passwordInput">비밀번호</label>
-          <div class="control">
-            <input
-              class="input input_able"
-              id="passwordInput"
-              type="password"
-              placeholder="********"
-              autocomplete="off"
-              disabled
-            />
-            <label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
           </div>
-        </div>
-
-        <div class="field mb-5">
-          <label class="label" for="passwordConfirmInput">비밀번호 확인</label>
-          <div class="control">
-            <input
-              class="input check_pw_able"
-              id="passwordConfirmInput"
-              type="password"
-              placeholder="********"
-              autocomplete="off"
-              disabled
-            />
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label" for="fullNameInput">전화번호</label>
-          <div class="control">
-            <input
-              class="input input_able"
-              id="phoneNumberInput"
-              type="text"
-              placeholder="전화번호"
-              autocomplete="on"
-              disabled
-            />
-            <label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
-          </div>
-        </div>
-
-        <div class="field mb-5">
-          <label class="label" for="addressInput">주소</label>
-          <div class="address-control">
-            <div class="address-btn-wrap">
-              <div class="address_btn_items1">
-                <input class="input input_able check_post_able" type="text" id="postcode" placeholder="우편번호" disabled>
-              </div>
-              <div class="address_btn_items2">
-                <input class="input check_post_able" type="button" onclick="daumPostCode()" value="우편번호 찾기" disabled>
-              </div>
-              <div class="address_btn_items3">
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-              </div>
+          <div class="field">
+            <label class="label" for="passwordInput">비밀번호</label>
+            <div class="control">
+              <input
+                class="input input_able"
+                id="passwordInput"
+                type="password"
+                placeholder="********"
+                autocomplete="off"
+                disabled
+              />
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
             </div>
-
-            <div class="address_btn_items4">
-              <input class="input check_post_able" type="text" id="address" placeholder="주소" disabled>
+          </div>
+          <div class="field mb-5">
+            <label class="label" for="passwordConfirmInput">비밀번호 확인</label>
+            <div class="control">
+              <input
+                class="input check_pw_able"
+                id="passwordConfirmInput"
+                type="password"
+                placeholder="********"
+                autocomplete="off"
+                disabled
+              />
             </div>
-            <div class="address-detail-wrap">
-              <input class="input check_post_able address_btn_items5" type="text" id="detailAddress" placeholder="상세주소" disabled>
-              <input class="input check_post_able" type="text" id="extraAddress" placeholder="참고항목" disabled>
+          </div>
+          <div class="field">
+            <label class="label" for="fullNameInput">전화번호</label>
+            <div class="control">
+              <input
+                class="input input_able"
+                id="phoneNumberInput"
+                type="text"
+                placeholder="전화번호"
+                autocomplete="on"
+                disabled
+              />
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+          <div class="field mb-5">
+            <label class="label" for="addressInput">주소</label>
+            <div class="address-control">
+              <div class="address-btn-wrap">
+                <div class="address_btn_items1">
+                  <input class="input input_able check_post_able" type="text" id="postcode" placeholder="우편번호" disabled>
+                </div>
+                <div class="address_btn_items2">
+                  <input class="input check_post_able" type="button" onclick="daumPostCode()" value="우편번호 찾기" disabled>
+                </div>
+                <div class="address_btn_items3">
+                  <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="address_btn_items4">
+                <input class="input check_post_able" type="text" id="address" placeholder="주소" disabled>
+              </div>
+              <div class="address-detail-wrap">
+                <input class="input check_post_able address_btn_items5" type="text" id="detailAddress" placeholder="상세주소" disabled>
+                <input class="input check_post_able" type="text" id="extraAddress" placeholder="참고항목" disabled>
+              </div>
             </div>
           </div>
         </div>
