@@ -13,12 +13,12 @@ const cartInit = () => {
           <input type="checkbox" class="check-one">
         </div>
         <div class="cart-items-img">
-          <img src="" alt="">
+          <img src="${items.img}" alt="">
         </div>
         <div class="cart-items-content">
-          <p>${items.brand}</p>
+          <p>${items.company}</p>
           <p>${items.name}</p>
-          <div><span class="cart-items-price" data-value="${items.price}">${items.price}</span>원</div>
+          <div><span class="cart-items-price" data-value="${items.price}">${items.price*items.quantity}</span>원</div>
         </div>
         <div class="cart-items-btn">
           <input type="text" value=${items.quantity} class="cart-items-quantity-input" readonly>
@@ -29,7 +29,7 @@ const cartInit = () => {
         </div>
       </div>
     `
-    sumPriceTag += items.price;
+    sumPriceTag += items.price*items.quantity;
   });
   cartList.innerHTML += 
   `
