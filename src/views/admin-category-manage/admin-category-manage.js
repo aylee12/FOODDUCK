@@ -125,7 +125,7 @@ async function delHandler() {
         const name = document.getElementById(this.dataset.id).value;
 
         try {
-            await Api.del('/api/categoryUpdate', name);
+            await Api.delete('/api/categoryUpdate', name);
             alert("카테고리가 삭제되었습니다.");
             location.reload();
         }

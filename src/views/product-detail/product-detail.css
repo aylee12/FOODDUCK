@@ -294,13 +294,13 @@ div.name_zone div.btn_admin_zone {
 }
 
 #btn_edit {
-  background-color: #f5bf4f;
+  background-color: rgb(254, 176, 36);
   font-size: 15px; 
   color: white;
   margin: 5px; 
   padding: 7px; 
 
-  border: 2px solid #f5bf4f; 
+  border: 2px solid rgb(254, 176, 36);
   border-top-left-radius: 30px; 
   border-top-right-radius: 30px; 
   border-bottom-left-radius: 30px; 
@@ -308,18 +308,19 @@ div.name_zone div.btn_admin_zone {
 }
 
 #btn_edit:hover {
-  background-color: #f5be4fa9;  
+  background-color: rgb(248, 191, 84); 
+  border: 2px solid rgb(249, 200, 110);
   cursor: pointer;
 }
 
 #btn_del {
-  background-color: #ed6a5e;
+  background-color: rgb(253, 70, 70);
   font-size: 15px; 
   color: white;
   margin: 5px; 
   padding: 7px; 
 
-  border: 2px solid #ed6a5e; 
+  border: 2px solid rgb(253, 70, 70);
   border-top-left-radius: 30px; 
   border-top-right-radius: 30px; 
   border-bottom-left-radius: 30px; 
@@ -327,7 +328,8 @@ div.name_zone div.btn_admin_zone {
 }
 
 #btn_del:hover {
-  background-color: #ed6a5eb9; 
+  background-color: rgb(253, 110, 110);
+  border: 2px solid rgb(249, 132, 132);
   cursor: pointer;
 }
 

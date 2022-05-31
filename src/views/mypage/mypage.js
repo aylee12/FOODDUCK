@@ -6,7 +6,7 @@ window.onload = async function() {
 
     try {
         const user = await Api.get('/api/getuserInfo');
-        name = user.name;
+        name = user.fullName;
         role = user.role;
     }
     catch(err) {
@@ -18,7 +18,7 @@ window.onload = async function() {
 
 
     // 테스트 코드
-    role = "admin";
+    //role = "";
     
     // 사용자가 admin이면 보여줄 버튼들, url 추가 안 된 버전
     if (role === "admin") {

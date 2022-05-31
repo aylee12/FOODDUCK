@@ -24,6 +24,8 @@ const btn_buy_now = document.getElementById("btn_buy_now");
 let cart = [];
 let move_result = false;
 
+let role = "";
+
 window.onload = async function() {
   // 상품 데이터 가져오기
   try {
@@ -41,8 +43,8 @@ window.onload = async function() {
 
   // 유저 정보 - role(권한) 가져오기
   try {
-    const role = await Api.get('/api/getuserInfo').role;
-    product_name.dataset.role = role;
+    const user = await Api.get('/api/getuserInfo');
+    role = user.role;
   }
   catch(err) {
     console.error(err.stack);
@@ -50,7 +52,7 @@ window.onload = async function() {
   }
 
   // 테스트용
-  product_name.dataset.role = "admin";
+  // role = "admin";
 
   product_price.innerText = numberWithCommas(product_price.dataset.value);
   product_total_price.dataset.value = product_price.dataset.value;
@@ -61,7 +63,7 @@ window.onload = async function() {
 // 회원 role이 admin이면 수정, 삭제 버튼 생성
 function adminControl() {
   
-  if (product_name.dataset.role === "admin") {
+  if (role === "admin") {
     const btn_admin_zone =  document.querySelector(".btn_admin_zone")
 
     // 수정 버튼 생성
