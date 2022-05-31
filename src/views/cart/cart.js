@@ -1,7 +1,8 @@
 // 합계 관련된 것들 
 const itemsQuantity = document.querySelectorAll(".cart-items-quantity-input");
 const btnMinus = document.querySelectorAll(".cart-btn-minus");
-const btnPlus = document.querySelectorAll(".cart-btn-plus");
+// const btnPlus = document.querySelectorAll(".cart-btn-plus");
+const btnPlus = document.getElementsByClassName("cart-btn-plus");
 const cartItemsPrice = document.getElementsByClassName("cart-items-price");
 const cartPriceSum = document.querySelector('.cart-price-sum');
 const cartItemsList = document.querySelectorAll(".cart-items-list");
@@ -20,17 +21,20 @@ const sumPrice = () => {
   cartPriceSum.innerHTML = sum;
 }
 
-// 증감 버튼 구현하기 
-for(let i = 0 ;i<btnPlus.length;i++){
-  console.log(btnPlus);
-  btnPlus[i].addEventListener("click" , () =>{
-    itemsQuantity[i].value = Number(itemsQuantity[i].value) + 1;
-    console.log(i);
-    console.log(cartItemsPrice[i]);
-    cartItemsPrice[i].innerHTML = itemsQuantity[i].value * cartItemsPrice[i].getAttribute("data-value");
-    sumPrice();
-  })
-}
+
+// 증감 버튼 구현하기 (선택 삭제 이후에 0번째 버튼을 가리켜야 되는데 1번째 버튼을 자꾸 가리킴)
+// for(let i = 0 ; i < btnPlus.length;i++){
+//   btnPlus[i].addEventListener("click" , () =>{
+//     console.log(btnPlus);
+//     console.log(i);
+//     console.log(btnPlus[i]);
+//     console.log(btnPlus.length);
+//     itemsQuantity[i].value = Number(itemsQuantity[i].value) + 1;
+//     // console.log(i);
+//     cartItemsPrice[i].innerHTML = itemsQuantity[i].value * cartItemsPrice[i].getAttribute("data-value");
+//     sumPrice();
+//   })
+// }
 
 for(let i = 0 ; i<btnPlus.length; i++){
   btnMinus[i].addEventListener("click" , () =>{
@@ -44,7 +48,6 @@ for(let i = 0 ; i<btnPlus.length; i++){
   })
 }
 
-// 전체 선택 (전체 선택 했다가 하나 풀고 다시 전체 선택하면 전체 선택이 안됨), 선택 삭제 
 allCheck.addEventListener("click" , () => {
   checkOne.forEach(check => {
     const checkFilter = check.checked ? false : true;
@@ -72,8 +75,6 @@ selectCheck.addEventListener("click" , () => {
     cartJSON.splice(tempCartArray[i] - i ,1);
   }
   sumPrice();
-
-  // console.log(cartJSON);
   // 제거하고 localStorage에 다시 담는다
   // localStorage.setItem("cartExample" , JSON.stringify(cartJSON));
 });

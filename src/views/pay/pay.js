@@ -4,7 +4,7 @@ const payButton = document.querySelector("#payButton");
 // 주문 가격 총 계산하기 
 const paySumPriceLoaded = () => {
   const getCartStorage = JSON.parse(localStorage.getItem("cartExample"));
-  const sumPrice = getCartStorage.reduce((acc , cur) => acc + cur.price , 0);
+  const sumPrice = getCartStorage.reduce((acc , cur) => acc + cur.price*cur.quantity , 0);
   cartPriceSum.innerHTML = sumPrice;
 }
 
