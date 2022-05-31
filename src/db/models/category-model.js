@@ -14,6 +14,11 @@ export class CategoryModel {
     return await Category.find({});
   }
 
+  //카테고리명으로 조회
+  async findByName(name) {
+    return await Category.findOne({ name });
+  }
+
   //카테고리 수정
   async updateCategory(name, updatelist) {
     return await Category.findOneAndUpdate({ name }, updatelist, {

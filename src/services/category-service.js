@@ -15,6 +15,11 @@ class CategoryService {
     return await this.categoryModel.findAll();
   }
 
+  //카테고리명으로 조회
+  async getCategoryByName(name) {
+    return await this.categoryModel.findByName(name);
+  }
+
   //카테고리 수정
   async updateCategory(name, updatelist) {
     return await this.categoryModel.updateCategory(name, updatelist);
