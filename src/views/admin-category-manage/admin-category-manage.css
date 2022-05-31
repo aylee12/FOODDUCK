@@ -1,0 +1,392 @@
+/* header */
+/* 
+.navbar .container .navbar-brand .navbar-item .has-text-link {
+  color: black;
+} */
+#navbar_menu {
+    display: flex;
+    justify-content: center;
+    ;
+}
+.menu_main a {
+    color: black;
+}
+  
+.menu_list {
+    display: flex;
+}
+.menu_list .menu {
+    margin: 30px 70px;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    /* padding: 16px 0 0 0; */
+}
+.menu_list .menu a:hover {
+    color: #68a790;
+    background-color: transparent;
+    text-decoration: underline;
+}
+.search {
+    display:flex;
+    position: relative;
+}
+.search_box {
+    width: 200px;
+    height: 36px;
+    border: 1px solid #f7f7f7;
+    border-radius: 18px;
+    background-color: #f7f7f7;
+    padding: 0 60px 0 14px;
+    font-size: 12px;
+    color: #555;
+    margin: auto;
+}
+#search_btn {
+    width: 35px;
+    height: 35px;
+    margin: auto;
+    position: absolute;
+    right: 5px;
+    top: 25px;
+} 
+.navbar-end a {
+    color: black;
+}
+  
+/* main */
+.div-container {
+    /* display: flex; */
+    /* align-items: center;
+    justify-content: center; */
+    height: 100vh;
+    width: 100vw;
+    padding: 0px;
+    margin: 0px;
+}
+  
+#slider_wrap {
+    position: relative;
+    text-align: center;
+    border: 1px solid #f7f7f7;
+    padding-bottom: 120px;
+}
+#slider_wrap #slider .slide {
+    display: none;
+}
+#slider_wrap #slider .active {
+    display: block;
+}
+  
+#slider_wrap #slider .slide img {
+    width: 100%;
+    height: 370px;
+}
+  
+.right_arrow {
+    position: absolute;
+    top: 150px;
+    right: 250px;
+    background-color: transparent;
+    width: 52px;
+    height: 52px;
+    border: none;
+    background-image: url('https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_banner_right_52_52.svg');
+    cursor: pointer;
+}
+.left_arrow {
+    position: absolute;
+    top: 150px;
+    left: 250px;
+    background-color: transparent;
+    background-image: url(https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_banner_left_52_52.svg);
+    border: none;
+    width: 52px;
+    height: 52px;
+    cursor: pointer;
+}
+#slide_count {
+    position: absolute;
+    background-color: rgba(0,0,0,0.15);
+    font-weight: 400;
+    width: 40px;
+    height: 20px;
+    color: white;
+    font-size: 15px;
+    line-height: 20px;
+    top: 320px;
+    right: 250px;
+    border-radius: 12px;
+}
+.landing {
+    cursor: pointer;
+    border: 1px solid red;
+    padding: 10px;
+}
+  
+.greeting {
+    cursor: pointer;
+    border: 1px solid blue;
+    padding: 10px;
+    margin-left: 3rem;
+}
+  
+.footer {
+    margin: 0 15vw 0 15vw;
+    padding:0;
+    align-items: flex-start;
+}
+#custom_center_wrap {
+    text-align: center;
+  
+    margin: 0 0 10px 0;
+}
+.center_h2 {
+    font-size: 16pt;
+    font-weight:700;
+    padding-bottom: 29px;
+}
+  
+#call_wrap,
+#question_wrap {
+    display: flex;
+    margin: 10px 16px 0 0;
+}
+  
+#call_wrap .call_title_wrap,
+#question_wrap .question_title_wrap
+{
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    width: 140px;
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+  
+}
+#call_wrap .call_title_wrap{
+    border: none;
+    
+}
+#call_wrap .call_title_wrap .call {
+    /* font-size:1.7rem; */
+    font-size: 27px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+#question_wrap .question_title_wrap .cc_qna{
+    font-size:14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+  
+#right_call_wrap,
+#right_question_wrap{
+    padding-left: 10px;
+    white-space: nowrap;
+}
+#right_call_wrap .detail,
+#right_question_wrap .detail{
+    color: #999;
+}
+  
+.introduce_list {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 29px;
+}
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 50px;
+    /* margin: 100px; */
+}
+  
+/* 고객 행복센터 및 멤버소개 */
+  .footer_p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #999999;
+    font-size: 12px;
+    padding-bottom: 6px;
+    white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* admin-category-manage css */
+section.container {
+    width: 1050px;
+    margin: 0 auto;
+    margin-top: 5rem;
+    padding: 0px;
+}
+
+div.inner_container {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    min-height: 600px;
+    height: auto;
+    margin: 10px 0 30px 0;
+}  
+
+div.account-header {
+    text-align: center;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #f7f7f7;;
+}
+
+div.category_list_container {
+    width: 40rem;
+    height: auto;
+    margin: auto;
+    text-align: center;
+    align-content: center;
+    padding-top: 20px;
+
+    border: 1px solid rgb(234, 241, 239);
+    border-top-left-radius: 30px; 
+    border-top-right-radius: 30px; 
+    border-bottom-left-radius: 30px; 
+    border-bottom-right-radius: 30px;
+}
+
+div.category_list_container p {
+    color:#818181;
+    margin-bottom: 40px;
+}
+
+div.add_zone {
+    width: 100%;
+    margin-bottom: 70px;
+    vertical-align: middle;
+}
+
+#new_category_name {
+    width: 50%;
+    margin-right: 5px;
+}
+
+div.add_zone #btn_submit {
+    background-color: rgb(117, 197, 106);
+    font-size: 15px; 
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+
+    border: 2px solid rgb(117, 197, 106);
+    border-top-left-radius: 30px; 
+    border-top-right-radius: 30px; 
+    border-bottom-left-radius: 30px; 
+    border-bottom-right-radius: 30px;
+}
+
+div.add_zone #btn_submit:hover {
+    background-color: rgba(117, 197, 106, 0.725);
+    border: 2px solid rgba(117, 197, 106, 0.21) !important;
+    cursor: pointer;
+    color: white; 
+}
+
+div.category_container {
+    width: 90%;
+    min-height: 50px;
+    border: 1px solid rgba(194, 194, 194, 0.402);
+    margin: 40px auto;
+    height: auto;
+    vertical-align: middle;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    border-top-left-radius: 30px; 
+    border-top-right-radius: 30px; 
+    border-bottom-left-radius: 30px; 
+    border-bottom-right-radius: 30px;
+}
+
+div.category_container div#category_blank1 {
+    width: 25%;
+}
+
+div.category_container input {
+    text-align: center;
+    font-size: 17px; 
+    padding: 5px;
+
+    border: 1px solid white;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+    border-bottom-left-radius: 10px; 
+    border-bottom-right-radius: 10px;
+}
+
+div.category_container input:hover {
+    cursor: text;
+}
+
+div.category_container div#category_blank2 {
+    width: 8%;
+}
+
+.btn_edit {
+    background-color: #f5bf4f;
+    font-size: 15px; 
+    color: white;
+    margin: 5px; 
+    padding: 2px 5.5px; 
+  
+    border: 2px solid #f5bf4f; 
+    border-top-left-radius: 30px; 
+    border-top-right-radius: 30px; 
+    border-bottom-left-radius: 30px; 
+    border-bottom-right-radius: 30px;
+}
+  
+.btn_edit:hover {
+    background-color: #f5be4fa9;  
+    border: 2px solid #f5be4f53 !important; 
+    cursor: pointer;
+}
+  
+.btn_del {
+    background-color: #ed6a5e;
+    font-size: 15px; 
+    color: white;
+    margin: 5px; 
+    padding: 2px 5.5px;
+    margin-right: 10px;
+
+    border: 2px solid #ed6a5e; 
+    border-top-left-radius: 30px; 
+    border-top-right-radius: 30px; 
+    border-bottom-left-radius: 30px; 
+    border-bottom-right-radius: 30px;
+}
+
+.btn_del:hover {
+    background-color: #ed6a5eb9; 
+    border: 2px solid #ed6a5e49 !important; 
+    cursor: pointer;
+}

@@ -239,6 +239,8 @@
 /* 큰 틀 */
 section.container {
   width: 1050px;
+  min-height: 700px;
+  height: auto;
   margin: 0 auto;
   margin-top: 5rem;
   padding: 0px;
@@ -274,11 +276,8 @@ div.product_card_right {
 
 div.name_zone {
   width: 100%;
-  height: 100px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  min-height: 100px;
+  height: auto;
   margin-bottom: 20px;
 }
 
@@ -287,8 +286,49 @@ div.name_zone #product_name {
   font-size: 40px;
 }
 
-div.name_zone #btn_product_edit {
-  display: none;
+div.name_zone div.btn_admin_zone {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#btn_edit {
+  background-color: #f5bf4f;
+  font-size: 15px; 
+  color: white;
+  margin: 5px; 
+  padding: 7px; 
+
+  border: 2px solid #f5bf4f; 
+  border-top-left-radius: 30px; 
+  border-top-right-radius: 30px; 
+  border-bottom-left-radius: 30px; 
+  border-bottom-right-radius: 30px;
+}
+
+#btn_edit:hover {
+  background-color: #f5be4fa9;  
+  cursor: pointer;
+}
+
+#btn_del {
+  background-color: #ed6a5e;
+  font-size: 15px; 
+  color: white;
+  margin: 5px; 
+  padding: 7px; 
+
+  border: 2px solid #ed6a5e; 
+  border-top-left-radius: 30px; 
+  border-top-right-radius: 30px; 
+  border-bottom-left-radius: 30px; 
+  border-bottom-right-radius: 30px;
+}
+
+#btn_del:hover {
+  background-color: #ed6a5eb9; 
+  cursor: pointer;
 }
 
 div.product_price_zone {
@@ -318,7 +358,7 @@ dd{
 }
 
 /* 구매 수량 */
-span.count {
+span.cnt {
   overflow: hidden;
   float: left;
   width: 88px;
@@ -328,11 +368,11 @@ span.count {
   padding: 0;
 }
 
-.count #btn_cnt_down, .count #btn_cnt_up{
+div.cnt .button {
   padding: 0 10px 0 10px;
 }
 
-.count #quantity {
+.cnt #quantity {
   height: 1.5rem;
   padding-left: 0;
   padding-right: 0;

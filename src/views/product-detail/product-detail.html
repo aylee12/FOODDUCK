@@ -128,14 +128,13 @@
 
             <!-- 제품명 -->
             <div class="name_zone">
-              <p id="product_name"> </p>
-              <!-- 제품 수정 버튼: 유저가 관리자일 경우 보이게 -->
-              <button id="btn_product_edit" class="button is-medium">제품 수정</button>
+              <p id="product_name"></p>
+              <div class="btn_admin_zone"></div>
             </div>
 
             <!-- 가격 -->
             <div class="product_price_zone">
-              <span id="product_price"> </span>
+              <span id="product_price"></span>
               <span class="won">원</span>
             </div>
             
@@ -159,12 +158,12 @@
             <dl class="list">
               <dt>구매 수량</dt>
               <dd> 
-                <div class="count">
-                  <button id="btn_cnt_down" class="button is-small is-rounded" onclick="count('minus')">
+                <div class="cnt">
+                  <button id="btn_cnt_down" class="button is-small is-rounded" value="-">
                     <i class="fas fa-thin fa-minus" aria-hidden="true"></i>
                   </button>
-                  <input type="number" id="quantity" min="1" max="99" value="1" readonly>
-                  <button id="btn_cnt_up" class="button is-small is-rounded" onclick="count('plus')">
+                  <input type="number" id="quantity" value="1" readonly>
+                  <button id="btn_cnt_up" class="button is-small is-rounded" value="+">
                     <i class="fas fa-thin fa-plus" aria-hidden="true"></i>
                   </button>
                 </div>
@@ -192,7 +191,7 @@
       </div>
 
     </section>
-    <script src="product-detail.js"></script>
+    <script src="product-detail.js" type="module"></script>
 
 
 

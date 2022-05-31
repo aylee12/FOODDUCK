@@ -18,7 +18,6 @@ const UserSchema = new Schema(
     phoneNumber: {
       type: String,
       required: false,
-      default: '000-1234-1234',
     },
     address: {
       type: new Schema(
@@ -32,27 +31,23 @@ const UserSchema = new Schema(
           _id: false,
         }
       ),
-      default: '12121서울특별시동대문구휘경2동',
       required: false,
     },
     gender: {
       type: String,
       required: false,
-      default: 'male',
     },
     birthday: {
       type: String,
       required: false,
-      default: '19000000',
     },
     role: {
       type: String,
       required: false,
-      default: 'basic-user',
     },
   },
   {
-    collection: 'User-info',
+    collection: 'users',
     timestamps: true,
   }
 );
