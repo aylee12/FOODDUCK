@@ -38,4 +38,16 @@ categoryRouter.patch('/categoryUpdate/:name', async (req, res, next) => {
   }
 });
 
+//카테고리 삭제
+categoryRouter.delete('/categoryDelete/:name', async (req, res, next) => {
+  try {
+    const name = req.params.name;
+
+    const deleteResult = await categoryService.deleteCategory(name);
+    res.status(200).json(deleteResult);
+  } catch (error) {
+    next(error);
+  }
+});
+
 export { categoryRouter };

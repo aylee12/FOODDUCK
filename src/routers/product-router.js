@@ -5,7 +5,7 @@ import { adminRequired } from '../middlewares';
 const productRouter = Router();
 
 //상품 추가
-productRouter.post('/productAdd', adminRequired, async (req, res, next) => {
+productRouter.post('/productAdd', async (req, res, next) => {
   try {
     const { name, price, company, category, img, description } = req.body;
 
@@ -101,7 +101,7 @@ productRouter.get('/productListId/:productId', async (req, res, next) => {
 });
 
 //상품 수정
-productRouter.patch('/productUpdate/:productId', adminRequired, async (req, res, next) => {
+productRouter.patch('/productUpdate/:productId', async (req, res, next) => {
   try {
     const productId = req.params.productId;
     const updatelist = req.body;
@@ -114,7 +114,7 @@ productRouter.patch('/productUpdate/:productId', adminRequired, async (req, res,
 });
 
 //상품 삭제
-productRouter.delete('/productDelete/:productId', adminRequired, async (req, res, next) => {
+productRouter.delete('/productDelete/:productId', async (req, res, next) => {
   try {
     const productId = req.params.productId;
 
