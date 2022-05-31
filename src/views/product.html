@@ -23,11 +23,11 @@
       crossorigin="anonymous"
     ></script>
     <!-- 커스텀 css, js -->
-    <link rel="stylesheet" href="../../product.css" />
+    <link rel="stylesheet" href="../product.css" />
   </head>
 
 <body>
-  <div id="category">fish</div>
+    <div id="category">meat</div>
     <div id="header">
         <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="container mt-3">
@@ -76,16 +76,16 @@
                 </a>
               </li>
               <li class="menu menu2">
-                <span id="meat">고기</span>
+                <a id="meat">고기</a>
               </li>
               <li class="menu menu3">
-                <span id="vegetable">채소</span>
+                <a id="vegetable">채소</a>
               </li>
               <li class="menu menu4">
-                <span id="fruit">과일</span>
+                <a id="fruit">과일</a>
               </li>
               <li class="menu menu5">
-                <span id="fish">생선</span>
+                <a id="fish">생선</a>
               </li>
             </ul>
           </div>
@@ -105,18 +105,32 @@
       </div>
 
       <!-- main -->
-      <section class="section">
-        <div>
-          <h1 class="title">생선</h1>
+    <section class="section">
+      <div>
+        <h1 class="title">전체</h1>
+      </div>
+      <div id="list_products">
+        <div id="inner_list_products">
+              <!-- <div class="item">
+                <div class="thumbnail" >
+                  <a href="">
+                    <img src="https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg" alt="타코야키" >
+                  </a>
+                </div>
+                <div class="shopping_cart">
+                  <button class="shopping_cart_icon"><img src="https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg" alt="카트담기 아이콘" ></button>
+                </div>
+                <div class="description">
+                  <h3 class="description_text"><a href="">[고기나라] 고기고기</a></h3>
+                  <div class="price">
+                    10,000
+                    <span>원</span>
+                  </div>
+                </div>
+              </div> -->
         </div>
-        <div id="list_products">
-          <div id="inner_list_products">
-                
-          </div>
-        </div>
-      </section>
-
-
+      </div>
+    </section>
     
       <!-- footer -->
     <footer class="footer">
@@ -163,6 +177,6 @@
       </div>
     </footer>
     
-    <script src="../../product.js" type="module"></script>
+    <script src="../product.js" type="module"></script>
 </body>
 </html>

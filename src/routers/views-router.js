@@ -1,6 +1,5 @@
 import express from 'express';
 import path from 'path';
-import { adminRequired } from '../middlewares';
 
 const viewsRouter = express.Router();
 
@@ -13,19 +12,19 @@ viewsRouter.use('/login', serveStatic('login'));
 
 // product-detail 주소 설정
 viewsRouter.use('/product/detail', serveStatic('product-detail'));
-// product-add 주소 설정
+// product-add 주소 설정 
 viewsRouter.use('/product/add', serveStatic('product-add'));
 // product-edit 주소 설정
 viewsRouter.use('/product/edit', serveStatic('product-edit'));
 
-// cart 주소 설정하기
+// cart 주소 설정하기 
 viewsRouter.use('/cart', serveStatic('cart'));
-viewsRouter.use('/pay', serveStatic('pay'));
-// 제품 category별 조회 주소 설정
+viewsRouter.use('/pay',  serveStatic('pay'));
 viewsRouter.use('/product/meat', serveStatic('meat'));
 viewsRouter.use('/product/fish', serveStatic('fish'));
 viewsRouter.use('/product/fruit', serveStatic('fruit'));
 viewsRouter.use('/product/vegetable', serveStatic('vegetable'));
+viewsRouter.use('/product', serveStatic('product'));
 
 // views 폴더의 최상단 파일인 rabbit.png, api.js 등을 쓸 수 있게 함
 viewsRouter.use('/', serveStatic(''));
@@ -35,9 +34,10 @@ viewsRouter.use('/', serveStatic(''));
 function serveStatic(resource) {
   const resourcePath = path.join(__dirname, `../views/${resource}`);
   const option = { index: `${resource}.html` };
-  console.log(option);
+  console.log(option)
   // express.static 은 express 가 기본으로 제공하는 함수임
   return express.static(resourcePath, option);
 }
+
 
 export { viewsRouter };

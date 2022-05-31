@@ -16,11 +16,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
-    <!-- Link Swiper's CSS -->
-    <link
-    rel="stylesheet"
-    href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
+    
+    
     
     <!-- 폰트 어썸: 아이콘 -->
     <script
@@ -28,6 +25,7 @@
       src="https://kit.fontawesome.com/7630448495.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <!-- 커스텀 css, js -->
     <link rel="stylesheet" href="home.css" />
     <!-- <script src="home.js" type="module" defer></script> -->
@@ -113,38 +111,28 @@
 
     <!-- main -->
 
-           <!-- Swiper -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">Slide123123 1</div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-        <div class="swiper-slide">Slide 5</div>
-        <div class="swiper-slide">Slide 6</div>
-        <div class="swiper-slide">Slide 7</div>
-        <div class="swiper-slide">Slide 8</div>
-        <div class="swiper-slide">Slide 9</div>
+       <!-- 배너 슬라이드 시작 -->
+    <div class="slides_wrap">
+      <div class="images">        
+        <div class="image image1"><img alt=""></div>
+        <div class="image image2"><img alt=""></div>
+        <div class="image image3"><img alt=""></div>
+        <div class="image image4"><img alt=""></div> 
       </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-
-    <div class="div-container">
-
-      <div id="slider_wrap">
-        <div id="slider">
-          <div class="slide active"><img id="temp"  alt=""></div>
-          <div class="slide"><img id="temp"  alt=""></div>
-          <div class="slide"><img id="temp"  alt=""></div>
-          <div class="slide"><img id="temp"  alt=""></div>
-        </div>
-        <button class="left_arrow"></button>
-        <button class="right_arrow"></button>
-        <div id="slide_count"><span class="cnt">1</span>/4</div>
+      <div onclick="side_slide(-1)" class="slide left">
+        <span class="fas fa-angle-left"></span> 
       </div>
-
+      <div onclick="side_slide(1)" class="slide right">
+        <span class="fas fa-angle-right"></span> 
+      </div>
+      <div class="btm_sliders">
+        <span onclick="btm_slide(1)"></span>
+        <span onclick="btm_slide(2)"></span>
+        <span onclick="btm_slide(3)"></span>
+        <span onclick="btm_slide(4)"></span>
+      </div>
     </div>
+      <!-- 배너 슬라이드 끝 -->
     
       <!-- <div class="landing" id="landingDiv">
         <h1>랜딩 페이지</h1>
@@ -249,8 +237,6 @@
     <footer class="footer">
       <div id="customer_center_wrap">
         <h2 class="center_h2">고객행복센터</h2>
-      
-    
 
         <div id="call_wrap">
           <div class="call_title_wrap">
@@ -291,26 +277,28 @@
     </footer>
     <!-- <script src="imageSlider.js"></script> -->
     <script src="home.js" type="module"></script>
-    <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
     <script>
-      var swiper = new Swiper(".mySwiper", {
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
+      var indexValue = 1;
+      showImg(indexValue);
+      function btm_slide(e){showImg(indexValue = e);}
+      function side_slide(e){showImg(indexValue += e);}
+      function showImg(e){
+        var i;
+        const img = document.querySelectorAll('.image');
+        const sliders = document.querySelectorAll('.btm_sliders span');
+        if (e > img.length) {indexValue = 1}
+        if (e < 1) {indexValue = img.length}
+        for (i = 0; i < img.length; i++){
+          img[i].style.display = "none";
+        }
+        for (i = 0; i < sliders.length; i++){
+          sliders[i].style.background = "rgba(255,255,255,0.2)"
+        }
+        img[indexValue - 1].style.display = "block";
+        sliders[indexValue - 1].style.background = "white";
+      }
+    </script>
 
-      var swiper2 = new Swiper(".mySwiper", {
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    </script>
-    </script>
   </body>
 
 </html>
