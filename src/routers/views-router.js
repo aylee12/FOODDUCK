@@ -26,7 +26,6 @@ viewsRouter.use('/admin/product/list', serveStatic('admin-product-list'));
 // admin-category-list 주소 설정
 viewsRouter.use('/admin/category/list', serveStatic('admin-category-manage'));
 
-
 // cart 주소 설정하기
 viewsRouter.use('/cart', serveStatic('cart'));
 viewsRouter.use('/pay', serveStatic('pay'));
