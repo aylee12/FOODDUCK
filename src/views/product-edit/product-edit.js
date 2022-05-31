@@ -10,7 +10,7 @@ const product_description = document.getElementById("product_description");
 //const productId = window.location.pathname.split('/').pop();
 
 //테스트코드
-const productId = 18;
+const productId = 'ufjfZaO-TfdscW-7atck2';
 
 window.onload = async function() {
     // 전체 카테고리 데이터 받아와서 select option에 추가. API 연결 안 돼 있음
@@ -33,7 +33,7 @@ window.onload = async function() {
         const res = await Api.get('/api/productListId', productId);
         product_name.value = res.name;
         product_company.value = res.company;
-        product_category.value = res.category;
+        product_category.value = res.category.name;
         product_img.value = res.img;
         product_price.value = res.price;
         product_description.value = res.description;

@@ -15,7 +15,7 @@ window.onload = async function() {
 
             const category_container = document.createElement("div");
             category_container.setAttribute("class", "category_container");
-            const category = document.createTextNode(res[i].category);
+            const category = document.createTextNode(res[i].category.name);
             category_container.appendChild(category);
 
             const name_container = document.createElement("div");

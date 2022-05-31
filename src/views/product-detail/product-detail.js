@@ -13,7 +13,7 @@ const product_total_price = document.getElementById("product_total_price");
 // const productId = window.location.pathname.split('/').pop();
 
 // 테스트용
-const productId = 19;
+const productId = 'iLBReufqFipjVyQM-gIqr';
 
 const btn_cnt_down = document.getElementById("btn_cnt_down");
 const btn_cnt_up = document.getElementById("btn_cnt_up");
@@ -24,12 +24,14 @@ const btn_buy_now = document.getElementById("btn_buy_now");
 let cart = [];
 let move_result = false;
 
+// 유저 권한 넣을 곳
 let role = "";
 
 window.onload = async function() {
   // 상품 데이터 가져오기
   try {
     const res = await Api.get('/api/productListId', productId);
+    console.log(res);
     product_img.src = res.img;
     product_name.innerText = res.name;
     product_company.innerText = res.company;
@@ -145,6 +147,7 @@ async function delHandler(e) {
 
     try {
       await Api.delete('/api/productDelete', productId, data);
+      alert("상품이 삭제되었습니다.");
       // 메인으로 이동
       window.location.href = "../../../";
     }
@@ -192,7 +195,7 @@ function addToCartHandler() {
   else {
     move_result = confirm("이미 장바구니에 담긴 상품입니다. 장바구니로 이동하시겠습니까?");
   }
-  //이동 권유 결과 
+  //이동 권유 결과 처리
   if (move_result) {
     location.href = "/cart";
   }

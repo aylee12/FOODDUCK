@@ -42,7 +42,7 @@ const ProductSchema = new Schema(
     },
   },
   {
-    collection: 'products',
+    collection: 'products22',
     timestamps: true,
   }
 );
