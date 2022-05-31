@@ -8,6 +8,7 @@ const product_price = document.getElementById("product_price");
 const product_description = document.getElementById("product_description");
 const product_quantity = document.getElementById("quantity");
 const product_total_price = document.getElementById("product_total_price");
+
 // url에서 productId 찾기 -> 상품정보 가져올 때 사용
 // const productId = window.location.pathname.split('/').pop();
 
