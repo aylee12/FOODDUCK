@@ -28,24 +28,23 @@ const passwordInput = document.querySelector('#passwordInput');
 const passwordConfirmInput = document.querySelector('#passwordConfirmInput');
 const phoneNumberInput = document.querySelector('#phoneNumberInput');
 
-// 주소 
-const postCodeInput = document.querySelector("#postcode");
-const addressInput = document.querySelector("#address");
-const detailAddressInput = document.querySelector("#detailAddress");
-const extraAddressInput = document.querySelector("#extraAddress");
+// 주소
+const postCodeInput = document.querySelector('#postcode');
+const addressInput = document.querySelector('#address');
+const detailAddressInput = document.querySelector('#detailAddress');
+const extraAddressInput = document.querySelector('#extraAddress');
 
-
-function handleSubmitUpdate(){
+async function handleSubmitUpdate() {
   const fullName = fullNameInput.value;
   const password = passwordInput.value;
   const passwordConfirm = passwordConfirmInput.value;
   const phoneNumber = phoneNumberInput.value;
 
-  // 주소 값 
-  const postCode = postCodeInput.value;
-  const address = addressInput.value;
-  const detailAddress = detailAddressInput.value;
-  const extraAddress = extraAddressInput.value;
+  // 주소 값
+  const postalCode = postCodeInput.value;
+  const address1 = addressInput.value;
+  const address2 = detailAddressInput.value;
+  const address3 = extraAddressInput.value;
 
   // 잘 입력했는지 확인
   const isFullNameValid = fullName.length >= 2;
@@ -60,17 +59,21 @@ function handleSubmitUpdate(){
     return alert('비밀번호가 일치하지 않습니다.');
   }
   try {
-    const data = { 
+    const data = {
       fullName,
       password,
-      postCode,
-      address,
-      detailAddress,
-      extraAddress,
+      postalCode,
+      address1,
+      address2,
+      address3,
       phoneNumber,
     };
     console.log(data);
-    // Api.post('/api/register', data);
+
+    //register.js 파일과 똑같은 address형식으로 해주시면 될 것 같습니다!
+    //patch요청으로 유저정보 업데이트 진행되게 되는 로직은 맞는데 지금 schema쪽 작업하고 있어서 아마 안될겁니다!
+    //다 수정하셨으면 저한테 알려주세용!
+    await Api.patch('/api/users', data);
 
     alert(`정상적으로 수정되었습니다.`);
 
@@ -80,20 +83,27 @@ function handleSubmitUpdate(){
     console.error(err.stack);
     alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
   }
-
 }
 
 const handleSubmitDelete = (e) => {
-  const answer = confirm("정말 탈퇴 하시겠습니까??");
-  // db에 있는 데이터랑 비밀번호가 일치한다면 ,, 그게 안되면 위에있는 비밀번호 값이라 일치한다면 ,, 
-  const isPasswordCheck = prompt("비밀번호를 입력하세요");
-  // 만일 db에 있는 내용이랑 같다면 승인시키고 탈퇴시키고 아니라면 다시 입력하게 하자 
-}
+  const answer = confirm('정말 탈퇴 하시겠습니까??');
+  // db에 있는 데이터랑 비밀번호가 일치한다면 ,, 그게 안되면 위에있는 비밀번호 값이라 일치한다면 ,,
+  const isPasswordCheck = prompt('비밀번호를 입력하세요');
+  // 만일 db에 있는 내용이랑 같다면 승인시키고 탈퇴시키고 아니라면 다시 입력하게 하자
+};
 
-// 함수를 실행하는 곳 
-const init = () => {
-  submitUpdate.addEventListener("click" , handleSubmitUpdate);
-  submitDelete.addEventListener("click" , handleSubmitDelete);
-}
+// 함수를 실행하는 곳
+const init = async () => {
+  try {
+    const user = await Api.get('/api/getUserInfo');
+    console.log('리턴된 유저 데이터', user);
+  } catch (error) {
+    alert(error.message);
+    window.location.href = '/';
+  }
+
+  submitUpdate.addEventListener('click', handleSubmitUpdate);
+  submitDelete.addEventListener('click', handleSubmitDelete);
+};
 
 init();
