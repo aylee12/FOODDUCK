@@ -24,7 +24,7 @@ window.onload = async function() {
     if (role === "admin") {
         const contents = ["카테고리 관리", "제품 관리", "주문 조회"];
         const urls = ["/admin/category/list", "/admin/product/list", ""];
-        const img_urls = ["http://drive.google.com/uc?export=view&id=18I3sUwpc3yYyQJ5Pki_s3AN_JiA7rFea", "http://drive.google.com/uc?export=view&id=1yP3QAyQYx_Sn0DqAUNaAJJ9U2brZs3N3", "http://drive.google.com/uc?export=view&id=1khanvXT_OejqBAUlevFR5pq7MsozaeeG"]
+        const img_urls = ["http://drive.google.com/uc?export=view&id=1vG5hRXZbnWAQH1WTxmQhPymqTyYMlqt6", "http://drive.google.com/uc?export=view&id=17Y3dZeFXs3aE510naIfJAdVBLcVAVw8k", "http://drive.google.com/uc?export=view&id=1SEsdv6vng-iMRucoGP5ZIZdOzRDVOmBf"]
 
         buttonHandler(contents, urls, img_urls);
     } 
@@ -33,7 +33,7 @@ window.onload = async function() {
     else {
         const contents = ["회원정보 관리", "주문 조회"];
         const urls = ["/user/info/manage", ""];
-        const img_urls = ["http://drive.google.com/uc?export=view&id=1BaDDtn73w6W_77fdYZr2jhUVc2O3ueHV", "http://drive.google.com/uc?export=view&id=1khanvXT_OejqBAUlevFR5pq7MsozaeeG"]
+        const img_urls = ["http://drive.google.com/uc?export=view&id=1HYQ2beNCRde-v5ocCx3EvgtHpsGXWn8M", "http://drive.google.com/uc?export=view&id=1SEsdv6vng-iMRucoGP5ZIZdOzRDVOmBf"]
 
         buttonHandler(contents, urls, img_urls);
     }
