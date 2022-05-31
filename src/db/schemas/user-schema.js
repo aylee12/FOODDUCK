@@ -33,17 +33,10 @@ const UserSchema = new Schema(
       ),
       required: false,
     },
-    gender: {
-      type: String,
-      required: false,
-    },
-    birthday: {
-      type: String,
-      required: false,
-    },
     role: {
       type: String,
       required: false,
+      default: 'basic-user',
     },
   },
   {

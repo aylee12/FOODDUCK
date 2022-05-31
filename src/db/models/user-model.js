@@ -4,6 +4,11 @@ import { UserSchema } from '../schemas/user-schema';
 const User = model('users', UserSchema);
 
 export class UserModel {
+  async create(userInfo) {
+    const createdNewUser = await User.create(userInfo);
+    return createdNewUser;
+  }
+
   async findByEmail(email) {
     const user = await User.findOne({ email });
     return user;
@@ -12,11 +17,6 @@ export class UserModel {
   async findById(userId) {
     const user = await User.findOne({ _id: userId });
     return user;
-  }
-
-  async create(userInfo) {
-    const createdNewUser = await User.create(userInfo);
-    return createdNewUser;
   }
 
   async findAll() {
