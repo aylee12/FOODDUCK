@@ -90,7 +90,7 @@ function changeToEdit() {
     // input 수정 가능하게 변경
     const category = document.getElementById(this.dataset.id);
     category.removeAttribute("readonly");
-    category.style.cssText = "border: 2px solid rgb(19, 93, 197);";
+    category.style.cssText = "border: 2px solid rgb(95, 206, 179);";
     // 수정 버튼 문자를 저장으로 변경
     this.innerText = "저장";
 

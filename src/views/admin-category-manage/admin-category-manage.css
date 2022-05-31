@@ -250,8 +250,14 @@ div.inner_container {
 
 div.account-header {
     text-align: center;
-    padding-bottom: 50px;
-    border-bottom: 1px solid #f7f7f7;;
+    padding-bottom: 40px;
+    border-bottom: 0.5px solid rgb(30, 202, 162);
+}
+
+div.block h1 {
+    color: rgb(30, 202, 162);
+    font-size: 35px;
+    font-weight: 800;
 }
 
 div.category_list_container {
@@ -261,8 +267,9 @@ div.category_list_container {
     text-align: center;
     align-content: center;
     padding-top: 20px;
+    margin-top: 40px;
 
-    border: 1px solid rgb(234, 241, 239);
+    border: 0.5px solid rgb(30, 202, 162);
     border-top-left-radius: 30px; 
     border-top-right-radius: 30px; 
     border-bottom-left-radius: 30px; 
@@ -270,7 +277,9 @@ div.category_list_container {
 }
 
 div.category_list_container p {
-    color:#818181;
+    color: rgb(134, 133, 133);
+    font-weight: 500;
+    font-size: 20px;
     margin-bottom: 40px;
 }
 
@@ -283,16 +292,17 @@ div.add_zone {
 #new_category_name {
     width: 50%;
     margin-right: 5px;
+    border: 1px solid rgb(30, 202, 162);
 }
 
 div.add_zone #btn_submit {
-    background-color: rgb(117, 197, 106);
+    background-color: rgb(30, 202, 162);
     font-size: 15px; 
     color: white;
     font-weight: 600;
     font-size: 17px;
 
-    border: 2px solid rgb(117, 197, 106);
+    border: 2px solid rgb(30, 202, 162);
     border-top-left-radius: 30px; 
     border-top-right-radius: 30px; 
     border-bottom-left-radius: 30px; 
@@ -300,8 +310,8 @@ div.add_zone #btn_submit {
 }
 
 div.add_zone #btn_submit:hover {
-    background-color: rgba(117, 197, 106, 0.725);
-    border: 2px solid rgba(117, 197, 106, 0.21) !important;
+    background-color: rgb(97, 226, 196);
+    border: 2px solid rgb(109, 228, 201);
     cursor: pointer;
     color: white; 
 }
@@ -309,7 +319,7 @@ div.add_zone #btn_submit:hover {
 div.category_container {
     width: 90%;
     min-height: 50px;
-    border: 1px solid rgba(194, 194, 194, 0.402);
+    border: 1px solid rgb(30, 202, 162);
     margin: 40px auto;
     height: auto;
     vertical-align: middle;
@@ -351,13 +361,13 @@ div.category_container div#category_blank2 {
 }
 
 .btn_edit {
-    background-color: #f5bf4f;
+    background-color: rgb(254, 176, 36);
     font-size: 15px; 
     color: white;
     margin: 5px; 
     padding: 2px 5.5px; 
   
-    border: 2px solid #f5bf4f; 
+    border: 2px solid rgb(254, 176, 36);
     border-top-left-radius: 30px; 
     border-top-right-radius: 30px; 
     border-bottom-left-radius: 30px; 
@@ -365,20 +375,20 @@ div.category_container div#category_blank2 {
 }
   
 .btn_edit:hover {
-    background-color: #f5be4fa9;  
-    border: 2px solid #f5be4f53 !important; 
+    background-color: rgb(250, 203, 116);  
+    border: 2px solid rgb(248, 210, 141);  
     cursor: pointer;
 }
   
 .btn_del {
-    background-color: #ed6a5e;
+    background-color: rgb(253, 70, 70);
     font-size: 15px; 
     color: white;
     margin: 5px; 
     padding: 2px 5.5px;
     margin-right: 10px;
 
-    border: 2px solid #ed6a5e; 
+    border: 2px solid rgb(253, 70, 70);
     border-top-left-radius: 30px; 
     border-top-right-radius: 30px; 
     border-bottom-left-radius: 30px; 
@@ -386,7 +396,7 @@ div.category_container div#category_blank2 {
 }
 
 .btn_del:hover {
-    background-color: #ed6a5eb9; 
-    border: 2px solid #ed6a5e49 !important; 
+    background-color: rgb(247, 139, 139);
+    border: 2px solid rgb(247, 139, 139);
     cursor: pointer;
 }

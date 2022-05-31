@@ -432,4 +432,13 @@ div.btn_zone div.btn_item {
   text-align: center;
 }
 
-/* 상단 제품 정보 끝 */
+div.btn_zone div.btn_item button {
+  background-color: rgb(96, 206, 179);
+  color: white;
+  border: 1px solid rgb(96, 206, 179);
+}
+
+div.btn_zone div.btn_item button:hover {
+  background-color: rgb(134, 227, 204);
+  border: 1px solid rgb(156, 237, 217);
+}

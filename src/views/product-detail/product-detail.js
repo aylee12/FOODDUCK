@@ -50,7 +50,7 @@ window.onload = async function() {
   }
 
   // 테스트용
-  // product_name.dataset.role = "admin";
+  product_name.dataset.role = "admin";
 
   product_price.innerText = numberWithCommas(product_price.dataset.value);
   product_total_price.dataset.value = product_price.dataset.value;
