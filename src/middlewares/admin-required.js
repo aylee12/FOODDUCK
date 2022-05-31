@@ -29,7 +29,12 @@ function adminRequired(req, res, next) {
     if (role === 'admin') {
       next();
     } else {
-      next(error);
+      res.status(403).json({
+        result: 'not-admin-token',
+        reason: '관리자 토큰이 아닙니다.',
+      });
+
+      return;
     }
   } catch (error) {
     // jwt.verify 함수가 에러를 발생시키는 경우는 토큰이 정상적으로 decode 안되었을 경우임.
