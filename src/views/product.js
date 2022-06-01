@@ -5,7 +5,6 @@ const shopping_cart_icon_url = "https://s3.ap-northeast-2.amazonaws.com/res.kurl
 const inner_list_products = document.getElementById('inner_list_products');
 const categoryTemp = window.location.href.split("/")
 const category = categoryTemp[categoryTemp.length-2]
-
 DataHandler(category)
 categoryDisplay();
 
@@ -13,7 +12,7 @@ function categoryDisplay(){
     const menu = document.querySelectorAll('ul.menu_list li');
     for (let i = 1; i < menu.length; i++) {
         menu[i].addEventListener('click', async (e) => {
-            const category = e.target.getAttribute("id")          
+            const category = e.target.getAttribute("class")          
             window.location.href = "/product/" + category;
         })
     }

@@ -1,72 +1,77 @@
-// 아래는 현재 home.html 페이지에서 쓰이는 코드는 아닙니다.
-// 다만, 앞으로 ~.js 파일을 작성할 때 아래의 코드 구조를 참조할 수 있도록,
-// 코드 예시를 남겨 두었습니다.
-
 import * as Api from '/api.js';
-import { randomId } from '/useful-functions.js';
+import { addCommas } from '/useful-functions.js';
 
 const shopping_cart_icon_url = "https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg";
-const gallery = document.getElementsByClassName('gallery');
-// const list_products = document.getElementById('list_products');
-const menu_list = document.querySelectorAll('ul.menu_list li');
+const inner_list_products = document.getElementById('inner_list_products');
+const categoryTemp = window.location.href.split("/")
+const category = categoryTemp[categoryTemp.length-2]
+DataHandler(category)
+categoryDisplay();
 
-
-for (let i = 1; i < menu_list.length; i++) {
-    menu_list[i].addEventListener('click', async (e) => {
-        e.preventDefault()
-        const categoryName = e.target.getAttribute("id")
-        displayProductForCategory(categoryName);
-        window.location.href = "/product/" + categoryName;
-    })
-}
-function removeAllChildNodes(parent) {
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
+function categoryDisplay(){
+    const menu = document.querySelectorAll('ul.menu_list li');
+    for (let i = 1; i < menu.length; i++) {
+        menu[i].addEventListener('click', async (e) => {
+            const category = e.target.getAttribute("class")          
+            window.location.href = "/product/" + category;
+        })
     }
 }
-function displayProductForCategory(categoryName){
-    fetch(`http://localhost:3000/product/list/` + categoryName)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if (inner_list_products.children[0]) {
-                removeAllChildNodes(inner_list_products);
-            }
-            data.forEach(element => {
-                // console.log(element)
-                const category = element.category;
-                const name = element.name;
-                const img = element.img;
-                // const img = "";
-                const price = element.price;
-                const company = element.company;
+async function DataHandler (category) {
+    try {
+        // 카테고리 상품 데이터 가져오기
+        const url = category ? '/api/productListCategory/' + category : '/api/productListAll';
+        const data = await Api.get(url)
 
-                inner_list_products.innerHTML += `
-                <div class="item">
-                    <div class="thumbnail" >
-                        <a href="">
-                            <img src="${img}" alt="임시" >
-                        </a>
-                    </div>
-                <div class="shopping_cart">
-                  <button class="shopping_cart_icon"><img src="${shopping_cart_icon_url}" alt="카트담기 아이콘" ></button>
-                </div>
-                <div class="description">
-                  <h3 class="description_text"><a href="">[${company}] ${name}</a></h3>
-                  <div class="price">
-                    ${price}
-                    <span>원</span>
-                  </div>
-                </div>
-              </div>`
-            });
-        }).catch(err => console.log(err))
+        displayProductForCategory(data, category)
+    }
+    catch(err) {
+        console.error(err.stack);
+        alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+    }
 }
 
-// function paging(totalData, currentPage) {
-//     const dataPerPage = 9;
-//     const pageCount = 1
+async function displayProductForCategory(data, category){
+    const url = category ? "/product/" + category : `/product`;
+    // window.location.href = url;
+    inner_list_products.innerHTML = ""
+    data.forEach(element => {
+        const name = element.name;
+        const img = element.img;
+        const price = addCommas(element.price);
+        const company = element.company;
 
-//     const totalPage = Math.ceil(totalData / dataPerPage);
-//     const pageGroup = Math.ceil(currentPage)
-// }
+        inner_list_products.innerHTML += `
+        <div class="item">
+            <div class="thumbnail" >
+                <a href="" onclick="toDetail(${name})">
+                    <img src="${img}" alt="임시" >
+                </a>
+            </div>
+        <div class="shopping_cart">
+            <button class="shopping_cart_icon"><img src="${shopping_cart_icon_url}" alt="카트담기 아이콘" ></button>
+        </div>
+        <div class="description">
+            <h3 class="description_text"><a href="">[${company}] ${name}</a></h3>
+            <div class="price">
+            ${price}
+            <span>원</span>
+            </div>
+        </div>
+        </div>`
+    });
+    return;
+}
+
+const category_toggle = document.querySelector('.category_toggle');
+const category_wrap = document.querySelector('.category_wrap');
+const toggle = document.querySelector('.toggle');
+function mouseOver(){
+    category_wrap.style.display = "block";
+}
+function mouseLeave(){
+    category_wrap.style.display = "none";
+}
+
+category_toggle.addEventListener('mouseover', mouseOver)
+category_toggle.addEventListener('mouseleave', mouseLeave)

@@ -4,8 +4,12 @@
   font-family: 'Nanum Gothic', sans-serif;  
 }
 #header, .navbar, body {
-  margin: 0;
+  margin: 0 auto;
   color: #333;
+  /* padding: 0 50px; */
+}
+#header {
+  
 }
 ul, li {
   list-style:none;
@@ -21,12 +25,11 @@ ul, li {
 #navbar li a:hover {
   transform: scale(1.05);
 }
-
 #navbar_menu {
   display: flex;
   justify-content: center;
+  height: 75px;
 }
-
 .sticky {
   position: sticky;
   top: 0px;
@@ -38,6 +41,20 @@ ul, li {
   color: #333
 }
 
+#inner_nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline;
+  justify-content: center;
+}
+#inner_nav li {
+  /* display: inline; */
+  font-size: 12pt;
+  font-weight: 400;
+  padding: 0 4px 0 10px;
+}
+
 .menu_list {
   display: flex;
 }
@@ -46,13 +63,56 @@ ul, li {
   font-size: 16px;
   font-weight: 700;
   white-space: nowrap;
+}
+.menu_list .category_toggle {
+  position: relative;
+}
+.toggle {
+  height: 60px;
+  position: relative;
+}
+.toggle img {
+  position: absolute;
+  left: -20px;
+  top: 5px;
+}
+.menu_list .category_wrap {
+  display: none;
+  position: absolute;
+  font-size: 14px;
+  width: 220px;
+  z-index: 300;
+  top: 45px;
+}
+.menu_list .category_wrap li{
+  background: white;
+  border: solid .5px #ddd;
+  padding: 7px 0 0 14px;
+  width: 220px;
+  height: 40px;
+  align-items: center;
+  line-height: 40px;
+  letter-spacing: -3px;
 
+}
+.menu_list .category_wrap li:hover {
+  background: #eee;
+}
+.menu_list .category_wrap li span{
+  /* text-align: center; */
+  /* vertical-align: center; */
+}
+.menu_list .category_wrap li span:hover{
+  color: #68a790;
+}
+.menu_list .menu a{
+  transition: all 0.2s ease-in-out;
 }
 .menu_list .menu a:hover {
   color: #68a790;
-  background-color: transparent;
-  text-decoration: underline;
+  font-weight: 700;
 }
+/* 제품 검색창 시작 / 현재 불필요 */
 .search {
   display:flex;
   position: relative;
@@ -67,7 +127,6 @@ ul, li {
   font-size: 12px;
   color: #555;
   margin: auto;
-  
 }
 #search_btn {
   width: 35px;
@@ -77,11 +136,9 @@ ul, li {
   right: 5px;
   top: 25px;
 } 
-#search_btn img {
-  /* opacity: 0.5; */
-}
+/* 제품 검색창 끝/ 현재 불필요 */
 .navbar-end a {
-  color: black;
+  color: #333;
 }
 
 /* main */
@@ -199,20 +256,21 @@ section {
 
 .promotion {
   margin: 0 0 200px 0;
-  /* display: flex; */
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
 }
 /* .gallery_wrap {
   position: relative;
   width: 1050px;
-  margin: 0 auto; /* block 상태일때 */
+  margin: 0 auto; 
+  block 상태일때
 
-  /* justify-content: center; */
-  /* text-align: center; inline 일 때*/
-  /* background-color: green; 
+  justify-content: center;
+  text-align: center; inline 일 때
+  background-color: green;
   
-} */
-/* 
+}
+
 
 .item{
   position: relative;
@@ -224,20 +282,6 @@ section {
   background-color: white
 } */
 
-
-
-/* .landing {
-  cursor: pointer;
-  border: 1px solid red;
-  padding: 10px;
-}
-
-.greeting {
-  cursor: pointer;
-  border: 1px solid blue;
-  padding: 10px;
-  margin-left: 3rem;
-} */
 
 .footer {
   margin: 0 15vw 0 15vw;

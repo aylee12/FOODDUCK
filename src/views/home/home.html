@@ -42,6 +42,9 @@
         background-size: cover; 
         box-shadow: 0px 0px 5px #333;
         transition: all 0.3s ease-in-out;
+        top: 25px;
+        vertical-align: top;
+        justify-content: center;
       }
       .logo:hover {
         transform: scale(1.1);
@@ -89,44 +92,47 @@
       </nav>
       <div id="navbar_menu" class="sticky">
         <div class="menu_main">
+          
           <ul class="menu_list">
-            <li class="menu menu1">
-              <a href="#">
-                <img width="16px" height="14px" src="https://res.kurly.com/pc/service/common/1908/ico_gnb_all_off_x2.png" alt=""> 
-                <!-- toggle icon -->
-                <span class="text">전체 카테고리</span>
-              </a>
+            <li class="menu category_toggle">
+                <div class="toggle">
+                  <img width="16px" height="14px" src="https://res.kurly.com/pc/service/common/1908/ico_gnb_all_off_x2.png" alt="">
+                  <span>전체 카테고리</span>
+                </div>
+              <div class="category_wrap">
+                <ul id="inner_nav">
+                  <li onmouseover=""><a class="meat"><span>고기</span></a></li>
+                  <li><a class="vegetable"><span>야채</span></a></li>
+                  <li><a class="fruit"><span>과일</span></a></li>
+                  <li><a class="fish"><span>생선</span></a></li>
+                </ul>
+              </div>
             </li>
             <li class="menu menu2">
-              <a href="/product/meat" id="meat">고기</a>
+              <a href="/product/meat" class="meat">고기</a>
             </li>
             <li class="menu menu3">
-              <a href="/product/vegetable" id="vegetable">채소</a>
+              <a href="/product/vegetable" class="vegetable">채소</a>
             </li>
             <li class="menu menu4">
-              <a href="/product/fruit" id="fruit">과일</a>
+              <a href="/product/fruit" class="fruit">과일</a>
             </li>
             <li class="menu menu5">
-              <a href="/product/fish" id="fish">생선</a>
+              <a href="/product/fish" class="fish">생선</a>
             </li>
           </ul>
         </div>
           
-        <div class="search">
+        <!-- <div class="search">
           <input type="text" placeholder="검색어를 입력해주세요" class="search_box">
           <div id="search_btn">
             <img src="https://res.kurly.com/pc/service/common/1908/ico_search_x2.png" alt="">
-            <!-- search icon -->
           </div>
-        </div>
-
+        </div> -->
       </div>
-      
- 
     </div>
 
     <!-- main -->
-
        <!-- 배너 슬라이드 시작 -->
     <div class="slides_wrap">
       <div class="images">        
@@ -242,7 +248,7 @@
 
 
 
-    <!-- footer -->
+    <!-- footer  -->
     <footer class="footer">
       <div id="customer_center_wrap">
         <h2 class="center_h2">고객행복센터</h2>
@@ -256,7 +262,6 @@
             <p class="detail">오전 7시 - 오후 7시</p>
           </div>
         </div>
-
         <div id="question_wrap">
           <div class="question_title_wrap">
             <h3 class="cc_qna">1:1 문의</h3>
@@ -269,45 +274,14 @@
       </div>
 
       <div id="introduce_wrap" >
-        <!-- <ul class="introduce_list">
-          <li>컬리소개</li>
-          <li>컬리소개영상</li>
-          <li>인재채용</li>
-          <li>이용약관</li>
-        </ul> -->
         <p class="footer_p">COMPANY : (주)푸드장 / OWNER : 박승준, 김호진, 이아영, 김용민, 조성호 / CALL CENTER : 1779-5549 <span>I</span></p>
         <p class="footer_p">ADDRESS : 서울 강남구 테헤란로53길 16 예안빌딩 B1층 <span>I</span></p>
         <p class="footer_p">입점문의: tmdeksdl@gmail.com <span>I</span> 채용문의: cohojin3714@gmail.com
         <p class="footer_p">개인정보관리책임자: bdd3452@gmail.com <span>I</span>
-        <!-- <p class="footer_p">입점문의 : <span class="font_change">입점문의하기</span> <span>I</span> 마케팅제휴 : <span class="font_change">xxxxxxxx3714@xxxxxx.com</span></p>
-        <p class="footer_p">채용문의 : <span class="font_change">recruit@xxxxx.xxx</span>
-        <p class="footer_p">대량주문 문의 : <span class="font_change">xxxxxxx@xxxxxx.com</span></p> -->
-  
       </div>
     </footer>
-    <!-- <script src="imageSlider.js"></script> -->
     <script src="home.js" type="module"></script>
-    <script>
-      var indexValue = 1;
-      showImg(indexValue);
-      function btm_slide(e){showImg(indexValue = e);}
-      function side_slide(e){showImg(indexValue += e);}
-      function showImg(e){
-        var i;
-        const img = document.querySelectorAll('.image');
-        const sliders = document.querySelectorAll('.btm_sliders span');
-        if (e > img.length) {indexValue = 1}
-        if (e < 1) {indexValue = img.length}
-        for (i = 0; i < img.length; i++){
-          img[i].style.display = "none";
-        }
-        for (i = 0; i < sliders.length; i++){
-          sliders[i].style.background = "rgba(255,255,255,0.2)"
-        }
-        img[indexValue - 1].style.display = "block";
-        sliders[indexValue - 1].style.background = "white";
-      }
-    </script>
+    <script src="banner_slider.js"></script>
 
   </body>
 
