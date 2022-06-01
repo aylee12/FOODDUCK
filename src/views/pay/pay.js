@@ -1,3 +1,5 @@
+import * as Api from '/api.js';
+
 const cartPriceSum = document.querySelector(".cart-price-sum");
 const payButton = document.querySelector("#payButton");
 
@@ -16,10 +18,31 @@ const handlePayBtn = () => {
   alert("결제가 완료되었습니다.");
 }
 
+const postCodeInput = document.querySelector('#postcode');
+const addressInput = document.querySelector('#address');
+const detailAddressInput = document.querySelector('#detailAddress');
+const extraAddressInput = document.querySelector('#extraAddress');
+
+const fullNameInput = document.querySelector('#fullNameInput');
+const phoneNumberInput = document.querySelector('#phoneNumberInput');
+
 // 실행 순서 정리 
-const init = () => {
+const init = async () => {
+  try{
+    const user = await Api.get('/api/getUserInfo');
+    console.log('리턴된 유저 데이터', user);
+    // 유저의 데이터들이 담긴다.
+    fullNameInput.value = `${user.fullName}`;
+    phoneNumberInput.value = `${user.phoneNumber}`;
+    postCodeInput.value = `${user.address.postalCode}`;
+    addressInput.value = `${user.address.address1}`;
+    detailAddressInput.value = `${user.address.address2}`;
+    extraAddressInput.value = `${user.address.address3}`;
+  } catch(e) {
+    console.log(e.message);
+  }
   paySumPriceLoaded();
-  payButton.addEventListener("click" , handlePayBtn);
 }
+payButton.addEventListener("click" , handlePayBtn);
 
 init();

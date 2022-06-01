@@ -21,20 +21,15 @@ const sumPrice = () => {
   cartPriceSum.innerHTML = sum;
 }
 
-
 // 증감 버튼 구현하기 (선택 삭제 이후에 0번째 버튼을 가리켜야 되는데 1번째 버튼을 자꾸 가리킴)
-// for(let i = 0 ; i < btnPlus.length;i++){
-//   btnPlus[i].addEventListener("click" , () =>{
-//     console.log(btnPlus);
-//     console.log(i);
-//     console.log(btnPlus[i]);
-//     console.log(btnPlus.length);
-//     itemsQuantity[i].value = Number(itemsQuantity[i].value) + 1;
-//     // console.log(i);
-//     cartItemsPrice[i].innerHTML = itemsQuantity[i].value * cartItemsPrice[i].getAttribute("data-value");
-//     sumPrice();
-//   })
-// }
+for(let i = 0 ; i < btnPlus.length;i++){
+  btnPlus[i].addEventListener("click" , () =>{
+    itemsQuantity[i].value = Number(itemsQuantity[i].value) + 1;
+    cartItemsPrice[i].innerHTML = itemsQuantity[i].value * cartItemsPrice[i].getAttribute("data-value");
+    sumPrice();
+  })
+}
+
 
 for(let i = 0 ; i<btnPlus.length; i++){
   btnMinus[i].addEventListener("click" , () =>{

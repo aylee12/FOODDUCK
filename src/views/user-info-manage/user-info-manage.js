@@ -86,14 +86,15 @@ async function handleSubmitUpdate() {
   }
 }
 
-const handleSubmitDelete = (e) => {
-  // const user = await Api.get('/api/getUserInfo');
+const handleSubmitDelete = async (e) => {
+  const user = await Api.get('/api/getUserInfo');
   const answer = confirm('정말 탈퇴 하시겠습니까??');
   // db에 있는 데이터랑 비밀번호가 일치한다면 ,, 그게 안되면 위에있는 비밀번호 값이라 일치한다면 ,,
   const isPasswordCheck = prompt('비밀번호를 입력하세요');
   // 만일 db에 있는 내용이랑 같다면 승인시키고 탈퇴시키고 아니라면 다시 입력하게 하자
   // if(isPasswordCheck === user.password){
   //   alert("회원탈퇴를 하셨습니다.");
+  //   localStorage.removeItem("token");
   //   window.location.href = '/';
   // }else{
   //   alert("비밀번호가 일치하지 않습니다.");
@@ -109,10 +110,10 @@ const init = async () => {
     phoneNumberInput.value = `${user.phoneNumber}`;
     // passwordInput.value = `${user.password}`;
     // passwordConfirmInput.value = `${user.password}`;
-    // postCodeInput.value = `${user.postalCode}`;
-    // addressInput.value = `${user.address1}`;
-    // detailAddressInput.value = `${user.address2}`;
-    // extraAddressInput.value = `${user.address3}`;
+    postCodeInput.value = `${user.address.postalCode}`;
+    addressInput.value = `${user.address.address1}`;
+    detailAddressInput.value = `${user.address.address2}`;
+    extraAddressInput.value = `${user.address.address3}`;
 
   } catch (error) {
     alert(error.message);

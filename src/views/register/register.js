@@ -67,16 +67,20 @@ async function handleSubmit(e) {
 
   // 회원가입 api 요청
   try {
-    const data = {
-      fullName,
-      email,
-      password,
+    const address = {
       postalCode,
       address1,
       address2,
       address3,
+    }
+    const data = {
+      address,
+      fullName,
+      email,
+      password,
       phoneNumber,
     };
+    
     console.log('입력데이터', data);
     await Api.post('/api/register', data);
 
