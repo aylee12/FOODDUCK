@@ -31,7 +31,7 @@ const cartInit = () => {
         </div>
       </div>
     `
-    sumPriceTag += items.price*items.quantity;
+    sumPriceTag += price * quantity;
   });
   cartList.innerHTML += 
   `
