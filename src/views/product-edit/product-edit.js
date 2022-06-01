@@ -45,7 +45,8 @@ window.onload = async function() {
 }
 
 // '상품 수정하기' 버튼 누르면 동작
-register_product_form.onsubmit = async function() {
+register_product_form.onsubmit = async function(e) {
+    e.preventDefault();
     if (confirm("상품을 수정하시겠습니까?")) {
         const product_name = this.product_name.value;
         const product_category = this.product_category.value;
@@ -66,7 +67,7 @@ register_product_form.onsubmit = async function() {
         try {
             await Api.patch('/api/productUpdate', productId, data);
             alert("상품 정보가 수정되었습니다.");
-            location.href = `/product/detail/:${productId}`;
+            location.href = `/product/detail/${productId}`;
         }
         catch(err) {
             console.error(err.stack);

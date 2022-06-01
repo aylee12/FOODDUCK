@@ -29,7 +29,6 @@ window.onload = async function() {
   // 상품 데이터 가져오기
   try {
     const res = await Api.get('/api/productListId', productId);
-    console.log(res);
     product_img.src = res.img;
     product_name.innerText = res.name;
     product_company.innerText = res.company;
@@ -148,7 +147,7 @@ async function delHandler(e) {
       await Api.delete('/api/productDelete', productId, data);
       alert("상품이 삭제되었습니다.");
       // 메인으로 이동
-      window.location.href = "/admin/product/list";
+      window.location.href = "/main";
     }
     catch(err) {
       console.error(err.stack);

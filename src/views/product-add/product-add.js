@@ -48,7 +48,7 @@ register_product_form.onsubmit = async function(e) {
             await Api.post('/api/productAdd', data);
             alert("상품 판매가 시작되었습니다.");
             // 상품 목록으로 이동
-            window.location.href = "/admin/product/list";
+            window.location.href = '/admin/product/list';
         }
         catch(err) {
             console.error(err.stack);
