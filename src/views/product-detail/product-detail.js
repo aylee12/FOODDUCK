@@ -172,7 +172,6 @@ function addToCartHandler() {
   // 중복 없을 시 상품 추가 -> 이동 권유
   if (state_result) {
     const data = getData();
-
     cart.push(data);
     localStorage.setItem("cart", JSON.stringify(cart));
     move_result = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");

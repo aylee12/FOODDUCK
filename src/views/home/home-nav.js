@@ -6,8 +6,9 @@ const navBar = document.querySelector("#navbar");
 try {
   // const user = Api.get("url주소");
   // console.log(user);
-  
-  navBar.innerHTML = `
+
+  navBar.innerHTML = 
+  `
   <li><a href="/login">로그아웃</a></li>
   <li><a href="/register">나의 정보</a></li>
   <li>
@@ -19,7 +20,7 @@ try {
     </a>
   </li>
   `
-}catch(e){
+} catch(e){
   console.log(`에러입니다.`);
 }
 
