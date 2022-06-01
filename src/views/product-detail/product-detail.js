@@ -160,7 +160,6 @@ async function delHandler(e) {
 // localStorage에 배열로 제품 아이디, 이미지, 이름, 가격, 제조사, 수량 추가
 function buyNowHandler() {
   const data = getData();
-  
   localStorage.setItem("buy_now", JSON.stringify(data));
   location.href = "/pay";
 }
@@ -171,12 +170,9 @@ function buyNowHandler() {
 function addToCartHandler() {
   let state_result = true;
 
-  const origin_state = localStorage.getItem("cart");
-  let state = null;
-  if (origin_state.length === 0) {
-    state = origin_state;
-  } else {
-    state = JSON.parse(origin_state);
+  const state = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  if (state.length !== 0) {
     for (let i = 0; i < state.length; i++) {
       if (state[i].id === productId) {
         state_result = false;
@@ -184,6 +180,7 @@ function addToCartHandler() {
       }
     }
   }
+
   // 중복 없을 시 상품 추가 -> 이동 권유
   if (state_result) {
     const data = getData();

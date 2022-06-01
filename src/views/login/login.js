@@ -43,10 +43,6 @@ async function handleSubmit(e) {
     // 물론 다른 스토리지여도 됨
     localStorage.setItem('token', token);
 
-    // 장바구니 테스트
-    const cart = [];
-    localStorage.setItem('cart', cart);
-
     // 로그인 성공
     alert(`정상적으로 로그인되었습니다.`);
 
