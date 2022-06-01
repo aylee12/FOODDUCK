@@ -1,34 +1,41 @@
 * {
   margin:0;
   padding:0;
-  
+  font-family: 'Nanum Gothic', sans-serif;  
 }
 #header, .navbar, body {
-  background-color: rgb(209,228,221) ;
-  /* background-color: rgb(167,204,190) ; */
+  margin: 0;
+  color: #333;
 }
 ul, li {
   list-style:none;
 }
 
 /* header */
-/* 
-.navbar .container .navbar-brand .navbar-item .has-text-link {
-  color: black;
-} */
+.navbar-item {
+  position: relative;
+}
+#navbar li a {
+  transition: all 0.3s ease-in-out;
+}
+#navbar li a:hover {
+  transform: scale(1.05);
+}
+
 #navbar_menu {
   display: flex;
   justify-content: center;
 }
+
 .sticky {
   position: sticky;
   top: 0px;
-  background-color: rgb(209,228,221) ;
-  /* background-color: rgb(167,204,190) ; */
+  background-color: white;
   z-index: 2;
 }
-.menu_main a {
-  color: black;
+.menu_main a,
+.menu_main a span{
+  color: #333
 }
 
 .menu_list {
@@ -39,7 +46,7 @@ ul, li {
   font-size: 16px;
   font-weight: 700;
   white-space: nowrap;
-  /* padding: 16px 0 0 0; */
+
 }
 .menu_list .menu a:hover {
   color: #68a790;
@@ -171,86 +178,6 @@ ul, li {
 }
 
 /* 배너 슬라이드 끝 */
-
-/* .swiper {
-  width: 6000px;
-  height: 370px;
-  padding: 0px;
-  margin: 0px;
-}
-
-.slider_wrap {
-  position: relative;
-  width:100%;
-  height: 370px;
-  /* Center slide text vertically
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: block;
-  margin: auto;
-  align-items: center;
-}
-.slider_wrap .slide {
-  float:left;
-  width: 100vw;
-  height: 370px;
-}
-.slider_wrap .slide img {
-  margin: 0 auto;
-  display: block;
-  width: 90%;
-  height: 370px;
-  object-fit: cover;
-  background-image: url("https://images.unsplash.com/photo-1623241899289-e9a64b02150d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cmF3JTIwbWVhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
-  background-position: center;
-  background-size: cover;
-} 
-*/
-/* 
-#temp {
-  background-image: url("https://images.unsplash.com/photo-1592686092916-672fa9e86866?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470");
-  background-position: center;
-  transform: scale(0.9); 
-} */
-
-.right_arrow {
-  position: absolute;
-  width: 52px;
-  height: 52px;
-  /* top: 150px;
-  right: 260px;
-  background-color: transparent;
-  border: none;
-  background-image: url('https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_banner_right_52_52.svg');
-  cursor: pointer; */
-  z-index: 300;
-}
-.left_arrow {
-  position: absolute;
-  width: 52px;
-  height: 52px;
-  /* top: 150px;
-  left: 250px;
-  background-color: transparent;
-  background-image: url(https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_banner_left_52_52.svg);
-  border: none;
-  cursor: pointer; */
-  z-index: 300;
-}
-#slide_count {
-  position: absolute;
-  background-color: rgba(0,0,0,0.3);
-  font-weight: 700;
-  width: 40px;
-  height: 20px;
-  color: white;
-  font-size: 15px;
-  line-height: 20px;
-  top: 320px;
-  right: 250px;
-  border-radius: 12px;
-}
 
 /* section */
 section {
@@ -404,8 +331,6 @@ section {
   white-space: nowrap;
 }
 
-
-swiper css
 .gallery_wrap {
   /* width: 100%;
   height: 100%; */

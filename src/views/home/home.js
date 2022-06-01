@@ -10,21 +10,6 @@ const gallery = document.getElementsByClassName('gallery');
 // const list_products = document.getElementById('list_products');
 const menu_list = document.querySelectorAll('ul.menu_list li');
 
-// const test = document.getElementById('test');
-// test.addEventListener("click", testHandler)
-// async function testHandler (e) {
-//     e.preventDefault()
-//     try {
-//         // 상품 추가
-//         const res = await Api.get('/api/productListName', data);
-//         // alert("상품 판매가 시작되었습니다.");
-//         window.location.href = "/product/detail";
-//     }
-//     catch(err) {
-//         console.error(err.stack);
-//         alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
-//     }
-// }
 
 for (let i = 1; i < menu_list.length; i++) {
     menu_list[i].addEventListener('click', async (e) => {

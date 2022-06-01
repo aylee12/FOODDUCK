@@ -3,7 +3,8 @@ import { addCommas } from '/useful-functions.js';
 
 const shopping_cart_icon_url = "https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg";
 const inner_list_products = document.getElementById('inner_list_products');
-const category = window.location.href.split("/")[4]
+const categoryTemp = window.location.href.split("/")
+const category = categoryTemp[categoryTemp.length-2]
 
 DataHandler(category)
 categoryDisplay();
@@ -22,7 +23,6 @@ async function DataHandler (category) {
         // 카테고리 상품 데이터 가져오기
         const url = category ? '/api/productListCategory/' + category : '/api/productListAll';
         const data = await Api.get(url)
-        console.log(data)
 
         displayProductForCategory(data, category)
     }
@@ -63,10 +63,3 @@ async function displayProductForCategory(data, category){
     });
     return;
 }
-
-
-// function removeAllChildNodes(parent) {
-//     while (parent.firstChild) {
-//         parent.removeChild(parent.firstChild);
-//     }
-// }
