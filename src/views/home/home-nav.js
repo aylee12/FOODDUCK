@@ -18,7 +18,7 @@ const navBar = document.querySelector("#navbar");
       navBar.innerHTML = 
       `
       <li><a class ="nav_logout" href="/">로그아웃</a></li>
-      <li><a class ="nav_user" href="/register">나의 계정</a></li>
+      <li><a class ="nav_user" href="/mypage">나의 계정</a></li>
       <li>
         <a class = "nav_cart" href="/cart" aria-current="page">
           <span class="icon">
