@@ -8,10 +8,8 @@ window.onload = async function() {
             const product_container = document.createElement("div");
             product_container.setAttribute("class", "product_container");
             // 경로 문제
-            product_container.setAttribute("onclick", "location.href = '../../../product/detail/'" + res[i].productId);
-            
-            // 테스트용 코드
-            product_container.setAttribute("onclick", "location.href = '../../../product/detail/'");
+            product_container.setAttribute("onclick", `location.href = '/product/detail/${res[i].productId}'`);
+            console.log(product_container);
 
             const category_container = document.createElement("div");
             category_container.setAttribute("class", "category_container");

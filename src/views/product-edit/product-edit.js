@@ -6,14 +6,12 @@ const product_company = document.getElementById("product_company");
 const product_img = document.getElementById("product_img");
 const product_price = document.getElementById("product_price");
 const product_description = document.getElementById("product_description");
-// product/detail/:id 로
-//const productId = window.location.pathname.split('/').pop();
 
-//테스트코드
-const productId = 'ufjfZaO-TfdscW-7atck2';
+// url에서 productId 찾기 -> 상품정보 가져올 때 사용
+const product_url = window.location.pathname.split('/');
+const productId = product_url[product_url.length -2];
 
 window.onload = async function() {
-    // 전체 카테고리 데이터 받아와서 select option에 추가. API 연결 안 돼 있음
     try {
         const res = await Api.get('/api/categoryList');
 
@@ -27,6 +25,7 @@ window.onload = async function() {
     catch(err) {
         console.error(err.stack);
         alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+        location.href = `/product/edit/${productId}`;
     }
 
     try {
@@ -41,6 +40,7 @@ window.onload = async function() {
     catch(err) {
         console.error(err.stack);
         alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+        location.href = `/product/edit/${productId}`;
     }
 }
 
@@ -66,12 +66,12 @@ register_product_form.onsubmit = async function() {
         try {
             await Api.patch('/api/productUpdate', productId, data);
             alert("상품 정보가 수정되었습니다.");
-            // 상품 상세 페이지로 이동
-            location.href = `../../detail/:${productId}`;
+            location.href = `/product/detail/:${productId}`;
         }
         catch(err) {
             console.error(err.stack);
             alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+            location.href = `/product/edit/${productId}`;
         }
     }
 }
