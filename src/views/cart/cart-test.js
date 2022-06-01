@@ -1,28 +1,26 @@
-// localStorage에 데이터를 가상으로 넣어봤습니다. 데이터가 넘어오면 지우겠습니다.
-const arr = [];
+let cartObj = [];
+
 const obj1 = {
-    price:1000,
-    brand:"마켓컬리1",
-    name:"커피1",
-    quantitiy:1
-};
-arr.push(obj1);
+  price: 1000,
+  quantity:1,
+  company:"컬리1",
+  name:"아스파라거스1"
+}
+cartObj.push(obj1);
 
 const obj2 = {
-  price:2000,
-  brand:"마켓컬리2",
-  name:"커피2",
-  quantitiy:2
-};
-arr.push(obj2);
-
+  price: 2000,
+  quantity:2,
+  company:"컬리2",
+  name:"아스파라거스2"
+}
+cartObj.push(obj2);
 const obj3 = {
-  price:3000,
-  brand:"마켓컬리3",
-  name:"커피3",
-  quantitiy:3
-};
-arr.push(obj3);
+  price: 3000,
+  quantity:3,
+  company:"컬리3",
+  name:"아스파라거스3"
+}
+cartObj.push(obj3);
 
-
-localStorage.setItem("cartExample" , JSON.stringify(arr));
+localStorage.setItem("cartExample" ,JSON.stringify(cartObj));

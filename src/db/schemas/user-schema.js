@@ -1,7 +1,9 @@
 import { Schema } from 'mongoose';
+import { shortId } from './types/short-id';
 
 const UserSchema = new Schema(
   {
+    userId: shortId,
     email: {
       type: String,
       required: true,
@@ -18,7 +20,6 @@ const UserSchema = new Schema(
     phoneNumber: {
       type: String,
       required: false,
-      default: '000-1234-1234',
     },
     address: {
       type: new Schema(
@@ -32,18 +33,7 @@ const UserSchema = new Schema(
           _id: false,
         }
       ),
-      default: '12121서울특별시동대문구휘경2동',
       required: false,
-    },
-    gender: {
-      type: String,
-      required: false,
-      default: 'male',
-    },
-    birthday: {
-      type: String,
-      required: false,
-      default: '19000000',
     },
     role: {
       type: String,
@@ -52,7 +42,7 @@ const UserSchema = new Schema(
     },
   },
   {
-    collection: 'User-info',
+    collection: 'users',
     timestamps: true,
   }
 );

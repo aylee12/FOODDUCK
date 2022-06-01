@@ -6,6 +6,9 @@
     list-style:none;
   }
   
+  #category {
+    display: none;
+  }
   /* header */
   /* 
   .navbar .container .navbar-brand .navbar-item .has-text-link {
@@ -36,7 +39,7 @@
     white-space: nowrap;
     /* padding: 16px 0 0 0; */
   }
-  .menu_list .menu a:hover {
+  .menu_list .menu span:hover {
     color: #68a790;
     background-color: transparent;
     text-decoration: underline;
@@ -85,7 +88,7 @@
   text-align: center;
   margin: 0 0 50px 0;
 }
-.inner_list_products {
+#inner_list_products {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
