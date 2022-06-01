@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import is from '@sindresorhus/is';
 // 폴더에서 import하면, 자동으로 폴더의 index.js에서 가져옴
-import { adminRequired, loginRequired } from '../middlewares';
+import { loginRequired } from '../middlewares';
 import { userService } from '../services';
 
 const userRouter = Router();
@@ -120,6 +120,32 @@ userRouter.patch('/users/:userId', loginRequired, async function (req, res, next
   }
 });
 
+// 사용자 정보 삭제(soft Delete)
+userRouter.delete('/users/:userId', loginRequired, async (req, res, next) => {
+  try {
+    // params로부터 id를 가져옴
+    const userId = req.params.userId;
+
+    // body data로부터, 확인용으로 사용할 현재 비밀번호를 추출함.
+    const currentPassword = req.body.currentPassword;
+
+    // currentPassword 없을 시, 진행 불가
+    if (!currentPassword) {
+      throw new Error('정보를 삭제하려면, 현재의 비밀번호가 필요합니다.');
+    }
+
+    const userInfoRequired = { userId, currentPassword };
+
+    // 사용자 정보 삭제
+    const deletedUserInfo = await userService.delUser(userInfoRequired);
+
+    // 삭제 이후의 결과를 프론트에 보내 줌
+    res.status(200).json(deletedUserInfo);
+  } catch (error) {
+    next(error);
+  }
+});
+
 //토큰을 이용하여 특정 유저정보 불러오기 - 회원정보수정때문에 필요
 userRouter.get('/getUserInfo', loginRequired, async (req, res, next) => {
   try {
@@ -134,8 +160,8 @@ userRouter.get('/getUserInfo', loginRequired, async (req, res, next) => {
 
 // issue에 질문 (정적 페이지 라우팅은 어떤 방식을 사용하는가? 권한 인증이 필요한 페이지는 라우터에서 걸러줘야 하는 것 같은데 맞는가?)
 // 권한 체크 api (post? get? 둘중에 뭐로 해야할까??) - use를 사용해야할거같다.
-userRouter.get('/authorization', adminRequired, async function (req, res, next) {
-  // const path = req.
-});
+// userRouter.use('/authorization', adminRequired, async function (req, res, next) {
+//   // const path = req.
+// });
 
 export { userRouter };

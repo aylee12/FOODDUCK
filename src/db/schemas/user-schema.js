@@ -1,5 +1,6 @@
 import { Schema } from 'mongoose';
 import { shortId } from './types/short-id';
+import MongooseDelete from 'mongoose-delete';
 
 const UserSchema = new Schema(
   {
@@ -46,5 +47,8 @@ const UserSchema = new Schema(
     timestamps: true,
   }
 );
+
+//soft delete plugin적용
+UserSchema.plugin(MongooseDelete);
 
 export { UserSchema };
