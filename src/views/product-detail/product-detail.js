@@ -19,7 +19,6 @@ const btn_cnt_up = document.getElementById("btn_cnt_up");
 const btn_add_to_cart = document.getElementById("btn_add_to_cart");
 const btn_buy_now = document.getElementById("btn_buy_now");
 
-let cart = [];
 let move_result = false;
 
 // 유저 권한 넣을 곳
@@ -158,7 +157,7 @@ async function delHandler(e) {
 }
 
 // 구매 이벤트핸들러
-// sessionStorage에 배열로 제품 아이디, 이미지, 이름, 가격, 제조사, 수량 추가
+// localStorage에 배열로 제품 아이디, 이미지, 이름, 가격, 제조사, 수량 추가
 function buyNowHandler() {
   const data = getData();
   
@@ -168,36 +167,47 @@ function buyNowHandler() {
 
 
 // 장바구니 이벤트핸들러
-// 중복 검사 -> sessionStorage에 배열로 제품 아이디, 이미지, 이름, 가격, 제조사, 수량 추가
+// 중복 검사 -> localStorage에 배열로 제품 아이디, 이미지, 이름, 가격, 제조사, 수량 추가
 function addToCartHandler() {
-  let state_result = true;
-  const state = JSON.parse(localStorage.getItem("cart"));
-  
-  // 장바구니 중복 확인
-  if (state !== null) {
-    for (let i = 0; i < state.length; i++) {
-      if (state[i].id === productId) {
-        state_result = false;
-        break;
-      }
-    }
-  }
-  // 중복 없을 시 상품 추가 -> 이동 권유
-  if (state_result) {
-    const data = getData();
+  // let state_result = true;
 
-    cart.push(data);
+  const origin_state = localStorage.getItem("cart");
+  let state = null;
+  if (origin_state.length === 0) {
+    state = origin_state;
+  } else {
+    state = JSON.parse(origin_state);
+  }
+  
+  // // 장바구니 중복 확인
+  // if (state.length !== 0) {
+  //   for (let i = 0; i < state.length; i++) {
+  //     if (state[i].id === productId) {
+  //       state_result = false;
+  //       break;
+  //     }
+  //   }
+  // }
+  
+  // // 중복 없을 시 상품 추가 -> 이동 권유
+  // if (state_result) {
+    const data = getData();
+    const cart = [...state, data];
+    console.log(cart);
+    //cart.push(data);
     localStorage.setItem("cart", JSON.stringify(cart));
     move_result = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
-  } 
+  // } 
+
   // 중복일 시 추가 X -> 이동 권유
-  else {
-    move_result = confirm("이미 장바구니에 담긴 상품입니다. 장바구니로 이동하시겠습니까?");
-  }
-  //이동 권유 결과 처리
-  if (move_result) {
-    location.href = "/cart";
-  }
+  // else {
+  //   move_result = confirm("이미 장바구니에 담긴 상품입니다. 장바구니로 이동하시겠습니까?");
+  // }
+
+  // //이동 권유 결과 처리
+  // if (move_result) {
+  //   location.href = "/cart";
+  // }
 }
 
 function getData() {

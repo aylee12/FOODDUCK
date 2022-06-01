@@ -20,6 +20,7 @@ viewsRouter.use('/product/edit/:id', serveStatic('product-edit'));
 
 // 유저 정보 변경
 viewsRouter.use('/user/info/manage' , serveStatic('user-info-manage'));
+viewsRouter.use('/user/info/cart' , serveStatic('user-info-cart'));
 // my page 주소 설정
 viewsRouter.use('/mypage', serveStatic('mypage'));
 

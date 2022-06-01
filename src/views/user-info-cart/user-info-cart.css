@@ -1,0 +1,55 @@
+* {
+  font-family:  'Nanum Gothic', sans-serif;
+}
+.cart_list_wrap{
+  width: 1344px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+.user_cart_title{
+  font-size: 1.5rem;
+  border-bottom: 1px solid #ddd;
+}
+.cart_list_container_wrap {
+  width: 1024px;
+  margin: 0 auto;
+}
+.cart_list_container{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 30px;
+  background-color: rgba(0, 209, 178, 0.25);
+  font-size: 1rem;
+  border-bottom: 1px solid #aaa;
+}
+.db_cart_list_container{
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #aaa;
+}
+.cart_list_items1,
+.db_cart_list_items1{
+  text-align: center;
+  flex-grow: 1;
+}
+.cart_list_items2,
+.db_cart_list_items2{
+  text-align: center;
+  flex-grow: 3;
+  white-space: pre-line;
+}
+.cart_list_items3,
+.db_cart_list_items3{
+  text-align: center;
+  flex-grow: 1;
+}
+.cart_list_items4,
+.db_cart_list_items4{
+  text-align: center;
+  flex-grow: 1;
+}
+
+.db_cart_list_container{
+  display: flex;
+}
