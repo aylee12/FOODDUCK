@@ -74,8 +74,7 @@ document.getElementById("add").onsubmit = async function addHandler() {
         };
         
         try {
-            const res = await Api.post('/api/categoryAdd', data);
-            console.log(res);
+            await Api.post('/api/categoryAdd', data);
             alert("카테고리가 추가되었습니다.");
         }
         catch(err) {
