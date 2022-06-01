@@ -6,6 +6,8 @@ const cartInit = () => {
   const cartList = document.querySelector(".cart-list");
   let sumPriceTag = 0;
   cartGetItems.map(items => {
+      const {img , company , name , price , quantity} = items;
+      
       cartList.innerHTML +=
       `
       <div class="cart-items-list">
@@ -13,15 +15,15 @@ const cartInit = () => {
           <input type="checkbox" class="check-one">
         </div>
         <div class="cart-items-img">
-          <img src="" alt="">
+          <img src="${img}" alt="">
         </div>
         <div class="cart-items-content">
-          <p>${items.brand}</p>
-          <p>${items.name}</p>
-          <div><span class="cart-items-price" data-value="${items.price}">${items.price}</span>원</div>
+          <p>${company}</p>
+          <p>${name}</p>
+          <div><span class="cart-items-price" data-value="${price}">${price*quantity}</span>원</div>
         </div>
         <div class="cart-items-btn">
-          <input type="text" value=${items.quantitiy} class="cart-items-quantity-input" readonly>
+          <input type="text" value=${quantity} class="cart-items-quantity-input" readonly>
           <div class="cart-plus-minus-wrap">
             <input type="button" class="cart-btn-minus">
             <input type="button" class="cart-btn-plus">
@@ -29,7 +31,7 @@ const cartInit = () => {
         </div>
       </div>
     `
-    sumPriceTag += items.price;
+    sumPriceTag += price * quantity;
   });
   cartList.innerHTML += 
   `

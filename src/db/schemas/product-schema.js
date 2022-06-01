@@ -1,17 +1,19 @@
-import { connection } from 'mongoose';
 import { Schema } from 'mongoose';
-const autoIncrement = require('mongoose-auto-increment');
+import { shortId } from './types/short-id';
+// import { connection } from 'mongoose';
+// const autoIncrement = require('mongoose-auto-increment');
 
-autoIncrement.initialize(connection);
+// autoIncrement.initialize(connection);
 
 const ProductSchema = new Schema(
   {
-    productId: {
-      type: Number,
-      required: true,
-      unique: true,
-      index: true,
-    },
+    // productId: {
+    //   type: Number,
+    //   required: true,
+    //   unique: true,
+    //   index: true,
+    // },
+    productId: shortId,
     name: {
       type: String,
       required: true,
@@ -26,9 +28,8 @@ const ProductSchema = new Schema(
       required: true,
     },
     category: {
-      // type: Schema.Types.ObjectId,
-      // ref: 'categories',
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'categories',
       required: true,
     },
     img: {
@@ -41,16 +42,16 @@ const ProductSchema = new Schema(
     },
   },
   {
-    collection: 'products',
+    collection: 'products22',
     timestamps: true,
   }
 );
 
-ProductSchema.plugin(autoIncrement.plugin, {
-  model: 'products',
-  field: 'productId',
-  startAt: 1,
-  increment: 1,
-});
+// ProductSchema.plugin(autoIncrement.plugin, {
+//   model: 'products',
+//   field: 'productId',
+//   startAt: 1,
+//   increment: 1,
+// });
 
 export { ProductSchema };

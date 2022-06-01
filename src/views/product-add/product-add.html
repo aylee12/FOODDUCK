@@ -22,6 +22,9 @@
       src="https://kit.fontawesome.com/7630448495.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <!-- AWS S3 사용하기 위한 파일 -->
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.410.0.min.js"></script>
     <!-- 커스텀 css, js -->
@@ -39,7 +42,14 @@
         </div>
     </nav>
 
-    <!-- 제품 추가 폼(Form) -->
+
+
+
+
+
+
+
+    <!-- product-add -->
     <section class="container">
       <div class="inner_container">
         <div class="block account-header">
@@ -89,6 +99,30 @@
               </div>
             </div>
 
+            <div class="field is-fullwidth">
+              <label class="label" for="product_img">제품 사진</label>
+              <div class="file has-name is-fullwidth">
+                <label class="file-label">
+                  <input
+                    class="file-input"
+                    id="product_img"
+                    type="file"
+                    name="image-file"
+                    accept=".png, .jpeg, .jpg"
+                  />
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label"> 사진 업로드 </span>
+                  </span>
+                  <span class="file-name" id="span_file_name">
+                    사진파일 (png, jpg, jpeg)
+                  </span>
+                </label>
+              </div>
+            </div>
+            
             <!-- 제품 가격 -->
             <div class="field">
               <label class="label" for="product_price">가격</label>
@@ -130,7 +164,7 @@
         </div>
       </div>
     </section>
-
     <script src="product-add.js" type="module"></script>
+    
   </body>
 </html>

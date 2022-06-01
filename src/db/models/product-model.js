@@ -1,33 +1,32 @@
 import { model } from 'mongoose';
 import { ProductSchema } from '../schemas/product-schema';
 
-const Product = model('products', ProductSchema);
+const Product = model('products22', ProductSchema);
 
 export class ProductModel {
   //상품 추가
-  async createProduct(product) {
+  async create(product) {
     return await Product.create(product);
-    //.populate('email');
   }
 
   //상품 전체 조회
   async findAll() {
-    return await Product.find({});
+    return await Product.find({}).populate('category', 'name');
   }
 
   //상품 카테고리 별 조회
   async findByCategory(category) {
-    return await Product.find({ category });
+    return await Product.find({ category }).populate('category', 'name');
   }
 
   //상품명 조회
   async findByProductName(name) {
-    return await Product.findOne({ name });
+    return await Product.findOne({ name }).populate('category', 'name');
   }
 
   //상품ID 조회
   async findByProductID(productId) {
-    return await Product.findOne({ productId });
+    return await Product.findOne({ productId }).populate('category', 'name');
   }
 
   //상품 수정

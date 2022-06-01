@@ -5,7 +5,7 @@ import { adminRequired } from '../middlewares';
 const productRouter = Router();
 
 //상품 추가
-productRouter.post('/productAdd', adminRequired, async (req, res, next) => {
+productRouter.post('/productAdd', async (req, res, next) => {
   try {
     const { name, price, company, category, img, description } = req.body;
 
@@ -23,6 +23,20 @@ productRouter.post('/productAdd', adminRequired, async (req, res, next) => {
     next(error);
   }
 });
+
+//엔드포인트 통합 (전체 상품이랑 카테고리별 상품 검색) - [GET] /product?category=meat
+// productRouter.get('/productList', async (req, res, next) => {
+//   try {
+//     if (req.query.category) {
+//       const products = await productService.getProductsByCategory(category);
+//       res.status(200).json(products);
+//     }
+//     const products = await productService.getAllProducts();
+//     res.status(200).json(products);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 //전체 상품 조회
 productRouter.get('/productListAll', async (req, res, next) => {
@@ -45,6 +59,22 @@ productRouter.get('/productListCategory/:category', async (req, res, next) => {
     next(error);
   }
 });
+
+//엔드포인트 통합 (상품 ID색이랑 상품명 검색) - [GET] /product?productId=1 or /product?name=립아이
+// productRouter.get('/productOne', async (req, res, next) => {
+//   try {
+//     if (req.query.productId) {
+//       const product = await productService.getProductById(productId);
+//       res.status(200).json(product);
+//     }
+//     if (req.query.name) {
+//       const products = await productService.getProductByName(name);
+//       res.status(200).json(products);
+//     }
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 //상품명으로 조회
 productRouter.get('/productListName/:name', async (req, res, next) => {
@@ -71,7 +101,7 @@ productRouter.get('/productListId/:productId', async (req, res, next) => {
 });
 
 //상품 수정
-productRouter.patch('/productUpdate/:productId', adminRequired, async (req, res, next) => {
+productRouter.patch('/productUpdate/:productId', async (req, res, next) => {
   try {
     const productId = req.params.productId;
     const updatelist = req.body;
@@ -84,7 +114,7 @@ productRouter.patch('/productUpdate/:productId', adminRequired, async (req, res,
 });
 
 //상품 삭제
-productRouter.delete('/productDelete/:productId', adminRequired, async (req, res, next) => {
+productRouter.delete('/productDelete/:productId', async (req, res, next) => {
   try {
     const productId = req.params.productId;
 
@@ -93,7 +123,6 @@ productRouter.delete('/productDelete/:productId', adminRequired, async (req, res
   } catch (error) {
     next(error);
   }
-  d;
 });
 
 export { productRouter };
