@@ -19,7 +19,7 @@ viewsRouter.use('/product/add', serveStatic('product-add'));
 viewsRouter.use('/product/edit', serveStatic('product-edit'));
 
 // 유저 정보 변경
-viewsRouter.use('/user/info/manage' , serveStatic('user-info-manage'));
+viewsRouter.use('/user/info/manage', serveStatic('user-info-manage'));
 // my page 주소 설정
 viewsRouter.use('/mypage', serveStatic('mypage'));
 
