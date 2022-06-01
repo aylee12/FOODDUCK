@@ -90,25 +90,27 @@ function changeToEdit() {
     // input 수정 가능하게 변경
     const category = document.getElementById(this.dataset.id);
     category.removeAttribute("readonly");
-    category.style.cssText = "border: 2px solid rgb(19, 93, 197);";
+    category.style.cssText = "border: 2px solid rgb(95, 206, 179);";
     // 수정 버튼 문자를 저장으로 변경
     this.innerText = "저장";
 
+    this.removeAttribute("click", editHandler);
     this.addEventListener("click", editHandler);
 }
 
 // 카테고리 수정 이벤트 핸들러
 async function editHandler() {
     if (confirm("카테고리를 수정하시겠습니까?")) {
+        const original_name = this.dataset.id;
         const name = document.getElementById(this.dataset.id).value;
         
         const data = {
             name: name,
             description: "All " + name
         };
-        
+
         try {
-            await Api.patch('/api/categoryUpdate', name, data);
+            await Api.patch('/api/categoryUpdate', original_name, data);
             alert("카테고리가 수정되었습니다.");
             location.reload();
         }
@@ -125,7 +127,7 @@ async function delHandler() {
         const name = document.getElementById(this.dataset.id).value;
 
         try {
-            await Api.del('/api/categoryUpdate', name);
+            await Api.delete('/api/categoryDelete', name);
             alert("카테고리가 삭제되었습니다.");
             location.reload();
         }

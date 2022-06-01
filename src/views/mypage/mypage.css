@@ -230,52 +230,72 @@ section.container {
 }
 
 div.container_title {
-    font-size: 50px;
-    font-weight: 500;
-    color: #282828;
+    font-size: 60px;
+    font-weight: 700;
+    color: rgb(92, 91, 91);
     text-align: center;
     padding-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #f7f7f7;
+    padding-bottom: 40px;
+    border-bottom: 0.5px solid rgb(30, 202, 162);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.container_title .hi {
+    margin-right: 10px;
+}
+
+div.container_title .name {
+    font-size: 70px;
+    color: rgb(30, 202, 162);
+}
+
+div.container_title .sir {
+    margin-left: 10px;
 }
 
 div.inner_container {
-    margin-bottom: 1.5rem;
-    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-top: 70px;
     width: 100%;
     min-height: 200px;
     height: auto;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
 }  
 
 div.inner_container div.button_container {
-    width: 80%;
-    height: auto;
-    margin: 20px;
-    text-align: center;
+    width: 100%;
 }
 
 div.inner_container div.button_container button {
-    width: 50%;
-    background-color: rgb(255, 255, 255); 
-    font-size: 25px; 
-    font-weight: 350;
-    color: #4c4c4c;
-    padding: 15px;
-    border: 1px solid rgb(235, 233, 233);
-    border-top-left-radius: 30px; 
-    border-top-right-radius: 30px; 
-    border-bottom-left-radius: 30px; 
-    border-bottom-right-radius: 30px; 
-    margin: 15px;
-    box-shadow: -10px -10px 15px rgba(255,255,255,0.5),
-            10px 10px 15px rgba(70,70,70,0.12);
+    background-color: white;
+    width: 60%;
+    font-size: 40px; 
+    font-weight: 700;
+    color: rgb(30, 202, 162);
+    padding: 10px;
+
+    border: 1px solid rgb(30, 202, 162);
+    border-top-left-radius: 50px; 
+    border-top-right-radius: 50px; 
+    border-bottom-left-radius: 50px; 
+    border-bottom-right-radius: 50px; 
+    margin: 40px auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+button img {
+    margin-right: 50px;
+    height: 90px;
 }
 
 div.inner_container div.button_container button:hover {
-    background-color: #f5f5f5;
+    background-color: rgb(102, 212, 186);
+    color: white;
+    border: 1px solid rgb(102, 212, 186);
 }

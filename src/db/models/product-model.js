@@ -1,7 +1,7 @@
 import { model } from 'mongoose';
 import { ProductSchema } from '../schemas/product-schema';
 
-const Product = model('products', ProductSchema);
+const Product = model('products22', ProductSchema);
 
 export class ProductModel {
   //상품 추가
