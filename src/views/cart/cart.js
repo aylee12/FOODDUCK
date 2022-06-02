@@ -1,7 +1,6 @@
 // 합계 관련된 것들 
 const itemsQuantity = document.querySelectorAll(".cart-items-quantity-input");
 const btnMinus = document.querySelectorAll(".cart-btn-minus");
-// const btnPlus = document.querySelectorAll(".cart-btn-plus");
 const btnPlus = document.getElementsByClassName("cart-btn-plus");
 const cartItemsPrice = document.getElementsByClassName("cart-items-price");
 const cartPriceSum = document.querySelector('.cart-price-sum');
@@ -12,6 +11,13 @@ const allCheck = document.querySelector('.all-check');
 const selectCheck = document.querySelector('.select-check');
 const checkOne = document.querySelectorAll('.check-one');
 
+// 버튼 관련 
+const submitButton = document.querySelector("#submitButton");
+
+submitButton.addEventListener("click" , (e) => {
+  e.preventDefault();
+  location.href = '/pay'
+});
 
 // 총 합계 구하기 
 const sumPrice = () => {
@@ -29,7 +35,6 @@ for(let i = 0 ; i < btnPlus.length;i++){
     sumPrice();
   })
 }
-
 
 for(let i = 0 ; i<btnPlus.length; i++){
   btnMinus[i].addEventListener("click" , () =>{

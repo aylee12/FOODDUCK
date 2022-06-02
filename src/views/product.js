@@ -17,6 +17,7 @@ function categoryDisplay(){
         })
     }
 }
+
 async function DataHandler (category) {
     try {
         // 카테고리 상품 데이터 가져오기
@@ -40,11 +41,12 @@ async function displayProductForCategory(data, category){
         const img = element.img;
         const price = addCommas(element.price);
         const company = element.company;
+        const id = element.productId;
 
         inner_list_products.innerHTML += `
         <div class="item">
             <div class="thumbnail" >
-                <a href="" onclick="toDetail(${name})">
+                <a onclick="location.href = '/product/detail/${id}'">
                     <img src="${img}" alt="임시" >
                 </a>
             </div>
@@ -60,5 +62,6 @@ async function displayProductForCategory(data, category){
         </div>
         </div>`
     });
+    console.log(inner_list_products);
     return;
 }

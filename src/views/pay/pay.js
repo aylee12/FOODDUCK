@@ -5,14 +5,14 @@ const payButton = document.querySelector("#payButton");
 
 // 주문 가격 총 계산하기 
 const paySumPriceLoaded = () => {
-  const getCartStorage = JSON.parse(localStorage.getItem("cartExample"));
-  const sumPrice = getCartStorage.reduce((acc , cur) => acc + cur.price*cur.quantity , 0);
+  const getCartStorage = JSON.parse(localStorage.getItem("cart"));
+  const sumPrice = getCartStorage.reduce((acc , cur) => acc + cur.price * cur.quantity , 0);
   cartPriceSum.innerHTML = sumPrice;
 }
 
 // 구매하기를 누를시에 Storage를 전부 비워주고 홈으로 이동시킨다.
-const handlePayBtn = () => {
-  // 요청을 하면 지워주고 
+const handlePayBtn = (e) => {
+  e.preventDefault();
   localStorage.removeItem("cart");
   window.location.href = '/';
   alert("결제가 완료되었습니다.");
@@ -38,6 +38,29 @@ const init = async () => {
     addressInput.value = `${user.address.address1}`;
     detailAddressInput.value = `${user.address.address2}`;
     extraAddressInput.value = `${user.address.address3}`;
+    /* 결제가 완료되면 아래와 같은 형식으로 데이터를 보내드리면 된다. 
+    userId(로그인한 사용자),
+    orderName(주문자명),
+    phoneNumber(휴대폰번호),
+    address(주문자주소),
+    orderList(주문 목록) -> 데이터 형식 [{productId, name, quantity}] 으로 보내주셨으면 합니다,
+    totalPrice(총액),
+
+    const data = {
+      userId,
+      orderName,
+      phoneNumber,
+      address,
+      orderList : [
+        {
+          productId,
+          name,
+          quantity
+        }
+      ],
+      totalPrice
+    }
+    */ 
   } catch(e) {
     console.log(e.message);
   }
