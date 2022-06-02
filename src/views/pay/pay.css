@@ -1,0 +1,157 @@
+/* header */
+.navbar-item {
+  position: relative;
+}
+#navbar li a {
+  transition: all 0.3s ease-in-out;
+  font-weight: 700;
+}
+#navbar li a:hover {
+  transform: scale(1.05);
+}
+#navbar_menu {
+  display: flex;
+  justify-content: center;
+  height: 75px;
+}
+.sticky {
+  position: sticky;
+  top: 0px;
+  background-color: white;
+  z-index: 2;
+}
+.menu_main a,
+.menu_main a span{
+  color: #333
+}
+
+#inner_nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline;
+  justify-content: center;
+}
+#inner_nav li {
+  font-size: 12pt;
+  font-weight: 400;
+  padding: 0 4px 0 10px;
+}
+
+.menu_list {
+  display: flex;
+}
+.menu_list .menu {
+  margin: 30px 70px;
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.menu_list .category_toggle {
+  position: relative;
+}
+.toggle {
+  height: 60px;
+  position: relative;
+}
+.toggle img {
+  position: absolute;
+  left: -20px;
+  top: 5px;
+}
+.menu_list .category_wrap {
+  display: none;
+  position: absolute;
+  font-size: 14px;
+  width: 220px;
+  z-index: 300;
+  top: 45px;
+}
+.menu_list .category_wrap li{
+  background: white;
+  border: solid .5px #ddd;
+  padding: 7px 0 0 14px;
+  width: 220px;
+  height: 40px;
+  align-items: center;
+  line-height: 40px;
+  letter-spacing: -3px;
+
+}
+.menu_list .category_wrap li:hover {
+  background: #eee;
+}
+.menu_list .category_wrap li span:hover{
+  color: #68a790;
+}
+.menu_list .menu a{
+  transition: all 0.2s ease-in-out;
+}
+.menu_list .menu a:hover {
+  color: #68a790;
+  font-weight: 700;
+}
+.navbar-end a {
+  color: #333;
+}
+
+/*  */
+.register-user-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+}
+
+.register-user-form-box {
+  width: 30rem;
+}
+
+.register-user-form-box .title {
+  text-align: center;
+}
+
+.register-user-form-box .button {
+  font-weight: bold;
+}
+
+.register-user-form-box .input:focus {
+  border-color: #00d1b2;
+  box-shadow: 0 0 0 0.125em rgba(0, 209, 178, 0.25);
+}
+.control{
+  display: flex;
+}
+.radio-items{
+  flex-grow: 1;
+}
+
+.address-btn-wrap{
+  display: flex;
+}
+/* 왜 3:1의 비율이 안먹히는지 잘 모르겠음 */
+.address-btn-wrap:nth-child(1){
+  flex-grow: 3;
+}
+.address-btn-wrap:nth-child(2){
+  flex-grow: 1;
+}
+
+.address-detail-wrap{
+  display: flex;
+}
+
+.input-email-ex1{
+  flex-grow: 3;
+}
+.input-email-ex2{
+  flex-grow: 1;
+}
+
+.price-sum-wrap{
+  text-align: right;
+}
+.cart-price-sum{
+  font-size: 25px;
+  font-weight: 700;
+}
