@@ -56,7 +56,7 @@ async function displayProductForCategory(data, category){
             <button class="shopping_cart_icon"><img src="${shopping_cart_icon_url}" alt="카트담기 아이콘" ></button>
         </div>
         <div class="description">
-            <h3 class="description_text"><a href="">[${company}] ${name}</a></h3>
+            <h3 class="description_text"><a onclick="location.href = '/product/detail/${id}'">[${company}] ${name}</a></h3>
             <div class="price">
             ${price}
             <span>원</span>

@@ -3,10 +3,7 @@
 }
 
 /* header */
-/* 
-.navbar .container .navbar-brand .navbar-item .has-text-link {
-  color: black;
-} */
+
 #navbar_menu {
   display: flex;
   justify-content: center;
