@@ -47,7 +47,7 @@ function displayProductForCategory(categoryName){
     fetch(`http://localhost:3000/api/productListCategory/` + categoryName)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            console.log(data);
             if (inner_list_products.children[0]) {
                 removeAllChildNodes(inner_list_products);
             }
