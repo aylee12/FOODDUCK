@@ -9,7 +9,7 @@ const product_description = document.getElementById("product_description");
 
 let original_img = '';
 
-// url에서 productId 찾기 -> 상품정보 가져올 때 사용
+// url에서 productId 찾기 -> 제품정보 가져올 때 사용
 const product_url = window.location.pathname.split('/');
 const productId = product_url[product_url.length - 2];
 
@@ -26,8 +26,14 @@ window.onload = async function () {
     }
     catch (err) {
         console.error(err.stack);
-        alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
-        location.href = `/product/edit/${productId}`;
+
+        Swal({
+            title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+            text: `${err.message}`,
+            icon: 'error'
+        }).then(function () {
+            window.location.href = `/`;
+        });
     }
 
     try {
@@ -41,8 +47,14 @@ window.onload = async function () {
     }
     catch (err) {
         console.error(err.stack);
-        alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
-        location.href = `/product/edit/${productId}`;
+
+        new Swal({
+            title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+            text: `${err.message}`,
+            icon: 'error'
+        }).then(function () {
+            window.location.href = `/`;
+        });
     }
 }
 
@@ -54,10 +66,10 @@ imgInput.onchange = function (e) {
     imgForm = ImgUpload.imgForm(imgInput);
 };
 
-// '상품 수정하기' 버튼 누르면 동작
+// '제품 수정하기' 버튼 누르면 동작
 register_product_form.onsubmit = async function (e) {
     e.preventDefault();
-    if (confirm("상품을 수정하시겠습니까?")) {
+    if (confirm("제품을 수정하시겠습니까?")) {
         const product_name = this.product_name.value;
         const product_category = this.product_category.value;
         const product_company = this.product_company.value;
@@ -83,13 +95,24 @@ register_product_form.onsubmit = async function (e) {
                 data.img = imgUrl;
             }
             await Api.patch('/api/productUpdate', productId, data);
-            alert("상품 정보가 수정되었습니다.");
-            location.href = `/product/detail/${productId}`;
+
+            new Swal({
+                title: '제품 정보가 수정되었습니다.',
+                icon: 'success'
+            }).then(function () {
+                window.location.href = `/product/detail/${productId}`;
+            });
         }
         catch (err) {
             console.error(err.stack);
-            alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
-            location.href = `/product/edit/${productId}`;
+
+            new Swal({
+                title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+                text: `${err.message}`,
+                icon: 'error'
+            }).then(function () {
+                window.location.href = `/product/detail/${productId}`;
+            });
         }
     }
 }

@@ -61,7 +61,14 @@ window.onload = async function () {
     }
     catch (err) {
         console.error(err.stack);
-        alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+
+        new Swal({
+            title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+            text: `${err.message}`,
+            icon: 'error'
+        }).then(function () {
+            window.location.href = '/';
+        });
     }
 }
 
@@ -75,11 +82,24 @@ document.getElementById("add").onsubmit = async function addHandler() {
 
         try {
             await Api.post('/api/categoryAdd', data);
-            alert("카테고리가 추가되었습니다.");
+
+            new Swal({
+                title: '카테고리가 추가되었습니다.',
+                icon: 'success'
+            }).then(function () {
+                window.location.reload();
+            });
         }
         catch (err) {
             console.error(err.stack);
-            alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+
+            new Swal({
+                title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+                text: `${err.message}`,
+                icon: 'error'
+            }).then(function () {
+                window.location.reload();
+            });
         }
     }
 }
@@ -110,12 +130,23 @@ async function editHandler() {
 
         try {
             await Api.patch('/api/categoryUpdate', original_name, data);
-            alert("카테고리가 수정되었습니다.");
-            location.reload();
+            new Swal({
+                title: '카테고리가 수정되었습니다.',
+                icon: 'success'
+            }).then(function () {
+                window.location.reload();
+            });
         }
         catch (err) {
             console.error(err.stack);
-            alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+
+            new Swal({
+                title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+                text: `${err.message}`,
+                icon: 'error'
+            }).then(function () {
+                window.location.reload();
+            });
         }
     };
 }
@@ -127,12 +158,24 @@ async function delHandler() {
 
         try {
             await Api.delete('/api/categoryDelete', name);
-            alert("카테고리가 삭제되었습니다.");
-            location.reload();
+
+            new Swal({
+                title: '카테고리가 삭제되었습니다.',
+                icon: 'success'
+            }).then(function () {
+                window.location.reload();
+            });
         }
         catch (err) {
             console.error(err.stack);
-            alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+
+            new Swal({
+                title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+                text: `${err.message}`,
+                icon: 'error'
+            }).then(function () {
+                window.location.reload();
+            });
         }
     }
 }

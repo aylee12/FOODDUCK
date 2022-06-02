@@ -16,7 +16,12 @@ window.onload = async function () {
     }
   } catch (err) {
     console.error(err.stack);
-    alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+
+    Swal({
+      title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+      text: `${err.message}`,
+      icon: 'error'
+    });
   }
 };
 
@@ -60,13 +65,24 @@ register_product_form.onsubmit = async function (e) {
 
       // 상품 추가
       await Api.post('/api/productAdd', data);
-      alert('상품 판매가 시작되었습니다.');
-      // 상품 목록으로 이동
-      window.location.href = '/admin/product/list';
+
+      new Swal({
+        title: '상품 판매가 시작되었습니다.',
+        icon: 'success'
+      }).then(function () {
+        window.location.href = '/admin/product/list'
+      });
     }
     catch (err) {
       console.error(err.stack);
-      alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+
+      new Swal({
+        title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+        text: `${err.message}`,
+        icon: 'error'
+      }).then(function () {
+        window.location.href = '/mypage';
+      });
     }
   }
 };

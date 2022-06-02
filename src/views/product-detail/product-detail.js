@@ -9,7 +9,7 @@ const product_description = document.getElementById("product_description");
 const product_quantity = document.getElementById("quantity");
 const product_total_price = document.getElementById("product_total_price");
 
-// url에서 productId 찾기 -> 상품정보 가져올 때 사용
+// url에서 productId 찾기 -> 제품정보 가져올 때 사용
 const product_url = window.location.pathname.split('/');
 const productId = product_url[product_url.length - 2];
 
@@ -25,7 +25,7 @@ let move_result = false;
 let role = "";
 
 window.onload = async function () {
-  // 상품 데이터 가져오기
+  // 제품 데이터 가져오기
   try {
     const res = await Api.get('/api/productListId', productId);
     product_img.src = res.img;
@@ -36,8 +36,14 @@ window.onload = async function () {
   }
   catch (err) {
     console.error(err.stack);
-    alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
-    location.href = `/product/detail/${productId}`;
+
+    new Swal({
+      title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+      text: `${err.message}`,
+      icon: 'error'
+    }).then(function () {
+      window.location.href = `/`;
+    });
   }
 
   // token 있는지 검사
@@ -50,8 +56,14 @@ window.onload = async function () {
     }
     catch (err) {
       console.error(err.stack);
-      alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
-      location.href = `/product/detail/$[productId}`;
+
+      new Swal({
+        title: '문제가 발생하였습니다. \n확인 후 다시 시도해 주세요',
+        text: `${err.message}`,
+        icon: 'error'
+      }).then(function () {
+        window.location.href = `/`;
+      });
     }
   }
 
@@ -70,14 +82,14 @@ function adminControl() {
     // 수정 버튼 생성
     const btn_edit = document.createElement("button");
     btn_edit.setAttribute("id", "btn_edit");
-    const btn_edit_text = document.createTextNode("상품 수정");
+    const btn_edit_text = document.createTextNode("제품 수정");
     btn_edit.appendChild(btn_edit_text);
     btn_admin_zone.appendChild(btn_edit);
 
     // 삭제 버튼 생성
     const btn_del = document.createElement("button");
     btn_del.setAttribute("id", "btn_del");
-    const btn_del_text = document.createTextNode("상품 삭제");
+    const btn_del_text = document.createTextNode("제품 삭제");
     btn_del.appendChild(btn_del_text);
     btn_admin_zone.appendChild(btn_del);
 
@@ -118,20 +130,20 @@ function cnt_up() {
 }
 
 
-// 상품수정 이벤트핸들러 -> 상품수정 페이지로 이동
+// 제품수정 이벤트핸들러 -> 제품수정 페이지로 이동
 function editHandler() {
-  const confirm_result = confirm("상품을 수정하시겠습니까?");
+  const confirm_result = confirm("제품을 수정하시겠습니까?");
 
   if (confirm_result) {
     location.href = `/product/edit/${productId}`;
   }
 }
 
-// 상품삭제 이벤트핸들러
+// 제품삭제 이벤트핸들러
 async function delHandler(e) {
   e.preventDefault();
 
-  const confirm_result = confirm("상품을 삭제하시겠습니까?");
+  const confirm_result = confirm("제품을 삭제하시겠습니까?");
 
   if (confirm_result) {
     const data = {
@@ -145,14 +157,24 @@ async function delHandler(e) {
 
     try {
       await Api.delete('/api/productDelete', productId, data);
-      alert("상품이 삭제되었습니다.");
-      // 메인으로 이동
-      window.location.href = "/";
+
+      new Swal({
+        title: '제품이 삭제되었습니다.',
+        icon: 'success'
+      }).then(function () {
+        window.location.href = "/";
+      });
     }
     catch (err) {
       console.error(err.stack);
-      alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
-      location.href = `/product/detail/${productId}`;
+
+      new Swal({
+        title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+        text: `${err.message}`,
+        icon: 'error'
+      }).then(function () {
+        window.location.href = `/product/detail/${productId}`;
+      });
     }
   }
 }
@@ -182,7 +204,7 @@ function addToCartHandler() {
     }
   }
 
-  // 중복 없을 시 상품 추가 -> 이동 권유
+  // 중복 없을 시 제품 추가 -> 이동 권유
   if (state_result) {
     const data = getData();
     const cart = [...state, data];
@@ -192,7 +214,7 @@ function addToCartHandler() {
 
   // 중복일 시 추가 X -> 이동 권유
   else {
-    move_result = confirm("이미 장바구니에 담긴 상품입니다. 장바구니로 이동하시겠습니까?");
+    move_result = confirm("이미 장바구니에 담긴 제품입니다. 장바구니로 이동하시겠습니까?");
   }
 
   //이동 권유 결과 처리
