@@ -34,9 +34,7 @@ imgInput.onchange = function (e) {
 register_product_form.onsubmit = async function (e) {
   e.preventDefault();
 
-  const agree = confirm('상품을 판매하시겠습니까?');
-
-  if (agree) {
+  if (confirm('상품을 판매하시겠습니까?')) {
     const product_name = this.product_name.value;
     const product_category = this.product_category.value;
     const product_company = this.product_company.value;
@@ -65,7 +63,8 @@ register_product_form.onsubmit = async function (e) {
       alert('상품 판매가 시작되었습니다.');
       // 상품 목록으로 이동
       window.location.href = '/admin/product/list';
-    } catch (err) {
+    }
+    catch (err) {
       console.error(err.stack);
       alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
     }
