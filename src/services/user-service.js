@@ -46,11 +46,11 @@ class UserService {
 
     // 우선 해당 이메일의 사용자 정보가  db에 존재하는지 확인
     const user = await this.userModel.findByEmail(email);
-    if (!user) {
+
+    // db에 데이터가 없거나 deleted값이 true일 경우
+    if (!user || user.deleted) {
       throw new Error('해당 이메일은 가입 내역이 없습니다. 다시 한 번 확인해 주세요.');
     }
-
-    console.log(user);
 
     // 이제 이메일은 문제 없는 경우이므로, 비밀번호를 확인함
 
