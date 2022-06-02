@@ -19,8 +19,6 @@ const btn_cnt_up = document.getElementById("btn_cnt_up");
 const btn_add_to_cart = document.getElementById("btn_add_to_cart");
 const btn_buy_now = document.getElementById("btn_buy_now");
 
-let move_result = false;
-
 // 유저 권한 넣을 곳
 let role = "";
 
@@ -179,20 +177,12 @@ async function delHandler(e) {
   }
 }
 
-// 구매 이벤트핸들러
-// localStorage에 배열로 제품 아이디, 이미지, 이름, 가격, 제조사, 수량 추가
-function buyNowHandler() {
-  const data = getData();
-  localStorage.setItem("buy_now", JSON.stringify(data));
-  location.href = "/pay";
-}
-
-
-// 장바구니 이벤트핸들러
+// 구매, 장바구니 모두 일단 상품을 localstorage cart에 넣음
 // 중복 검사 -> localStorage에 배열로 제품 아이디, 이미지, 이름, 가격, 제조사, 수량 추가
-function addToCartHandler() {
+function cartHandler(e) {
+  console.log(e.path[0].id);
   let state_result = true;
-
+  let move_result = false;
   const state = JSON.parse(localStorage.getItem("cart") || "[]");
 
   if (state.length !== 0) {
@@ -209,7 +199,13 @@ function addToCartHandler() {
     const data = getData();
     const cart = [...state, data];
     localStorage.setItem("cart", JSON.stringify(cart));
-    move_result = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+
+    // 바로구매에서 발생한 이벤트인 경우 구매창으로 이동, 아닌 경우 장바구니로 이동 권유
+    if (e.path[0].id === "btn_buy_now") {
+      location.href = "/pay";
+    } else {
+      move_result = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+    }
   }
 
   // 중복일 시 추가 X -> 이동 권유
@@ -240,5 +236,5 @@ function getData() {
 btn_cnt_down.addEventListener("click", cnt_down);
 btn_cnt_up.addEventListener("click", cnt_up);
 
-btn_buy_now.addEventListener("click", buyNowHandler);
-btn_add_to_cart.addEventListener("click", addToCartHandler);
+btn_buy_now.addEventListener("click", cartHandler);
+btn_add_to_cart.addEventListener("click", cartHandler);
