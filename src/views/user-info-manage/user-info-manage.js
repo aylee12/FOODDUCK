@@ -36,6 +36,9 @@ const detailAddressInput = document.querySelector('#detailAddress');
 const extraAddressInput = document.querySelector('#extraAddress');
 
 async function handleSubmitUpdate() {
+  const currentPassword = prompt("현재 비밀번호를 입력해주세요");
+  console.log(currentPassword);
+  
   const fullName = fullNameInput.value;
   const password = passwordInput.value;
   const passwordConfirm = passwordConfirmInput.value;
@@ -49,8 +52,8 @@ async function handleSubmitUpdate() {
 
   // 잘 입력했는지 확인
   const isFullNameValid = fullName.length >= 2;
-  const isPasswordValid = password.length >= 4;
-  const isPasswordSame = password === passwordConfirm;
+  // const isPasswordValid = password.length >= 4;
+  // const isPasswordSame = password === passwordConfirm;
 
   if (!isFullNameValid || !isPasswordValid) {
     return alert('이름은 2글자 이상, 비밀번호는 4글자 이상이어야 합니다.');
@@ -74,7 +77,7 @@ async function handleSubmitUpdate() {
     //register.js 파일과 똑같은 address형식으로 해주시면 될 것 같습니다!
     //patch요청으로 유저정보 업데이트 진행되게 되는 로직은 맞는데 지금 schema쪽 작업하고 있어서 아마 안될겁니다!
     //다 수정하셨으면 저한테 알려주세용!
-    await Api.patch('/api/users', data);
+    // await Api.patch('/api/users', data);
 
     alert(`정상적으로 수정되었습니다.`);
 
