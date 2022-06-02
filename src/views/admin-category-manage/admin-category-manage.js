@@ -73,11 +73,12 @@ window.onload = async function () {
 }
 
 // 카테고리 추가 이벤트핸들러
-document.getElementById("add").onsubmit = async function addHandler() {
+document.getElementById("add").onsubmit = async function addHandler(e) {
+    e.preventDefault();
     if (confirm("카테고리를 추가하시겠습니까?")) {
         const data = {
             name: this.new_category_name.value,
-            description: "All " + this.new_category_name.value + "s"
+            description: "All " + this.new_category_name.valsue + "s"
         };
 
         try {
