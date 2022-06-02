@@ -82,10 +82,11 @@ async function handleSubmitUpdate() {
           address3
         }
       };
-      // await Api.patch(`/api/users/${user.id}`, data);
+      console.log(user);
+      await Api.patch(`/api/users/${user.id}`, data);
   
       alert(`정상적으로 수정되었습니다.`);
-  
+      
       // 메인 페이지 이동
       location.href = '/';
     } catch (err) {
@@ -105,7 +106,8 @@ const handleSubmitDelete = async (e) => {
     const data = {
       isPasswordCheck
     };
-    // await Api.del(`/api/users/${user.id}`, data);
+    await Api.delete(`/api/users/${user.id}`, data);
+    localStorage.removeItem("token");
     window.location.href = '/';
   }
   
