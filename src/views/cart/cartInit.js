@@ -1,5 +1,5 @@
 // 카트 상품 업데이트 하기 ( 로컬에서 받아와서 카트 상품 업데이트 하기 )
-const cartGetItems = JSON.parse(localStorage.getItem("cartExample"));
+const cartGetItems = JSON.parse(localStorage.getItem("cart"));
 
 // 카트 상품이 들어오면 다시 합계 확인해보기! 
 const cartInit = () => {
