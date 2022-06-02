@@ -31,6 +31,11 @@ const imgInput = document.querySelector('#product_img');
 let imgForm = null;
 imgInput.onchange = function (e) {
   e.preventDefault();
+  const val_img = imgInput.value;
+  const path_img = val_img.split("\\");
+
+  const span_img = document.getElementById("span_file_name");
+  span_img.innerHTML = `${path_img[2]}`;
 
   imgForm = ImgUpload.imgForm(imgInput);
 };

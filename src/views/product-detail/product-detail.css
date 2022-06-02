@@ -254,7 +254,7 @@
 /* 큰 틀 */
 section.container {
   width: 1050px;
-  min-height: 700px;
+  min-height: 1000px;
   height: auto;
   margin: 0 auto;
   margin-top: 5rem;

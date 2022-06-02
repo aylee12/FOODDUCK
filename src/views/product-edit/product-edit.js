@@ -6,6 +6,7 @@ const product_category = document.getElementById("product_category");
 const product_company = document.getElementById("product_company");
 const product_price = document.getElementById("product_price");
 const product_description = document.getElementById("product_description");
+const span_img = document.getElementById("span_file_name");
 
 let original_img = '';
 
@@ -42,6 +43,7 @@ window.onload = async function () {
         product_company.value = res.company;
         product_category.value = res.category.name;
         original_img = res.img;
+        span_img.innerHTML = original_img;
         product_price.value = res.price;
         product_description.value = res.description;
     }
@@ -62,6 +64,9 @@ const imgInput = document.querySelector('#product_img');
 let imgForm = null;
 imgInput.onchange = function (e) {
     e.preventDefault();
+    const val_img = imgInput.value;
+    const path_img = val_img.split("\\");
+    span_img.innerHTML = `${path_img[2]}`;
 
     imgForm = ImgUpload.imgForm(imgInput);
 };
