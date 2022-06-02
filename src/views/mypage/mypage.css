@@ -240,9 +240,12 @@ section.container {
 }
 
 div.container_title {
-    font-size: 60px;
     font-weight: 700;
+    font-size: 48px;
     color: rgb(92, 91, 91);
+    min-height: 70px;
+    line-height: 70px;
+    height: auto;
     text-align: center;
     padding-top: 20px;
     padding-bottom: 40px;
@@ -258,12 +261,12 @@ div.container_title .hi {
 }
 
 div.container_title .name {
-    font-size: 70px;
     color: rgb(30, 202, 162);
+    font-size: 60px;
 }
 
 div.container_title .sir {
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 div.inner_container {
@@ -297,6 +300,7 @@ div.inner_container div.button_container button {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    transition: all 0.3s;
 }
 
 button img {
@@ -305,7 +309,6 @@ button img {
 }
 
 div.inner_container div.button_container button:hover {
-    background-color: rgb(102, 212, 186);
-    color: white;
-    border: 1px solid rgb(102, 212, 186);
+    width: 65%;
+    padding: 20px;
 }
