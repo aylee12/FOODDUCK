@@ -147,7 +147,7 @@ async function delHandler(e) {
       await Api.delete('/api/productDelete', productId, data);
       alert("상품이 삭제되었습니다.");
       // 메인으로 이동
-      window.location.href = "/main";
+      window.location.href = "/";
     }
     catch (err) {
       console.error(err.stack);
