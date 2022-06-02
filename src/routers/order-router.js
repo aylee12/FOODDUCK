@@ -8,17 +8,15 @@ const orderRouter = Router();
 orderRouter.post('/orderAdd', loginRequired, async (req, res, next) => {
   try {
     const userId = req.currentUserId;
-    const { orderNo, orderName, phoneNumber, address, orderList, totalPrice, status } = req.body;
+    const { orderName, phoneNumber, address, orderList, totalPrice } = req.body;
 
     const newOrder = await orderService.addOrder({
       userId,
-      orderNo,
       orderName,
       phoneNumber,
       address,
       orderList,
       totalPrice,
-      status,
     });
 
     res.status(201).json(newOrder);
@@ -35,7 +33,7 @@ orderRouter.get('/orderList', loginRequired, async (req, res, next) => {
     if (userId) {
       const orders = await orderService.getOrders(userId);
       res.status(200).json(orders);
-      //return 을 사용해야 하는지 아닌지 이따 테스트확인
+      return;
     }
     //주문자 id값이 없다면 전체 주문내역 조회
     const orders = await orderService.getAllOrders();
@@ -46,7 +44,7 @@ orderRouter.get('/orderList', loginRequired, async (req, res, next) => {
 });
 
 //주문번호로 주문내역 조회
-orderRouter.get('/order/:orderNo', loginRequired, async (req, res, next) => {
+orderRouter.get('/order/:orderNo', async (req, res, next) => {
   try {
     const orderNo = req.params.orderNo;
     const order = await orderService.getOrder(orderNo);
@@ -70,7 +68,7 @@ orderRouter.patch('/orderUpdate/:orderNo', loginRequired, async (req, res, next)
 });
 
 //주문 삭제
-orderRouter.delete('/orderDelete/:orderNo', loginRequired, async (req, res, next) => {
+orderRouter.delete('/orderDelete/:orderNo', async (req, res, next) => {
   try {
     const orderNo = req.params.orderNo;
 
