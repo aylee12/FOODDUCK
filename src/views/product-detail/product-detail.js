@@ -11,7 +11,7 @@ const product_total_price = document.getElementById("product_total_price");
 
 // url에서 productId 찾기 -> 상품정보 가져올 때 사용
 const product_url = window.location.pathname.split('/');
-const productId = product_url[product_url.length -2];
+const productId = product_url[product_url.length - 2];
 
 const btn_cnt_down = document.getElementById("btn_cnt_down");
 const btn_cnt_up = document.getElementById("btn_cnt_up");
@@ -24,7 +24,7 @@ let move_result = false;
 // 유저 권한 넣을 곳
 let role = "";
 
-window.onload = async function() {
+window.onload = async function () {
   // 상품 데이터 가져오기
   try {
     const res = await Api.get('/api/productListId', productId);
@@ -34,25 +34,26 @@ window.onload = async function() {
     product_price.dataset.value = parseInt(res.price);
     product_description.innerText = res.description;
   }
-  catch(err) {
+  catch (err) {
     console.error(err.stack);
     alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
     location.href = `/product/detail/${productId}`;
   }
 
-  // 유저 정보 - role(권한) 가져오기
-  try {
-    const user = await Api.get('/api/getuserInfo');
-    role = user.role;
+  // token 있는지 검사
+  const token = localStorage.getItem('token');
+  if (token) {
+    // 토큰 있으면 - 유저 정보에서 role(권한) 가져오기
+    try {
+      const user = await Api.get('/api/getuserInfo');
+      role = user.role;
+    }
+    catch (err) {
+      console.error(err.stack);
+      alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+      location.href = `/product/detail/$[productId}`;
+    }
   }
-  catch(err) {
-    console.error(err.stack);
-    alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
-    location.href = `/product/detail/$[productId}`;
-  }
-
-  // 테스트용
-  // role = "admin";
 
   product_price.innerText = numberWithCommas(product_price.dataset.value);
   product_total_price.dataset.value = product_price.dataset.value;
@@ -62,9 +63,9 @@ window.onload = async function() {
 
 // 회원 role이 admin이면 수정, 삭제 버튼 생성
 function adminControl() {
-  
+
   if (role === "admin") {
-    const btn_admin_zone =  document.querySelector(".btn_admin_zone")
+    const btn_admin_zone = document.querySelector(".btn_admin_zone")
 
     // 수정 버튼 생성
     const btn_edit = document.createElement("button");
@@ -95,11 +96,11 @@ function numberWithCommas(x) {
 function cnt_down() {
   let n = parseInt(product_quantity.value);
   let org_price = parseInt(product_price.dataset.value);
-  
+
   if (n > 1) {
     n -= 1;
   }
-  
+
   quantity.value = n;
   product_total_price.dataset.value = org_price * n;
   product_total_price.innerText = numberWithCommas(product_total_price.dataset.value);
@@ -108,9 +109,9 @@ function cnt_down() {
 function cnt_up() {
   let n = parseInt(product_quantity.value);
   let org_price = parseInt(product_price.dataset.value);
-  
+
   n = n + 1;
-  
+
   quantity.value = n;
   product_total_price.dataset.value = org_price * n;
   product_total_price.innerText = numberWithCommas(product_total_price.dataset.value);
@@ -131,13 +132,13 @@ async function delHandler(e) {
   e.preventDefault();
 
   const confirm_result = confirm("상품을 삭제하시겠습니까?");
-  
+
   if (confirm_result) {
     const data = {
       id: productId,
-      img: product_img.src, 
-      name: product_name.innerText, 
-      price: parseInt(product_price.dataset.value), 
+      img: product_img.src,
+      name: product_name.innerText,
+      price: parseInt(product_price.dataset.value),
       company: product_company.innerText,
       description: product_description.innerText
     };
@@ -148,7 +149,7 @@ async function delHandler(e) {
       // 메인으로 이동
       window.location.href = "/main";
     }
-    catch(err) {
+    catch (err) {
       console.error(err.stack);
       alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
       location.href = `/product/detail/${productId}`;
@@ -187,7 +188,7 @@ function addToCartHandler() {
     const cart = [...state, data];
     localStorage.setItem("cart", JSON.stringify(cart));
     move_result = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
-  } 
+  }
 
   // 중복일 시 추가 X -> 이동 권유
   else {
@@ -203,9 +204,9 @@ function addToCartHandler() {
 function getData() {
   const data = {
     id: productId,
-    img: product_img.src, 
-    name: product_name.innerText, 
-    price: parseInt(product_price.dataset.value), 
+    img: product_img.src,
+    name: product_name.innerText,
+    price: parseInt(product_price.dataset.value),
     company: product_company.innerText,
     description: product_description.innerText,
     quantity: parseInt(product_quantity.value)
