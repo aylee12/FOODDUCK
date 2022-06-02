@@ -1,3 +1,7 @@
+* {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
 /* header */
 /* 
 .navbar .container .navbar-brand .navbar-item .has-text-link {
@@ -214,6 +218,11 @@
     padding-bottom: 6px;
     white-space: nowrap;
 }
+
+
+
+
+
 
 
 

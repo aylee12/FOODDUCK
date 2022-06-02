@@ -10,10 +10,8 @@ const product_quantity = document.getElementById("quantity");
 const product_total_price = document.getElementById("product_total_price");
 
 // url에서 productId 찾기 -> 상품정보 가져올 때 사용
-// const productId = window.location.pathname.split('/').pop();
-
-// 테스트용
-const productId = 'iLBReufqFipjVyQM-gIqr';
+const product_url = window.location.pathname.split('/');
+const productId = product_url[product_url.length -2];
 
 const btn_cnt_down = document.getElementById("btn_cnt_down");
 const btn_cnt_up = document.getElementById("btn_cnt_up");
@@ -21,7 +19,6 @@ const btn_cnt_up = document.getElementById("btn_cnt_up");
 const btn_add_to_cart = document.getElementById("btn_add_to_cart");
 const btn_buy_now = document.getElementById("btn_buy_now");
 
-let cart = [];
 let move_result = false;
 
 // 유저 권한 넣을 곳
@@ -31,7 +28,6 @@ window.onload = async function() {
   // 상품 데이터 가져오기
   try {
     const res = await Api.get('/api/productListId', productId);
-    console.log(res);
     product_img.src = res.img;
     product_name.innerText = res.name;
     product_company.innerText = res.company;
@@ -41,6 +37,7 @@ window.onload = async function() {
   catch(err) {
     console.error(err.stack);
     alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+    location.href = `/product/detail/${productId}`;
   }
 
   // 유저 정보 - role(권한) 가져오기
@@ -51,6 +48,7 @@ window.onload = async function() {
   catch(err) {
     console.error(err.stack);
     alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+    location.href = `/product/detail/$[productId}`;
   }
 
   // 테스트용
@@ -124,8 +122,7 @@ function editHandler() {
   const confirm_result = confirm("상품을 수정하시겠습니까?");
 
   if (confirm_result) {
-    // location.href =  "/product/edit/" + productId;
-    location.href =  "/product/edit/";
+    location.href = `/product/edit/${productId}`;
   }
 }
 
@@ -149,33 +146,33 @@ async function delHandler(e) {
       await Api.delete('/api/productDelete', productId, data);
       alert("상품이 삭제되었습니다.");
       // 메인으로 이동
-      window.location.href = "../../../";
+      window.location.href = "/main";
     }
     catch(err) {
       console.error(err.stack);
       alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+      location.href = `/product/detail/${productId}`;
     }
   }
 }
 
 // 구매 이벤트핸들러
-// sessionStorage에 배열로 제품 아이디, 이미지, 이름, 가격, 제조사, 수량 추가
+// localStorage에 배열로 제품 아이디, 이미지, 이름, 가격, 제조사, 수량 추가
 function buyNowHandler() {
   const data = getData();
-  
   localStorage.setItem("buy_now", JSON.stringify(data));
   location.href = "/pay";
 }
 
 
 // 장바구니 이벤트핸들러
-// 중복 검사 -> sessionStorage에 배열로 제품 아이디, 이미지, 이름, 가격, 제조사, 수량 추가
+// 중복 검사 -> localStorage에 배열로 제품 아이디, 이미지, 이름, 가격, 제조사, 수량 추가
 function addToCartHandler() {
   let state_result = true;
-  const state = JSON.parse(localStorage.getItem("cart"));
-  
-  // 장바구니 중복 확인
-  if (state !== null) {
+
+  const state = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  if (state.length !== 0) {
     for (let i = 0; i < state.length; i++) {
       if (state[i].id === productId) {
         state_result = false;
@@ -183,18 +180,20 @@ function addToCartHandler() {
       }
     }
   }
+
   // 중복 없을 시 상품 추가 -> 이동 권유
   if (state_result) {
     const data = getData();
-
-    cart.push(data);
+    const cart = [...state, data];
     localStorage.setItem("cart", JSON.stringify(cart));
     move_result = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
   } 
+
   // 중복일 시 추가 X -> 이동 권유
   else {
     move_result = confirm("이미 장바구니에 담긴 상품입니다. 장바구니로 이동하시겠습니까?");
   }
+
   //이동 권유 결과 처리
   if (move_result) {
     location.href = "/cart";

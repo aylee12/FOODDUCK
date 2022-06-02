@@ -15,25 +15,25 @@ window.onload = async function() {
     }
     
     document.querySelector(".name").innerHTML = name;
-
-
-    // 테스트 코드
-    //role = "";
     
-    // 사용자가 admin이면 보여줄 버튼들, url 추가 안 된 버전
+    // 사용자가 admin이면 보여줄 버튼들
     if (role === "admin") {
         const contents = ["카테고리 관리", "제품 관리", "주문 조회"];
-        const urls = ["/admin/category/list", "/admin/product/list", ""];
-        const img_urls = ["http://drive.google.com/uc?export=view&id=1vG5hRXZbnWAQH1WTxmQhPymqTyYMlqt6", "http://drive.google.com/uc?export=view&id=17Y3dZeFXs3aE510naIfJAdVBLcVAVw8k", "http://drive.google.com/uc?export=view&id=1SEsdv6vng-iMRucoGP5ZIZdOzRDVOmBf"]
+        const urls = ["/admin/category/list", "/admin/product/list", "user/info/cart"];
+        const img_urls = [
+            "./mypage-img/category.gif", "./mypage-img/product.gif", "./mypage-img/order.gif"
+        ];
 
         buttonHandler(contents, urls, img_urls);
     } 
 
-    // 사용자가 일반 회원이면 보여줄 버튼들, url 추가 안 된 버전
+    // 사용자가 일반 회원이면 보여줄 버튼들
     else {
         const contents = ["회원정보 관리", "주문 조회"];
-        const urls = ["/user/info/manage", ""];
-        const img_urls = ["http://drive.google.com/uc?export=view&id=1HYQ2beNCRde-v5ocCx3EvgtHpsGXWn8M", "http://drive.google.com/uc?export=view&id=1SEsdv6vng-iMRucoGP5ZIZdOzRDVOmBf"]
+        const urls = ["/user/info/manage", "user/info/cart"];
+        const img_urls = [
+            "./mypage-img/user-info.gif", "./mypage-img/order.gif"
+        ];
 
         buttonHandler(contents, urls, img_urls);
     }

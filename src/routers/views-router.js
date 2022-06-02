@@ -11,14 +11,16 @@ viewsRouter.use('/register', serveStatic('register'));
 viewsRouter.use('/login', serveStatic('login'));
 
 // product-detail 주소 설정
-viewsRouter.use('/product/detail', serveStatic('product-detail'));
+viewsRouter.use('/product/detail/:id', serveStatic('product-detail'));
 // product-add 주소 설정
 viewsRouter.use('/product/add', serveStatic('product-add'));
 // product-edit 주소 설정
-viewsRouter.use('/product/edit', serveStatic('product-edit'));
+viewsRouter.use('/product/edit/:id', serveStatic('product-edit'));
 
 // 유저 정보 변경
 viewsRouter.use('/user/info/manage', serveStatic('user-info-manage'));
+viewsRouter.use('/user/info/cart', serveStatic('user-info-cart'));
+
 // my page 주소 설정
 viewsRouter.use('/mypage', serveStatic('mypage'));
 
@@ -30,11 +32,7 @@ viewsRouter.use('/admin/category/list', serveStatic('admin-category-manage'));
 // cart 주소 설정하기
 viewsRouter.use('/cart', serveStatic('cart'));
 viewsRouter.use('/pay', serveStatic('pay'));
-// 제품 category별 조회 주소 설정
-// 카드 주소 설정
-viewsRouter.use('/cart', serveStatic('cart'));
-// 구매 주소 설정
-viewsRouter.use('/pay', serveStatic('pay'));
+
 // 유저 정보 변경
 viewsRouter.use('/user/info/manage', serveStatic('user-info-manage'));
 viewsRouter.use('/product/meat', serveStatic('meat'));
