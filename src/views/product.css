@@ -1,6 +1,7 @@
 * {
     margin:0;
     padding:0;
+    font-family: 'Nanum Gothic', sans-serif;
   }
   ul, li {
     list-style:none;
@@ -26,7 +27,7 @@
     z-index: 2;
   }
   .menu_main a {
-    color: black;
+    color: #333;
   }
   
   .menu_list {

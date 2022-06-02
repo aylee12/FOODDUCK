@@ -1,6 +1,5 @@
 import express from 'express';
 import path from 'path';
-import { adminRequired } from '../middlewares';
 
 const viewsRouter = express.Router();
 
@@ -42,6 +41,7 @@ viewsRouter.use('/product/meat', serveStatic('meat'));
 viewsRouter.use('/product/fish', serveStatic('fish'));
 viewsRouter.use('/product/fruit', serveStatic('fruit'));
 viewsRouter.use('/product/vegetable', serveStatic('vegetable'));
+viewsRouter.use('/product', serveStatic('product'));
 
 // views 폴더의 최상단 파일인 rabbit.png, api.js 등을 쓸 수 있게 함
 viewsRouter.use('/', serveStatic(''));
