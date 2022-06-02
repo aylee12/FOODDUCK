@@ -47,7 +47,11 @@ class OrderService {
   }
 
   //주문 수정
-  async updateOrder(orderNo, updatelist) {
+  async updateOrder(orderNo, userId, updatelist) {
+    userId = await userService.getUser(userId);
+    if (!userId) {
+      throw new Error('존재하지 않는 회원입니다.');
+    }
     return await this.orderModel.updateOrder(orderNo, updatelist);
   }
 

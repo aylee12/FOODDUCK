@@ -55,12 +55,13 @@ orderRouter.get('/order/:orderNo', async (req, res, next) => {
 });
 
 //주문 수정
-orderRouter.patch('/orderUpdate/:orderNo', loginRequired, async (req, res, next) => {
+orderRouter.patch('/orderUpdate/:orderNo', async (req, res, next) => {
   try {
     const orderNo = req.params.orderNo;
-    const updatelist = req.body;
+    const userId = req.currentUserId;
+    const { orderName, phoneNumber, address } = req.body;
 
-    const updateResult = await orderService.updateOrder(orderNo, updatelist);
+    const updateResult = await orderService.updateOrder(orderNo, userId, { orderName, phoneNumber, address });
     res.status(200).json(updateResult);
   } catch (error) {
     next(error);
@@ -68,7 +69,7 @@ orderRouter.patch('/orderUpdate/:orderNo', loginRequired, async (req, res, next)
 });
 
 //주문 삭제
-orderRouter.delete('/orderDelete/:orderNo', async (req, res, next) => {
+orderRouter.delete('/orderDelete/:orderNo', loginRequired, async (req, res, next) => {
   try {
     const orderNo = req.params.orderNo;
 
