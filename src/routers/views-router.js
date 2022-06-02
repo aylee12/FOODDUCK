@@ -18,8 +18,8 @@ viewsRouter.use('/product/add', serveStatic('product-add'));
 viewsRouter.use('/product/edit/:id', serveStatic('product-edit'));
 
 // 유저 정보 변경
-viewsRouter.use('/user/info/manage' , serveStatic('user-info-manage'));
-viewsRouter.use('/user/info/cart' , serveStatic('user-info-cart'));
+viewsRouter.use('/user/info/manage', serveStatic('user-info-manage'));
+viewsRouter.use('/user/info/cart', serveStatic('user-info-cart'));
 
 // my page 주소 설정
 viewsRouter.use('/mypage', serveStatic('mypage'));
@@ -29,7 +29,7 @@ viewsRouter.use('/admin/product/list', serveStatic('admin-product-list'));
 // admin-category-list 주소 설정
 viewsRouter.use('/admin/category/list', serveStatic('admin-category-manage'));
 
-// cart 주소 설정하기 
+// cart 주소 설정하기
 viewsRouter.use('/cart', serveStatic('cart'));
 viewsRouter.use('/pay', serveStatic('pay'));
 
@@ -51,10 +51,9 @@ viewsRouter.use('/', serveStatic(''));
 function serveStatic(resource) {
   const resourcePath = path.join(__dirname, `../views/${resource}`);
   const option = { index: `${resource}.html` };
-  console.log(option)
+  console.log(option);
   // express.static 은 express 가 기본으로 제공하는 함수임
   return express.static(resourcePath, option);
 }
-
 
 export { viewsRouter };
