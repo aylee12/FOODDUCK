@@ -64,13 +64,13 @@ selectCheck.addEventListener("click" , () => {
   // 현재는 check된것만 골라서 그에 해당하는 cart-items-list를 지웠다.
   checkFilter.forEach(items => items.parentElement.parentElement.remove());
 
-  const cartJSON = JSON.parse(localStorage.getItem("cartExample"));
+  const cartJSON = JSON.parse(localStorage.getItem("cart"));
   // tempCartArray에 있는 index에 해당하는 것을 cartJSON에서 지운다. 
   for(let i = 0 ; i < tempCartArray.length; i++){
     cartJSON.splice(tempCartArray[i] - i ,1);
   }
   sumPrice();
   // 제거하고 localStorage에 다시 담는다
-  // localStorage.setItem("cartExample" , JSON.stringify(cartJSON));
+  localStorage.setItem("cart" , JSON.stringify(cartJSON));
 });
 
