@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import { productService } from '../services';
-import { adminRequired } from '../middlewares';
+import { loginRequired, roleCheck } from '../middlewares';
 
 const productRouter = Router();
 
 //상품 추가
-productRouter.post('/productAdd', async (req, res, next) => {
+productRouter.post('/productAdd', loginRequired, roleCheck, async (req, res, next) => {
   try {
     const { name, price, company, category, img, description } = req.body;
 
@@ -101,7 +101,7 @@ productRouter.get('/productListId/:productId', async (req, res, next) => {
 });
 
 //상품 수정
-productRouter.patch('/productUpdate/:productId', async (req, res, next) => {
+productRouter.patch('/productUpdate/:productId', loginRequired, roleCheck, async (req, res, next) => {
   try {
     const productId = req.params.productId;
     const updatelist = req.body;
@@ -114,7 +114,7 @@ productRouter.patch('/productUpdate/:productId', async (req, res, next) => {
 });
 
 //상품 삭제
-productRouter.delete('/productDelete/:productId', async (req, res, next) => {
+productRouter.delete('/productDelete/:productId', loginRequired, roleCheck, async (req, res, next) => {
   try {
     const productId = req.params.productId;
 

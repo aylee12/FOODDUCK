@@ -1,42 +1,57 @@
 import { Schema } from 'mongoose';
 import { shortId } from './types/short-id';
-// import { connection } from 'mongoose';
-// const autoIncrement = require('mongoose-auto-increment');
-
-// autoIncrement.initialize(connection);
 
 const OrderSchema = new Schema(
   {
-    // orderNo: {
-    //   type: Number,
-    //   required: true,
-    //   unique: true,
-    //   index: true,
-    // },
     orderNo: shortId,
-    email: {
+    user: {
       type: Schema.Types.ObjectId,
       ref: 'users',
       required: true,
     },
-    orderStatus: {
+    orderName: {
+      type: String,
+      required: true,
+    },
+    phoneNumber: {
+      type: String,
+      required: true,
+    },
+    address: {
+      type: new Schema(
+        {
+          postalCode: String,
+          address1: String,
+          address2: String,
+          address3: String,
+        },
+        {
+          _id: false,
+        }
+      ),
+      required: true,
+    },
+    orderList: [
+      new Schema({
+        product: {
+          type: Schema.Types.ObjectId,
+          ref: 'categories',
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+        },
+      }),
+    ],
+    totalPrice: {
+      type: Number,
+      required: true,
+    },
+    status: {
       type: String,
       required: true,
       default: '배송 준비중',
-    },
-    orderInfo: {
-      type: new Schema({
-        name: String,
-        product: Array,
-        totalPrice: Number,
-        phoneNumber: String,
-        postalCode: String,
-        address1: String,
-        address2: String,
-        address3: String,
-        requests: String,
-      }),
-      required: true,
     },
   },
   {
@@ -44,12 +59,5 @@ const OrderSchema = new Schema(
     timestamps: true,
   }
 );
-
-// OrderSchema.plugin(autoIncrement.plugin, {
-//   model: 'orders',
-//   field: 'orderNo',
-//   startAt: 0,
-//   increment: 1,
-// });
 
 export { OrderSchema };
