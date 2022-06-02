@@ -1,12 +1,6 @@
 import cors from 'cors';
 import express from 'express';
-import {
-  viewsRouter,
-  userRouter,
-  productRouter,
-  categoryRouter,
-  orderRouter,
-} from './routers';
+import { viewsRouter, userRouter, productRouter, categoryRouter, orderRouter, imgRouter } from './routers';
 import { errorHandler } from './middlewares';
 
 const app = express();
@@ -15,10 +9,14 @@ const app = express();
 app.use(cors());
 
 // Content-Type: application/json 형태의 데이터를 인식하고 핸들링할 수 있게 함.
-app.use(express.json());
+app.use(
+  express.json({
+    limit: '32mb',
+  })
+);
 
 // Content-Type: application/x-www-form-urlencoded 형태의 데이터를 인식하고 핸들링할 수 있게 함.
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ limit: '32mb', extended: false }));
 
 // html, css, js 라우팅
 app.use(viewsRouter);
