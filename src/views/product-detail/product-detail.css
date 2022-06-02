@@ -254,7 +254,7 @@
 /* 큰 틀 */
 section.container {
   width: 1050px;
-  min-height: 700px;
+  min-height: 1000px;
   height: auto;
   margin: 0 auto;
   margin-top: 5rem;
@@ -453,9 +453,11 @@ div.btn_zone div.btn_item button {
   background-color: rgb(96, 206, 179);
   color: white;
   border: 1px solid rgb(96, 206, 179);
+  transition: all 0.2s;
 }
 
 div.btn_zone div.btn_item button:hover {
   background-color: rgb(134, 227, 204);
   border: 1px solid rgb(156, 237, 217);
+  padding: 0 30px;
 }

@@ -1,6 +1,6 @@
 import * as Api from '/api.js';
 
-window.onload = async function() {  
+window.onload = async function () {
     let role = "";
     let name = "";
 
@@ -9,13 +9,20 @@ window.onload = async function() {
         name = user.fullName;
         role = user.role;
     }
-    catch(err) {
+    catch (err) {
         console.error(err.stack);
-        alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+
+        new Swal({
+            title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+            text: `${err.message}`,
+            icon: 'error'
+        }).then(function () {
+            window.location.href = `/`;
+        });
     }
-    
+
     document.querySelector(".name").innerHTML = name;
-    
+
     // 사용자가 admin이면 보여줄 버튼들
     if (role === "admin") {
         const contents = ["카테고리 관리", "제품 관리", "주문 조회"];
@@ -25,7 +32,7 @@ window.onload = async function() {
         ];
 
         buttonHandler(contents, urls, img_urls);
-    } 
+    }
 
     // 사용자가 일반 회원이면 보여줄 버튼들
     else {

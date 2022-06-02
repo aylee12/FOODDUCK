@@ -29,6 +29,8 @@
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.410.0.min.js"></script>
     <!-- 커스텀 css, js -->
     <link rel="stylesheet" href="product-edit.css" />
+    <!-- sweetalert2 사용하기 위한 파일 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <!-- 헤더 -->
@@ -101,18 +103,27 @@
               </div>
             </div>
 
-            <!-- 제품 사진 -->
-            <div class="field">
+            <div class="field is-fullwidth">
               <label class="label" for="product_img">제품 사진</label>
-              <div class="control">
-                <input
-                  class="input"
-                  id="product_img"
-                  type="text"
-                  placeholder="https://example.com"
-                  autocomplete="on"
-                  readonly
-                />
+              <div class="file has-name is-fullwidth">
+                <label class="file-label">
+                  <input
+                    class="file-input"
+                    id="product_img"
+                    type="file"
+                    name="image-file"
+                    accept="image/*"
+                  />
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label"> 사진 업로드 </span>
+                  </span>
+                  <span class="file-name" id="span_file_name">
+                    사진파일 (png, jpg, jpeg)
+                  </span>
+                </label>
               </div>
             </div>
 

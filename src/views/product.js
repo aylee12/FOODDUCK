@@ -3,8 +3,11 @@ import { addCommas } from '/useful-functions.js';
 
 const shopping_cart_icon_url = "https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg";
 const inner_list_products = document.getElementById('inner_list_products');
+const thumbnail = document.querySelectorAll('.thumbnail');
+const description = document.querySelectorAll('.description');
 const categoryTemp = window.location.href.split("/")
 const category = categoryTemp[categoryTemp.length-2]
+
 DataHandler(category)
 categoryDisplay();
 
@@ -42,7 +45,6 @@ async function displayProductForCategory(data, category){
         const price = addCommas(element.price);
         const company = element.company;
         const id = element.productId;
-
         inner_list_products.innerHTML += `
         <div class="item">
             <div class="thumbnail" >
@@ -61,7 +63,15 @@ async function displayProductForCategory(data, category){
             </div>
         </div>
         </div>`
+
     });
-    console.log(inner_list_products);
     return;
+}
+for (let i = 0; i < thumbnail.length; i++){
+    thumbnail[i].addEventListener('click', function () {
+        console.log("casdf")
+    })
+}
+for (let i = 0; i < description.length; i++){
+    // 
 }

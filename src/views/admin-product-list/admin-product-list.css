@@ -297,6 +297,8 @@ div.product_container, #btn_add {
     border-top-right-radius: 30px; 
     border-bottom-left-radius: 30px; 
     border-bottom-right-radius: 30px;
+
+    transition: all 0.3s;
 }
 
 
@@ -318,6 +320,7 @@ div.btn_add_container {
 #btn_add:hover {
     background-color: rgb(85, 221, 189);
     border: 1.5px solid rgb(101, 231, 201);
+    font-size: 27px;
     cursor: pointer;
 }
 

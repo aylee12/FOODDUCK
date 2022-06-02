@@ -16,7 +16,12 @@ window.onload = async function () {
     }
   } catch (err) {
     console.error(err.stack);
-    alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+
+    Swal({
+      title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+      text: `${err.message}`,
+      icon: 'error'
+    });
   }
 };
 
@@ -26,6 +31,11 @@ const imgInput = document.querySelector('#product_img');
 let imgForm = null;
 imgInput.onchange = function (e) {
   e.preventDefault();
+  const val_img = imgInput.value;
+  const path_img = val_img.split("\\");
+
+  const span_img = document.getElementById("span_file_name");
+  span_img.innerHTML = `${path_img[2]}`;
 
   imgForm = ImgUpload.imgForm(imgInput);
 };
@@ -34,9 +44,7 @@ imgInput.onchange = function (e) {
 register_product_form.onsubmit = async function (e) {
   e.preventDefault();
 
-  const agree = confirm('상품을 판매하시겠습니까?');
-
-  if (agree) {
+  if (confirm('상품을 판매하시겠습니까?')) {
     const product_name = this.product_name.value;
     const product_category = this.product_category.value;
     const product_company = this.product_company.value;
@@ -62,12 +70,24 @@ register_product_form.onsubmit = async function (e) {
 
       // 상품 추가
       await Api.post('/api/productAdd', data);
-      alert('상품 판매가 시작되었습니다.');
-      // 상품 목록으로 이동
-      window.location.href = '/admin/product/list';
-    } catch (err) {
+
+      new Swal({
+        title: '상품 판매가 시작되었습니다.',
+        icon: 'success'
+      }).then(function () {
+        window.location.href = '/admin/product/list'
+      });
+    }
+    catch (err) {
       console.error(err.stack);
-      alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+
+      new Swal({
+        title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+        text: `${err.message}`,
+        icon: 'error'
+      }).then(function () {
+        window.location.href = '/mypage';
+      });
     }
   }
 };

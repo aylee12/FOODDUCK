@@ -1,6 +1,6 @@
 import * as Api from '/api.js';
 
-window.onload = async function() {
+window.onload = async function () {
     const category_list_container = document.querySelector(".category_list_container");
     try {
         const res = await Api.get('/api/categoryList');
@@ -58,28 +58,49 @@ window.onload = async function() {
             btn_edit.addEventListener("click", changeToEdit);
             btn_del.addEventListener("click", delHandler);
         }
-    } 
-    catch(err) {
+    }
+    catch (err) {
         console.error(err.stack);
-        alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+
+        new Swal({
+            title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+            text: `${err.message}`,
+            icon: 'error'
+        }).then(function () {
+            window.location.href = '/';
+        });
     }
 }
 
 // 카테고리 추가 이벤트핸들러
-document.getElementById("add").onsubmit = async function addHandler() {
+document.getElementById("add").onsubmit = async function addHandler(e) {
+    e.preventDefault();
     if (confirm("카테고리를 추가하시겠습니까?")) {
         const data = {
             name: this.new_category_name.value,
-            description: "All " + this.new_category_name.value
+            description: "All " + this.new_category_name.valsue + "s"
         };
-        
+
         try {
             await Api.post('/api/categoryAdd', data);
-            alert("카테고리가 추가되었습니다.");
+
+            new Swal({
+                title: '카테고리가 추가되었습니다.',
+                icon: 'success'
+            }).then(function () {
+                window.location.reload();
+            });
         }
-        catch(err) {
+        catch (err) {
             console.error(err.stack);
-            alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+
+            new Swal({
+                title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+                text: `${err.message}`,
+                icon: 'error'
+            }).then(function () {
+                window.location.reload();
+            });
         }
     }
 }
@@ -102,24 +123,35 @@ async function editHandler() {
     if (confirm("카테고리를 수정하시겠습니까?")) {
         const original_name = this.dataset.id;
         const name = document.getElementById(this.dataset.id).value;
-        
+
         const data = {
             name: name,
-            description: "All " + name
+            description: "All " + name + "s"
         };
 
         try {
             await Api.patch('/api/categoryUpdate', original_name, data);
-            alert("카테고리가 수정되었습니다.");
-            location.reload();
+            new Swal({
+                title: '카테고리가 수정되었습니다.',
+                icon: 'success'
+            }).then(function () {
+                window.location.reload();
+            });
         }
-        catch(err) {
+        catch (err) {
             console.error(err.stack);
-            alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+
+            new Swal({
+                title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+                text: `${err.message}`,
+                icon: 'error'
+            }).then(function () {
+                window.location.reload();
+            });
         }
     };
 }
-  
+
 // 카테고리 삭제 이벤트핸들러
 async function delHandler() {
     if (confirm("카테고리를 삭제하시겠습니까?")) {
@@ -127,12 +159,24 @@ async function delHandler() {
 
         try {
             await Api.delete('/api/categoryDelete', name);
-            alert("카테고리가 삭제되었습니다.");
-            location.reload();
+
+            new Swal({
+                title: '카테고리가 삭제되었습니다.',
+                icon: 'success'
+            }).then(function () {
+                window.location.reload();
+            });
         }
-        catch(err) {
+        catch (err) {
             console.error(err.stack);
-            alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+
+            new Swal({
+                title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+                text: `${err.message}`,
+                icon: 'error'
+            }).then(function () {
+                window.location.reload();
+            });
         }
     }
 }

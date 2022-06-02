@@ -1,6 +1,6 @@
 import * as Api from '/api.js';
 
-window.onload = async function() {
+window.onload = async function () {
     // 상품 전체 div
     const product_list_container = document.querySelector(".product_list_container");
     try {
@@ -23,15 +23,21 @@ window.onload = async function() {
             name_container.setAttribute("class", "name_container");
             const name = document.createTextNode(res[i].name);
             name_container.appendChild(name);
-            
+
             // div에 넣어줌
             product_container.appendChild(category_container);
             product_container.appendChild(name_container);
             product_list_container.appendChild(product_container);
         }
-    } 
-    catch(err) {
+    }
+    catch (err) {
         console.error(err.stack);
-        alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+        new Swal({
+            title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+            text: `${err.message}`,
+            icon: 'error'
+        }).then(function () {
+            window.location.href = '/';
+        });
     }
 }
