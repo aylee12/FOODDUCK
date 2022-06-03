@@ -12,7 +12,7 @@ const cartInit = () => {
       `
       <div class="cart-items-list">
         <div class="cart-items-checkbox">
-          <input type="checkbox" class="check-one">
+          <input type="checkbox" class="check-one" checked=true>
         </div>
         <div class="cart-items-img">
           <img src="${img}" alt="">
