@@ -13,25 +13,36 @@ const user = await Api.get('/api/getUserInfo');
 
 // 구매하기를 누를시에 Storage를 전부 비워주고 홈으로 이동시킨다.
 const handlePayBtn = async (e) => {
-  const userCart = await Api.post('/api/orderAdd');
-  // const data = {
-  //   userId,
-  //   orderName,
-  //   phoneNumber,
-  //   address,
-  //   orderList : [
-  //     {
-  //       productId,
-  //       name,
-  //       quantity
-  //     }
-  //   ],
-  //   totalPrice
-  // }
-  console.log(userCart);
-  console.log(user);
-
   e.preventDefault();
+  // 카트 정보를 가져와서 필요한 부분만 추출한다. 
+  const cartStorage = JSON.parse(localStorage.getItem("cart"));
+  console.log(cartStorage);
+  const orderStorage = cartStorage.map(el => {
+      const {id:productId , name , quantity} = el;
+      return {productId , name ,quantity}
+  })
+  // 비구조화 할당 적용 
+  const {fullName , phoneNumber} = user;
+  const {postalCode, address1 , address2 , address3} = user.address;
+  // 합계 구하기
+  const totalPrice = cartStorage.reduce((acc , cur) => acc + (cur.price * cur.quantity),0);
+  const data = {
+    orderName:fullName, // 유저 이름
+    phoneNumber, // 핸드폰 번호
+    address: {
+      postalCode,
+      address1,
+      address2,
+      address3
+    },
+    orderList : [
+      orderStorage
+    ],
+    totalPrice
+  }
+  const userCart = await Api.post('/api/orderAdd' , data);
+  console.log(userCart);
+  
   localStorage.removeItem("cart");
   window.location.href = '/';
   alert("결제가 완료되었습니다.");
@@ -56,22 +67,12 @@ const init = async () => {
     addressInput.value = `${user.address.address1}`;
     detailAddressInput.value = `${user.address.address2}`;
     extraAddressInput.value = `${user.address.address3}`;
-
-    /* 결제가 완료되면 아래와 같은 형식으로 데이터를 보내드리면 된다. 
-    userId(로그인한 사용자),
-    orderName(주문자명),
-    phoneNumber(휴대폰번호),
-    address(주문자주소),
-    orderList(주문 목록) -> 데이터 형식 [{productId, name, quantity}] 으로 보내주셨으면 합니다,
-    totalPrice(총액),
-
-    
-    */ 
   } catch(e) {
     console.log(e.message);
   }
   paySumPriceLoaded();
 }
-payButton.addEventListener("click" , handlePayBtn);
 
 init();
+
+payButton.addEventListener("click" , handlePayBtn);
