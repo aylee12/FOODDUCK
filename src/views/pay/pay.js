@@ -9,9 +9,28 @@ const paySumPriceLoaded = () => {
   const sumPrice = getCartStorage.reduce((acc , cur) => acc + cur.price * cur.quantity , 0);
   cartPriceSum.innerHTML = sumPrice;
 }
+const user = await Api.get('/api/getUserInfo');
 
 // 구매하기를 누를시에 Storage를 전부 비워주고 홈으로 이동시킨다.
-const handlePayBtn = (e) => {
+const handlePayBtn = async (e) => {
+  const userCart = await Api.post('/api/orderAdd');
+  // const data = {
+  //   userId,
+  //   orderName,
+  //   phoneNumber,
+  //   address,
+  //   orderList : [
+  //     {
+  //       productId,
+  //       name,
+  //       quantity
+  //     }
+  //   ],
+  //   totalPrice
+  // }
+  console.log(userCart);
+  console.log(user);
+
   e.preventDefault();
   localStorage.removeItem("cart");
   window.location.href = '/';
@@ -29,7 +48,6 @@ const phoneNumberInput = document.querySelector('#phoneNumberInput');
 // 실행 순서 정리 
 const init = async () => {
   try{
-    const user = await Api.get('/api/getUserInfo');
     console.log('리턴된 유저 데이터', user);
     // 유저의 데이터들이 담긴다.
     fullNameInput.value = `${user.fullName}`;
@@ -38,6 +56,7 @@ const init = async () => {
     addressInput.value = `${user.address.address1}`;
     detailAddressInput.value = `${user.address.address2}`;
     extraAddressInput.value = `${user.address.address3}`;
+
     /* 결제가 완료되면 아래와 같은 형식으로 데이터를 보내드리면 된다. 
     userId(로그인한 사용자),
     orderName(주문자명),
@@ -46,20 +65,7 @@ const init = async () => {
     orderList(주문 목록) -> 데이터 형식 [{productId, name, quantity}] 으로 보내주셨으면 합니다,
     totalPrice(총액),
 
-    const data = {
-      userId,
-      orderName,
-      phoneNumber,
-      address,
-      orderList : [
-        {
-          productId,
-          name,
-          quantity
-        }
-      ],
-      totalPrice
-    }
+    
     */ 
   } catch(e) {
     console.log(e.message);
