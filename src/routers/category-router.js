@@ -1,10 +1,11 @@
 import { Router } from 'express';
 import { categoryService } from '../services';
+import { loginRequired, roleCheck, contentTypeCheck } from '../middlewares';
 
 const categoryRouter = Router();
 
 //카테고리 추가
-categoryRouter.post('/categoryAdd', async (req, res, next) => {
+categoryRouter.post('/categoryAdd', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
   try {
     const { name, description } = req.body;
     const category = await categoryService.addCategory({ name, description });
@@ -26,7 +27,7 @@ categoryRouter.get('/categoryList', async (req, res, next) => {
 });
 
 //카테고리 수정
-categoryRouter.patch('/categoryUpdate/:name', async (req, res, next) => {
+categoryRouter.patch('/categoryUpdate/:name', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
   try {
     const name = req.params.name;
     const updatelist = req.body;
@@ -39,7 +40,7 @@ categoryRouter.patch('/categoryUpdate/:name', async (req, res, next) => {
 });
 
 //카테고리 삭제
-categoryRouter.delete('/categoryDelete/:name', async (req, res, next) => {
+categoryRouter.delete('/categoryDelete/:name', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
   try {
     const name = req.params.name;
 

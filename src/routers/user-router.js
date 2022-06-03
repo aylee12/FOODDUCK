@@ -1,20 +1,14 @@
 import { Router } from 'express';
 import is from '@sindresorhus/is';
 // 폴더에서 import하면, 자동으로 폴더의 index.js에서 가져옴
-import { loginRequired } from '../middlewares';
+import { loginRequired, contentTypeCheck } from '../middlewares';
 import { userService } from '../services';
 
 const userRouter = Router();
 
 // 회원가입 api (아래는 /register이지만, 실제로는 /api/register로 요청해야 함.)
-userRouter.post('/register', async (req, res, next) => {
+userRouter.post('/register', contentTypeCheck, async (req, res, next) => {
   try {
-    // Content-Type: application/json 설정을 안 한 경우, 에러를 만들도록 함.
-    // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.
-    if (is.emptyObject(req.body)) {
-      throw new Error('headers의 Content-Type을 application/json으로 설정해주세요');
-    }
-
     // req (request)의 body 에서 데이터 가져오기
     const { fullName, email, password, phoneNumber, address } = req.body;
 
@@ -72,14 +66,8 @@ userRouter.get('/userlist', loginRequired, async function (req, res, next) {
 
 // 사용자 정보 수정
 // (예를 들어 /api/users/abc12345 로 요청하면 req.params.userId는 'abc12345' 문자열로 됨)
-userRouter.patch('/users/:userId', loginRequired, async function (req, res, next) {
+userRouter.patch('/users/:userId', loginRequired, contentTypeCheck, async function (req, res, next) {
   try {
-    // content-type 을 application/json 로 프론트에서
-    // 설정 안 하고 요청하면, body가 비어 있게 됨.
-    if (is.emptyObject(req.body)) {
-      throw new Error('headers의 Content-Type을 application/json으로 설정해주세요');
-    }
-
     // params로부터 id를 가져옴
     const userId = req.params.userId;
 
@@ -121,7 +109,7 @@ userRouter.patch('/users/:userId', loginRequired, async function (req, res, next
 });
 
 // 사용자 정보 삭제(soft Delete)
-userRouter.delete('/users/:userId', loginRequired, async (req, res, next) => {
+userRouter.delete('/users/:userId', loginRequired, contentTypeCheck, async (req, res, next) => {
   try {
     // params로부터 id를 가져옴
     const userId = req.params.userId;
@@ -146,7 +134,7 @@ userRouter.delete('/users/:userId', loginRequired, async (req, res, next) => {
   }
 });
 
-//토큰을 이용하여 특정 유저정보 불러오기 - 회원정보수정때문에 필요
+//토큰을 이용하여 특정 유저정보 불러오기
 userRouter.get('/getUserInfo', loginRequired, async (req, res, next) => {
   try {
     const userId = req.currentUserId;
@@ -160,7 +148,7 @@ userRouter.get('/getUserInfo', loginRequired, async (req, res, next) => {
 
 // issue에 질문 (정적 페이지 라우팅은 어떤 방식을 사용하는가? 권한 인증이 필요한 페이지는 라우터에서 걸러줘야 하는 것 같은데 맞는가?)
 // 권한 체크 api (post? get? 둘중에 뭐로 해야할까??) - use를 사용해야할거같다.
-// userRouter.use('/authorization', adminRequired, async function (req, res, next) {
+// userRouter.get('/authorization', loginRequired, async function (req, res, next) {
 //   // const path = req.
 // });
 

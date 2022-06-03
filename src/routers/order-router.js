@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import { orderService } from '../services';
-import { loginRequired, roleCheck } from '../middlewares';
+import { loginRequired, contentTypeCheck } from '../middlewares';
 
 const orderRouter = Router();
 
 //주문 추가
-orderRouter.post('/orderAdd', loginRequired, async (req, res, next) => {
+orderRouter.post('/orderAdd', loginRequired, contentTypeCheck, async (req, res, next) => {
   try {
     const userId = req.currentUserId;
     const { orderName, phoneNumber, address, orderList, totalPrice } = req.body;
@@ -26,7 +26,7 @@ orderRouter.post('/orderAdd', loginRequired, async (req, res, next) => {
 });
 
 //주문 조회
-orderRouter.get('/orderList', loginRequired, async (req, res, next) => {
+orderRouter.get('/orderList', async (req, res, next) => {
   try {
     //주문자 id로 주문내역 조회
     const userId = req.query.userId;
@@ -55,7 +55,7 @@ orderRouter.get('/order/:orderNo', async (req, res, next) => {
 });
 
 //주문 수정
-orderRouter.patch('/orderUpdate/:orderNo', async (req, res, next) => {
+orderRouter.patch('/orderUpdate/:orderNo', loginRequired, contentTypeCheck, async (req, res, next) => {
   try {
     const orderNo = req.params.orderNo;
     const userId = req.currentUserId;
@@ -69,7 +69,7 @@ orderRouter.patch('/orderUpdate/:orderNo', async (req, res, next) => {
 });
 
 //주문 삭제
-orderRouter.delete('/orderDelete/:orderNo', loginRequired, async (req, res, next) => {
+orderRouter.delete('/orderDelete/:orderNo', loginRequired, contentTypeCheck, async (req, res, next) => {
   try {
     const orderNo = req.params.orderNo;
 

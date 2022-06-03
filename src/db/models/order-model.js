@@ -11,7 +11,7 @@ export class OrderModel {
 
   //주문자 id로 주문내역 조회
   async findByUserId(userId) {
-    return await Order.find({ userId }).populate('userId');
+    return await Order.find({ userId }).populate('userId').populate('orderList.productId');
   }
 
   //주문 전체 조회
@@ -21,7 +21,7 @@ export class OrderModel {
 
   //주문번호로 주문내역 조회
   async findByOrderNo(orderNo) {
-    return await Order.findOne({ orderNo });
+    return await Order.findOne({ orderNo }).populate('userId').populate('orderList.productId');
   }
 
   //상품 수정
