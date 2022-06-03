@@ -12,7 +12,7 @@ const navBar = document.querySelector("#navbar");
       navBar.innerHTML = 
       `
       <li><a class ="nav_logout" href="/">로그아웃</a></li>
-      <li><a class ="nav_admin" href="/login">관리자 설정</a></li>
+      <li><a class ="nav_admin" href="/mypage">관리자 설정</a></li>
       `
     }else{
       navBar.innerHTML = 
