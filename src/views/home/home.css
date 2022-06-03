@@ -230,7 +230,7 @@ section {
   top: 200px;
 }
 
- {
+section .gallery_wrap .galleryOn {
   display: flex;
   width: 1050px;
   height: 420px;
