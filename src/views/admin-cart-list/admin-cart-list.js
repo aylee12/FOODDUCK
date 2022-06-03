@@ -10,7 +10,7 @@ const dbCartListWrap = document.querySelector('.db_cart_list_wrap');
     const {createdAt , orderName , totalPrice} = items;
     let tempCart = '';
 
-    dbCartListWrap.innerHTML +=     
+    dbCartListWrap.innerHTML += 
     `
     <div class="db_cart_list_container">
       <div class="db_cart_list_items1">${orderName}</div>
