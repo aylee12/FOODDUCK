@@ -63,15 +63,6 @@ async function displayProductForCategory(data, category){
             </div>
         </div>
         </div>`
-
     });
     return;
-}
-for (let i = 0; i < thumbnail.length; i++){
-    thumbnail[i].addEventListener('click', function () {
-        console.log("casdf")
-    })
-}
-for (let i = 0; i < description.length; i++){
-    // 
 }
