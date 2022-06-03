@@ -45,6 +45,9 @@ for(let i = 0 ; i<btnPlus.length; i++){
     itemsQuantity[i].value -= 1;
     const cartGetItemsList = JSON.parse(localStorage.getItem("cart"));
     cartGetItemsList[i].quantity = cartGetItemsList[i].quantity - 1;
+    if(cartGetItemsList[i].quantity <= 0){
+      cartGetItemsList[i].quantity = 0
+    }
     localStorage.setItem("cart" , JSON.stringify(cartGetItemsList));
     // 0보다 작을때는 항상 0으로 초기화한다.
     if(itemsQuantity[i].value <= 0){
