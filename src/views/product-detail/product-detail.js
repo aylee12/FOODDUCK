@@ -229,7 +229,6 @@ function getData() {
     description: product_description.innerText,
     quantity: parseInt(product_quantity.value)
   };
-
   return data;
 }
 
