@@ -205,167 +205,114 @@ ul, li {
 
 /* section */
 section {
-  /* display: flex; */
   position: relative;
-  margin: 40px 0;
-  /* background-color: red; */
-  padding: 32px 0 40px 0;
-  justify-content: center;
+  width: 1050px;
+  margin: 0 auto;
+  margin-top: 70px;
 }
-
-#section_title h2{
+#section_header_wrap h2 {
   text-align: center;
   margin: 0 0 25px 0;
   font-size: 28px;
   font-weight: 700;
-  /* background-color: blue; */
+}
+.section_left_btn {
+  position: absolute;
+  z-index: 300;
+  left: -30px;
+  top: 200px;
+  /* display: none; */
+}
+.section_right_btn {
+  position: absolute;
+  z-index: 300;
+  right: -30px;
+  top: 200px;
 }
 
-.promotion {
-  margin: 0 0 200px 0;
+ {
   display: flex;
-  flex-direction: column;
-}
-/* .gallery_wrap {
-  position: relative;
   width: 1050px;
-  margin: 0 auto; 
-  block 상태일때
-
-  justify-content: center;
-  text-align: center; inline 일 때
-  background-color: green;
-  
-}
-
-
-.item{
-  position: relative;
-  padding: 0;
-  margin: 0 9px;
-  border: solid 3px #333;
-  border-radius: 5%;
-  box-shadow: 5px 5px 5px gray;
-  background-color: white
-} */
-
-
-
-.gallery_wrap {
-  /* width: 100%;
-  height: 100%; */
-  position: relative;
-  width: 100%;
-  margin: 0 auto; /* block 상태일때 */
-
-  /* justify-content: center; */
-  /* text-align: center; inline 일 때*/
-  /* background-color: green; */
-}
-.gallery_wrap .section_left_btn {
-  position: absolute;
-  left:-45px;
-  top:135px;
-  z-index: 300;
-  /* opacity: 0.6; */
-  cursor: pointer;
-}
-.gallery_wrap .section_left_btn img {
-  content: url('https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_left_60_60.svg');
-}
-.gallery_wrap .section_right_btn {
-  position: absolute;
-  right:-45px;
-  top:135px;
-  z-index: 300;
-  /* opacity: 0.6; */
-  cursor: pointer;
-}
-.gallery_wrap .section_right_btn img {
-  content: url('https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_right_over_60_60.svg');
-}
-.gallery {
-  display: flex;
-  justify-content: center;
-  /* background-color: yellow; */
-}
-.item {
-  position: relative;
-  padding: 0;
-  margin: 0 9px;
-  border: solid 3px #333;
-  border-radius: 5%;
-  box-shadow: 5px 5px 5px gray;
-  background-color: white;
-  width: 250px;
-  height: 320px;
-
-}
-.thumbnail {
-  width: 250px;
-  height: 320px;
+  height: 420px;
   overflow: hidden;
-  border-bottom: solid 3px #333;
+  position: relative;
+  margin: 0 auto;
+}
+.slides {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 0.3s ease-out;
+}
 
+.slides li {
+  display:flex;
 }
-.item.thumbnail a img {
-  content: url('https://img-cf.kurly.com/shop/data/goods/1637929148186l0.jpeg');
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all .3s ease-in-out;
+.slides li:not(:last-child) {
+  float: left;
+  margin-right: 15px;
 }
-.item.thumbnail img:hover {
-  transform: scale(1.1);
 
+.section_items {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 5px 5px 5px gray;
+  border: solid 3px #333;
+  border-radius: 5%;
 }
-.description {
-  padding: 14px 10px 0 0;
-  text-align: center;
+.section_items .description {
+  padding: 5px 10px 0 8px;
   
 }
-.description_text {
-  font-size: 16px;
-  font-weight: 600;
-  display: block;
-  margin: 0 0 8px 0;
-}
-.description_text a{
+.section_items .description h3,
+.section_items .description .price{
   color: rgb(76, 76, 76);
-}
-.description_text a:hover{
-  color: #68a790;
-  text-decoration: underline;
+  font-size: 16px;
+  font-weight: 900;
+  
 }
 
-.price {
+.section_items .description h3{
+  margin-bottom: 8px;
+}
+.section_items .description .price{
   font-size: 16px;
   font-weight: 700;
-  display: block;
-  color: #4c4c4c
 }
 
-.shopping_cart {
+.section_items img {
+  width: 250px;
+  height: 320px;
+  transition: 0.3s;
+  position: relative;
+  
+  background-color: white;
+  overflow: hidden;
+}
+.section_img_wrap {
+  width: 250px;
+  height: 320px;
+  border-bottom: solid 3px #333;
+  overflow: hidden;
+}
+.section_items img:hover {
+  transform: scale(1.1);
+  overflow: hidden;
+}
+.cart_btn {
   position: absolute;
-  right:20px;
-  bottom: 75px;
-}
-.shopping_cart_icon {
- background-color: transparent;
- opacity: 0.8;
- border: none;
-}
-.shopping_cart_icon img {
-  height: 55px;
-  width: 55px;
-  transition: all .2s ease-in-out
-}
-.shopping_cart_icon img:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-}
+  top: 260px;
+  left: 190px;
+  z-index: 400;
 
+}
+.cart_btn img {
+  width: 45px;
+  height: 45px;
+  border: none;
+  background-color: transparent;
+}
+/* section 끝 */
 /* footer 시작 */
 .footer_p {
   margin-top: 0px;
