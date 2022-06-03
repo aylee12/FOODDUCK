@@ -1,18 +1,24 @@
 import { Router } from 'express';
 import { orderService } from '../services';
+import { loginRequired, roleCheck } from '../middlewares';
 
 const orderRouter = Router();
 
 //주문 추가
-orderRouter.post('/orderAdd', async (req, res, next) => {
+orderRouter.post('/orderAdd', loginRequired, async (req, res, next) => {
   try {
-    const { orderNo, email, orderStatus, orderInfo } = req.body;
+    const userId = req.currentUserId;
+    const { orderNo, orderName, phoneNumber, address, orderList, totalPrice, status } = req.body;
 
     const newOrder = await orderService.addOrder({
+      userId,
       orderNo,
-      email,
-      orderStatus,
-      orderInfo,
+      orderName,
+      phoneNumber,
+      address,
+      orderList,
+      totalPrice,
+      status,
     });
 
     res.status(201).json(newOrder);
@@ -22,8 +28,16 @@ orderRouter.post('/orderAdd', async (req, res, next) => {
 });
 
 //주문 조회
-orderRouter.get('/orderList', async (req, res, next) => {
+orderRouter.get('/orderList', loginRequired, async (req, res, next) => {
   try {
+    //주문자 id로 주문내역 조회
+    const userId = req.query.userId;
+    if (userId) {
+      const orders = await orderService.getOrders(userId);
+      res.status(200).json(orders);
+      //return 을 사용해야 하는지 아닌지 이따 테스트확인
+    }
+    //주문자 id값이 없다면 전체 주문내역 조회
     const orders = await orderService.getAllOrders();
     res.status(200).json(orders);
   } catch (error) {
@@ -31,14 +45,37 @@ orderRouter.get('/orderList', async (req, res, next) => {
   }
 });
 
+//주문번호로 주문내역 조회
+orderRouter.get('/order/:orderNo', loginRequired, async (req, res, next) => {
+  try {
+    const orderNo = req.params.orderNo;
+    const order = await orderService.getOrder(orderNo);
+    res.status(200).json(order);
+  } catch (error) {
+    next(error);
+  }
+});
+
 //주문 수정
-orderRouter.patch('/orderUpdate/:orderNo', async (req, res, next) => {
+orderRouter.patch('/orderUpdate/:orderNo', loginRequired, async (req, res, next) => {
   try {
     const orderNo = req.params.orderNo;
     const updatelist = req.body;
 
-    const updateResult = await orderService.updateProduct(orderNo, updatelist);
+    const updateResult = await orderService.updateOrder(orderNo, updatelist);
     res.status(200).json(updateResult);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//주문 삭제
+orderRouter.delete('/orderDelete/:orderNo', loginRequired, async (req, res, next) => {
+  try {
+    const orderNo = req.params.orderNo;
+
+    const deleteResult = await orderService.deleteOrder(orderNo);
+    res.status(200).json(deleteResult);
   } catch (error) {
     next(error);
   }

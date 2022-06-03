@@ -1,5 +1,6 @@
 import { Schema } from 'mongoose';
 import { shortId } from './types/short-id';
+import MongooseDelete from 'mongoose-delete';
 
 const UserSchema = new Schema(
   {
@@ -19,7 +20,7 @@ const UserSchema = new Schema(
     },
     phoneNumber: {
       type: String,
-      required: false,
+      required: true,
     },
     address: {
       type: new Schema(
@@ -33,11 +34,11 @@ const UserSchema = new Schema(
           _id: false,
         }
       ),
-      required: false,
+      required: true,
     },
     role: {
       type: String,
-      required: false,
+      required: true,
       default: 'basic-user',
     },
   },
@@ -46,5 +47,8 @@ const UserSchema = new Schema(
     timestamps: true,
   }
 );
+
+//soft delete plugin적용
+UserSchema.plugin(MongooseDelete);
 
 export { UserSchema };

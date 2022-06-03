@@ -15,7 +15,7 @@ export class UserModel {
   }
 
   async findById(userId) {
-    const user = await User.findOne({ _id: userId });
+    const user = await User.findOne({ userId });
     return user;
   }
 
@@ -25,11 +25,15 @@ export class UserModel {
   }
 
   async update({ userId, update }) {
-    const filter = { _id: userId };
+    const filter = { userId };
     const option = { returnOriginal: false };
 
     const updatedUser = await User.findOneAndUpdate(filter, update, option);
     return updatedUser;
+  }
+
+  async softDelete(userId) {
+    return await User.delete({ userId });
   }
 }
 

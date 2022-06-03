@@ -9,9 +9,19 @@ export class OrderModel {
     return await Order.create(order);
   }
 
+  //주문자 id로 주문내역 조회
+  async findByUserId(userId) {
+    return await Order.find({ userId }).populate('user');
+  }
+
   //주문 전체 조회
   async findAll() {
     return await Order.find({});
+  }
+
+  //주문번호로 주문내역 조회
+  async findByOrderNo(orderNo) {
+    return await Order.findOne({ orderNo });
   }
 
   //상품 수정

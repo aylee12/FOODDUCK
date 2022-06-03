@@ -3,8 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FOODDOCK</title>
-    <!-- bulma css 관련 -->
+    <title>쇼핑-n팀</title>
+    <!-- 아이콘 -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/elice-rabbit-favicon.png"
+    />
+    <!-- bulma css -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
@@ -15,20 +22,13 @@
       src="https://kit.fontawesome.com/7630448495.js"
       crossorigin="anonymous"
     ></script>
-    <!-- 다음 주소 API 사용 -->
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <!-- 구글 OAuth -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <!-- 카카오 OAuth -->
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <!-- 커스텀 css, js -->
-    <link rel="stylesheet" href="register.css" />
-    <script src="register.js" type="module" defer></script>
-    <script src="daum-api.js"></script>
-    <script src="../../home/home-nav.js" type = "module" defer></script>
-    <script src="../../home/home.js" type = "module" defer></script>
-     <!-- 로고 -->
-     <style>
+    <link rel="stylesheet" href="product.css" />
+    <script src="home/home.js"></script>
+    <script src="home/home-nav.js"></script>
+    
+    <!-- 로고 -->
+    <style>
       .logo {
         width:70px; 
         height:70px; 
@@ -45,9 +45,9 @@
         transform: scale(1.1);
       }
     </style>
-    <script src="daum-api.js" defer></script>
   </head>
-  <body>
+
+<body>
     <!-- 헤더 시작 -->
     <div id="header">
       <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -87,10 +87,10 @@
                 </div>
               <div class="category_wrap">
                 <ul id="inner_nav">
-                  <li><a class="meat"><span>고기</span></a></li>
-                  <li><a class="vegetable"><span>야채</span></a></li>
-                  <li><a class="fruit"><span>과일</span></a></li>
-                  <li><a class="fish"><span>생선</span></a></li>
+                  <li><a onclick="location.href='/product/meat'" class="meat"><span>고기</span></a></li>
+                  <li><a onclick="location.href='/product/vegetable'" class="vegetable"><span>야채</span></a></li>
+                  <li><a onclick="location.href='/product/fruit'" class="fruit"><span>과일</span></a></li>
+                  <li><a onclick="location.href='/product/fish'" class="fish"><span>생선</span></a></li>
                 </ul>
               </div>
             </li>
@@ -110,102 +110,19 @@
         </div>
       </div>
     </div>
+
+      <!-- main -->
+    <section class="section">
+      <div>
+        <h1 class="title">전체</h1>
+      </div>
+      <div id="list_products">
+        <div id="inner_list_products">
+        </div>
+      </div>
+    </section>
     
-    <!-- 회원가입 폼(Form) -->
-    <div class="register-user-form-container">
-      <form 
-        method="post"
-        class="box register-user-form-box" 
-        id="registerUserForm"
-      >
-        <p class="title is-5 has-text-primary">환영합니다!</p>
-        <div class="field">
-          <label class="label" for="fullNameInput">이름</label>
-          <div class="control">
-            <input
-              class="input"
-              id="fullNameInput"
-              type="text"
-              placeholder="유재석"
-              autocomplete="on"
-            />
-          </div>
-        </div>
-        <!-- 임시로 input-email 변경했음 -->
-        <div class="field">
-          <label class="label" for="idInput">아이디</label>
-          <div class="control input-id-wrap">
-            <input
-              class="input"
-              id="emailInput"
-              type="email"
-              placeholder="abc@example.com"
-              autocomplete="on"
-            />
-            <!-- <input class="input" type="button" value="중복확인"><br> -->
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label" for="passwordInput">비밀번호</label>
-          <div class="control">
-            <input
-              class="input"
-              id="passwordInput"
-              type="password"
-              placeholder="********"
-              autocomplete="off"
-            />
-          </div>
-        </div>
-
-        <div class="field mb-5">
-          <label class="label" for="passwordConfirmInput">비밀번호 확인</label>
-          <div class="control">
-            <input
-              class="input"
-              id="passwordConfirmInput"
-              type="password"
-              placeholder="********"
-              autocomplete="off"
-            />
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label" for="fullNameInput">전화번호</label>
-          <div class="control">
-            <input
-              class="input"
-              id="phoneNumberInput"
-              type="text"
-              placeholder="전화번호"
-              autocomplete="on"
-            />
-          </div>
-        </div>
-
-        <div class="field mb-5">
-          <label class="label" for="addressInput">주소</label>
-          <div class="address-control">
-            <div class="address-btn-wrap">
-              <input class="input" type="text" id="postcode" placeholder="우편번호">
-              <input class="input" type="button" onclick="daumPostCode()" value="우편번호 찾기">
-            </div>
-            <input class="input" type="text" id="address" placeholder="주소"><br>
-            <div class="address-detail-wrap">
-              <input class="input" type="text" id="detailAddress" placeholder="상세주소">
-              <input class="input" type="text" id="extraAddress" placeholder="참고항목">
-            </div>
-          </div>
-        </div>
-        <button class="button is-primary is-fullwidth" id="submitButton">
-          회원가입하기
-        </button>
-      </form>
-    </div>
-
-    <!-- footer  -->
+      <!-- footer  -->
     <footer class="footer">
       <div id="customer_center_wrap">
         <h2 class="center_h2">고객행복센터</h2>
@@ -237,5 +154,6 @@
         <p class="footer_p">개인정보관리책임자: bdd3452@gmail.com <span>I</span> whtjdgh104@gmail.com 
       </div>
     </footer>
-  </body>
+    <script src="/product.js" type="module"></script>
+</body>
 </html>
