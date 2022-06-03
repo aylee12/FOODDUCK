@@ -20,13 +20,15 @@ const handlePayBtn = async (e) => {
   const orderStorage = cartStorage.map(el => {
       const {id:productId , name , quantity} = el;
       return {productId , name ,quantity}
-  })
+  });
   // 비구조화 할당 적용 
-  const {fullName , phoneNumber} = user;
+  const {fullName , phoneNumber ,userId} = user;
   const {postalCode, address1 , address2 , address3} = user.address;
+  
   // 합계 구하기
   const totalPrice = cartStorage.reduce((acc , cur) => acc + (cur.price * cur.quantity),0);
   const data = {
+    userId,
     orderName:fullName, // 유저 이름
     phoneNumber, // 핸드폰 번호
     address: {
@@ -35,9 +37,7 @@ const handlePayBtn = async (e) => {
       address2,
       address3
     },
-    orderList : [
-      orderStorage
-    ],
+    orderList : orderStorage,
     totalPrice
   }
   const userCart = await Api.post('/api/orderAdd' , data);

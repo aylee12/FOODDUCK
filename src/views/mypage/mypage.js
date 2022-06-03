@@ -37,7 +37,7 @@ window.onload = async function () {
     // 사용자가 일반 회원이면 보여줄 버튼들
     else {
         const contents = ["회원정보 관리", "주문 조회"];
-        const urls = ["/user/info/manage", "user/info/cart"];
+        const urls = ["/user/info/manage", "/user/info/cart"];
         const img_urls = [
             "./mypage-img/user-info.gif", "./mypage-img/order.gif"
         ];
