@@ -3,7 +3,6 @@ import * as Api from '/api.js';
 import { addCommas } from '/useful-functions.js';
 
 const shopping_cart_icon_url = "https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/cart_white_45_45.svg";
-const subsection = document.querySelectorAll('.subsection');
 const meat = document.querySelector('.gallery_wrap .meat')
 const vegetable = document.querySelector('.gallery_wrap .vegetable')
 const fruit = document.querySelector('.gallery_wrap .fruit')
@@ -14,7 +13,6 @@ async function displaySection() {
     const url = '/api/productListAll'
     const data = await Api.get(url)
     data.forEach(element => {
-        console.log(element)
         const category = element.category.name;
         const name = element.name;
         const img = element.img;

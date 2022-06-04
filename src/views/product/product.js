@@ -36,6 +36,8 @@ async function DataHandler (category) {
 }
 
 async function displayProductForCategory(data, category){
+    // 들어온 카테고리과 일치하는 제품만 페이지에 랜더해주자
+
     const url = category ? "/product/" + category : `/product`;
     // window.location.href = url;
     inner_list_products.innerHTML = ""
@@ -45,6 +47,8 @@ async function displayProductForCategory(data, category){
         const price = addCommas(element.price);
         const company = element.company;
         const id = element.productId;
+        
+        // 제품은 이런 형식으로 추가해주면 된다
         inner_list_products.innerHTML += `
         <div class="item">
             <div class="thumbnail" >
@@ -52,9 +56,7 @@ async function displayProductForCategory(data, category){
                     <img src="${img}" alt="임시" >
                 </a>
             </div>
-        <div class="shopping_cart">
-            <button class="shopping_cart_icon"><img src="${shopping_cart_icon_url}" alt="카트담기 아이콘" ></button>
-        </div>
+        
         <div class="description">
             <h3 class="description_text"><a onclick="location.href = '/product/detail/${id}'">[${company}] ${name}</a></h3>
             <div class="price">

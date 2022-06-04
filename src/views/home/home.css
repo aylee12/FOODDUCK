@@ -219,15 +219,15 @@ section {
 .section_left_btn {
   position: absolute;
   z-index: 300;
-  left: -30px;
-  top: 200px;
+  left: 20px;
+  top: 250px;
   /* display: none; */
 }
 .section_right_btn {
   position: absolute;
   z-index: 300;
-  right: -30px;
-  top: 200px;
+  right: -90px;
+  top: 250px;
 }
 
 section .gallery_wrap .galleryOn {
@@ -243,10 +243,11 @@ section .gallery_wrap .galleryOn {
   left: 0;
   top: 0;
   transition: all 0.3s ease-out;
+  display:flex;
 }
 
 .slides li {
-  display:flex;
+  /* display:flex; */
 }
 .slides li:not(:last-child) {
   float: left;

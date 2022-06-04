@@ -1,5 +1,18 @@
 import * as Api from '/api.js';
 
+/**** 접근 권한 확인(유저) ****/
+try {
+  await Api.get('/api/user');
+} catch (error) {
+  new Swal({
+    title: '로그인이 필요한 페이지입니다.',
+    text: `${error.message}`,
+    icon: 'error',
+  }).then(function () {
+    window.location.href = '/login';
+  });
+}
+
 const cartPriceSum = document.querySelector('.cart-price-sum');
 const payButton = document.querySelector('#payButton');
 
@@ -70,6 +83,7 @@ const init = async () => {
   } catch (e) {
     console.log(e.message);
   }
+
   paySumPriceLoaded();
 };
 

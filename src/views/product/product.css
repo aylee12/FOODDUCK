@@ -128,9 +128,12 @@ ul, li {
 
 .item{
   position: relative;
-  height: 450px;
-  padding: 0 15px;
-  margin: 0 0 70px 0;
+  margin: 0 15px 70px 15px;
+  box-shadow: 5px 5px 5px gray;
+  border: solid 3px #333;
+  border-radius: 5%;
+  overflow: hidden;
+
 }
 
 .shopping_cart {
@@ -156,6 +159,9 @@ ul, li {
   width: 250px;
   height: 320px;
   overflow: hidden;
+
+  border-bottom: solid 3px #333;
+
 }
 
 .thumbnail a img {
@@ -168,8 +174,7 @@ ul, li {
 }
 
 .description {
-  /* margin: 0 0 8px 0;   */
-  padding: 14px 10px 0 0;
+  padding: 14px 10px 5px 5px;
 }
 .description_text {
   font-size: 16px;

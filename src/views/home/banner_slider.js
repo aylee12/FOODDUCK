@@ -1,5 +1,8 @@
 var indexValue = 1;
+
+// indexValue에 해당하는 배너 이미지를 보여주는 기능이다.
 showImg(indexValue);
+
 function btm_slide(e){showImg(indexValue = e);}
 function side_slide(e){showImg(indexValue += e);}
 function showImg(e){
