@@ -19,12 +19,12 @@ const handlePayBtn = async (e) => {
   console.log(cartStorage);
   const orderStorage = cartStorage.map((el) => {
     const { id: productId, name, quantity } = el;
-    console.log('상품id:', productId);
     return { productId, name, quantity };
   });
   // 비구조화 할당 적용
-  const { fullName, userId, phoneNumber } = user;
+  const { fullName, phoneNumber, userId } = user;
   const { postalCode, address1, address2, address3 } = user.address;
+
   // 합계 구하기
   const totalPrice = cartStorage.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
   const data = {

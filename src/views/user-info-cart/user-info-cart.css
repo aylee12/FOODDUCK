@@ -17,7 +17,7 @@
 .cart_list_container{
   display: flex;
   text-align: center;
-  justify-content: center;
+  /* justify-content: center; */
   margin-top: 30px;
   background-color: rgba(0, 209, 178, 0.25);
   font-size: 1rem;
@@ -30,6 +30,7 @@
 }
 .cart_list_items1,
 .db_cart_list_items1{
+  line-height: 40px;
   text-align: center;
   flex-grow: 1;
 }
@@ -37,15 +38,16 @@
 .db_cart_list_items2{
   text-align: center;
   flex-grow: 3;
-  white-space: pre-line;
 }
 .cart_list_items3,
 .db_cart_list_items3{
+  line-height: 40px;
   text-align: center;
   flex-grow: 1;
 }
 .cart_list_items4,
 .db_cart_list_items4{
+  line-height: 40px;
   text-align: center;
   flex-grow: 1;
 }

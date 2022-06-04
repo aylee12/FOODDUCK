@@ -12,4 +12,4 @@ function mouseLeave(){
 }
 
 category_toggle.addEventListener('mouseover', mouseOver)
-category_toggle.addEventListener('mouseleave', mouseLeave)
+category_toggle.addEventListener('mouseleave', mouseLeave)  
