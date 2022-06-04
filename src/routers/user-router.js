@@ -30,13 +30,8 @@ userRouter.post('/register', contentTypeCheck, async (req, res, next) => {
 });
 
 // 로그인 api (아래는 /login 이지만, 실제로는 /api/login로 요청해야 함.)
-userRouter.post('/login', async function (req, res, next) {
+userRouter.post('/login', contentTypeCheck, async function (req, res, next) {
   try {
-    // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.
-    if (is.emptyObject(req.body)) {
-      throw new Error('headers의 Content-Type을 application/json으로 설정해주세요');
-    }
-
     // req (request) 에서 데이터 가져오기
     const { email, password } = req.body;
 
@@ -72,10 +67,7 @@ userRouter.patch('/users/:userId', loginRequired, contentTypeCheck, async functi
     const userId = req.params.userId;
 
     // body data 로부터 업데이트할 사용자 정보를 추출함.
-    const fullName = req.body.fullName;
-    const password = req.body.password;
-    const phoneNumber = req.body.phoneNumber;
-    const address = req.body.address;
+    const { fullName, password, phoneNumber, address } = req.body;
     // const role = req.body.role;
 
     // body data로부터, 확인용으로 사용할 현재 비밀번호를 추출함.
@@ -145,11 +137,5 @@ userRouter.get('/getUserInfo', loginRequired, async (req, res, next) => {
     next(error);
   }
 });
-
-// issue에 질문 (정적 페이지 라우팅은 어떤 방식을 사용하는가? 권한 인증이 필요한 페이지는 라우터에서 걸러줘야 하는 것 같은데 맞는가?)
-// 권한 체크 api (post? get? 둘중에 뭐로 해야할까??) - use를 사용해야할거같다.
-// userRouter.get('/authorization', loginRequired, async function (req, res, next) {
-//   // const path = req.
-// });
 
 export { userRouter };

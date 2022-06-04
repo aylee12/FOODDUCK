@@ -126,8 +126,13 @@ const init = async () => {
     detailAddressInput.value = `${user.address.address2}`;
     extraAddressInput.value = `${user.address.address3}`;
   } catch (error) {
-    alert(error.message);
-    window.location.href = '/';
+    new Swal({
+      title: '접근권한이 없습니다.',
+      text: `${error.message}`,
+      icon: 'error',
+    }).then(function () {
+      window.location.href = '/login';
+    });
   }
 };
 

@@ -40,7 +40,7 @@ categoryRouter.patch('/categoryUpdate/:name', loginRequired, roleCheck, contentT
 });
 
 //카테고리 삭제
-categoryRouter.delete('/categoryDelete/:name', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
+categoryRouter.delete('/categoryDelete/:name', loginRequired, roleCheck, async (req, res, next) => {
   try {
     const name = req.params.name;
 
