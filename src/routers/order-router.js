@@ -69,7 +69,7 @@ orderRouter.patch('/orderUpdate/:orderNo', loginRequired, contentTypeCheck, asyn
 });
 
 //주문 삭제
-orderRouter.delete('/orderDelete/:orderNo', loginRequired, contentTypeCheck, async (req, res, next) => {
+orderRouter.delete('/orderDelete/:orderNo', loginRequired, async (req, res, next) => {
   try {
     const orderNo = req.params.orderNo;
 

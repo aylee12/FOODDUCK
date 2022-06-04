@@ -3,10 +3,10 @@ import * as Api from '/api.js';
 const dbCartWrap = document.querySelector(".db_cart_list_wrap");
 const dbCartList = document.querySelector(".db_cart_list_container");
 
+
 // 즉시실행함수
 (async() => {
   const user = await Api.get("/api/getUserInfo");
-  console.log(user);
   const orderList = await Api.get(`/api/orderList`,`?userId=${user.userId}`);
   console.log(orderList);
 
@@ -31,15 +31,23 @@ const dbCartList = document.querySelector(".db_cart_list_container");
     </div>
     `
   });
+  const userCartCancel = document.querySelectorAll(".user_cart_cancel");
+  console.log(userCartCancel);
+    // 삭제버튼을 누르면 데이터를 삭제해주기 
+  userCartCancel.forEach((cancleBtn , index) => {
+    cancleBtn.addEventListener("click" , async () => {
+      const user = await Api.get("/api/getUserInfo");
+      const orderList = await Api.get(`/api/orderList`,`?userId=${user.userId}`);
+      console.log(user);
+      console.log(orderList);
+      console.log(index);
+      const userCartDelete = await Api.delete(`/api/orderDelete`,`${orderList[index].orderNo}`);
+
+      console.log(userCartDelete);
+      console.log("들어와봐");
+      cancleBtn.parentElement.parentElement.remove();
+    });
+  });
 
 })();
 
-const userCartCancel = document.querySelectorAll(".user_cart_cancel");
-console.log(userCartCancel);
-  // 삭제버튼을 누르면 데이터를 삭제해주기 
-userCartCancel.forEach(cancleBtn => {
-  cancleBtn.addEventListener("click" , () => {
-    console.log("들어와봐");
-    cancleBtn.parentElement.parentElement.remove();
-  });
-});
