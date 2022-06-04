@@ -8,7 +8,6 @@ export class OrderModel {
   async createOrder(order) {
     return await Order.create(order);
   }
-
   //주문자 id로 주문내역 조회
   async findByUserId(userId) {
     return await Order.find({ userId }).populate('userId').populate('orderList.productId');

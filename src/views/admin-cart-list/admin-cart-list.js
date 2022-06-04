@@ -5,13 +5,12 @@ const dbCartListWrap = document.querySelector('.db_cart_list_wrap');
 // 즉시 실행 함수
 (async () => {
   const allCartData = await Api.get('/api/orderList');
-  console.log(allCartData);
   
   allCartData.forEach(items => {
     const {createdAt , orderName , totalPrice} = items;
     let tempCart = '';
 
-    dbCartListWrap.innerHTML +=     
+    dbCartListWrap.innerHTML += 
     `
     <div class="db_cart_list_container">
       <div class="db_cart_list_items1">${orderName}</div>

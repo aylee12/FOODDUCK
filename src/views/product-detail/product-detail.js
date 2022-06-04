@@ -121,7 +121,6 @@ function cnt_up() {
   let org_price = parseInt(product_price.dataset.value);
 
   n = n + 1;
-
   quantity.value = n;
   product_total_price.dataset.value = org_price * n;
   product_total_price.innerText = numberWithCommas(product_total_price.dataset.value);

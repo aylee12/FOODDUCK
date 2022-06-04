@@ -30,7 +30,11 @@ const sumPrice = () => {
 // 증감 버튼 구현하기 (선택 삭제 이후에 0번째 버튼을 가리켜야 되는데 1번째 버튼을 자꾸 가리킴)
 for(let i = 0 ; i < btnPlus.length;i++){
   btnPlus[i].addEventListener("click" , () =>{
+    const cartGetItemsList = JSON.parse(localStorage.getItem("cart"));
     itemsQuantity[i].value = Number(itemsQuantity[i].value) + 1;
+    // 값을 증가시키고 반영한다. 
+    cartGetItemsList[i].quantity = cartGetItemsList[i].quantity + 1
+    localStorage.setItem("cart" , JSON.stringify(cartGetItemsList));
     cartItemsPrice[i].innerHTML = itemsQuantity[i].value * cartItemsPrice[i].getAttribute("data-value");
     sumPrice();
   })
@@ -39,6 +43,12 @@ for(let i = 0 ; i < btnPlus.length;i++){
 for(let i = 0 ; i<btnPlus.length; i++){
   btnMinus[i].addEventListener("click" , () =>{
     itemsQuantity[i].value -= 1;
+    const cartGetItemsList = JSON.parse(localStorage.getItem("cart"));
+    cartGetItemsList[i].quantity = cartGetItemsList[i].quantity - 1;
+    if(cartGetItemsList[i].quantity <= 0){
+      cartGetItemsList[i].quantity = 0
+    }
+    localStorage.setItem("cart" , JSON.stringify(cartGetItemsList));
     // 0보다 작을때는 항상 0으로 초기화한다.
     if(itemsQuantity[i].value <= 0){
       itemsQuantity[i].value = 0;
