@@ -9,16 +9,16 @@ productRouter.post('/productAdd', loginRequired, roleCheck, contentTypeCheck, as
   try {
     const { name, price, company, category, img, description } = req.body;
 
-    const product = await productService.addProduct({
-      name,
-      price,
-      company,
-      category,
-      img,
-      description,
-    });
-
-    res.status(201).json(product);
+    res.status(201).json(
+      await productService.addProduct({
+        name,
+        price,
+        company,
+        category,
+        img,
+        description,
+      })
+    );
   } catch (error) {
     next(error);
   }
@@ -41,8 +41,7 @@ productRouter.post('/productAdd', loginRequired, roleCheck, contentTypeCheck, as
 //전체 상품 조회
 productRouter.get('/productListAll', async (req, res, next) => {
   try {
-    const products = await productService.getAllProducts();
-    res.status(200).json(products);
+    res.status(200).json(await productService.getAllProducts());
   } catch (error) {
     next(error);
   }
@@ -51,10 +50,7 @@ productRouter.get('/productListAll', async (req, res, next) => {
 //카테고리별 상품 조회
 productRouter.get('/productListCategory/:category', async (req, res, next) => {
   try {
-    const category = req.params.category;
-
-    const products = await productService.getProductsByCategory(category);
-    res.status(200).json(products);
+    res.status(200).json(await productService.getProductsByCategory(req.params.category));
   } catch (error) {
     next(error);
   }
@@ -88,23 +84,19 @@ productRouter.get('/productListName/:name', async (req, res, next) => {
 //상품ID값으로 조회
 productRouter.get('/productListId/:productId', async (req, res, next) => {
   try {
-    const productId = req.params.productId;
-
-    const product = await productService.getProductById(productId);
-    res.status(200).json(product);
+    res.status(200).json(await productService.getProductById(req.params.productId));
   } catch (error) {
     next(error);
   }
 });
 
-//상품 수정
+//상품 수정 => productUpdate라고 길게 End point naming할 필요가 없음. (order-router.js 참고)
 productRouter.patch('/productUpdate/:productId', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
   try {
     const productId = req.params.productId;
     const updatelist = req.body;
 
-    const updateResult = await productService.updateProduct(productId, updatelist);
-    res.status(200).json(updateResult);
+    res.status(200).json(await productService.updateProduct(productId, updatelist));
   } catch (error) {
     next(error);
   }
@@ -118,10 +110,7 @@ productRouter.delete(
   contentTypeCheck,
   async (req, res, next) => {
     try {
-      const productId = req.params.productId;
-
-      const deleteResult = await productService.deleteProduct(productId);
-      res.status(200).json(deleteResult);
+      res.status(200).json(await productService.deleteProduct(req.params.productId));
     } catch (error) {
       next(error);
     }
