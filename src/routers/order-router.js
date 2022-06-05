@@ -10,16 +10,16 @@ orderRouter.post('/orderAdd', loginRequired, contentTypeCheck, async (req, res, 
     const userId = req.currentUserId;
     const { orderName, phoneNumber, address, orderList, totalPrice } = req.body;
 
-    const newOrder = await orderService.addOrder({
-      userId,
-      orderName,
-      phoneNumber,
-      address,
-      orderList,
-      totalPrice,
-    });
-
-    res.status(201).json(newOrder);
+    res.status(201).json(
+      await orderService.addOrder({
+        userId,
+        orderName,
+        phoneNumber,
+        address,
+        orderList,
+        totalPrice,
+      })
+    );
   } catch (error) {
     next(error);
   }
@@ -31,9 +31,7 @@ orderRouter.get('/orderList', async (req, res, next) => {
     //주문자 id로 주문내역 조회
     const userId = req.query.userId;
     if (userId) {
-      const orders = await orderService.getOrders(userId);
-      res.status(200).json(orders);
-      return;
+      return res.status(200).json(await orderService.getOrders(userId));
     }
     //주문자 id값이 없다면 전체 주문내역 조회
     const orders = await orderService.getAllOrders();

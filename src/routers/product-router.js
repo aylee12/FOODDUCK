@@ -79,10 +79,7 @@ productRouter.get('/productListCategory/:category', async (req, res, next) => {
 //상품명으로 조회
 productRouter.get('/productListName/:name', async (req, res, next) => {
   try {
-    const name = req.params.name;
-
-    const products = await productService.getProductByName(name);
-    res.status(200).json(products);
+    res.status(200).json(await productService.getProductByName(req.params.name));
   } catch (error) {
     next(error);
   }

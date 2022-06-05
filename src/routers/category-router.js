@@ -8,9 +8,7 @@ const categoryRouter = Router();
 categoryRouter.post('/categoryAdd', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
   try {
     const { name, description } = req.body;
-    const category = await categoryService.addCategory({ name, description });
-
-    res.status(201).json(category);
+    res.status(201).json(await categoryService.addCategory({ name, description }));
   } catch (error) {
     next(error);
   }
@@ -19,8 +17,7 @@ categoryRouter.post('/categoryAdd', loginRequired, roleCheck, contentTypeCheck, 
 //카테고리 조회
 categoryRouter.get('/categoryList', async (req, res, next) => {
   try {
-    const categories = await categoryService.getAllCategories();
-    res.status(200).json(categories);
+    res.status(200).json(await categoryService.getAllCategories());
   } catch (error) {
     next(error);
   }
