@@ -20,6 +20,7 @@ export class OrderModel {
 
   //주문번호로 주문내역 조회
   async findByOrderNo(orderNo) {
+    //다음에 변수 naming할때는 orderNo같은 축약어보단 orderNumber 이런 식으로 작성하기.
     return await Order.findOne({ orderNo }).populate('userId').populate('orderList.productId');
   }
 

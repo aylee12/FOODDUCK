@@ -34,8 +34,7 @@ orderRouter.get('/orderList', async (req, res, next) => {
       return res.status(200).json(await orderService.getOrders(userId));
     }
     //주문자 id값이 없다면 전체 주문내역 조회
-    const orders = await orderService.getAllOrders();
-    res.status(200).json(orders);
+    res.status(200).json(await orderService.getAllOrders());
   } catch (error) {
     next(error);
   }
@@ -45,34 +44,31 @@ orderRouter.get('/orderList', async (req, res, next) => {
 orderRouter.get('/order/:orderNo', async (req, res, next) => {
   try {
     const orderNo = req.params.orderNo;
-    const order = await orderService.getOrder(orderNo);
-    res.status(200).json(order);
+    res.status(200).json(await orderService.getOrder(orderNo));
   } catch (error) {
     next(error);
   }
 });
 
-//주문 수정
+//주문 수정 => End point name을 orderUpdate라고 하지 않고 order라고 해도 됨. 왜냐하면 patch HTTP method를 사용하기 때문에 충분히 이해 가능.
 orderRouter.patch('/orderUpdate/:orderNo', loginRequired, contentTypeCheck, async (req, res, next) => {
   try {
     const orderNo = req.params.orderNo;
     const userId = req.currentUserId;
     const { orderName, phoneNumber, address } = req.body;
 
-    const updateResult = await orderService.updateOrder(orderNo, userId, { orderName, phoneNumber, address });
-    res.status(200).json(updateResult);
+    res.status(200).json(await orderService.updateOrder(orderNo, userId, { orderName, phoneNumber, address }));
   } catch (error) {
     next(error);
   }
 });
 
-//주문 삭제
+//주문 삭제 => 주문 수정과 마찬가지로 바꾸자
 orderRouter.delete('/orderDelete/:orderNo', loginRequired, async (req, res, next) => {
   try {
     const orderNo = req.params.orderNo;
 
-    const deleteResult = await orderService.deleteOrder(orderNo);
-    res.status(200).json(deleteResult);
+    res.status(200).json(await orderService.deleteOrder(orderNo));
   } catch (error) {
     next(error);
   }
