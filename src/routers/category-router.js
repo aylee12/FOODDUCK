@@ -29,8 +29,7 @@ categoryRouter.patch('/categoryUpdate/:name', loginRequired, roleCheck, contentT
     const name = req.params.name;
     const updatelist = req.body;
 
-    const updateResult = await categoryService.updateCategory(name, updatelist);
-    res.status(200).json(updateResult);
+    res.status(200).json(await categoryService.updateCategory(name, updatelist));
   } catch (error) {
     next(error);
   }
@@ -41,8 +40,7 @@ categoryRouter.delete('/categoryDelete/:name', loginRequired, roleCheck, async (
   try {
     const name = req.params.name;
 
-    const deleteResult = await categoryService.deleteCategory(name);
-    res.status(200).json(deleteResult);
+    res.status(200).json(await categoryService.deleteCategory(name));
   } catch (error) {
     next(error);
   }
