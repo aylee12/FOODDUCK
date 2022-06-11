@@ -50,7 +50,7 @@ window.onload = async function () {
   }
 
   try {
-    const res = await Api.get('/api/productListId', productId);
+    const res = await Api.get('/api/product', productId);
     product_name.value = res.name;
     product_company.value = res.company;
     product_category.value = res.category.name;

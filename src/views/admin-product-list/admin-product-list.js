@@ -17,7 +17,7 @@ window.onload = async function () {
   // 상품 전체 div
   const product_list_container = document.querySelector('.product_list_container');
   try {
-    const res = await Api.get('/api/productListAll');
+    const res = await Api.get('/api/product');
     for (let i = 0; i < res.length; i++) {
       // 제품 하나당 div
       const product_container = document.createElement('div');
