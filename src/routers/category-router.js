@@ -5,7 +5,7 @@ import { loginRequired, roleCheck, contentTypeCheck } from '../middlewares';
 const categoryRouter = Router();
 
 //카테고리 추가
-categoryRouter.post('/categoryAdd', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
+categoryRouter.post('/category', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
   try {
     const { name, description } = req.body;
     res.status(201).json(await categoryService.addCategory({ name, description }));
@@ -15,7 +15,7 @@ categoryRouter.post('/categoryAdd', loginRequired, roleCheck, contentTypeCheck, 
 });
 
 //카테고리 조회
-categoryRouter.get('/categoryList', async (req, res, next) => {
+categoryRouter.get('/category', async (req, res, next) => {
   try {
     res.status(200).json(await categoryService.getAllCategories());
   } catch (error) {
@@ -24,7 +24,7 @@ categoryRouter.get('/categoryList', async (req, res, next) => {
 });
 
 //카테고리 수정
-categoryRouter.patch('/categoryUpdate/:name', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
+categoryRouter.patch('/category/:name', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
   try {
     const name = req.params.name;
     const updatelist = req.body;
@@ -36,7 +36,7 @@ categoryRouter.patch('/categoryUpdate/:name', loginRequired, roleCheck, contentT
 });
 
 //카테고리 삭제
-categoryRouter.delete('/categoryDelete/:name', loginRequired, roleCheck, async (req, res, next) => {
+categoryRouter.delete('/category/:name', loginRequired, roleCheck, async (req, res, next) => {
   try {
     const name = req.params.name;
 
