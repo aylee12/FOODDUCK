@@ -5,7 +5,7 @@ import { loginRequired, contentTypeCheck } from '../middlewares';
 const orderRouter = Router();
 
 //주문 추가
-orderRouter.post('/orderAdd', loginRequired, contentTypeCheck, async (req, res, next) => {
+orderRouter.post('/order', loginRequired, contentTypeCheck, async (req, res, next) => {
   try {
     const userId = req.currentUserId;
     const { orderName, phoneNumber, address, orderList, totalPrice } = req.body;
@@ -26,7 +26,7 @@ orderRouter.post('/orderAdd', loginRequired, contentTypeCheck, async (req, res, 
 });
 
 //주문 조회
-orderRouter.get('/orderList', async (req, res, next) => {
+orderRouter.get('/order', async (req, res, next) => {
   try {
     //주문자 id로 주문내역 조회
     const userId = req.query.userId;
@@ -51,7 +51,7 @@ orderRouter.get('/order/:orderNo', async (req, res, next) => {
 });
 
 //주문 수정 => End point name을 orderUpdate라고 하지 않고 order라고 해도 됨. 왜냐하면 patch HTTP method를 사용하기 때문에 충분히 이해 가능.
-orderRouter.patch('/orderUpdate/:orderNo', loginRequired, contentTypeCheck, async (req, res, next) => {
+orderRouter.patch('/order/:orderNo', loginRequired, contentTypeCheck, async (req, res, next) => {
   try {
     const orderNo = req.params.orderNo;
     const userId = req.currentUserId;
@@ -64,7 +64,7 @@ orderRouter.patch('/orderUpdate/:orderNo', loginRequired, contentTypeCheck, asyn
 });
 
 //주문 삭제 => 주문 수정과 마찬가지로 바꾸자
-orderRouter.delete('/orderDelete/:orderNo', loginRequired, async (req, res, next) => {
+orderRouter.delete('/order/:orderNo', loginRequired, async (req, res, next) => {
   try {
     const orderNo = req.params.orderNo;
 
