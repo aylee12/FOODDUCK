@@ -63,6 +63,40 @@ window.onload = async function () {
         window.location.href = `/`;
       });
     }
+
+    // 최근 본 상품 추가
+    const state = JSON.parse(sessionStorage.getItem("recent") || "[]");
+    let not_in_recent = true;
+
+    if (state.length != 0) {
+      const recent_zone = document.querySelector(".recent_zone");
+
+      for (let i = state.length - 1; i > 0; i--) {
+        if (i < state.length - 5) {
+          break;
+        }
+        const recent_item_container = document.createElement("div");
+        const recent_item = document.createElement("img");
+        recent_item.setAttribute("src", state[i].img);
+        recent_item.setAttribute('onclick', `location.href='/product/detail/${state[i].id}'`);
+        recent_item_container.appendChild(recent_item);
+        recent_zone.appendChild(recent_item_container);
+
+        if (productId === state[i].id) {
+          not_in_recent = false;
+        }
+      }
+    }
+
+    if (not_in_recent) {
+      const data = {
+        id: productId,
+        img: product_img.src,
+      };
+
+      const recent = [...state, data];
+      sessionStorage.setItem("recent", JSON.stringify(recent));
+    }
   }
 
   product_price.innerText = numberWithCommas(product_price.dataset.value);
