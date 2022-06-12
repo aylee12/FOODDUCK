@@ -252,7 +252,7 @@ function cartHandler(e) {
 
     else {
       Swal.fire({
-        title: '장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?',
+        title: '장바구니에 추가되었습니다. \n장바구니로 이동하시겠습니까?',
         showDenyButton: true,
         confirmButtonText: '네',
         denyButtonText: `아니요`,
@@ -267,7 +267,7 @@ function cartHandler(e) {
   // 중복일 시 추가 X -> 이동 권유
   else {
     Swal.fire({
-      title: '이미 장바구니에 담긴 제품입니다. 장바구니로 이동하시겠습니까?',
+      title: '이미 장바구니에 담긴 제품입니다. \n장바구니로 이동하시겠습니까?',
       showDenyButton: true,
       confirmButtonText: '네',
       denyButtonText: `아니요`,
