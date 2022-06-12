@@ -129,72 +129,84 @@ function cnt_up() {
 
 // 제품수정 이벤트핸들러 -> 제품수정 페이지로 이동
 function editHandler() {
-  const confirm_result = confirm("제품을 수정하시겠습니까?");
-
-  if (confirm_result) {
-    location.href = `/product/edit/${productId}`;
-  }
+  Swal.fire({
+    title: '제품을 수정하시겠습니까?',
+    showDenyButton: true,
+    confirmButtonText: '네',
+    denyButtonText: `아니요`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      location.href = `/product/edit/${productId}`;
+    } else if (result.isDenied) {
+      Swal.fire('수정이 취소되었습니다.', '', 'info')
+    }
+  })
 }
 
 // 제품삭제 이벤트핸들러
-async function delHandler(e) {
+function delHandler(e) {
   e.preventDefault();
 
-  const confirm_result = confirm("제품을 삭제하시겠습니까?");
+  Swal.fire({
+    title: '제품을 삭제하시겠습니까?',
+    showDenyButton: true,
+    confirmButtonText: '네',
+    denyButtonText: `아니요`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const data = {
+        id: productId,
+        img: product_img.src,
+        name: product_name.innerText,
+        price: parseInt(product_price.dataset.value),
+        company: product_company.innerText,
+        description: product_description.innerText
+      };
 
-  if (confirm_result) {
-    const data = {
-      id: productId,
-      img: product_img.src,
-      name: product_name.innerText,
-      price: parseInt(product_price.dataset.value),
-      company: product_company.innerText,
-      description: product_description.innerText
-    };
+      try {
+        Api.delete('/api/productDelete', productId, data);
 
-    try {
-      await Api.delete('/api/productDelete', productId, data);
+        new Swal({
+          title: '제품이 삭제되었습니다.',
+          icon: 'success'
+        }).then(function () {
+          window.location.href = "/";
+        });
+      }
+      catch (err) {
+        console.error(err.stack);
 
-      new Swal({
-        title: '제품이 삭제되었습니다.',
-        icon: 'success'
-      }).then(function () {
-        window.location.href = "/";
-      });
+        new Swal({
+          title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+          text: `${err.message}`,
+          icon: 'error'
+        }).then(function () {
+          window.location.href = `/product/detail/${productId}`;
+        });
+      }
+    } else if (result.isDenied) {
+      Swal.fire('삭제가 취소되었습니다.', '', 'info')
     }
-    catch (err) {
-      console.error(err.stack);
-
-      new Swal({
-        title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
-        text: `${err.message}`,
-        icon: 'error'
-      }).then(function () {
-        window.location.href = `/product/detail/${productId}`;
-      });
-    }
-  }
+  })
 }
 
 // 구매, 장바구니 모두 일단 상품을 localstorage cart에 넣음
 // 중복 검사 -> localStorage에 배열로 제품 아이디, 이미지, 이름, 가격, 제조사, 수량 추가
 function cartHandler(e) {
-  console.log(e.path[0].id);
-  let state_result = true;
-  let move_result = false;
+  let not_in_cart = true;
   const state = JSON.parse(localStorage.getItem("cart") || "[]");
 
   if (state.length !== 0) {
     for (let i = 0; i < state.length; i++) {
       if (state[i].id === productId) {
-        state_result = false;
+        not_in_cart = false;
         break;
       }
     }
   }
 
   // 중복 없을 시 제품 추가 -> 이동 권유
-  if (state_result) {
+  if (not_in_cart) {
     const data = getData();
     const cart = [...state, data];
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -202,19 +214,34 @@ function cartHandler(e) {
     // 바로구매에서 발생한 이벤트인 경우 구매창으로 이동, 아닌 경우 장바구니로 이동 권유
     if (e.path[0].id === "btn_buy_now") {
       location.href = "/pay";
-    } else {
-      move_result = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+    }
+
+    else {
+      Swal.fire({
+        title: '장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?',
+        showDenyButton: true,
+        confirmButtonText: '네',
+        denyButtonText: `아니요`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          location.href = "/cart";
+        }
+      })
     }
   }
 
   // 중복일 시 추가 X -> 이동 권유
   else {
-    move_result = confirm("이미 장바구니에 담긴 제품입니다. 장바구니로 이동하시겠습니까?");
-  }
-
-  //이동 권유 결과 처리
-  if (move_result) {
-    location.href = "/cart";
+    Swal.fire({
+      title: '이미 장바구니에 담긴 제품입니다. 장바구니로 이동하시겠습니까?',
+      showDenyButton: true,
+      confirmButtonText: '네',
+      denyButtonText: `아니요`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        location.href = "/cart";
+      }
+    })
   }
 }
 

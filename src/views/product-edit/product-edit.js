@@ -83,51 +83,59 @@ imgInput.onchange = function (e) {
 };
 
 // '제품 수정하기' 버튼 누르면 동작
-register_product_form.onsubmit = async function (e) {
+register_product_form.onsubmit = function (e) {
   e.preventDefault();
-  if (confirm('제품을 수정하시겠습니까?')) {
-    const product_name = this.product_name.value;
-    const product_category = this.product_category.value;
-    const product_company = this.product_company.value;
-    const product_img = original_img;
-    const product_price = parseInt(this.product_price.value);
-    const product_description = this.product_description.value;
 
-    const data = {
-      name: product_name,
-      category: product_category,
-      company: product_company,
-      img: product_img,
-      price: product_price,
-      description: product_description,
-    };
+  Swal.fire({
+    title: '제품을 수정하시겠습니까?',
+    showDenyButton: true,
+    confirmButtonText: '네',
+    denyButtonText: `아니요`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const product_name = this.product_name.value;
+      const product_category = this.product_category.value;
+      const product_company = this.product_company.value;
+      const product_img = original_img;
+      const product_price = parseInt(this.product_price.value);
+      const product_description = this.product_description.value;
 
-    try {
-      if (imgForm) {
-        /************ Image Upload **********/
-        const imgUrl = await ImgUpload.imgUpload(imgForm);
+      const data = {
+        name: product_name,
+        category: product_category,
+        company: product_company,
+        img: product_img,
+        price: product_price,
+        description: product_description,
+      };
 
-        // data.img에 imgUrl 전달
-        data.img = imgUrl;
+      try {
+        if (imgForm) {
+          /************ Image Upload **********/
+          const imgUrl = ImgUpload.imgUpload(imgForm);
+
+          // data.img에 imgUrl 전달
+          data.img = imgUrl;
+        }
+        Api.patch('/api/productUpdate', productId, data);
+
+        new Swal({
+          title: '제품 정보가 수정되었습니다.',
+          icon: 'success',
+        }).then(function () {
+          window.location.href = `/product/detail/${productId}`;
+        });
+      } catch (err) {
+        console.error(err.stack);
+
+        new Swal({
+          title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
+          text: `${err.message}`,
+          icon: 'error',
+        }).then(function () {
+          window.location.href = `/product/detail/${productId}`;
+        });
       }
-      await Api.patch('/api/productUpdate', productId, data);
-
-      new Swal({
-        title: '제품 정보가 수정되었습니다.',
-        icon: 'success',
-      }).then(function () {
-        window.location.href = `/product/detail/${productId}`;
-      });
-    } catch (err) {
-      console.error(err.stack);
-
-      new Swal({
-        title: '문제가 발생하였습니다. 확인 후 다시 시도해 주세요',
-        text: `${err.message}`,
-        icon: 'error',
-      }).then(function () {
-        window.location.href = `/product/detail/${productId}`;
-      });
     }
-  }
+  })
 };
