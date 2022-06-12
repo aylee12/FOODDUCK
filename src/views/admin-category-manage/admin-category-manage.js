@@ -16,7 +16,7 @@ window.onload = async function () {
 
   const category_list_container = document.querySelector('.category_list_container');
   try {
-    const res = await Api.get('/api/categoryList');
+    const res = await Api.get('/api/category');
     for (let i = 0; i < res.length; i++) {
       // 개별 카테고리 div
       const category_container = document.createElement('div');
@@ -94,7 +94,7 @@ document.getElementById('add').onsubmit = async function addHandler(e) {
     };
 
     try {
-      await Api.post('/api/categoryAdd', data);
+      await Api.post('/api/category', data);
 
       new Swal({
         title: '카테고리가 추가되었습니다.',
@@ -141,7 +141,7 @@ async function editHandler() {
     };
 
     try {
-      await Api.patch('/api/categoryUpdate', original_name, data);
+      await Api.patch('/api/category', original_name, data);
       new Swal({
         title: '카테고리가 수정되었습니다.',
         icon: 'success',
@@ -168,7 +168,7 @@ async function delHandler() {
     const name = document.getElementById(this.dataset.id).value;
 
     try {
-      await Api.delete('/api/categoryDelete', name);
+      await Api.delete('/api/category', name);
 
       new Swal({
         title: '카테고리가 삭제되었습니다.',
