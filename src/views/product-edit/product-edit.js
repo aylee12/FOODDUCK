@@ -29,7 +29,7 @@ window.onload = async function () {
   }
 
   try {
-    const res = await Api.get('/api/categoryList');
+    const res = await Api.get('/api/category');
 
     for (let i = 0; i < res.length; i++) {
       const option = document.createElement('option');
@@ -110,7 +110,7 @@ register_product_form.onsubmit = async function (e) {
         // data.img에 imgUrl 전달
         data.img = imgUrl;
       }
-      await Api.patch('/api/productUpdate', productId, data);
+      await Api.patch('/api/product', productId, data);
 
       new Swal({
         title: '제품 정보가 수정되었습니다.',

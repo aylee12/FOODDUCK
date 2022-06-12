@@ -48,7 +48,7 @@ window.onload = async function () {
   if (token) {
     // 토큰 있으면 - 유저 정보에서 role(권한) 가져오기
     try {
-      const user = await Api.get('/api/getuserInfo');
+      const user = await Api.get('/api/user');
       role = user.role;
     } catch (err) {
       console.error(err.stack);
@@ -149,7 +149,7 @@ async function delHandler(e) {
     };
 
     try {
-      await Api.delete('/api/productDelete', productId, data);
+      await Api.delete('/api/product', productId, data);
 
       new Swal({
         title: '제품이 삭제되었습니다.',

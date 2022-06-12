@@ -19,7 +19,7 @@ window.onload = async function () {
   }
 
   try {
-    const res = await Api.get('/api/categoryList');
+    const res = await Api.get('/api/category');
     for (let i = 0; i < res.length; i++) {
       const option = document.createElement('option');
       option.value = res[i].name;
@@ -81,7 +81,7 @@ register_product_form.onsubmit = async function (e) {
       data.img = imgUrl;
 
       // 상품 추가
-      await Api.post('/api/productAdd', data);
+      await Api.post('/api/product', data);
 
       new Swal({
         title: '상품 판매가 시작되었습니다.',
