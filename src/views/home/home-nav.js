@@ -6,7 +6,7 @@ const navBar = document.querySelector('#navbar');
 (async () => {
   const token = localStorage.getItem('token');
   if (token) {
-    const user = await Api.get('/api/getUserInfo');
+    const user = await Api.get('/api/user');
 
     if (user.role === 'admin') {
       navBar.innerHTML = `

@@ -5,7 +5,7 @@ window.onload = async function () {
   let name = '';
 
   try {
-    const user = await Api.get('/api/getuserInfo');
+    const user = await Api.get('/api/user');
     name = user.fullName;
     role = user.role;
   } catch (err) {
