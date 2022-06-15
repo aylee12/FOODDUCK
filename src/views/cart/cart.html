@@ -23,20 +23,22 @@
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <!-- 커스텀 css, js -->
     <link rel="stylesheet" href="cart.css" />
-    <script src="cartInit.js" type = "module" defer></script>
-    <script src="cart.js" type = "module" defer></script>
-    <script src="../../home/home.js" type = "module" defer></script>
-    <script src="../../home/home-nav.js" type = "module" defer></script>
+    <script src="cartInit.js" type="module" defer></script>
+    <script src="cart.js" type="module" defer></script>
+    <script src="../../home/home.js" type="module" defer></script>
+    <script src="../../home/home-nav.js" type="module" defer></script>
+    <script src="../components/Header.js" defer></script>
+    <script src="../components/Nav.js" defer></script>
     <!-- sweetalert2 사용하기 위한 파일 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- 로고 -->
     <style>
       .logo {
-        width:70px; 
-        height:70px; 
-        border-radius: 25%; 
-        background-image: url('../logo.png'); 
-        background-size: cover; 
+        width: 70px;
+        height: 70px;
+        border-radius: 25%;
+        background-image: url('../logo.png');
+        background-size: cover;
         box-shadow: 0px 0px 5px #333;
         transition: all 0.3s ease-in-out;
         top: 25px;
@@ -49,74 +51,13 @@
     </style>
   </head>
   <body>
-    <!-- 헤더 시작 -->
-   <div id="header">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="container mt-3">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="/">
-            <div class="logo">
-            </div>
-          </a>
-          <a
-            role="button"
-            class="navbar-burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasicExample"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-          <div class="navbar-end breadcrumb my-auto" aria-label="breadcrumbs">
-            <ul id="navbar">
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <div id="navbar_menu" class="sticky">
-      <div class="menu_main">
-        
-        <ul class="menu_list">
-          <li class="menu category_toggle">
-              <div class="toggle">
-                <img width="16px" height="14px" src="https://res.kurly.com/pc/service/common/1908/ico_gnb_all_off_x2.png" alt="">
-                <span>전체 카테고리</span>
-              </div>
-            <div class="category_wrap">
-              <ul id="inner_nav">
-                <li><a onclick="location.href='/product/meat'" class="meat"><span>고기</span></a></li>
-                <li><a onclick="location.href='/product/vegetable'" class="vegetable"><span>야채</span></a></li>
-                <li><a onclick="location.href='/product/fruit'" class="fruit"><span>과일</span></a></li>
-                <li><a onclick="location.href='/product/fish'" class="fish"><span>생선</span></a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="menu menu2">
-            <a href="/product/meat" class="meat">고기</a>
-          </li>
-          <li class="menu menu3">
-            <a href="/product/vegetable" class="vegetable">채소</a>
-          </li>
-          <li class="menu menu4">
-            <a href="/product/fruit" class="fruit">과일</a>
-          </li>
-          <li class="menu menu5">
-            <a href="/product/fish" class="fish">생선</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
+    <main-header></main-header>
+    <main-nav></main-nav>
     <!-- 장바구니 폼 -->
     <div class="register-user-form-container">
-      <form 
+      <form
         method="post"
-        class="box register-user-form-box" 
+        class="box register-user-form-box"
         id="registerUserForm"
       >
         <p class="title is-5 has-text-primary">장바구니</p>
@@ -125,36 +66,15 @@
           <div class="checkbox-select-wrap">
             <div class="checkbox-select">
               <span class="all-check">전체선택</span>
-                <span class="bar"></span>
+              <span class="bar"></span>
             </div>
             <div>
               <span class="select-check">선택삭제</span>
             </div>
           </div>
-          <hr class="hr-items-line">
+          <hr class="hr-items-line" />
           <!-- 장바구니의 담겨져 있는 것 들을 전부다 이런 형식으로 담으면 된다. -->
-          <div class="cart-list">
-            <!-- <div class="cart-items-list">
-              <div class="cart-items-checkbox">
-                <input type="checkbox" name="" id="">
-              </div>
-              <div class="cart-items-img">
-                <img src="" alt="">
-              </div>
-              <div class="cart-items-content">
-                <p>브랜드 이름</p>
-                <p>상품 이름</p>
-                <div><span class="cart-items-price">100</span>원</div>
-              </div>
-              <div class="cart-items-btn">
-                <input type="text" value="1" class="cart-items-quantity-input" readonly>
-                <div class="cart-plus-minus-wrap">
-                  <input type="button" class="cart-btn-minus">
-                  <input type="button" class="cart-btn-plus">
-                </div>
-              </div>
-            </div> -->
-          </div>
+          <div class="cart-list"></div>
         </div>
         <button class="button is-primary is-fullwidth" id="submitButton">
           주문하기
