@@ -25,8 +25,8 @@ function categoryDisplay() {
 async function DataHandler(category) {
   try {
     // 카테고리 상품 데이터 가져오기
-    const url = category ? '/api/product/' + category : '/api/product';
-    const data = await Api.get(url);
+    const url = category ? '/api/products/category' : '/api/products';
+    const data = await Api.get(url, category);
 
     displayProductForCategory(data, category);
   } catch (err) {

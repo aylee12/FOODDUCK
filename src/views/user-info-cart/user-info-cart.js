@@ -5,8 +5,8 @@ const dbCartList = document.querySelector('.db_cart_list_container');
 
 // 즉시실행함수
 (async () => {
-  const user = await Api.get('/api/user');
-  const orderList = await Api.get(`/api/order`, `?userId=${user.userId}`);
+  const user = await Api.get('/api/users/info');
+  const orderList = await Api.get(`/api/orders`, `?userId=${user.userId}`);
   console.log(orderList);
 
   orderList.forEach((items) => {
@@ -36,12 +36,12 @@ const dbCartList = document.querySelector('.db_cart_list_container');
   // 삭제버튼을 누르면 데이터를 삭제해주기
   userCartCancel.forEach((cancleBtn, index) => {
     cancleBtn.addEventListener('click', async () => {
-      const user = await Api.get('/api/user');
-      const orderList = await Api.get(`/api/order`, `?userId=${user.userId}`);
+      const user = await Api.get('/api/users/info');
+      const orderList = await Api.get(`/api/orders`, `?userId=${user.userId}`);
       console.log(user);
       console.log(orderList);
       console.log(index);
-      const userCartDelete = await Api.delete(`/api/order`, `${orderList[index].orderNo}`);
+      const userCartDelete = await Api.delete(`/api/orders`, `${orderList[index].orderNo}`);
 
       console.log(userCartDelete);
       console.log('들어와봐');

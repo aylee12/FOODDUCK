@@ -36,7 +36,7 @@ const detailAddressInput = document.querySelector('#detailAddress');
 const extraAddressInput = document.querySelector('#extraAddress');
 
 async function handleSubmitUpdate() {
-  const user = await Api.get('/api/user');
+  const user = await Api.get('/api/users/info');
 
   const fullName = fullNameInput.value;
   const password = passwordInput.value;
@@ -97,7 +97,7 @@ async function handleSubmitUpdate() {
 }
 
 const handleSubmitDelete = async (e) => {
-  const user = await Api.get('/api/user');
+  const user = await Api.get('/api/users/info');
   const answer = confirm('정말 탈퇴 하시겠습니까??');
   // db에 있는 데이터랑 비밀번호가 일치한다면 ,, 그게 안되면 위에있는 비밀번호 값이라 일치한다면 ,,
   const currentPassword = prompt('현재 비밀번호를 입력하세요');
@@ -118,7 +118,7 @@ const handleSubmitDelete = async (e) => {
 // 함수를 실행하는 곳
 const init = async () => {
   try {
-    const user = await Api.get('/api/user');
+    const user = await Api.get('/api/users/info');
     fullNameInput.value = `${user.fullName}`;
     phoneNumberInput.value = `${user.phoneNumber}`;
     postCodeInput.value = `${user.address.postalCode}`;

@@ -3,7 +3,7 @@ import * as Api from '/api.js';
 window.onload = async function () {
   /**** 접근 권한 확인(관리자) ****/
   try {
-    await Api.get('/api/admin');
+    await Api.get('/api/auth/admin');
   } catch (error) {
     new Swal({
       title: '접근권한이 없습니다.',
@@ -17,7 +17,7 @@ window.onload = async function () {
   // 상품 전체 div
   const product_list_container = document.querySelector('.product_list_container');
   try {
-    const res = await Api.get('/api/product');
+    const res = await Api.get('/api/products');
     for (let i = 0; i < res.length; i++) {
       // 제품 하나당 div
       const product_container = document.createElement('div');

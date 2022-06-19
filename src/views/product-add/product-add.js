@@ -9,7 +9,7 @@ let imgForm = null;
 window.onload = async function () {
   /**** 접근 권한 확인(관리자) ****/
   try {
-    await Api.get('/api/admin');
+    await Api.get('/api/auth/admin');
   } catch (error) {
     new Swal({
       title: '접근권한이 없습니다.',
@@ -21,7 +21,7 @@ window.onload = async function () {
   }
 
   try {
-    const res = await Api.get('/api/category');
+    const res = await Api.get('/api/categories');
     for (let i = 0; i < res.length; i++) {
       const option = document.createElement('option');
       option.value = res[i].name;
@@ -99,7 +99,7 @@ async function productAddHandler(data) {
   data.img = imgUrl;
 
   // 상품 추가
-  await Api.post('/api/productAdd', data);
+  await Api.post('/api/products', data);
 
   new Swal({
     title: '제품 판매가 시작되었습니다.',

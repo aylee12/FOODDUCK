@@ -25,7 +25,7 @@ let role = '';
 window.onload = async function () {
   // 제품 데이터 가져오기
   try {
-    const res = await Api.get('/api/product', productId);
+    const res = await Api.get('/api/products/id', productId);
     product_img.src = res.img;
     product_name.innerText = res.name;
     product_company.innerText = res.company;
@@ -48,7 +48,7 @@ window.onload = async function () {
   if (token) {
     // 토큰 있으면 - 유저 정보에서 role(권한) 가져오기
     try {
-      const user = await Api.get('/api/user');
+      const user = await Api.get('/api/auth/user');
       role = user.role;
     } catch (err) {
       console.error(err.stack);
@@ -194,7 +194,7 @@ function delHandler(e) {
       };
 
       try {
-        Api.delete('/api/productDelete', productId, data);
+        Api.delete('/api/products', productId, data);
 
         new Swal({
           title: '제품이 삭제되었습니다.',

@@ -17,7 +17,7 @@ const productId = product_url[product_url.length - 2];
 window.onload = async function () {
   /**** 접근 권한 확인(관리자) ****/
   try {
-    await Api.get('/api/admin');
+    await Api.get('/api/auth/admin');
   } catch (error) {
     new Swal({
       title: '접근권한이 없습니다.',
@@ -29,7 +29,7 @@ window.onload = async function () {
   }
 
   try {
-    const res = await Api.get('/api/category');
+    const res = await Api.get('/api/categories');
 
     for (let i = 0; i < res.length; i++) {
       const option = document.createElement('option');
@@ -50,7 +50,7 @@ window.onload = async function () {
   }
 
   try {
-    const res = await Api.get('/api/product', productId);
+    const res = await Api.get('/api/products/id', productId);
     product_name.value = res.name;
     product_company.value = res.company;
     product_category.value = res.category.name;
@@ -117,7 +117,7 @@ register_product_form.onsubmit = function (e) {
           // data.img에 imgUrl 전달
           data.img = imgUrl;
         }
-        Api.patch('/api/productUpdate', productId, data);
+        Api.patch('/api/products', productId, data);
 
         new Swal({
           title: '제품 정보가 수정되었습니다.',

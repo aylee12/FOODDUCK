@@ -10,7 +10,7 @@ const fish = document.querySelector('.gallery_wrap .fish');
 const slides = document.querySelector('.slides');
 displaySection();
 async function displaySection() {
-  const url = '/api/product';
+  const url = '/api/products';
   const data = await Api.get(url);
   data.forEach((element) => {
     const category = element.category.name;

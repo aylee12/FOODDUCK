@@ -2,7 +2,7 @@ import * as Api from '/api.js';
 
 /**** 접근 권한 확인(유저) ****/
 try {
-  await Api.get('/api/user');
+  await Api.get('/api/auth/user');
 } catch (error) {
   new Swal({
     title: '로그인이 필요한 페이지입니다.',
@@ -22,7 +22,7 @@ const paySumPriceLoaded = () => {
   const sumPrice = getCartStorage.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
   cartPriceSum.innerHTML = sumPrice;
 };
-const user = await Api.get('/api/user');
+const user = await Api.get('/api/users/info');
 
 // 구매하기를 누를시에 Storage를 전부 비워주고 홈으로 이동시킨다.
 const handlePayBtn = async (e) => {
@@ -53,7 +53,7 @@ const handlePayBtn = async (e) => {
     orderList: orderStorage,
     totalPrice,
   };
-  const userCart = await Api.post('/api/order', data);
+  const userCart = await Api.post('/api/orders', data);
   console.log(userCart);
 
   localStorage.removeItem('cart');
