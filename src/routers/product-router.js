@@ -5,7 +5,7 @@ import { loginRequired, roleCheck, contentTypeCheck } from '../middlewares';
 const productRouter = Router();
 
 //상품 추가
-productRouter.post('/productAdd', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
+productRouter.post('/product', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
   try {
     const { name, price, company, category, img, description } = req.body;
 
@@ -39,7 +39,7 @@ productRouter.post('/productAdd', loginRequired, roleCheck, contentTypeCheck, as
 // });
 
 //전체 상품 조회
-productRouter.get('/productListAll', async (req, res, next) => {
+productRouter.get('/product', async (req, res, next) => {
   try {
     res.status(200).json(await productService.getAllProducts());
   } catch (error) {
@@ -48,7 +48,7 @@ productRouter.get('/productListAll', async (req, res, next) => {
 });
 
 //카테고리별 상품 조회
-productRouter.get('/productListCategory/:category', async (req, res, next) => {
+productRouter.get('/product/:category', async (req, res, next) => {
   try {
     res.status(200).json(await productService.getProductsByCategory(req.params.category));
   } catch (error) {
@@ -73,7 +73,7 @@ productRouter.get('/productListCategory/:category', async (req, res, next) => {
 // });
 
 //상품명으로 조회
-productRouter.get('/productListName/:name', async (req, res, next) => {
+productRouter.get('/product/:name', async (req, res, next) => {
   try {
     res.status(200).json(await productService.getProductByName(req.params.name));
   } catch (error) {
@@ -82,7 +82,7 @@ productRouter.get('/productListName/:name', async (req, res, next) => {
 });
 
 //상품ID값으로 조회
-productRouter.get('/productListId/:productId', async (req, res, next) => {
+productRouter.get('/product/:productId', async (req, res, next) => {
   try {
     res.status(200).json(await productService.getProductById(req.params.productId));
   } catch (error) {
@@ -91,7 +91,7 @@ productRouter.get('/productListId/:productId', async (req, res, next) => {
 });
 
 //상품 수정 => productUpdate라고 길게 End point naming할 필요가 없음. (order-router.js 참고)
-productRouter.patch('/productUpdate/:productId', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
+productRouter.patch('/product/:productId', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
   try {
     const productId = req.params.productId;
     const updatelist = req.body;
@@ -103,18 +103,12 @@ productRouter.patch('/productUpdate/:productId', loginRequired, roleCheck, conte
 });
 
 //상품 삭제
-productRouter.delete(
-  '/productDelete/:productId',
-  loginRequired,
-  roleCheck,
-  contentTypeCheck,
-  async (req, res, next) => {
-    try {
-      res.status(200).json(await productService.deleteProduct(req.params.productId));
-    } catch (error) {
-      next(error);
-    }
+productRouter.delete('/product/:productId', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
+  try {
+    res.status(200).json(await productService.deleteProduct(req.params.productId));
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 export { productRouter };

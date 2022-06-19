@@ -16,7 +16,7 @@ window.onload = async function () {
 
   const category_list_container = document.querySelector('.category_list_container');
   try {
-    const res = await Api.get('/api/categoryList');
+    const res = await Api.get('/api/category');
     for (let i = 0; i < res.length; i++) {
       // 개별 카테고리 div
       const category_container = document.createElement('div');
@@ -212,7 +212,6 @@ async function delHandler() {
     }
   });
 }
-
 
 async function categoryDeleteHandler(name) {
   await Api.delete('/api/categoryDelete', name);

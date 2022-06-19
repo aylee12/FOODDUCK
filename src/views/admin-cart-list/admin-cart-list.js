@@ -17,7 +17,7 @@ const dbCartListWrap = document.querySelector('.db_cart_list_wrap');
     });
   }
 
-  const allCartData = await Api.get('/api/orderList');
+  const allCartData = await Api.get('/api/order');
 
   allCartData.forEach((items) => {
     const { createdAt, orderName, totalPrice } = items;
