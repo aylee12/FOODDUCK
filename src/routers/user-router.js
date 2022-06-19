@@ -121,7 +121,7 @@ userRouter.delete('/users/:userId', loginRequired, contentTypeCheck, async (req,
 });
 
 //토큰을 이용하여 특정 유저정보 불러오기
-userRouter.get('/user', loginRequired, async (req, res, next) => {
+userRouter.get('/users/info', loginRequired, async (req, res, next) => {
   try {
     const userId = req.currentUserId;
 

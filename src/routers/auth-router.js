@@ -6,7 +6,7 @@ const authRouter = Router();
 //접근권한 인증 api
 
 //user
-authRouter.get('/user', async (req, res) => {
+authRouter.get('/auth/user', async (req, res) => {
   const userToken = req.headers['authorization']?.split(' ')[1];
 
   if (!userToken || userToken === 'null') {
@@ -45,7 +45,7 @@ authRouter.get('/user', async (req, res) => {
 });
 
 //admin
-authRouter.get('/admin', async (req, res) => {
+authRouter.get('/auth/admin', async (req, res) => {
   const userToken = req.headers['authorization']?.split(' ')[1];
 
   if (!userToken || userToken === 'null') {
