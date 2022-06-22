@@ -3,7 +3,7 @@ import * as Api from '/api.js';
 window.onload = async function () {
   /**** 접근 권한 확인(관리자) ****/
   try {
-    await Api.get('/api/admin');
+    await Api.get('/api/auth/admin');
   } catch (error) {
     new Swal({
       title: '접근권한이 없습니다.',
@@ -16,7 +16,7 @@ window.onload = async function () {
 
   const category_list_container = document.querySelector('.category_list_container');
   try {
-    const res = await Api.get('/api/categoryList');
+    const res = await Api.get('/api/categories');
     for (let i = 0; i < res.length; i++) {
       // 개별 카테고리 div
       const category_container = document.createElement('div');
@@ -118,7 +118,7 @@ document.getElementById('add').onsubmit = async function addHandler(e) {
 };
 
 async function categoryAddHandler(data) {
-  await Api.post('/api/categoryAdd', data);
+  await Api.post('/api/categories', data);
 
   new Swal({
     title: '카테고리가 추가되었습니다.',
@@ -176,7 +176,7 @@ async function editHandler() {
 }
 
 async function categoryEditHandler(original_name, data) {
-  await Api.patch('/api/categoryUpdate', original_name, data);
+  await Api.patch('/api/categories', original_name, data);
   new Swal({
     title: '카테고리가 수정되었습니다.',
     icon: 'success',
@@ -213,9 +213,8 @@ async function delHandler() {
   });
 }
 
-
 async function categoryDeleteHandler(name) {
-  await Api.delete('/api/categoryDelete', name);
+  await Api.delete('/api/categories', name);
 
   new Swal({
     title: '카테고리가 삭제되었습니다.',

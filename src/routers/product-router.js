@@ -5,7 +5,7 @@ import { loginRequired, roleCheck, contentTypeCheck } from '../middlewares';
 const productRouter = Router();
 
 //상품 추가
-productRouter.post('/productAdd', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
+productRouter.post('/products', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
   try {
     const { name, price, company, category, img, description } = req.body;
 
@@ -24,22 +24,8 @@ productRouter.post('/productAdd', loginRequired, roleCheck, contentTypeCheck, as
   }
 });
 
-//엔드포인트 통합 (전체 상품이랑 카테고리별 상품 검색) - [GET] /product?category=meat
-// productRouter.get('/productList', async (req, res, next) => {
-//   try {
-//     if (req.query.category) {
-//       const products = await productService.getProductsByCategory(category);
-//       res.status(200).json(products);
-//     }
-//     const products = await productService.getAllProducts();
-//     res.status(200).json(products);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
 //전체 상품 조회
-productRouter.get('/productListAll', async (req, res, next) => {
+productRouter.get('/products', async (req, res, next) => {
   try {
     res.status(200).json(await productService.getAllProducts());
   } catch (error) {
@@ -48,7 +34,7 @@ productRouter.get('/productListAll', async (req, res, next) => {
 });
 
 //카테고리별 상품 조회
-productRouter.get('/productListCategory/:category', async (req, res, next) => {
+productRouter.get('/products/category/:category', async (req, res, next) => {
   try {
     res.status(200).json(await productService.getProductsByCategory(req.params.category));
   } catch (error) {
@@ -56,24 +42,8 @@ productRouter.get('/productListCategory/:category', async (req, res, next) => {
   }
 });
 
-//엔드포인트 통합 (상품 ID색이랑 상품명 검색) - [GET] /product?productId=1 or /product?name=립아이
-// productRouter.get('/productOne', async (req, res, next) => {
-//   try {
-//     if (req.query.productId) {
-//       const product = await productService.getProductById(productId);
-//       res.status(200).json(product);
-//     }
-//     if (req.query.name) {
-//       const products = await productService.getProductByName(name);
-//       res.status(200).json(products);
-//     }
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
 //상품명으로 조회
-productRouter.get('/productListName/:name', async (req, res, next) => {
+productRouter.get('/products/name/:name', async (req, res, next) => {
   try {
     res.status(200).json(await productService.getProductByName(req.params.name));
   } catch (error) {
@@ -82,7 +52,7 @@ productRouter.get('/productListName/:name', async (req, res, next) => {
 });
 
 //상품ID값으로 조회
-productRouter.get('/productListId/:productId', async (req, res, next) => {
+productRouter.get('/products/id/:productId', async (req, res, next) => {
   try {
     res.status(200).json(await productService.getProductById(req.params.productId));
   } catch (error) {
@@ -91,7 +61,7 @@ productRouter.get('/productListId/:productId', async (req, res, next) => {
 });
 
 //상품 수정 => productUpdate라고 길게 End point naming할 필요가 없음. (order-router.js 참고)
-productRouter.patch('/productUpdate/:productId', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
+productRouter.patch('/products/:productId', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
   try {
     const productId = req.params.productId;
     const updatelist = req.body;
@@ -103,18 +73,12 @@ productRouter.patch('/productUpdate/:productId', loginRequired, roleCheck, conte
 });
 
 //상품 삭제
-productRouter.delete(
-  '/productDelete/:productId',
-  loginRequired,
-  roleCheck,
-  contentTypeCheck,
-  async (req, res, next) => {
-    try {
-      res.status(200).json(await productService.deleteProduct(req.params.productId));
-    } catch (error) {
-      next(error);
-    }
+productRouter.delete('/products/:productId', loginRequired, roleCheck, contentTypeCheck, async (req, res, next) => {
+  try {
+    res.status(200).json(await productService.deleteProduct(req.params.productId));
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 export { productRouter };

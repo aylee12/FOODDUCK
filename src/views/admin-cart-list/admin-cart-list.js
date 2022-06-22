@@ -6,7 +6,7 @@ const dbCartListWrap = document.querySelector('.db_cart_list_wrap');
 (async () => {
   /**** 접근 권한 확인(관리자) ****/
   try {
-    await Api.get('/api/admin');
+    await Api.get('/api/auth/admin');
   } catch (error) {
     new Swal({
       title: '접근권한이 없습니다.',
@@ -17,7 +17,7 @@ const dbCartListWrap = document.querySelector('.db_cart_list_wrap');
     });
   }
 
-  const allCartData = await Api.get('/api/orderList');
+  const allCartData = await Api.get('/api/orders');
 
   allCartData.forEach((items) => {
     const { createdAt, orderName, totalPrice } = items;

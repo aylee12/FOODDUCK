@@ -20,7 +20,7 @@ submitButton.addEventListener('click', async (e) => {
   e.preventDefault();
   /**** 접근 권한 확인(유저) ****/
   try {
-    await Api.get('/api/user');
+    await Api.get('/api/auth/user');
   } catch (error) {
     new Swal({
       title: '로그인이 필요합니다.',
