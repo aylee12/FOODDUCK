@@ -61,40 +61,40 @@ window.onload = async function () {
         window.location.href = `/`;
       });
     }
+  }
 
-    // 최근 본 상품 추가
-    const state = JSON.parse(sessionStorage.getItem('recent') || '[]');
-    let not_in_recent = true;
+  // 최근 본 상품 추가
+  const state = JSON.parse(sessionStorage.getItem('recent') || '[]');
+  let not_in_recent = true;
 
-    if (state.length != 0) {
-      const recent_zone = document.querySelector('.recent_zone');
+  if (state.length != 0) {
+    const recent_zone = document.querySelector('.recent_zone');
 
-      for (let i = state.length - 1; i > 0; i--) {
-        if (i < state.length - 5) {
-          break;
-        }
-        const recent_item_container = document.createElement('div');
-        const recent_item = document.createElement('img');
-        recent_item.setAttribute('src', state[i].img);
-        recent_item.setAttribute('onclick', `location.href='/product/detail/${state[i].id}'`);
-        recent_item_container.appendChild(recent_item);
-        recent_zone.appendChild(recent_item_container);
+    for (let i = state.length - 1; i > 0; i--) {
+      if (i < state.length - 5) {
+        break;
+      }
+      const recent_item_container = document.createElement('div');
+      const recent_item = document.createElement('img');
+      recent_item.setAttribute('src', state[i].img);
+      recent_item.setAttribute('onclick', `location.href='/product/detail/${state[i].id}'`);
+      recent_item_container.appendChild(recent_item);
+      recent_zone.appendChild(recent_item_container);
 
-        if (productId === state[i].id) {
-          not_in_recent = false;
-        }
+      if (productId === state[i].id) {
+        not_in_recent = false;
       }
     }
+  }
 
-    if (not_in_recent) {
-      const data = {
-        id: productId,
-        img: product_img.src,
-      };
+  if (not_in_recent) {
+    const data = {
+      id: productId,
+      img: product_img.src,
+    };
 
-      const recent = [...state, data];
-      sessionStorage.setItem('recent', JSON.stringify(recent));
-    }
+    const recent = [...state, data];
+    sessionStorage.setItem('recent', JSON.stringify(recent));
   }
 
   product_price.innerText = numberWithCommas(product_price.dataset.value);
@@ -242,10 +242,21 @@ function cartHandler(e) {
 
     // 바로구매에서 발생한 이벤트인 경우 구매창으로 이동, 아닌 경우 장바구니로 이동 권유
     if (e.path[0].id === 'btn_buy_now') {
-      location.href = '/pay';
+      Swal.fire({
+        title: '구매하시겠습니까?',
+        text: '장바구니에 담긴 상품들과 함께 구매창으로 넘어갑니다.',
+        showDenyButton: true,
+        confirmButtonText: '네',
+        denyButtonText: `아니요`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          location.href = '/pay';
+        }
+      });
     } else {
       Swal.fire({
-        title: '장바구니에 추가되었습니다. \n장바구니로 이동하시겠습니까?',
+        title: '장바구니에 추가되었습니다.',
+        text: '장바구니로 이동하시겠습니까?',
         showDenyButton: true,
         confirmButtonText: '네',
         denyButtonText: `아니요`,
@@ -260,7 +271,8 @@ function cartHandler(e) {
   // 중복일 시 추가 X -> 이동 권유
   else {
     Swal.fire({
-      title: '이미 장바구니에 담긴 제품입니다. \n장바구니로 이동하시겠습니까?',
+      title: '이미 장바구니에 담긴 제품입니다.',
+      text: '장바구니로 이동하시겠습니까?',
       showDenyButton: true,
       confirmButtonText: '네',
       denyButtonText: `아니요`,

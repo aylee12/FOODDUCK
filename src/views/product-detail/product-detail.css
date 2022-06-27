@@ -308,6 +308,9 @@ div.inner_container {
   min-height: 600px;
   height: auto;
   margin: 10px 0 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }  
 
 /* 제품 사진정보 틀 */  
@@ -315,8 +318,6 @@ div.product_card_left {
   width: 48%;
   min-height: 600px;
   height: auto;
-  float: left;
-  margin: 0;
 }
 
 /* 제품 글정보 틀 */ 
@@ -324,9 +325,6 @@ div.product_card_right {
   width: 48%;
   min-height: 600px;
   height: auto;
-  float: right;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 div.name_zone {
@@ -504,14 +502,15 @@ div.btn_zone div.btn_item button:hover {
 div.recent_zone {
   width: 50%;
   height: 150px;
+  float: left;
   display: flex;
   flex-wrap: wrap;
 }
 
 div.recent_zone p {
   width: 100%;
-  height: 10%;
-  margin: 10px 10px 10px 0px !important;
+  height: 30px;
+  margin: 10px 0 5px 0 !important;
 }
 
 div.recent_zone div {
@@ -522,7 +521,7 @@ div.recent_zone div {
 }
 
 div.recent_zone div img {
-  width: 80%;
+  height: 110px;
   cursor: pointer;
 }
 
