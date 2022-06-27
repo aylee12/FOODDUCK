@@ -6,26 +6,31 @@
 .navbar-item {
   position: relative;
 }
+
 #navbar li a {
   transition: all 0.3s ease-in-out;
   font-weight: 700;
 }
+
 #navbar li a:hover {
   transform: scale(1.05);
 }
+
 #navbar_menu {
   display: flex;
   justify-content: center;
   height: 75px;
 }
+
 .sticky {
   position: sticky;
   top: 0px;
   background-color: white;
   z-index: 2;
 }
+
 .menu_main a,
-.menu_main a span{
+.menu_main a span {
   color: #333
 }
 
@@ -36,6 +41,7 @@
   display: inline;
   justify-content: center;
 }
+
 #inner_nav li {
   font-size: 12pt;
   font-weight: 400;
@@ -45,24 +51,29 @@
 .menu_list {
   display: flex;
 }
+
 .menu_list .menu {
   margin: 30px 70px;
   font-size: 16px;
   font-weight: 700;
   white-space: nowrap;
 }
+
 .menu_list .category_toggle {
   position: relative;
 }
+
 .toggle {
   height: 60px;
   position: relative;
 }
+
 .toggle img {
   position: absolute;
   left: -20px;
   top: 5px;
 }
+
 .menu_list .category_wrap {
   display: none;
   position: absolute;
@@ -71,7 +82,8 @@
   z-index: 300;
   top: 45px;
 }
-.menu_list .category_wrap li{
+
+.menu_list .category_wrap li {
   background: white;
   border: solid .5px #ddd;
   padding: 7px 0 0 14px;
@@ -82,19 +94,24 @@
   letter-spacing: -3px;
 
 }
+
 .menu_list .category_wrap li:hover {
   background: #eee;
 }
-.menu_list .category_wrap li span:hover{
+
+.menu_list .category_wrap li span:hover {
   color: #68a790;
 }
-.menu_list .menu a{
+
+.menu_list .menu a {
   transition: all 0.2s ease-in-out;
 }
+
 .menu_list .menu a:hover {
   color: #68a790;
   font-weight: 700;
 }
+
 .navbar-end a {
   color: #333;
 }
@@ -116,9 +133,11 @@
   border: 1px solid #f7f7f7;
   padding-bottom: 120px;
 }
+
 #slider_wrap #slider .slide {
   display: none;
 }
+
 #slider_wrap #slider .active {
   display: block;
 }
@@ -139,6 +158,7 @@
   background-image: url('https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_banner_right_52_52.svg');
   cursor: pointer;
 }
+
 .left_arrow {
   position: absolute;
   top: 150px;
@@ -150,9 +170,10 @@
   height: 52px;
   cursor: pointer;
 }
+
 #slide_count {
   position: absolute;
-  background-color: rgba(0,0,0,0.15);
+  background-color: rgba(0, 0, 0, 0.15);
   font-weight: 400;
   width: 40px;
   height: 20px;
@@ -179,17 +200,19 @@
 
 .footer {
   margin: 0 15vw 0 15vw;
-  padding:0;
+  padding: 0;
   align-items: flex-start;
 }
+
 #custom_center_wrap {
   text-align: center;
 
   margin: 0 0 10px 0;
 }
+
 .center_h2 {
   font-size: 16pt;
-  font-weight:700;
+  font-weight: 700;
   padding-bottom: 29px;
 }
 
@@ -200,8 +223,7 @@
 }
 
 #call_wrap .call_title_wrap,
-#question_wrap .question_title_wrap
-{
+#question_wrap .question_title_wrap {
   text-align: center;
   line-height: 40px;
   height: 40px;
@@ -210,29 +232,33 @@
   border-radius: 3px;
 
 }
-#call_wrap .call_title_wrap{
+
+#call_wrap .call_title_wrap {
   border: none;
-  
+
 }
+
 #call_wrap .call_title_wrap .call {
   /* font-size:1.7rem; */
   font-size: 27px;
   font-weight: 700;
   white-space: nowrap;
 }
-#question_wrap .question_title_wrap .cc_qna{
-  font-size:14px;
+
+#question_wrap .question_title_wrap .cc_qna {
+  font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
 }
 
 #right_call_wrap,
-#right_question_wrap{
+#right_question_wrap {
   padding-left: 10px;
   white-space: nowrap;
 }
+
 #right_call_wrap .detail,
-#right_question_wrap .detail{
+#right_question_wrap .detail {
   color: #999;
 }
 
@@ -241,6 +267,7 @@
   justify-content: space-around;
   padding-bottom: 29px;
 }
+
 .footer {
   display: flex;
   justify-content: center;
@@ -248,10 +275,10 @@
   font-weight: 500;
   font-size: 14px;
   padding: 50px;
-  
-  
+
+
   /* margin: 100px; */
-  
+
 }
 
 /* 고객 행복센터 및 멤버소개 */
@@ -311,17 +338,17 @@ div.inner_container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}  
+}
 
-/* 제품 사진정보 틀 */  
+/* 제품 사진정보 틀 */
 div.product_card_left {
   width: 48%;
   min-height: 600px;
   height: auto;
 }
 
-/* 제품 글정보 틀 */ 
-div.product_card_right { 
+/* 제품 글정보 틀 */
+div.product_card_right {
   width: 48%;
   min-height: 600px;
   height: auto;
@@ -348,35 +375,35 @@ div.name_zone div.btn_admin_zone {
 
 #btn_edit {
   background-color: rgb(254, 176, 36);
-  font-size: 15px; 
+  font-size: 15px;
   color: white;
-  margin: 5px; 
-  padding: 7px; 
+  margin: 5px;
+  padding: 7px;
 
   border: 2px solid rgb(254, 176, 36);
-  border-top-left-radius: 30px; 
-  border-top-right-radius: 30px; 
-  border-bottom-left-radius: 30px; 
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
 }
 
 #btn_edit:hover {
-  background-color: rgb(248, 191, 84); 
+  background-color: rgb(248, 191, 84);
   border: 2px solid rgb(249, 200, 110);
   cursor: pointer;
 }
 
 #btn_del {
   background-color: rgb(253, 70, 70);
-  font-size: 15px; 
+  font-size: 15px;
   color: white;
-  margin: 5px; 
-  padding: 7px; 
+  margin: 5px;
+  padding: 7px;
 
   border: 2px solid rgb(253, 70, 70);
-  border-top-left-radius: 30px; 
-  border-top-right-radius: 30px; 
-  border-bottom-left-radius: 30px; 
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
 }
 
@@ -408,8 +435,8 @@ dt {
   width: 20%;
 }
 
-dd{
-  margin-left:10px;
+dd {
+  margin-left: 10px;
 }
 
 /* 구매 수량 */
@@ -472,7 +499,7 @@ div.item {
 }
 
 
-/* 버튼 틀 */ 
+/* 버튼 틀 */
 div.btn_zone {
   display: flex;
   flex-wrap: wrap;
@@ -534,29 +561,33 @@ div.recent_zone div img {
   padding-bottom: 6px;
   white-space: nowrap;
 }
+
 .footer {
   margin: 0 15vw 0 15vw;
-  padding:0;
+  padding: 0;
   align-items: flex-start;
 }
+
 #custom_center_wrap {
   text-align: center;
 
   margin: 0 0 10px 0;
 }
+
 .center_h2 {
   font-size: 16pt;
-  font-weight:700;
+  font-weight: 700;
   padding-bottom: 29px;
 }
+
 #call_wrap,
 #question_wrap {
   display: flex;
   margin: 10px 16px 0 0;
 }
+
 #call_wrap .call_title_wrap,
-#question_wrap .question_title_wrap
-{
+#question_wrap .question_title_wrap {
   text-align: center;
   line-height: 40px;
   height: 40px;
@@ -564,35 +595,42 @@ div.recent_zone div img {
   border: 1px solid #e3e3e3;
   border-radius: 3px;
 }
-#call_wrap .call_title_wrap{
+
+#call_wrap .call_title_wrap {
   border: none;
-  
+
 }
+
 #call_wrap .call_title_wrap .call {
   /* font-size:1.7rem; */
   font-size: 27px;
   font-weight: 700;
   white-space: nowrap;
 }
-#question_wrap .question_title_wrap .cc_qna{
-  font-size:14px;
+
+#question_wrap .question_title_wrap .cc_qna {
+  font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
 }
+
 #right_call_wrap,
-#right_question_wrap{
+#right_question_wrap {
   padding-left: 10px;
   white-space: nowrap;
 }
+
 #right_call_wrap .detail,
-#right_question_wrap .detail{
+#right_question_wrap .detail {
   color: #999;
 }
+
 .introduce_list {
   display: flex;
   justify-content: space-around;
   padding-bottom: 29px;
 }
+
 .footer {
   display: flex;
   justify-content: center;
@@ -601,6 +639,7 @@ div.recent_zone div img {
   font-size: 14px;
   padding: 50px;
   width: 100%;
-  margin: 0; 
+  margin: 0;
 }
+
 /* footer 끝 */

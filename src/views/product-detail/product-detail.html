@@ -1,270 +1,260 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FOODDOCK</title>
-    <!-- 아이콘 -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="../elice-rabbit-favicon.png"
-    />
-    <!-- bulma css -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-    />
-    <!-- 폰트 어썸: 아이콘 -->
-    <script
-      defer
-      src="https://kit.fontawesome.com/7630448495.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
-    <!-- 커스텀 css, js -->
-    <link rel="stylesheet" href="product-detail.css" />
-    <!-- sweetalert2 사용하기 위한 파일 -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/home/home.js" type = "module" defer></script>
-    <script src="/home/home-nav.js" type = "module" defer></script>
-    <!-- 로고 -->
-    <style>
-      .logo {
-        width:70px; 
-        height:70px; 
-        border-radius: 25%; 
-        background-image: url('/logo.png'); 
-        background-size: cover; 
-        box-shadow: 0px 0px 5px #333;
-        transition: all 0.3s ease-in-out;
-        top: 25px;
-        vertical-align: top;
-        justify-content: center;
-      }
-      .logo:hover {
-        transform: scale(1.1);
-      }
-    </style>
-  </head>
-  <body>
-    <!-- 헤더 시작 -->
-    <div id="header">
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="container mt-3">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-              <div class="logo">
-              </div>
-            </a>
-            <a
-              role="button"
-              class="navbar-burger"
-              aria-label="menu"
-              aria-expanded="false"
-              data-target="navbarBasicExample"
-            >
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          </div>
-            <div class="navbar-end breadcrumb my-auto" aria-label="breadcrumbs">
-              <ul id="navbar">
-              </ul>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FOODDOCK</title>
+  <!-- 아이콘 -->
+  <link rel="icon" type="image/png" sizes="16x16" href="../elice-rabbit-favicon.png" />
+  <!-- bulma css -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+  <!-- 폰트 어썸: 아이콘 -->
+  <script defer src="https://kit.fontawesome.com/7630448495.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <!-- 커스텀 css, js -->
+  <link rel="stylesheet" href="product-detail.css" />
+  <!-- sweetalert2 사용하기 위한 파일 -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/home/home.js" type="module" defer></script>
+  <script src="/home/home-nav.js" type="module" defer></script>
+  <!-- 로고 -->
+  <style>
+    .logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 25%;
+      background-image: url('/logo.png');
+      background-size: cover;
+      box-shadow: 0px 0px 5px #333;
+      transition: all 0.3s ease-in-out;
+      top: 25px;
+      vertical-align: top;
+      justify-content: center;
+    }
+
+    .logo:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 헤더 시작 -->
+  <div id="header">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container mt-3">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <div class="logo">
             </div>
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+            data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div class="navbar-end breadcrumb my-auto" aria-label="breadcrumbs">
+          <ul id="navbar">
+          </ul>
+        </div>
+      </div>
+  </div>
+  </nav>
+  <div id="navbar_menu" class="sticky">
+    <div class="menu_main">
+
+      <ul class="menu_list">
+        <li class="menu category_toggle">
+          <div class="toggle">
+            <img width="16px" height="14px" src="https://res.kurly.com/pc/service/common/1908/ico_gnb_all_off_x2.png"
+              alt="">
+            <span>전체 카테고리</span>
+          </div>
+          <div class="category_wrap">
+            <ul id="inner_nav">
+              <li><a onclick="location.href='/product/meat'" class="meat"><span>고기</span></a></li>
+              <li><a onclick="location.href='/product/vegetable'" class="vegetable"><span>야채</span></a></li>
+              <li><a onclick="location.href='/product/fruit'" class="fruit"><span>과일</span></a></li>
+              <li><a onclick="location.href='/product/fish'" class="fish"><span>생선</span></a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="menu menu2">
+          <a href="/product/meat" class="meat">고기</a>
+        </li>
+        <li class="menu menu3">
+          <a href="/product/vegetable" class="vegetable">채소</a>
+        </li>
+        <li class="menu menu4">
+          <a href="/product/fruit" class="fruit">과일</a>
+        </li>
+        <li class="menu menu5">
+          <a href="/product/fish" class="fish">생선</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <!-- product-detail -->
+  <section class="container">
+
+    <!-- 상단 제품 정보 틀 -->
+    <div class="inner_container" class="block">
+
+      <!-- 상단 제품 정보 내 왼쪽 틀 -->
+      <div class="product_card_left">
+        <img id="product_img" src="">
+      </div>
+
+      <!-- 상단 제품 정보 내 오른쪽 틀 -->
+      <div class="product_card_right">
+
+        <!-- 제품명 -->
+        <div class="name_zone">
+          <p id="product_name"></p>
+          <div class="btn_admin_zone"></div>
+        </div>
+
+        <!-- 가격 -->
+        <div class="product_price_zone">
+          <span id="product_price"></span>
+          <span class="won">원</span>
+        </div>
+
+        <!-- 제조사 -->
+        <dl class="list">
+          <dt>제조사</dt>
+          <dd>
+            <p id="product_company"> </p>
+          </dd>
+        </dl>
+
+        <!-- 제품 설명 -->
+        <dl class="list">
+          <dt>상품 설명</dt>
+          <dd>
+            <p id="product_description"> </p>
+          </dd>
+        </dl>
+
+        <!-- 구매 수량 -->
+        <dl class="list">
+          <dt>구매 수량</dt>
+          <dd>
+            <div class="cnt">
+              <button id="btn_cnt_down" class="button is-small is-rounded" value="-">
+                <i class="fas fa-thin fa-minus" aria-hidden="true"></i>
+              </button>
+              <input type="number" id="quantity" value="1" readonly>
+              <button id="btn_cnt_up" class="button is-small is-rounded" value="+">
+                <i class="fas fa-thin fa-plus" aria-hidden="true"></i>
+              </button>
+            </div>
+          </dd>
+        </dl>
+
+        <!-- 총 상품 금액 -->
+        <div id="product_total">
+          <div class="item" id="sum">총 상품 금액: </div>
+          <div class="item" id="product_total_price"></div>
+          <div class="item" id="won">원</div>
+        </div>
+
+        <!-- 바로구매, 장바구니 버튼 -->
+        <div class="btn_zone">
+          <div class="btn_item">
+            <button id="btn_buy_now" class="button is-medium">바로 구매</button>
+          </div>
+          <div class="btn_item">
+            <button id="btn_add_to_cart" class="button is-medium">장바구니 담기</button>
           </div>
         </div>
-      </nav>
-      <div id="navbar_menu" class="sticky">
-        <div class="menu_main">
-          
-          <ul class="menu_list">
-            <li class="menu category_toggle">
-                <div class="toggle">
-                  <img width="16px" height="14px" src="https://res.kurly.com/pc/service/common/1908/ico_gnb_all_off_x2.png" alt="">
-                  <span>전체 카테고리</span>
-                </div>
-              <div class="category_wrap">
-                <ul id="inner_nav">
-                  <li><a onclick="location.href='/product/meat'" class="meat"><span>고기</span></a></li>
-                  <li><a onclick="location.href='/product/vegetable'" class="vegetable"><span>야채</span></a></li>
-                  <li><a onclick="location.href='/product/fruit'" class="fruit"><span>과일</span></a></li>
-                  <li><a onclick="location.href='/product/fish'" class="fish"><span>생선</span></a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="menu menu2">
-              <a href="/product/meat" class="meat">고기</a>
-            </li>
-            <li class="menu menu3">
-              <a href="/product/vegetable" class="vegetable">채소</a>
-            </li>
-            <li class="menu menu4">
-              <a href="/product/fruit" class="fruit">과일</a>
-            </li>
-            <li class="menu menu5">
-              <a href="/product/fish" class="fish">생선</a>
-            </li>
-          </ul>
+      </div>
+
+      <div class="recent_zone">
+        <p class="title is-5 has-text-primary">최근 본 상품</p>
+      </div>
+    </div>
+
+  </section>
+  <script src="product-detail.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- footer -->
+  <footer class="footer">
+    <div id="customer_center_wrap">
+      <h2 class="center_h2">고객행복센터</h2>
+
+
+
+      <div id="call_wrap">
+        <div class="call_title_wrap">
+          <h3 class="call">1234-5678</h3>
+        </div>
+        <div id="right_call_wrap">
+          <p class="customer">365고객센터</p>
+          <p class="detail">오전 7시 - 오후 7시</p>
+        </div>
+      </div>
+
+      <div id="question_wrap">
+        <div class="question_title_wrap">
+          <h3 class="cc_qna">1:1 문의</h3>
+        </div>
+        <div id="right_question_wrap">
+          <p class="customer">365고객센터</p>
+          <p class="detail">고객센터 운영시간에 순차적으로 답변해드리겠습니다.</p>
         </div>
       </div>
     </div>
 
+    <div id="introduce_wrap">
+      <ul class="introduce_list">
+        <li>컬리소개</li>
+        <li>컬리소개영상</li>
+        <li>인재채용</li>
+        <li>이용약관</li>
+      </ul>
+      <p class="footer_p">법인명 ( 상호 ) : 주식회사 xx <span>I</span> 사업자등록번호 : 111-11-11111 <span class="font_change">사업자정보
+          확인</span></p>
+      <p class="footer_p">통신판매업 : 제 1111-서울강남-11111호 <span>I</span> 개인정보보호책임자 : xxx</p>
+      <p class="footer_p">주소 : 서울특별시 xx구 xx란로 111,11층(xx동) <span>I</span> 대표이사 : xxx</p>
+      <p class="footer_p">입점문의 : <span class="font_change">입점문의하기</span> <span>I</span> 마케팅제휴 : <span
+          class="font_change">xxxxxxxx3714@xxxxxx.com</span></p>
+      <p class="footer_p">채용문의 : <span class="font_change">recruit@xxxxx.xxx</span>
+      <p class="footer_p">대량주문 문의 : <span class="font_change">xxxxxxx@xxxxxx.com</span></p>
 
+    </div>
+  </footer>
+</body>
 
-
-
-
-
-
-
-<!-- product-detail -->
-    <section class="container">
-
-      <!-- 상단 제품 정보 틀 -->
-      <div class="inner_container" class="block">
-
-        <!-- 상단 제품 정보 내 왼쪽 틀 -->
-          <div class="product_card_left">
-            <img id="product_img" src="">
-          </div>
-
-          <!-- 상단 제품 정보 내 오른쪽 틀 -->
-          <div class="product_card_right">
-
-            <!-- 제품명 -->
-            <div class="name_zone">
-              <p id="product_name"></p>
-              <div class="btn_admin_zone"></div>
-            </div>
-
-            <!-- 가격 -->
-            <div class="product_price_zone">
-              <span id="product_price"></span>
-              <span class="won">원</span>
-            </div>
-            
-            <!-- 제조사 -->
-            <dl class="list">
-              <dt>제조사</dt>
-              <dd>
-                <p id="product_company"> </p>
-              </dd>
-            </dl>
-            
-            <!-- 제품 설명 -->
-            <dl class="list">
-              <dt>상품 설명</dt>
-              <dd>
-                <p id="product_description"> </p>
-              </dd>
-            </dl>
-
-            <!-- 구매 수량 -->
-            <dl class="list">
-              <dt>구매 수량</dt>
-              <dd> 
-                <div class="cnt">
-                  <button id="btn_cnt_down" class="button is-small is-rounded" value="-">
-                    <i class="fas fa-thin fa-minus" aria-hidden="true"></i>
-                  </button>
-                  <input type="number" id="quantity" value="1" readonly>
-                  <button id="btn_cnt_up" class="button is-small is-rounded" value="+">
-                    <i class="fas fa-thin fa-plus" aria-hidden="true"></i>
-                  </button>
-                </div>
-              </dd>
-            </dl>
-            
-            <!-- 총 상품 금액 -->
-            <div id="product_total">
-              <div class="item" id="sum">총 상품 금액: </div>
-              <div class="item" id="product_total_price"></div>
-              <div class="item" id="won">원</div>
-            </div>
-
-            <!-- 바로구매, 장바구니 버튼 -->
-            <div class="btn_zone">
-              <div class="btn_item">
-                <button id="btn_buy_now" class="button is-medium">바로 구매</button>
-              </div>
-              <div class="btn_item">
-                <button id="btn_add_to_cart" class="button is-medium">장바구니 담기</button>
-              </div>
-            </div>
-          </div>
-          
-          <div class="recent_zone">
-            <p class="title is-5 has-text-primary">최근 본 상품</p>
-          </div>
-      </div>
-
-    </section>
-    <script src="product-detail.js" type="module"></script>
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-    <!-- footer -->
-    <footer class="footer">
-      <div id="customer_center_wrap">
-        <h2 class="center_h2">고객행복센터</h2>
-      
-    
-
-        <div id="call_wrap">
-          <div class="call_title_wrap">
-            <h3 class="call">1234-5678</h3>
-          </div>
-          <div id="right_call_wrap">
-            <p class="customer">365고객센터</p>
-            <p class="detail">오전 7시 - 오후 7시</p>
-          </div>
-        </div>
-
-        <div id="question_wrap">
-          <div class="question_title_wrap">
-            <h3 class="cc_qna">1:1 문의</h3>
-          </div>
-          <div id="right_question_wrap">
-            <p class="customer">365고객센터</p>
-            <p class="detail">고객센터 운영시간에 순차적으로 답변해드리겠습니다.</p>
-          </div>
-        </div>
-      </div>
-
-      <div id="introduce_wrap" >
-        <ul class="introduce_list">
-          <li>컬리소개</li>
-          <li>컬리소개영상</li>
-          <li>인재채용</li>
-          <li>이용약관</li>
-        </ul>
-        <p class="footer_p">법인명 ( 상호 ) : 주식회사 xx <span>I</span> 사업자등록번호 : 111-11-11111 <span class="font_change">사업자정보 확인</span></p>
-        <p class="footer_p">통신판매업 : 제 1111-서울강남-11111호 <span>I</span> 개인정보보호책임자 : xxx</p>
-        <p class="footer_p">주소 : 서울특별시 xx구 xx란로 111,11층(xx동) <span>I</span> 대표이사 : xxx</p>
-        <p class="footer_p">입점문의 : <span class="font_change">입점문의하기</span> <span>I</span> 마케팅제휴 : <span class="font_change">xxxxxxxx3714@xxxxxx.com</span></p>
-        <p class="footer_p">채용문의 : <span class="font_change">recruit@xxxxx.xxx</span>
-        <p class="footer_p">대량주문 문의 : <span class="font_change">xxxxxxx@xxxxxx.com</span></p>
-  
-      </div>
-    </footer>
-  </body>
 </html>
