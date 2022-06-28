@@ -277,3 +277,28 @@ div.inner_container div.button_container button:hover {
     width: 65%;
     padding: 20px;
 }
+
+@media (min-width: 320px) and (max-width: 800px) {
+  section.container {
+    width: 320px;
+    margin: 0 auto;
+  }
+
+  div.container_title {
+    font-size: 2rem;
+  }
+
+  div.container_title .name {
+    font-size: 2rem;
+  }
+
+  div.inner_container div.button_container button {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+  
+  button img {
+    margin-right: 0;
+    margin-bottom: 5px;
+}
+}

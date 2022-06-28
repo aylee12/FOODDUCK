@@ -541,8 +541,6 @@ div.recent_zone p {
 }
 
 div.recent_zone div {
-  width: 20%;
-  height: 73%;
   display: flex;
   align-items: center;
 }
@@ -551,6 +549,88 @@ div.recent_zone div img {
   height: 110px;
   cursor: pointer;
 }
+
+
+
+
+@media (min-width: 320px) and (max-width: 800px) {
+  section.container {
+    width: 320px;
+  }
+
+  div.product_card_left {
+    width: 100%;
+    min-height: 430px;
+    height: auto;
+  }
+  
+  /* 제품 글정보 틀 */
+  div.product_card_right {
+    width: 100%;
+    min-height: 400px;
+    height: auto;
+    font-size: 0.9rem;
+  }
+
+  div.product_card_right div.name_zone {
+    min-height: 0;
+    margin-bottom: 10px;
+  }
+
+  div.product_card_right div.product_price_zone {
+    margin-bottom: 10px;
+  }
+
+  div.product_card_right dt {
+    font-size: 0.9rem;
+    font-weight: 550;
+  }
+
+  div.product_card_right dl p {
+    font-size: 0.9rem;
+  }
+
+  div.recent_zone {
+    width: 100%;
+  }
+
+  div.recent_zone div {
+    width: 20%;
+    display: flex;
+    align-items: center;
+  }
+  
+  div.recent_zone div img {
+    height: 90px;
+    cursor: pointer;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* footer 시작 */
 .footer_p {

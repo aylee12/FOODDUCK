@@ -303,3 +303,30 @@ div.name_container {
     font-size: 20px;
     font-weight: 600;
 }
+
+@media (min-width: 320px) and (max-width: 800px) {
+  section.container {
+    width: 320px;
+  }
+
+  div.product_list_container {
+    width: 100%;
+    border: 0;
+    margin-top: 0px;
+  }
+
+  #btn_add {
+    width: 80%;
+    background-color: rgb(30, 202, 162);
+    font-size: 25px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    margin: 50px auto 60px auto;
+  }
+
+  div.product_container {
+    width: 100%;
+  }
+  
+}

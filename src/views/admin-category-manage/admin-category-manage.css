@@ -380,3 +380,41 @@ div.category_container div#category_blank2 {
     padding: 4px 7px; 
     cursor: pointer;
 }
+
+@media (min-width: 320px) and (max-width: 800px) {
+  section.container {
+    width: 320px;
+  }
+
+  div.category_list_container {
+    width: 100%;
+    border: 0;
+    margin-top: 0px;
+  }
+
+  #new_category_name {
+    font-size: 1rem;
+    width: 60%;
+  }
+
+  div.add_zone {
+    margin-bottom: 30px;
+  }
+
+  div.add_zone #btn_submit {
+    font-size: 1rem;
+  }
+
+  div.category_container {
+    width: 100%;
+    justify-content: center;
+  }
+
+  div.category_container div#category_blank1 {
+    width: 0%;
+  }
+  
+  div.category_container div#category_blank2 {
+    width: 0%;
+  }
+}
